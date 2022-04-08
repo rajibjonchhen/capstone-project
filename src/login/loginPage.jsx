@@ -1,22 +1,36 @@
+import { Flare } from "@mui/icons-material";
+import { Avatar, Box, Typography } from "@mui/material";
 import { useState } from "react";
+import OauthLogin from "./OauthLogin";
 
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
 
+
 function LoginPage() {
-    const [showSignIn, setShowSignIn] = useState(false)
+    const [showSignIn, setShowSignIn] = useState(true)
     return ( 
-        <div>Login Page
-            
-            <div style={{display:showSignIn? "block":"none"}}>
+        <Box>
+
+            <Box sx={{ display: 'flex', alignItems: 'center', mt:2, justifyContent:'center' }}>
+                <Flare className="App-logo"/>
+                <Typography sx={{fontWeight: 'bold',fontSize: 26}} > Creator's Space</Typography>
+            </Box>
+            <Box sx={{ mt: 2, width: '100%', p:1}}>
+              <Typography> Continue with</Typography>
+             <OauthLogin/>
+         
+          </Box>
+                
+            <Box style={{display:showSignIn? "block":"none"}}>
                     <SignIn setShowSignIn={setShowSignIn}/>
-            </div>
-            <div  style={{display:!showSignIn? "block":"none"}}>
+            </Box>
+            <Box  style={{display:!showSignIn? "block":"none"}}>
                     <SignUp setShowSignIn={setShowSignIn}/>
-            </div>
+            </Box>
             
-        </div>
+        </Box>
      );
 }
 

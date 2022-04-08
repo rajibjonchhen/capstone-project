@@ -1,0 +1,12 @@
+.continue-with-btn {
+    border : 1px solid lightgrey;
+    padding : 4px 6px;
+    border-radius: 0px;
+    width:105px;
+    background-color: transparent;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 5px 5px 5px;
+  }

@@ -1,97 +1,4 @@
-// import { Box, Button, TextField, Typography } from "@material-ui/core";
-// import { AspectRatio } from "@mui/icons-material";
-// import { useEffect, useState } from "react";
 
-// function SignIn({ setShowSignIn }) {
-//     const [isSubmit, setIsSubmit] = useState(false)
-//     const [signInErr, setSignInErr] = useState({})
-//     const [signInUser, setSignInUser] = useState({
-//     email: "",
-//     password: "",
-//   });
-
-// useEffect(() => {
-    
-// },[signInErr])
-
-// const handleChange = (e) => {
-//     const {name, value} = e.target
-//     setSignInUser({...signInUser, [name]:value})
-//     console.log(signInUser.email)
-// } 
-
-// const handleSubmit = (e) => {
-//     e.preventDefault()
-//     setSignInErr(validateForm(signInUser))
-//     setIsSubmit(true)
-    
-//     if(Object.keys(signInErr).length === 0 && isSubmit){
-//         console.log("I am going to submit")
-//         loginUser()
-//     }
-    
-// }
-
-// const validateForm = (signInUser) => {
-//     const regex = /\S+@\S+\.\S+/
-//     const errors = {} 
-//     errors.email = !signInUser.email? "email is missing" : (!regex.test(signInUser.email))? "Email is not valid":""
-//     errors.password = !signInUser.password? "password is missing":""
-//     return errors
-// }
-
-// const loginUser = async()=> {
-// console.log("login User is invoked")
-// }
-
-//   return (
-//     <div className="myContainer App-header">
-//       <Box
-//         component="form"
-//         sx={{
-//           "& > :not(style)": { m: 2, width: "25ch" },
-//         }}
-//         noValidate
-//         autoComplete="off"
-//       >
-//         Sign In
-//         <div>
-//           <TextField
-//             id="outlined-basic"
-//             label="Email"
-//             variant="outlined"
-//             margin="dense"
-//             name="email"
-//             value={signInUser.email}
-//             onChange={(e) => handleChange(e)}
-//             required
-//           />
-//           <Typography >{signInErr.email}</Typography>
-//           <TextField
-//             id="outlined-basic"
-//             label="Password"
-//             variant="outlined"
-//             margin="dense"
-//             name="password"
-//             value={signInUser.password}
-//             onChange={(e) => handleChange(e)}
-//             required
-//             />
-//             <Typography>{signInErr.password}</Typography>
-//           <Button variant='contained' onClick={(e) => handleSubmit(e)}>SignIn</Button>
-//           <Typography>
-//             Become a member{" "}
-//             <span className="pointer" onClick={() => setShowSignIn(false)}>
-//               register
-//             </span>
-//           </Typography>
-//         </div>
-//       </Box>
-//     </div>
-//   );
-// }
-
-// export default SignIn;
 
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
@@ -103,18 +10,20 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Alert } from '@mui/material';
+import {useNavigate} from "react-router-dom"
+import { setMyInfoAction } from '../redux/actions/action';
+import { useDispatch } from 'react-redux';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        www.creatorsspace.com
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -125,6 +34,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn({setShowSignIn}) {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [error, setError] = React.useState("")
     const [isSubmit, setIsSubmit] = React.useState(false)
     const [signInErr, setSignInErr] = React.useState({})
@@ -189,6 +100,8 @@ const loginUser = async()=> {
             const data = await response.json()
             console.log(data)
             localStorage.setItem("MyToken", data.token);
+            dispatch(setMyInfoAction(data.user))
+            navigate("/HomePage")
         }
     } catch (error) {
         console.log(error)
@@ -202,38 +115,42 @@ const loginUser = async()=> {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 1,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+            Or
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-         {error.length > 0 && <Alert fullWidth severity="error">{error}</Alert>}
+         {error.length > 0 && <Alert margin="normal" fullWidth severity="error">{error}</Alert>}
           
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+            
             margin="normal"
             required
             fullWidth
+            size="small"
             id="email"
             label="Email Address"
             name="email"
-            autoComplete="email"
+            autoComplete="outlined-error"
             autoFocus
             value={signInUser.email}
             onChange={(e) => handleChange(e)}
             />
             <Typography color="secondary" align='left'>{signInErr.email}</Typography>
             <TextField
-            margin="normal"
-            required
-            fullWidth
+             margin="normal"
+             required
+             fullWidth
+             autoFocus
+            size="small"
             name="password"
             label="Password"
             type="password"
@@ -263,7 +180,7 @@ const loginUser = async()=> {
                 </Link>
               </Grid>
               <Grid item>
-                <Typography onClick={() => setShowSignIn(false)} variant="body2">
+                <Typography  onClick={() => setShowSignIn(false)} variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Typography>
               </Grid>
