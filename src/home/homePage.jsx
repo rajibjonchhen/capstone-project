@@ -4,11 +4,15 @@ import { useDispatch } from "react-redux";
 import Loader from "../others/Loader";
 import { setMyInfoAction } from "../redux/actions/action";
 import SingleCard from "./SingleCard";
+import './homePage.css'
 
 function Home() {
     const [ error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const dispatch = useDispatch()
+    const [products, setProducts] = useState(Array.apply(null, Array(20)))
+
+   
 
     useEffect(() => {
         fetchMyInfo()
@@ -41,8 +45,8 @@ function Home() {
         } 
     }
     return ( 
-        <div className='myContainer App-header'>
-            <SingleCard/>
+        <div className='home-page '>
+           {products.map(item =>  <SingleCard/>)}
             {isLoading && <Loader/>}
         </div>
      );

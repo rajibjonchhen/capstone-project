@@ -169,10 +169,10 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
         <AppBar color="primary">
             <Toolbar>
                 
-                <Flare className="App-logo"/>
-                <Link to="/HomePage">
-                    <Typography> Creator's Space</Typography>
-                </Link>
+                <Flare className="App-logo" onClick={() => navigate("/HomePage")}/>
+                
+                    <Typography onClick={() => navigate("/HomePage")}> Creator's Space</Typography>
+                
                 <Search>
             <SearchIconWrapper>
               <SearchIcon />

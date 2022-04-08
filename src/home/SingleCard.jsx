@@ -1,20 +1,46 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
+import * as React from "react";
+import { useState } from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { pink } from "@material-ui/core/colors";
 
-function SingleCard() {
-    const theme = useTheme();
-    return ( 
-        <div>single card</div>
-     );
+export default function SingleCard() {
+  const [likesCount, setLikesCount] = useState(100);
+  const [like, setLike] = useState(false);
+  return (
+    <Card sx={{ width: 345, m: 1 }}>
+      <CardMedia
+        component="img"
+        alt="green iguana"
+        height="140"
+        image="/static/images/cards/contemplative-reptile.jpg"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          Lizard
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Lizards are a widespread group of squamate reptiles, with over 6,000
+          species, ranging across all continents except Antarctica
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Like</Button>
+        <Button size="small" >
+          {likesCount}
+          <Favorite sx={{ color: pink[500], display:like? "block":"none" }} onClick={() => setLike(false)} />
+          <FavoriteBorder
+            sx={{ color: pink[500], display:!like? "block":"none"  }}
+            onClick={() => setLike(true)}
+          />
+        </Button>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+  );
 }
-
-export default SingleCard;
