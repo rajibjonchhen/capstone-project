@@ -5,6 +5,7 @@ import Loader from "../others/Loader";
 import { setMyInfoAction } from "../redux/actions/action";
 import SingleCard from "./SingleCard";
 import './homePage.css'
+import { useNavigate } from "react-router-dom";
 
 function Home() {
     const [ error, setError] = useState("")
@@ -12,9 +13,14 @@ function Home() {
     const dispatch = useDispatch()
     const [products, setProducts] = useState(Array.apply(null, Array(20)))
 
+    const navigate = useNavigate()
    
 
     useEffect(() => {
+        const token = localStorage.getItem("MyToken")
+        if(!token){
+            navigate("/Login")
+        }
         fetchMyInfo()
     },[])
 

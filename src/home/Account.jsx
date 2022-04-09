@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setMyInfoAction } from "../redux/actions/action";
-import "./profile.css"
+import "./account.css"
 
 function Profile() {
     const dispatch = useDispatch()
@@ -16,6 +16,7 @@ function Profile() {
     const myInfo = useSelector(state => state.user.myInfo)
 
     useEffect(() => {
+        
         setMyProfile({
             name: myInfo.name,
             surname: myInfo.surname,
@@ -29,6 +30,7 @@ function Profile() {
     }
 
     const saveChange = async() => {
+        setError("")
         try {
             const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/me`,{
                 method:"PUT",
@@ -40,15 +42,15 @@ function Profile() {
             })
             if(response.status !== 200){
                 const data = await response.json()
-                console.log(data)
+                console.log(data, response.status)
                 setError(data.error)
                 setIsLoading(false)
             } else{
                 const data = await response.json()
                 console.log(data)
-                localStorage.setItem("MyToken", data.token);
                 dispatch(setMyInfoAction(data.user))
                 setIsLoading(false)
+                setEditProfile(false)
             }
         } catch (error) {
             console.log(error)

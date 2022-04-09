@@ -13,7 +13,6 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Link } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { Image } from 'react-bootstrap';
 import "./myNavbar.css"
@@ -104,10 +103,11 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-        <MenuItem onClick={() => {handleMenuClose(); navigate("/Profile")}}>
+        <MenuItem onClick={handleMenuClose}>
             Profile
           </MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={() => {handleMenuClose(); navigate("/Account")}} >My account</MenuItem>
+      <MenuItem onClick={() => {handleMenuClose(); localStorage.removeItem("MyToken"); navigate("/Login")}}>Logout</MenuItem>
     </Menu>
   );
 
@@ -171,7 +171,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
                 
                 <Flare className="App-logo" onClick={() => navigate("/HomePage")}/>
                 
-                    <Typography onClick={() => navigate("/HomePage")}> Creator's Space</Typography>
+                    <Typography className="pointer" onClick={() => navigate("/HomePage")}> Creator's Space</Typography>
                 
                 <Search>
             <SearchIconWrapper>
@@ -208,7 +208,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <Image src={myInfo?.avatar} className="userImg"/>
+              <Image src={myInfo?.avatar || "https://ui-avatars.com/api/?name=John+Doe"} className="userImg"/>
             </IconButton>
           </Box>
 

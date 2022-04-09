@@ -10,7 +10,8 @@ import DetailPage from './detail/DetailPage';
 import EditProfile from './addEdit/EditProfile';
 import { Provider } from 'react-redux';
 import configureStore from './redux/store/store';
-import Profile from './home/Profile';
+import Account from './home/Account';
+import ErrorPage from './error/ErrorPage';
 
 
 
@@ -21,12 +22,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/Login" element={<LoginPage/>}/>
           <Route path="/HomePage" element={<MyLayout><HomePage/></MyLayout>}/>
-          <Route path="/Profile" element={<MyLayout><Profile/></MyLayout>}/>
+          <Route path="/Account" element={<MyLayout><Account/></MyLayout>}/>
           <Route path="/PostPage" element={<MyLayout><PostPage/></MyLayout>}/>
           <Route path="/DetailPage" element={<MyLayout><DetailPage/></MyLayout>}/>
           <Route path="/EditProfile" element={<MyLayout><EditProfile/></MyLayout>}/>
+          <Route path="*.*" element={<MyLayout><ErrorPage/></MyLayout>}/>
+
         </Routes>
       </BrowserRouter>
     </div>
