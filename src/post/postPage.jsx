@@ -1,5 +1,6 @@
 
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -10,16 +11,48 @@ import { Image } from 'react-bootstrap';
 import LeftSidebar from './LeftSidebar';
 import getMyInfo from '../getMyInfo';
 import { useNavigate } from 'react-router-dom';
+import { setAllProductsAction } from '../redux/actions/action';
+import { useDispatch } from 'react-redux';
 
 
 
 function PostPage() {
     const navigate = useNavigate()
-    const [myInfo, setMyInfo] = React.useState({})
-    React.useEffect(() =>{
-        setMyInfo(getMyInfo())
-
+    const dispatch = useDispatch()
+   const [error, setError] = useState("")
+    const [isLoading, setIsLoading] = useState (false)
+   
+    useEffect(() =>{
+        fetchPosts()
     },[])
+
+   
+
+    const fetchPosts = async() => {
+        try {
+            console.log(process.env.REACT_APP_DEV_BE_URL)
+            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/posts`,{
+                method:"GET",
+                headers:{
+                    "authorization" : localStorage.getItem("MyToken"),
+                }
+            })
+            if(response.status !== 200){
+                const data = await response.json()
+                console.log(data)
+                setError(data.error)
+                setIsLoading(false)
+            } else{
+                const data = await response.json()
+                console.log(data)
+                dispatch(setAllProductsAction(data.posts))
+                setIsLoading(false)
+            }
+        } catch (error) {
+            console.log(error)
+            setIsLoading(false)
+        } 
+    }
 
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

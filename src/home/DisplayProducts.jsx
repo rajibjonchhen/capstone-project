@@ -20,6 +20,7 @@ function DisplayProducts() {
     useEffect(() => {
        
         fetchMyInfo()
+        fetchProducts()
     },[])
 
     const fetchMyInfo = async() => {

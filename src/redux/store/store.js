@@ -1,5 +1,6 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
+import postReducer from '../reducers/postReducer.js'
 import productReducer from '../reducers/productReducer.js'
 import userReducer from '../reducers/userReducer.js'
 
@@ -13,12 +14,17 @@ user : {
 product : {
     allProducts:[],
     singleProduct : {}
+},
+post : {
+    allPosts:[],
+    singlePost : {}
 }
 }
 
 const multiReducer = combineReducers({
    user : userReducer,
    product : productReducer,
+   post : postReducer
 })
 
 let configureStore = createStore(
