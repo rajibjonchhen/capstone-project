@@ -1,7 +1,9 @@
+import { Container } from "react-bootstrap";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MyFooter from "../footer/MyFooter";
 import MyNavbar from "../myNavbar/MyNavbar";
+import "./myLayout.css"
 
 function MyLayout({children}) {
     const navigate = useNavigate()
@@ -13,7 +15,9 @@ function MyLayout({children}) {
     },[])
     return ( <>
         <MyNavbar/>
+        <Container fluid className="myLayout-box">
         {children}
+        </Container>
         <MyFooter/>
     </>
      );

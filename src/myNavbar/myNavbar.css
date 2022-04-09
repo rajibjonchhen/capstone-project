@@ -1,8 +1,8 @@
-.userImg{
-width : 30px;
-height: 30px;
-border-radius : 50%
-}
+.brand{
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;}
+
 
 .userImgcontainer{
     width : 30px;

@@ -3,7 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';import { AppBar, CssBaseline, Toolbar, Typography } from "@material-ui/core";
+import Badge from '@mui/material/Badge';import { AppBar, Avatar, CssBaseline, Toolbar, Typography } from "@material-ui/core";
 import { Flare } from "@mui/icons-material";
 import SearchIcon from '@mui/icons-material/Search';
 import MenuItem from '@mui/material/MenuItem';
@@ -171,9 +171,22 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
                 
                 <Flare className="App-logo" onClick={() => navigate("/HomePage")}/>
                 
-                    <Typography className="pointer" onClick={() => navigate("/HomePage")}> Creator's Space</Typography>
+                    <Typography className="brand" onClick={() => navigate("/HomePage")}> Creator's Space</Typography>
+
+                     {/*  */}
+                <MenuItem onClick={() => {}}>
+                  <Typography >Product</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => {navigate("/PostPage")}}>
+                  <Typography >Community</Typography>
+                </MenuItem>
+    {/*  */}
                 
-                <Search>
+                
+
+
+             <Box sx={{ flexGrow: 1 }} />
+             <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -182,8 +195,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
               inputProps={{ 'aria-label': 'search' }}
             />
              </Search>
-
-             <Box sx={{ flexGrow: 1 }} />
+   
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
@@ -208,7 +220,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <Image src={myInfo?.avatar || "https://ui-avatars.com/api/?name=John+Doe"} className="userImg"/>
+              <Avatar src={myInfo?.avatar || "https://ui-avatars.com/api/?name=John+Doe"} className="userImg"/>
             </IconButton>
           </Box>
 

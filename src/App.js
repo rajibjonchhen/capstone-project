@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/Login" element={<LoginPage/>}/>
+          <Route path="/" element={<LoginPage/>}/>
           <Route path="/HomePage" element={<MyLayout><HomePage/></MyLayout>}/>
           <Route path="/Account" element={<MyLayout><Account/></MyLayout>}/>
           <Route path="/PostPage" element={<MyLayout><PostPage/></MyLayout>}/>
