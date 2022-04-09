@@ -9,13 +9,16 @@ import RightSidebar from './RightSidebar';
 import { Image } from 'react-bootstrap';
 import LeftSidebar from './LeftSidebar';
 import getMyInfo from '../getMyInfo';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function PostPage() {
+    const navigate = useNavigate()
     const [myInfo, setMyInfo] = React.useState({})
     React.useEffect(() =>{
         setMyInfo(getMyInfo())
+
     },[])
 
     const Item = styled(Paper)(({ theme }) => ({
@@ -28,17 +31,17 @@ function PostPage() {
       
     return ( 
         <Grid container spacing={2}> 
-            <Grid item sm={12} md={3} lg={2} >
+            <Grid item sm={12} md={3} lg={3} >
                 <Item>
                     <LeftSidebar/>
                 </Item>
             </Grid>
-            <Grid item sm={12} md={6} lg={8}>
+            <Grid item sm={12} md={6} lg={6}>
                 <Item>
                     <SinglePost/>
                 </Item>
             </Grid>
-            <Grid item sm={12} md={3} lg={2}>
+            <Grid item sm={12} md={3} lg={3}>
                 <Item>
                     <RightSidebar/>
                 </Item>

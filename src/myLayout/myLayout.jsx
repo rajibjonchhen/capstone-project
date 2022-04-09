@@ -10,7 +10,7 @@ function MyLayout({children}) {
     useEffect(() => {
         const token = localStorage.getItem("MyToken")
         if(!token){
-            navigate("/Login")
+            navigate("/")
         }
     },[])
     return ( <>

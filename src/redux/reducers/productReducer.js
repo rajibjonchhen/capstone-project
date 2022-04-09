@@ -3,12 +3,18 @@ import { initialState } from "../store/store";
 
  const productReducer = ( state = initialState.product, action) => {
     switch (action.type){
+
         case ACTIONS.SET_SINGLE_PRODUCT: 
         return {
             ...state,
-            myInfo : action.payload
+            singleProduct : action.payload
         }
 
+        case ACTIONS.SET_ALL_PRODUCTS:
+            return {
+                ...state,
+            allProducts : action.payload
+            }
         default: return state
     }
 }

@@ -1,6 +1,6 @@
 .profile-box{
     
-    width:500px;
+    max-width:500px;
     height: 100%;
     border : 1px solid grey;
     margin: 100px auto 0px;

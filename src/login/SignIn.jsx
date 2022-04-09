@@ -17,6 +17,7 @@ import { Alert } from '@mui/material';
 import {useNavigate} from "react-router-dom"
 import { setMyInfoAction } from '../redux/actions/action';
 import { useDispatch } from 'react-redux';
+import OauthLogin from './OauthLogin';
 
 function Copyright(props) {
   return (
@@ -121,15 +122,13 @@ const loginUser = async()=> {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            Or
-          </Avatar>
+          
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%',padding:'30px 15px', border:'1px solid rgb(200,200,200)'  }}>
+       
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
          {error.length > 0 && <Alert margin="normal" fullWidth severity="error">{error}</Alert>}
-          
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
             
             margin="normal"
@@ -185,6 +184,14 @@ const loginUser = async()=> {
                 </Typography>
               </Grid>
             </Grid>
+            <Avatar sx={{ m: "10px auto", bgcolor: 'secondary.main' }}>
+            Or
+          </Avatar>
+          <Box sx={{ mt: 2, width: '100%', p:1}}>
+              <Typography> Continue with</Typography>
+             <OauthLogin/>
+         
+          </Box>
           </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />

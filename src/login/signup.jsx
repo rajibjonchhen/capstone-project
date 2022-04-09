@@ -15,6 +15,10 @@ import { Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setMyInfoAction } from '../redux/actions/action';
+import { IconButton, InputAdornment } from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import Home from '../home/HomePage';
+import OauthLogin from './OauthLogin';
 
 
 function Copyright(props) {
@@ -37,6 +41,7 @@ export default function SignIn({setShowSignIn}) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [error, setError] = React.useState("")
+    const [showPassword, setShowPassword] = React.useState(true)
     const [isSubmit, setIsSubmit] = React.useState(false)
     const [signUpErr, setSignUpErr] = React.useState({})
     const [signUpUser, setSignUpUser] = React.useState({
@@ -131,15 +136,13 @@ try {
           }}
         >
            
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          Or
-          </Avatar>
+        
+          <Box sx={{ display: 'flex', alignItems: 'left', width: '100%'  }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%', padding:'30px 15px', border:'1px solid rgb(200,200,200)'  }}>
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
           {error.length > 0 && <Alert fullWidth severity="error">{error}</Alert>}
-          <Box sx={{ display: 'flex', alignItems: 'left', width: '100%'  }}>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%' }}>
             <TextField
             margin="normal"
             required
@@ -169,15 +172,15 @@ try {
             />
             <Typography color="secondary" align='left'>{signUpErr.surname}</Typography>
             <TextField
-            margin="normal"
-            required
-            fullWidth
-            size="small"
-            autoFocus
-            autoComplete="email"
-            id="email"
-            label="Email Address"
-            name="email"
+             margin="normal"
+             required
+             fullWidth
+             size="small"
+             id="email"
+             label="Email Address"
+             name="email"
+             autoComplete="outlined-error"
+             autoFocus
             value={signUpUser.email}
             onChange={(e) => handleChange(e)}
             />
@@ -189,19 +192,19 @@ try {
             size="small"
             name="password"
             label="Password"
-            type="password"
+            type= {showPassword? "text":"password"}
             id="password"
             autoComplete="current-password"
             value={signUpUser.password}
             onChange={(e) => handleChange(e)}
+            endAdornment={<IconButton> <VisibilityOff /> </IconButton>}
             />
-            <Typography color="secondary"  align='left'>{signUpErr.password}</Typography>
+            <Typography color="secondary"  >{signUpErr.password}</Typography>
            
-          </Box>
+          
        
-        </Box>
-        
-            
+       
+
         <Button
               type="submit"
               variant="contained"
@@ -218,7 +221,16 @@ try {
                 </Typography>
               
             </Grid>
-          
+            <Avatar sx={{ m: "10px auto", bgcolor: 'secondary.main' }}>
+            Or
+          </Avatar>
+          <Box sx={{ mt: 2, width: '100%', p:1}}>
+              <Typography> Continue with</Typography>
+             <OauthLogin/>
+         
+          </Box>
+        </Box>
+        </Box>
         </Box>
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>

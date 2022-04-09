@@ -29,7 +29,6 @@ function App() {
           <Route path="/DetailPage" element={<MyLayout><DetailPage/></MyLayout>}/>
           <Route path="/EditProfile" element={<MyLayout><EditProfile/></MyLayout>}/>
           <Route path="*.*" element={<MyLayout><ErrorPage/></MyLayout>}/>
-
         </Routes>
       </BrowserRouter>
     </div>

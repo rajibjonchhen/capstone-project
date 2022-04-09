@@ -9,6 +9,12 @@ import { initialState } from "../store/store";
             myInfo : action.payload
         }
 
+        case ACTIONS.SET_ALL_USERS:
+            return {
+                ...state,
+            allUsers : action.payload
+            }
+
         default: return state
     }
 }

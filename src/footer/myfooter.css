@@ -1,0 +1,12 @@
+.footer-box{
+margin : 10px auto;
+padding : 0px 0px 0px 30px;
+}
+
+.footerCol-title{
+    text-align: left;
+    font-weight: bold;
+}
+.footerCol{
+    text-align: left;
+}

@@ -17,11 +17,7 @@ function LoginPage() {
                 <Flare className="App-logo"/>
                 <Typography sx={{fontWeight: 'bold',fontSize: 26}} > Creator's Space</Typography>
             </Box>
-            <Box sx={{ mt: 2, width: '100%', p:1}}>
-              <Typography> Continue with</Typography>
-             <OauthLogin/>
-         
-          </Box>
+        
                 
             <Box style={{display:showSignIn? "block":"none"}}>
                     <SignIn setShowSignIn={setShowSignIn}/>
