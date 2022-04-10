@@ -11,16 +11,19 @@ import { Image } from 'react-bootstrap';
 import LeftSidebar from './LeftSidebar';
 import getMyInfo from '../getMyInfo';
 import { useNavigate } from 'react-router-dom';
-import { setAllProductsAction } from '../redux/actions/action';
-import { useDispatch } from 'react-redux';
-
+import { setAllPostsAction } from '../redux/actions/action';
+import { useDispatch, useSelector } from 'react-redux';
+import "./postPage.css"
 
 
 function PostPage() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-   const [error, setError] = useState("")
+    const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState (false)
+
+    const allPosts = useSelector(state => state.post.allPosts)
+
    
     useEffect(() =>{
         fetchPosts()
@@ -44,8 +47,8 @@ function PostPage() {
                 setIsLoading(false)
             } else{
                 const data = await response.json()
-                console.log(data)
-                dispatch(setAllProductsAction(data.posts))
+                console.log(data.posts)
+                dispatch(setAllPostsAction(data.posts))
                 setIsLoading(false)
             }
         } catch (error) {
@@ -69,9 +72,10 @@ function PostPage() {
                     <LeftSidebar/>
                 </Item>
             </Grid>
-            <Grid item sm={12} md={6} lg={6}>
+            <Grid item sm={12} md={6} lg={6} className="posts-box">
                 <Item>
-                    <SinglePost/>
+                    {allPosts?.map(post => <SinglePost post={post}/>)}
+                    
                 </Item>
             </Grid>
             <Grid item sm={12} md={3} lg={3}>

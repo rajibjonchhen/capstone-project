@@ -36,7 +36,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({setShowSignIn}) {
+export default function SignUp({setShowSignIn}) {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -72,7 +72,7 @@ export default function SignIn({setShowSignIn}) {
    
 }
 
-const validateForm = (signInUser) => {
+const validateForm = (signUpUser) => {
     const regex = /\S+@\S+\.\S+/
     const errors = {} 
     if(!signUpUser.email){
@@ -200,15 +200,11 @@ try {
             endAdornment={<IconButton> <VisibilityOff /> </IconButton>}
             />
             <Typography color="secondary"  >{signUpErr.password}</Typography>
-           
-          
-       
-       
-
+            
         <Button
+              fullWidth
               type="submit"
               variant="contained"
-              fullWidth
               sx={{ mt: 3, mb: 2 }}
               onClick={(e) => handleSubmit(e)}
             >

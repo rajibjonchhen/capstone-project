@@ -26,7 +26,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function SinglePost() {
+export default function SinglePost({post}) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -34,20 +34,13 @@ export default function SinglePost() {
   };
 
   return (
-    <Card sx={{ width: 1 }}>
+    <Card sx={{ width: 1, mt:2 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
+      <Avatar src={post?.postedBy?.avatar || "https://ui-avatars.com/api/?name=John+Doe"} sx={{ bgcolor: red[500] }} aria-label="recipe"/>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={`${post?.postedBy?.name} ${post?.postedBy?.surname}`}
+        subheader={new Date(post.createdAt).toLocaleTimeString()}
       />
       <CardMedia
         component="img"
@@ -57,9 +50,7 @@ export default function SinglePost() {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+         {post.content}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

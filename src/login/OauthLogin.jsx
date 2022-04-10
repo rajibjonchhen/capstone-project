@@ -7,8 +7,10 @@ import "./oauthLogin.css"
 function OauthLogin() {
     return ( <Box style={{display:"flex",  justifyContent:'center'}}>
     
-             <Box className = "continue-with-btn pointer" ><AiOutlineGooglePlus/>
+          <a href={`${process.env.REACT_APP_DEV_BE_URL}/users/googleLogin`}>
+          <Box className = "continue-with-btn pointer" ><AiOutlineGooglePlus/>
                 Google</Box>
+          </a>
               <Box className = "continue-with-btn pointer"><FaFacebookSquare/>
              Facebook</Box>
           <Box className = "continue-with-btn pointer">  <AiFillApple/>
