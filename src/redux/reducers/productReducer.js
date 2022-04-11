@@ -15,6 +15,12 @@ import { initialState } from "../store/store";
                 ...state,
             allProducts : action.payload
             }
+
+        case  ACTIONS.SET_SELECTED_CATEGORY:
+            return {
+                ...state,
+                selectedCategory : action.payload
+            }
         default: return state
     }
 }

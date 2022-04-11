@@ -102,7 +102,7 @@ const loginUser = async()=> {
             console.log(data)
             localStorage.setItem("MyToken", data.token);
             dispatch(setMyInfoAction(data.user))
-            navigate("/HomePage")
+            navigate("/home")
         }
     } catch (error) {
         console.log(error)

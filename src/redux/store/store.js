@@ -13,7 +13,8 @@ user : {
 },
 product : {
     allProducts:[],
-    singleProduct : {}
+    singleProduct : {},
+    selectedCategory : ""
 },
 post : {
     allPosts:[],

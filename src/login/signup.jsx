@@ -117,6 +117,7 @@ try {
         console.log(data)
         localStorage.setItem("MyToken", data.token);
         dispatch(setMyInfoAction(data.user))
+        navigate("/home")
     }
 } catch (error) {
     console.log(error)

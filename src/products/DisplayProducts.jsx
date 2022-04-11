@@ -54,7 +54,7 @@ function DisplayProducts() {
 
 
     return ( 
-        <div className='home-page '>
+        <div className='product-page'>
            {products.map((item, i) =>  <SingleCard key={i}/>)}
            
         </div>

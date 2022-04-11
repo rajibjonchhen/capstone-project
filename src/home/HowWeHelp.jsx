@@ -1,0 +1,31 @@
+import { Avatar, CardActions, CardContent, Typography } from "@material-ui/core";
+import { Home } from "@mui/icons-material";
+import { Button, Card } from "@mui/material";
+
+function HowWeHelp() {
+    return ( 
+        <Card sx={{ maxWidth: 361,  margin:"auto" }}>
+            <Avatar sx={{ m: "10px auto", bgcolor: 'secondary.main' }}>
+            <Home/>
+          </Avatar>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Word of the Day
+        </Typography>
+        <Typography variant="h5" component="div">
+         
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          adjective
+        </Typography>
+        <Typography variant="body2">
+          well meaning and kindly.
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
+    </Card>
+     );
+}
+
+export default HowWeHelp;

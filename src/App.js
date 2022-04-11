@@ -10,9 +10,9 @@ import DetailPage from './detail/DetailPage';
 import EditProfile from './addEdit/EditProfile';
 import { Provider } from 'react-redux';
 import configureStore from './redux/store/store';
-import Account from './home/Account';
+import Account from './myAccount/MyAccount';
 import ErrorPage from './error/ErrorPage';
-
+import DisplayProducts from "./products/DisplayProducts"
 
 
 
@@ -22,13 +22,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginPage/>}/>
-          <Route path="/HomePage" element={<MyLayout><HomePage/></MyLayout>}/>
-          <Route path="/Account" element={<MyLayout><Account/></MyLayout>}/>
-          <Route path="/PostPage" element={<MyLayout><PostPage/></MyLayout>}/>
-          <Route path="/DetailPage" element={<MyLayout><DetailPage/></MyLayout>}/>
-          <Route path="/EditProfile" element={<MyLayout><EditProfile/></MyLayout>}/>
-          <Route path="*.*" element={<MyLayout><ErrorPage/></MyLayout>}/>
+          <Route path="/" exact element={<LoginPage/>}/>
+          <Route path="/home" exact element={<MyLayout><HomePage/></MyLayout>}/>
+          <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
+          <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
+          <Route path="/detail" exact element={<MyLayout><DetailPage/></MyLayout>}/>
+          <Route path="/profile" exact element={<MyLayout><EditProfile/></MyLayout>}/>
+          <Route path="/products" exact element={<MyLayout><DisplayProducts/></MyLayout>}/>
+          <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

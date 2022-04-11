@@ -4,7 +4,8 @@ export const ACTIONS = {
     SET_SINGLE_PRODUCT : "SET_SINGLE_PRODUCT",
     SET_ALL_PRODUCTS : "SET_ALL_PRODUCTS",
     SET_SINGLE_POST : " SET_SINGLE_POST",
-    SET_ALL_POSTS : "SET_ALL_POSTS"
+    SET_ALL_POSTS : "SET_ALL_POSTS",
+    SET_SELECTED_CATEGORY : "SET_SELECTED_CATEGORY"
     
 }
 
@@ -36,4 +37,9 @@ export const setSinglePostAction = (post) => ({
 export const setAllPostsAction = (posts) => ({
     type : ACTIONS.SET_ALL_POSTS,
     payload : posts
+})
+
+export const setSelectedCategoryAction = (category) => ({
+    type : ACTIONS.SET_ALL_POSTS,
+    payload : category
 })

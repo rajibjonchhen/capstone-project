@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { setMyInfoAction } from "../redux/actions/action";
-import "./account.css"
+import "./myAccount.css"
 
 function Profile() {
     const dispatch = useDispatch()
