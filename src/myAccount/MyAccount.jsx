@@ -3,6 +3,7 @@ import { Alert, Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import getMyInfo from "../getMyInfo";
 import { setMyInfoAction } from "../redux/actions/action";
 import "./myAccount.css"
 
@@ -24,6 +25,12 @@ function Profile() {
         })
     },[myInfo])
 
+    useEffect(() => {
+        if(avatar){
+            saveAvatar()
+        }
+    },[avatar])
+
     const handleChange = (e) => {
         const {name, value} = e.target
         setMyProfile({...myProfile, [name]:value })
@@ -31,8 +38,29 @@ function Profile() {
 
     const selectAvatar = (e) => {
         console.log(e.target.files[0])
-        setAvatar()
+        setAvatar(e.target.files[0])
     }
+    const saveAvatar = async() => {
+        const formData = new FormData()
+        formData.append("avatar", avatar)
+        try {
+            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/me/avatar`,{
+                method:"POST",
+                body : formData,
+                headers:{
+                    "authorization" : localStorage.getItem("MyToken")
+                }
+            })
+            if(response.ok){
+                alert("Image Uploaded successfully")
+                dispatch(setMyInfoAction(getMyInfo()))
+            }
+        }catch{
+            console.log(error)
+            setError(error)
+        }
+    }
+
 
     const saveChange = async() => {
         setError("")
@@ -66,13 +94,13 @@ function Profile() {
     return ( 
         <Box className="profile-box">
             <Box className='profile-image-box'>
-                <Image src={myProfile?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} sx={{width:1}}/>
+                <Image src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} sx={{width:1}}/>
                 <Button
                     variant="contained"
                     component="label"
                     size="small"
                     >
-                    Upload File
+                    Change Image
                     <input
                         type="file"
                         hidden
@@ -94,7 +122,7 @@ function Profile() {
             name="name"
             autoComplete="name"
             disabled={editProfile}
-            value={myProfile?.name}
+            value={myInfo?.name}
             onChange={(e) => handleChange(e)}
             />
 
@@ -108,7 +136,7 @@ function Profile() {
             name="surname"
             autoComplete="surname"
             disabled={editProfile}
-            value={myProfile?.surname}
+            value={myInfo?.surname}
             onChange={(e) => handleChange(e)}
             />
 
@@ -123,7 +151,7 @@ function Profile() {
             label="Email Address"
             name="email"
             disabled={editProfile}
-            value={myProfile?.email}
+            value={myInfo?.email}
             onChange={(e) => handleChange(e)}
             />
 
