@@ -54,10 +54,10 @@ function HomePage() {
            <div>
                <MyJumbotron/>
            </div>
-           <div>
-              <h5>Our Mission</h5>
+           <div className="mission-box">
+              <h3>Our Mission</h3>
               <p> 
-               Set the stage for brainstorming, provide value for the ideas capable to create better society</p>
+               Set the environment for brainstorming, provide value to the ideas to creating better society</p>
            </div>
            <div className="categories-box pointer">
               <h2>Our Projects</h2>

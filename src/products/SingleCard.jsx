@@ -8,8 +8,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { pink } from "@material-ui/core/colors";
+import { useNavigate } from "react-router-dom";
 
 export default function SingleCard() {
+  const navigate = useNavigate()
   const [likesCount, setLikesCount] = useState(100);
   const [like, setLike] = useState(false);
   return (
@@ -39,7 +41,7 @@ export default function SingleCard() {
             onClick={() => setLike(true)}
           />
         </Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small"  onClick={() => navigate("/detail")}>Learn More</Button>
       </CardActions>
     </Card>
   );

@@ -36,7 +36,7 @@ const navigate = useNavigate()
         </CardContent>
         <Box  sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
             <Button variant="outlined" size="small" startIcon={<TravelExploreOutlinedIcon />}
-            onClick={() => navigate("/detail")}>Explore</Button>
+           >Explore</Button>
         </Box>
       </Box>
    

@@ -4,3 +4,13 @@ flex-wrap: wrap;
 justify-content: space-around;
 margin : 10px auto
 }
+
+.mission-box{
+    background-color: rgb(196, 194, 194);
+    padding: 20px 10px;
+}
+.mission-box p{
+    background-color: rgb(196, 194, 194);
+    padding: 20px 10px;
+    font-size: 20px;
+}

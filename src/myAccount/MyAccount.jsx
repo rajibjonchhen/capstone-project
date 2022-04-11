@@ -12,7 +12,7 @@ function Profile() {
     const [myProfile, setMyProfile] = useState({})
     const [error, setError] = useState("")
     const [isLoading,  setIsLoading] = useState(false)
-    
+    const [avatar, setAvatar] = useState(null)
     const myInfo = useSelector(state => state.user.myInfo)
 
     useEffect(() => {
@@ -27,6 +27,11 @@ function Profile() {
     const handleChange = (e) => {
         const {name, value} = e.target
         setMyProfile({...myProfile, [name]:value })
+    }
+
+    const selectAvatar = (e) => {
+        console.log(e.target.files[0])
+        setAvatar()
     }
 
     const saveChange = async() => {
@@ -62,6 +67,18 @@ function Profile() {
         <Box className="profile-box">
             <Box className='profile-image-box'>
                 <Image src={myProfile?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} sx={{width:1}}/>
+                <Button
+                    variant="contained"
+                    component="label"
+                    size="small"
+                    >
+                    Upload File
+                    <input
+                        type="file"
+                        hidden
+                        onChange={(e) => {selectAvatar(e)}}
+                    />
+                </Button>
             </Box>
             <Box>
                 <Button onClick={() => setEditProfile(false)}>Edit Profile</Button>

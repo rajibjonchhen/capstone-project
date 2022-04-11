@@ -103,10 +103,10 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-        <MenuItem onClick={handleMenuClose}>
+        <MenuItem onClick={() => {handleMenuClose(); navigate("/profile")}}>
             Profile
           </MenuItem>
-      <MenuItem onClick={() => {handleMenuClose(); navigate("/Account")}} >My account</MenuItem>
+      <MenuItem onClick={() => {handleMenuClose(); navigate("/account")}} >My account</MenuItem>
       <MenuItem onClick={() => {handleMenuClose(); localStorage.removeItem("MyToken"); navigate("/")}}>Logout</MenuItem>
     </Menu>
   );
@@ -177,7 +177,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
                 <MenuItem onClick={() => {}}>
                   <Typography >Product</Typography>
                 </MenuItem>
-                <MenuItem onClick={() => {navigate("/PostPage")}}>
+                <MenuItem onClick={() => {navigate("/posts")}}>
                   <Typography >Community</Typography>
                 </MenuItem>
     {/*  */}
