@@ -50,6 +50,7 @@ function PostPage() {
                 console.log(data.posts)
                 dispatch(setAllPostsAction(data.posts))
                 setIsLoading(false)
+
             }
         } catch (error) {
             console.log(error)
@@ -69,7 +70,7 @@ function PostPage() {
         <Grid container spacing={2}> 
             <Grid item sm={12} md={3} lg={3} >
                 <Item>
-                    <LeftSidebar/>
+                    <LeftSidebar fetchPosts={fetchPosts}/>
                 </Item>
             </Grid>
             <Grid item sm={12} md={6} lg={6} className="posts-box">

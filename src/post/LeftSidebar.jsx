@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Image } from "react-bootstrap";
 import AddPostEdit from "./AddPostEdit";
 import { useSelector } from 'react-redux';
-function LeftSidebar() {
+function LeftSidebar({fetchPosts}) {
     const myInfo = useSelector(state => state.user.myInfo)
     const [open, setOpen] = useState(false);
      
@@ -12,7 +12,7 @@ function LeftSidebar() {
     return ( <Box>
         <Image src={myInfo?.avatar}/>
         <Button variant="containted" onClick={() => setOpen(true)}>Add new post</Button>
-            {open && <AddPostEdit  open={open} setOpen={setOpen}/>}
+            {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
     </Box>
      );
 }

@@ -1,7 +1,7 @@
 import { TextField } from "@material-ui/core";
 import { AddBox } from "@mui/icons-material";
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
-import {  Button, Typography } from "@mui/material";
+import {  Autocomplete, Button, Typography } from "@mui/material";
 import { useState } from "react";
 import "./addEditNewProduct.css"
 
@@ -19,6 +19,8 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
         askingPrice:"",
         criteria:"",
     })
+
+    const categories = ["idea", "story", "novel", "song", "poem", "movie", "web template" ]
 
     useState(() => {
         if(Object.keys(newProductErr).length === 0 && isSubmit){
@@ -104,20 +106,16 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                     onChange={(e) => handleChange(e)}
             />
             <Typography>{!newProduct.title && newProductErr?.title}</Typography>
-                
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    size="small"
-                    id="category"
-                    label="category"
-                    name="category"
-                    value={newProduct.category}
-
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-            />
+            <Autocomplete
+                disablePortal
+                id="category"
+                name="category"
+                options={categories}
+                value={newProduct.category}
+                onSelect={(e) => handleChange(e)}
+                sx={{ width: 300 }}
+                renderInput={(params) => <TextField {...params}  label="category" />}
+    />
             <Typography>{!newProduct.category && newProductErr?.category}</Typography>
 
                 <TextField

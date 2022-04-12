@@ -165,7 +165,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   return ( 
     <>
         <CssBaseline/>
-        <AppBar color="primary">
+        <AppBar color="red">
             <Toolbar>
                 
                 <Flare className="App-logo" onClick={() => navigate("/home")}/>
@@ -181,9 +181,6 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
                 </MenuItem>
     {/*  */}
                 
-                
-
-
              <Box sx={{ flexGrow: 1 }} />
              <Search>
             <SearchIconWrapper>

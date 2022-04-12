@@ -58,7 +58,7 @@ export default function SignUp({setShowSignIn}) {
         registerUser()
     }
   },[signUpErr])
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSignUpUser({ ...signUpUser, [name]: value });
@@ -68,7 +68,6 @@ export default function SignUp({setShowSignIn}) {
     e.preventDefault()
     setSignUpErr(validateForm(signUpUser))
     setIsSubmit(true)
-   
 }
 
 const validateForm = (signUpUser) => {
@@ -151,12 +150,11 @@ try {
             id="name"
             label="First Name"
             name="name"
-            autoComplete="name"
             autoFocus
             value={signUpUser.name}
             onChange={(e) => handleChange(e)}
             />
-            <Typography color="secondary" align='left'>{signUpErr.name}</Typography>
+            <Typography color="secondary" align='left'>{!signUpUser.name && signUpErr.name}</Typography>
             <TextField
             margin="normal"
             required
@@ -165,12 +163,12 @@ try {
             id="surname"
             label="Last Name"
             name="surname"
-            autoComplete="surname"
             autoFocus
             value={signUpUser.surname}
             onChange={(e) => handleChange(e)}
             />
-            <Typography color="secondary" align='left'>{signUpErr.surname}</Typography>
+            <Typography color="secondary" align='left'>{!signUpUser.surname && signUpErr.surname}</Typography>
+            
             <TextField
              margin="normal"
              required
@@ -184,7 +182,7 @@ try {
             value={signUpUser.email}
             onChange={(e) => handleChange(e)}
             />
-            <Typography color="secondary" align='left'>{signUpErr.email}</Typography>
+            <Typography color="secondary" align='left'>{!signUpUser.email && signUpErr.email}</Typography>
             <TextField
             margin="normal"
             required
@@ -194,12 +192,11 @@ try {
             label="Password"
             type= {showPassword? "text":"password"}
             id="password"
-            autoComplete="current-password"
             value={signUpUser.password}
             onChange={(e) => handleChange(e)}
             endAdornment={<IconButton> <VisibilityOff /> </IconButton>}
             />
-            <Typography color="secondary"  >{signUpErr.password}</Typography>
+            <Typography color="secondary"  align='left'>{!signUpUser.password && signUpErr.password}</Typography>
             
         <Button
               fullWidth
@@ -213,7 +210,7 @@ try {
             <Grid container>
               
                 <Typography  onClick={() => setShowSignIn(true)} variant="body2">
-                  {"Already a member? Sign In"}
+                  Already a member? <span className="text-blue">Sign In</span>
                 </Typography>
               
             </Grid>

@@ -3,7 +3,6 @@ import { setMyInfoAction } from "./redux/actions/action"
 const  getMyInfo =async() => {
     
         try {
-            console.log(process.env.REACT_APP_DEV_BE_URL)
             const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/me`,{
                 method:"GET",
                 headers:{
@@ -17,7 +16,6 @@ const  getMyInfo =async() => {
                 return null
             } else{
                 const data = await response.json()
-                console.log(data)
                 return data.user
             
             }

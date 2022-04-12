@@ -61,11 +61,12 @@ function HomePage() {
            </div>
            <div className="categories-box pointer">
               <h2>Our Projects</h2>
-              <Grid container alignItems="center">
-                  {myCategories.map(category => 
-                   <Grid item xs={12} sm={12} md={6} lg={6} >
+              <Grid container>
+                  {myCategories.map((category, i) => 
+                  <Grid key={i} item xs={12} sm={12} md={6} lg={6} >
                      <CategoryCard category={category}/> 
-                  </Grid>)}
+                  </Grid>
+                  )}
               </Grid>
               
            </div>

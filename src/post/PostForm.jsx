@@ -94,6 +94,7 @@ try {
         const data = await response.json()
         console.log(data)
         setIsLoading(false)
+        handleClose()
         
       }
     } catch (error) {
@@ -139,20 +140,30 @@ try {
             value={newPost.content}
             onChange={(e) => handleChange(e)}
             />
-            <Typography color="secondary"  align='left'>{postErr.password}</Typography>
+            <Typography color="secondary"  align='left'>{!newPost.content && postErr.content}</Typography>
            
           </Box>
        
         </Box>
-      
+      <Box>
+
         <Button
               type="submit"
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ m: 3 }}
               onClick={(e) => handleSubmit(e)}
-            >
+              >
                 Post
             </Button>
+        <Button
+              type="submit"
+              variant="contained"
+              sx={{ m: 3 }}
+              onClick={() => handleClose()}
+              >
+                Cancel
+            </Button>
+              </Box>
         </Box>
         </Container>
     </ThemeProvider>

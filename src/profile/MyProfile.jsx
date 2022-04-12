@@ -1,5 +1,6 @@
 
 import { Grid } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -23,7 +24,6 @@ function MyProfile() {
 
     const fetchMyProducts = async() => {
         try {
-            console.log(process.env.REACT_APP_DEV_BE_URL)
             const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products/me`,{
                 method:"GET",
                 headers:{
@@ -52,7 +52,7 @@ function MyProfile() {
     },[])
     
     return (  
-        <Grid container className="profile-box" spacing={2}>
+        <Grid container className="profile-box" spacing={3}>
             <Grid item xs={12} sm={12} md={3} lg={3}>
                 <ul>
                     <li onClick={() => setShow("My Creations")}>
@@ -68,6 +68,7 @@ function MyProfile() {
             </Grid>
             <Grid item xs={12} sm={12} md={9} lg={9}>
                 <div style={{display: show === "My Creations"? "block":"none" }}>
+                    {myProducts?.length === 0 && <Typography variant="h2" paragraph>You do not have any creation yet</Typography>}
                    {myProducts?.map(product => <SingleCard  product={product}/>)}
                 </div>
                 <div style={{display: show === "Add New Product"? "block":"none" }}>

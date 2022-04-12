@@ -138,12 +138,11 @@ const loginUser = async()=> {
             id="email"
             label="Email Address"
             name="email"
-            autoComplete="outlined-error"
             autoFocus
             value={signInUser.email}
             onChange={(e) => handleChange(e)}
             />
-            <Typography color="secondary" align='left'>{signInErr.email}</Typography>
+            <Typography color="secondary" align='left'>{!signInUser.email && signInErr.email}</Typography>
             <TextField
              margin="normal"
              required
@@ -154,11 +153,10 @@ const loginUser = async()=> {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
             value={signInUser.password}
             onChange={(e) => handleChange(e)}
             />
-            <Typography color="secondary"  align='left'>{signInErr.password}</Typography>
+            <Typography color="secondary"  align='left'>{!signInUser.password && signInErr.password}</Typography>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -173,14 +171,14 @@ const loginUser = async()=> {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              <Grid item xs >
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
                 <Typography  onClick={() => setShowSignIn(false)} variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  Don't have an account? <span className="text-blue">Sign Up</span>
                 </Typography>
               </Grid>
             </Grid>

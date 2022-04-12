@@ -37,6 +37,12 @@
   padding: 100px 0px 0px 0px ;
   height: 100vh;
 }
+
+.text-blue{
+color:rgb(49, 97, 187);
+font-weight: 500;
+cursor: pointer
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
