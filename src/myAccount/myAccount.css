@@ -1,6 +1,6 @@
-.profile-box{
+.account-box{
     
-    max-width:500px;
+    max-width:600px;
     height: 100%;
     border : 1px solid grey;
     margin: 100px auto 0px;
@@ -8,7 +8,8 @@
     padding: 10px;
 }
 
-.profile-image-box{
+.account-image-box{
     width:300px;
     height: auto;
+    margin-top:50px
 }

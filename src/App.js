@@ -7,12 +7,12 @@ import MyLayout from './myLayout/MyLayout';
 import MyNavbar from './myNavbar/MyNavbar';
 import PostPage from './post/PostPage';
 import DetailPage from './detail/DetailPage';
-import EditProfile from './addEdit/EditProfile';
 import { Provider } from 'react-redux';
 import configureStore from './redux/store/store';
 import Account from './myAccount/MyAccount';
 import ErrorPage from './error/ErrorPage';
 import DisplayProducts from "./products/DisplayProducts"
+import MyProfile from './profile/MyProfile';
 
 
 
@@ -27,7 +27,7 @@ function App() {
           <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
           <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
           <Route path="/detail" exact element={<MyLayout><DetailPage/></MyLayout>}/>
-          <Route path="/profile" exact element={<MyLayout><EditProfile/></MyLayout>}/>
+          <Route path="/profile" exact element={<MyLayout><MyProfile/></MyLayout>}/>
           <Route path="/products" exact element={<MyLayout><DisplayProducts/></MyLayout>}/>
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>

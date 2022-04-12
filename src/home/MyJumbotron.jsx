@@ -6,7 +6,7 @@ function MyJumbotron() {
         <div className="jumbotron" >
           <div >
           <p>
-            We an idea can change the the world and
+            We believe that an idea can change the the world and
             together we can make a big difference in the society       
           </p>
           <Button variant="primary">Learn more</Button>

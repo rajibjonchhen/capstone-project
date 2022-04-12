@@ -23,6 +23,9 @@ function MyLayout({children}) {
                 localStorage.setItem("MyToken", tokenParam)
                 fetchMyInfo()
             }
+        }else{
+            localStorage.setItem("MyToken", token)
+            fetchMyInfo()
         }
     },[])
 

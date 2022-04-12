@@ -14,7 +14,6 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useSelector } from 'react-redux';
-import { Image } from 'react-bootstrap';
 import "./myNavbar.css"
 import { useNavigate } from 'react-router-dom';
 

@@ -14,6 +14,7 @@ function Profile() {
     const [error, setError] = useState("")
     const [isLoading,  setIsLoading] = useState(false)
     const [avatar, setAvatar] = useState(null)
+    const [successMsg, setSuccessMsg] = useState(false)
     const myInfo = useSelector(state => state.user.myInfo)
 
     useEffect(() => {
@@ -52,8 +53,11 @@ function Profile() {
                 }
             })
             if(response.ok){
-                alert("Image Uploaded successfully")
-                dispatch(setMyInfoAction(getMyInfo()))
+                dispatch(setMyInfoAction(await getMyInfo()))
+                setSuccessMsg(true)
+                setTimeout(() => setSuccessMsg(false),1000)
+            }else{
+                setError("error on updating data")
             }
         }catch{
             console.log(error)
@@ -84,6 +88,8 @@ function Profile() {
                 dispatch(setMyInfoAction(data.user))
                 setIsLoading(false)
                 setEditProfile(false)
+                setSuccessMsg(true)
+                setTimeout(() => setSuccessMsg(false),2000)
             }
         } catch (error) {
             console.log(error)
@@ -92,9 +98,13 @@ function Profile() {
     }
 
     return ( 
-        <Box className="profile-box">
-            <Box className='profile-image-box'>
-                <Image src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} sx={{width:1}}/>
+        <>
+            {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
+        <Box className="account-box">
+            <Box className='account-image-box'>
+                
+                <Image src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} width="100px" sx={{marginTop:"10px"}}/>
+                
                 <Button
                     variant="contained"
                     component="label"
@@ -105,7 +115,7 @@ function Profile() {
                         type="file"
                         hidden
                         onChange={(e) => {selectAvatar(e)}}
-                    />
+                        />
                 </Button>
             </Box>
             <Box>
@@ -122,7 +132,7 @@ function Profile() {
             name="name"
             autoComplete="name"
             disabled={editProfile}
-            value={myInfo?.name}
+            value={myProfile?.name}
             onChange={(e) => handleChange(e)}
             />
 
@@ -136,7 +146,7 @@ function Profile() {
             name="surname"
             autoComplete="surname"
             disabled={editProfile}
-            value={myInfo?.surname}
+            value={myProfile?.surname}
             onChange={(e) => handleChange(e)}
             />
 
@@ -151,13 +161,14 @@ function Profile() {
             label="Email Address"
             name="email"
             disabled={editProfile}
-            value={myInfo?.email}
+            value={myProfile?.email}
             onChange={(e) => handleChange(e)}
             />
 
 
             </Box>
         </Box>
+            </>
      );
 }
 

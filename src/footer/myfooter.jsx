@@ -18,7 +18,7 @@ function MyFooter() {
       ],
     },
     {
-      title: "We Generate",
+      title: "WE GENERATE",
       lists: [
         "Environment for Creativity",
         "Value for Investors",
