@@ -29,7 +29,7 @@ export default function PostForm({handleClose}) {
     const [error, setError] = React.useState("")
     const [isSubmit, setIsSubmit] = React.useState(false)
     const [postErr, setPostErr] = React.useState({})
-    const [isLoading, setIsloading] = React.useState(false)
+    const [isLoading, setIsLoading] = React.useState(false)
     const [newPost, setNewPost] = React.useState({
     content: "",
   });
@@ -89,16 +89,16 @@ try {
         const data = await response.json()
         console.log(data)
         setError(data.error)
-        setIsloading(false)
+        setIsLoading(false)
       } else{
         const data = await response.json()
         console.log(data)
-        setIsloading(false)
+        setIsLoading(false)
         
       }
     } catch (error) {
       console.log(error)
-      setIsloading(false)
+      setIsLoading(false)
 }
 }
 
@@ -115,7 +115,7 @@ try {
             display: 'flex'
           }}
         >
-           <Box>
+           <Box sx={{display:"flex"}}>
 
            <Avatar src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} className="userImg"/>
            <Typography>
@@ -127,16 +127,14 @@ try {
           <Box sx={{ display: 'flex', alignItems: 'left', width: '100%'  }}>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%' }}>
             
-            <TextField
+            <textarea
             margin="normal"
-            fullWidth
-            size="small"
             name="content"
             label="Write you post"
             type="text"
             id="content"
-            minRows={4}
-            maxRows={4}
+            rows="4" 
+            cols="50"
             
             value={newPost.content}
             onChange={(e) => handleChange(e)}

@@ -51,6 +51,8 @@
   pointer-events: none;
 }
 
+
+
 @media (prefers-reduced-motion: no-preference) {
   .loader {
     animation: App-logo-spin infinite 3s linear;

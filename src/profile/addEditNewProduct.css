@@ -1,0 +1,12 @@
+.text-icon{
+    
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    margin: auto;
+    }
+
+    
+    .text-icon:pointer{
+      background-color: rgba(128, 128, 128, 0.493);
+    }

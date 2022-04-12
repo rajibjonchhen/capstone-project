@@ -9,12 +9,14 @@ const windowCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 export const initialState = {
 user : {
     allUsers:[],
-    myInfo : {}
+    myInfo : {},
+    myMessages : []
 },
 product : {
     allProducts:[],
     singleProduct : {},
-    selectedCategory : ""
+    selectedCategory : "",
+    myProducts : []
 },
 post : {
     allPosts:[],

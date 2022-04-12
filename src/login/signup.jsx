@@ -52,14 +52,13 @@ export default function SignUp({setShowSignIn}) {
   });
 
   React.useEffect(() => {
-    console.log(isSubmit)
-    console.log("signUpErr", signUpErr)
-    console.log(Object.keys(signUpErr).length)
+    
     if(Object.keys(signUpErr).length === 0 && isSubmit){
         console.log("I am going to submit")
         registerUser()
     }
   },[signUpErr])
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSignUpUser({ ...signUpUser, [name]: value });

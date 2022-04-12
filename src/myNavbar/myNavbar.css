@@ -1,7 +1,8 @@
 .brand{
-    font-size: 30px;
-    font-weight: bolder;
-    cursor: pointer;}
+    font-size: 100px;
+    font-weight: 900;
+    cursor: pointer
+}
 
 
 .userImgcontainer{

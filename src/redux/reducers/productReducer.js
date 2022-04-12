@@ -21,6 +21,12 @@ import { initialState } from "../store/store";
                 ...state,
                 selectedCategory : action.payload
             }
+
+        case ACTIONS.SET_MY_PRODUCTS:
+            return{
+                ...state,
+                myProducts : action.payload
+            }
         default: return state
     }
 }

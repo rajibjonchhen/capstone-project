@@ -1,3 +1,4 @@
 .myLayout-box{
-    margin: 100px auto 20px;   
+    margin: 100px auto 20px;
+    min-height: 100vh;   
 }

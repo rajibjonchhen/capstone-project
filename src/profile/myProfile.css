@@ -3,7 +3,21 @@
     
 }
 
+.profile-box:first-child{
+    border-right : 1px solid grey;
+}
+
 .profile-box>div>ul>li{
     list-style-type: none;
     text-align: left;
+    font-weight: 900;
+    margin: 3px 0px;
+    cursor: pointer;
+    padding:3px
 }
+
+.profile-box>div>ul>li:hover{
+    background-color : rgba(128, 128, 128, 0.274);
+}
+
+
