@@ -22,7 +22,8 @@ function Profile() {
         setMyProfile({
             name: myInfo.name,
             surname: myInfo.surname,
-            email: myInfo.email
+            email: myInfo.email,
+            role: myInfo.role
         })
     },[myInfo])
 
@@ -130,7 +131,6 @@ function Profile() {
             id="name"
             label="First Name"
             name="name"
-            autoComplete="name"
             disabled={editProfile}
             value={myProfile?.name}
             onChange={(e) => handleChange(e)}
@@ -144,7 +144,6 @@ function Profile() {
             id="surname"
             label="Last Name"
             name="surname"
-            autoComplete="surname"
             disabled={editProfile}
             value={myProfile?.surname}
             onChange={(e) => handleChange(e)}
@@ -162,6 +161,20 @@ function Profile() {
             name="email"
             disabled={editProfile}
             value={myProfile?.email}
+            onChange={(e) => handleChange(e)}
+            />
+
+            <TextField
+            margin="normal"
+            required
+            fullWidth
+            size="small"
+            autoFocus
+            id="role"
+            label="role"
+            name="role"
+            disabled
+            value={myProfile?.role}
             onChange={(e) => handleChange(e)}
             />
 
