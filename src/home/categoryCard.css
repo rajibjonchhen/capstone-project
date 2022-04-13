@@ -1,0 +1,13 @@
+@media only screen and (max-width: 360px){
+    .mission-box p{
+        font-size: 16px;
+       
+    }
+    .MuiTypography-root.MuiTypography-h6.css-1lv9nvb-MuiTypography-root{
+        font-size: 16px;
+    }
+
+    .MuiTypography-root.MuiTypography-body1.css-1pnmrwp-MuiTypography-root{
+        font-size: 12px;
+    }
+}
