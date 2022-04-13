@@ -1,7 +1,7 @@
 export const ACTIONS = {
     SET_MY_INFO : "SET_USER",
     SET_ALL_USERS : "SET_ALL_USERS",
-    SET_MY_MESSAGE : "SET_MY_MESSAGE",
+    SET_MY_MESSAGES : "SET_MY_MESSAGES",
     SET_SINGLE_PRODUCT : "SET_SINGLE_PRODUCT",
     SET_ALL_PRODUCTS : "SET_ALL_PRODUCTS",
     SET_MY_PRODUCTS : "SET_MY_PRODUCTS",
@@ -19,6 +19,11 @@ export const setMyInfoAction = (user) => ({
 export const setAllUsersAction = (users) => ({
     type : ACTIONS.SET_ALL_USERS,
     payload : users
+})
+
+export const setMyMessagesAction = (messages) => ({
+    type : ACTIONS.SET_MY_MESSAGES,
+    payload : messages
 })
 
 export const setSingleProductAction = (product) => ({

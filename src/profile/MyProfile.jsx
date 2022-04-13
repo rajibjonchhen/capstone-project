@@ -8,6 +8,7 @@ import MyAccount from "../myAccount/MyAccount";
 import SingleCard from "../products/SingleCard";
 import { setMyProductsAction } from "../redux/actions/action";
 import AddEditNewProduct from "./AddEditNewProduct";
+import MyMessages from "./MyMessages";
 import "./myProfile.css"
 
 
@@ -58,8 +59,8 @@ function MyProfile() {
                     <li onClick={() => setShow("My Creations")}>
                         My Creations
                     </li>
-                    <li onClick={() => setShow("")}>
-                        Messages
+                    <li onClick={() => setShow("My Messages")}>
+                        My Messages
                     </li>
                     <li onClick={() => setShow("Add New Product")}>
                         Add New Product
@@ -73,6 +74,9 @@ function MyProfile() {
                 <div style={{display: show === "My Creations"? "block":"none" }}>
                     {myProducts?.length === 0 && <Typography variant="h2" paragraph>You do not have any creation yet</Typography>}
                    {myProducts?.map(product => <SingleCard  product={product}/>)}
+                </div>
+                <div style={{display: show === "My Messages"? "block":"none" }}>
+                    <MyMessages />
                 </div>
                 <div style={{display: show === "Add New Product"? "block":"none" }}>
                     <AddEditNewProduct moreInfo={moreInfo} setMoreInfo={setMoreInfo}/>
