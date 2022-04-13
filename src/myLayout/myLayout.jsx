@@ -34,7 +34,7 @@ function MyLayout({children}) {
     }
     return ( <>
         <MyNavbar/>
-        <Container fluid  className="myLayout-box">
+        <Container maxWidth="xs"  className="myLayout-box">
         {children}
         </Container>
         <MyFooter/>

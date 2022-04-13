@@ -8,11 +8,11 @@ margin: 10px auto;
     width:45%;
     margin: auto;
 }
-.jumbotron>div>p{
+.jumbotron p{
     font-size: 40px;
     text-align: left;
 }
-.jumbotron>div>img{
+.jumbotron img{
     width:100%
 }
 
