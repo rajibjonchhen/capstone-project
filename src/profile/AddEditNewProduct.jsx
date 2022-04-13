@@ -1,8 +1,9 @@
 import { TextField } from "@material-ui/core";
 import { AddBox } from "@mui/icons-material";
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
-import {  Autocomplete, Button, Typography } from "@mui/material";
+import {  Autocomplete, Button, InputLabel, MenuItem, Select, Typography,FormControl } from "@mui/material";
 import { useState } from "react";
+
 import "./addEditNewProduct.css"
 
 function AddEditNewProduct({moreInfo, setMoreInfo}) {
@@ -96,32 +97,49 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                     margin="normal"
                     required
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="title"
                     label="title"
                     name="title"
                     value={newProduct.title}
-
                     autoFocus
+                    autoComplete=""
                     onChange={(e) => handleChange(e)}
             />
             <Typography>{!newProduct.title && newProductErr?.title}</Typography>
-            <Autocomplete
+            {/* <Autocomplete
                 disablePortal
                 id="category"
-                name="category"
                 options={categories}
                 value={newProduct.category}
-                onSelect={(e) => handleChange(e)}
+                onChange={(e) => handleChange(e)}
                 sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params}  label="category" />}
-    />
+                renderInput={(params) => <TextField {...params}  name="category" value={newProduct.category} label="category" />}
+    /> */}
+                    <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <Select
+                 margin="normal"
+                    labelId="category"
+                    size="small"
+                    id="category"
+                    variant="outlined"
+                    value={newProduct.category}
+                    label="category"
+                    name = "category"
+                    onChange={handleChange}
+                >
+                    {categories.map( category => <MenuItem value={category}>{category}</MenuItem>)}
+                </Select>
+                </FormControl>
             <Typography>{!newProduct.category && newProductErr?.category}</Typography>
 
                 <TextField
                     margin="normal"
                     required
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="summary"
                     label="summary"
@@ -137,6 +155,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                     margin="normal"
                     required
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="description"
                     label="description"
@@ -152,6 +171,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                     margin="normal"
                     required
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="askingPrice"
                     label="asking price"
@@ -170,6 +190,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                     id="criteria"
                     label="criteria"
                     name="criteria"
+                    variant="outlined"
                     value={newProduct.criteria}
                     autoFocus
                     onChange={(e) => handleChange(e)}
@@ -182,6 +203,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                     margin="normal"
                     required
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="agreement"
                     label="agreement"
@@ -195,6 +217,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                     margin="normal"
                     required
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="reqInvestment"
                     label="reqInvestment"
@@ -207,6 +230,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                 <TextField
                     margin="normal"
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="reqInvestment"
                     label="reqInvestment"
@@ -219,6 +243,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                 <TextField
                     margin="normal"
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="inventionAddresses"
                     label="invention addresses"
@@ -231,6 +256,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                 <TextField
                     margin="normal"
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="auxiliaryProducts"
                     label="auxiliary products"
@@ -243,6 +269,7 @@ function AddEditNewProduct({moreInfo, setMoreInfo}) {
                 <TextField
                     margin="normal"
                     fullWidth
+                    variant="outlined"
                     size="small"
                     id="patent"
                     label="patent"

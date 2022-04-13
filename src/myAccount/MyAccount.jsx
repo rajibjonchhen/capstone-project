@@ -7,7 +7,7 @@ import getMyInfo from "../getMyInfo";
 import { setMyInfoAction } from "../redux/actions/action";
 import "./myAccount.css"
 
-function Profile() {
+function MyAccount() {
     const dispatch = useDispatch()
     const[editProfile, setEditProfile] = useState(true)
     const [myProfile, setMyProfile] = useState({})
@@ -185,4 +185,4 @@ function Profile() {
      );
 }
 
-export default Profile;
+export default MyAccount;

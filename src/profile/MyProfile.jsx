@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import MyAccount from "../myAccount/MyAccount";
 import SingleCard from "../products/SingleCard";
 import { setMyProductsAction } from "../redux/actions/action";
 import AddEditNewProduct from "./AddEditNewProduct";
@@ -37,7 +38,6 @@ function MyProfile() {
                 setIsLoading(false)
             } else{
                 const data = await response.json()
-                console.log(data.products)
                 dispatch(setMyProductsAction(data.products))
                 setIsLoading(false)
             }
@@ -64,6 +64,9 @@ function MyProfile() {
                     <li onClick={() => setShow("Add New Product")}>
                         Add New Product
                     </li>
+                    <li onClick={() => setShow("My Account")}>
+                        My Account
+                    </li>
                 </ul>
             </Grid>
             <Grid item xs={12} sm={12} md={9} lg={9}>
@@ -73,6 +76,9 @@ function MyProfile() {
                 </div>
                 <div style={{display: show === "Add New Product"? "block":"none" }}>
                     <AddEditNewProduct moreInfo={moreInfo} setMoreInfo={setMoreInfo}/>
+                </div>
+                <div style={{display: show === "My Account"? "block":"none" }}>
+                    <MyAccount/>
                 </div>
             </Grid>
         </Grid>

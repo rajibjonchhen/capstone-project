@@ -127,7 +127,17 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      
+    
+      <MenuItem onClick={() => {}}>
+                  <Typography >Product</Typography>
+                </MenuItem>
+                <MenuItem onClick={() => {navigate("/posts")}}>
+                  <Typography >Community</Typography>
+                </MenuItem>       
       <MenuItem>
+
+      
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
@@ -138,7 +148,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
       <MenuItem>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          aria-label="show 1 new notifications"
           color="inherit"
         >
           <Badge badgeContent={17} color="error">
@@ -159,40 +169,56 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      <Box sx={{display:"flex", alignItems:"center"}}>
+              <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                />
+              </Search>
+                </Box>
     </Menu>
   );
 
   return ( 
     <>
         <CssBaseline/>
-        <AppBar color="red">
+        <AppBar>
             <Toolbar>
                 
                 <Flare className="App-logo" onClick={() => navigate("/home")}/>
                 
                     <Typography className="brand" variant="h5" onClick={() => navigate("/home")}> Creator's Space</Typography>
 
-                     {/*  */}
+                        
+        <Box sx={{ flexGrow: 1 }} />
+   
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <Box sx={{display:"flex", alignItems:"center"}}>
+              <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                />
+              </Search>
+                </Box>
                 <MenuItem onClick={() => {}}>
                   <Typography >Product</Typography>
                 </MenuItem>
                 <MenuItem onClick={() => {navigate("/posts")}}>
                   <Typography >Community</Typography>
                 </MenuItem>
-    {/*  */}
-                
-             <Box sx={{ flexGrow: 1 }} />
-             <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-             </Search>
-   
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
+                <MenuItem onClick={() => {navigate("/profile")}}>
+                  <Typography >Profile</Typography>
+                </MenuItem>
+
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
@@ -207,6 +233,8 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+                
+            
             <IconButton
               size="large"
               edge="end"
@@ -221,6 +249,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
           </Box>
 
              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+
             <IconButton
               size="large"
               aria-label="show more"
