@@ -19,7 +19,7 @@ function HomePage() {
                <MyJumbotron/>
         
            
-              <h2>Our Mission</h2>
+             
               <OurMission/>
            
            

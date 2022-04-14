@@ -1,11 +1,18 @@
+.myNavbar{
+background-color:"rgba(196, 194, 194)" !important;
+color:rgb(5,106,145)
+}
+
 .brand{
     font-size: 100px;
-    font-weight: 900;
-    cursor: pointer
+    font-weight: 600;
+    cursor: pointer;
+    margin: none;
 }
 
 
 .userImgcontainer{
+    margin: none;
     width : 30px;
     border-radius : 50%
 }

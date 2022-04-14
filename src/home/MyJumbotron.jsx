@@ -5,8 +5,8 @@ import "./jumbotron.css"
 function MyJumbotron() {
     return ( 
 
-      <Grid container style={{background:"blue"}}>
-      <Grid item xs={12} md={8} style={{background:"red",margin:"auto", display:"flex",justifyContent:"center"}}>
+      <Grid container style={{color:"rgb(5,106,145)"}}>
+      <Grid item xs={12} md={8} style={{margin:"auto", display:"flex",justifyContent:"center"}}>
           
                       
                   <Grid container className="jumbotron" >

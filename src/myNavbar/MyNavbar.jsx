@@ -23,9 +23,11 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useSelector } from "react-redux";
 import "./myNavbar.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 function MyNavbar() {
+  const location = useLocation();
   const navigate = useNavigate();
   const myInfo = useSelector((state) => state.user.myInfo);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -195,8 +197,8 @@ function MyNavbar() {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Search>
+      <Box sx={{ display: "flex", alignItems: "center"}}>
+        <Search style={{display:location.href ==="/product"||"/post"? "none":"block" }}>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -213,15 +215,15 @@ function MyNavbar() {
     <>
       <CssBaseline />
 
-      <AppBar>  
-      <Grid container style={{background:"rgba(196, 194, 194, 0.589)"}}>
+      <AppBar style={{background:"rgb(5,106,145)", color:"white"}}>  
+      <Grid container >
       <Grid item xs={12} md={8} style={{margin:"auto", display:"flex",justifyContent:"center"}}>
-        <Toolbar>
+        <Toolbar style={{width:"100%", padding:0}}>
           <Flare className="App-logo" onClick={() => navigate("/home")} />
 
           <Typography
             className="brand"
-            variant="h5"
+            
             onClick={() => navigate("/home")}
           >
             {" "}
@@ -243,8 +245,8 @@ function MyNavbar() {
               </Search>
             </Box>
             
-            <MenuItem onClick={() => {}}>
-              <Typography>Product</Typography>
+            <MenuItem onClick={() => {navigate("/home")}}>
+              <Typography>Home</Typography>
             </MenuItem>
             <MenuItem
               onClick={() => {

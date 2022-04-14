@@ -20,7 +20,6 @@ margin: 10px auto;
 @media only screen and (max-width: 360px){
     .jumbotron p{
         font-size: 20px;
-        text-align: left;
     }
 }
 
