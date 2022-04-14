@@ -1,35 +1,79 @@
 import { Grid } from "@material-ui/core";
 import { Button, Container } from "@mui/material";
-import { useState } from "react";
-import "./extraHeader.css"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setProfilePaginationAction } from "../redux/actions/action";
+import "./extraHeader.css";
 
 function ExtraNavbar() {
-    
-    return ( 
-    <Grid  className="extra-header">
-        <Grid container >
-            <Grid item xs={12} sm={12} md={10} lg={8} style={{margin:"auto", display:"flex",justifyContent:"space-between"}}>
-                <Button  >My Creations</Button>
-                <Button>My Messages</Button>
-                <Button>Add New Product</Button>
-                <Button>My Account</Button>
-                    {/* <ul>
-                            <li onClick={() => setShow("My Creations")}>
-                                My Creations
-                            </li>
-                            <li onClick={() => setShow("My Messages")}>
-                                My Messages
-                            </li>
-                            <li onClick={() => setShow("Add New Product")}>
-                                Add New Product
-                            </li>
-                            <li onClick={() => setShow("My Account")}>
-                                My Account
-                            </li>
-                        </ul> */}
-            </Grid> 
-        </Grid> 
-    </Grid> );
+  const profilePagination = useSelector(
+    (state) => state.user.profilePagination
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setProfilePaginationAction("My Creations"));
+  }, []);
+
+  return (
+    <Grid className="extra-header">
+      <Grid container>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={10}
+          lg={8}
+          style={{
+            margin: "auto",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button
+            name="My Creations"
+            style={{
+              backgroundColor:
+                profilePagination === "My Creations" && "rgb(160,38,38, 0.2)",
+            }}
+            onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+          >
+            My Creations
+          </Button>
+          <Button
+            name="My Messages"
+            style={{
+              backgroundColor:
+                profilePagination === "My Messages" && "rgb(160,38,38, 0.2)",
+            }}
+            onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+          >
+            My Messages
+          </Button>
+          <Button
+            name="Add New Product"
+            style={{
+              backgroundColor:
+                profilePagination === "Add New Product" && "rgb(160,38,38, 0.2)",
+            }}
+            onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+          >
+            Add New Product
+          </Button>
+          <Button
+            name="My Account"
+            style={{
+              backgroundColor:
+                profilePagination === "My Account" && "rgb(160,38,38, 0.2)",
+            }}
+            onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+          >
+            My Account
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
 }
 
 export default ExtraNavbar;

@@ -14,12 +14,13 @@ import "./myProfile.css"
 
 function MyProfile() {
 
-    const [show, setShow] = useState("")
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const [moreInfo, setMoreInfo] = useState(false)
     
     const myProducts = useSelector(state => state.product.myProducts)
+    const profilePagination = useSelector(state => state.user.profilePagination)
+    
 
     const dispatch = useDispatch()
    
@@ -53,39 +54,23 @@ function MyProfile() {
     },[])
     
     return (  
-        <Grid container className="profile-box" spacing={3}>
-            <Grid item xs={12} sm={12} md={3} lg={3}>
-                <ul>
-                    <li onClick={() => setShow("My Creations")}>
-                        My Creations
-                    </li>
-                    <li onClick={() => setShow("My Messages")}>
-                        My Messages
-                    </li>
-                    <li onClick={() => setShow("Add New Product")}>
-                        Add New Product
-                    </li>
-                    <li onClick={() => setShow("My Account")}>
-                        My Account
-                    </li>
-                </ul>
-            </Grid>
-            <Grid item xs={12} sm={12} md={9} lg={9}>
-                <div style={{display: show === "My Creations"? "block":"none" }}>
+       
+            <div item xs={12} sm={12} md={9} lg={9}>
+                <div style={{display: profilePagination === "My Creations"? "block":"none" }}>
                     {myProducts?.length === 0 && <Typography variant="h2" paragraph>You do not have any creation yet</Typography>}
                    {myProducts?.map(product => <SingleCard  product={product}/>)}
                 </div>
-                <div style={{display: show === "My Messages"? "block":"none" }}>
+                <div style={{display: profilePagination === "My Messages"? "block":"none" }}>
                     <MyMessages />
                 </div>
-                <div style={{display: show === "Add New Product"? "block":"none" }}>
+                <div style={{display: profilePagination === "Add New Product"? "block":"none" }}>
                     <AddEditNewProduct moreInfo={moreInfo} setMoreInfo={setMoreInfo}/>
                 </div>
-                <div style={{display: show === "My Account"? "block":"none" }}>
+                <div style={{display: profilePagination === "My Account"? "block":"none" }}>
                     <MyAccount/>
                 </div>
-            </Grid>
-        </Grid>
+            </div>
+       
     );
 }
 

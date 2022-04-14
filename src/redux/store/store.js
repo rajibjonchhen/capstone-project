@@ -10,7 +10,8 @@ export const initialState = {
 user : {
     allUsers:[],
     myInfo : {},
-    myMessages : []
+    myMessages : [],
+    profilePagination :""
 },
 product : {
     allProducts:[],

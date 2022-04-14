@@ -235,9 +235,9 @@ console.log(location.pathname)
             Creator's Space
           </Typography>
 
-          <Box sx={{ flexGrow: 1 }}  style={{display:location.pathname ==="/product"||"/post"? "block":"none"}}/>
+          <Box sx={{ flexGrow: 1 }}  style={{display:location.pathname ==="/product"||"/post"? 1:0}}/>
 
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ display: { xs: "none", md: "flex"}  }}>
             <Box style={{ display:"flex",  alignItems: "center" }}>
               <Search >
                 <SearchIconWrapper>

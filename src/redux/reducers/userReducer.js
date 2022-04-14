@@ -21,6 +21,12 @@ import { initialState } from "../store/store";
             myMessages : action.payload
             }
 
+        case ACTIONS.SET_PROFILE_PAGINATION:
+            return {
+                ...state,
+                profilePagination : action.payload
+            }
+
         default: return state
     }
 }
