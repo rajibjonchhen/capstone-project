@@ -8,6 +8,7 @@ import {
   AppBar,
   Avatar,
   CssBaseline,
+  Grid,
   Toolbar,
   Typography,
 } from "@material-ui/core";
@@ -211,7 +212,10 @@ function MyNavbar() {
   return (
     <>
       <CssBaseline />
-      <AppBar>
+
+      <AppBar>  
+      <Grid container style={{background:"rgba(196, 194, 194, 0.589)"}}>
+      <Grid item xs={12} md={8} style={{margin:"auto", display:"flex",justifyContent:"center"}}>
         <Toolbar>
           <Flare className="App-logo" onClick={() => navigate("/home")} />
 
@@ -308,6 +312,8 @@ function MyNavbar() {
             </IconButton>
           </Box>
         </Toolbar>
+      </Grid>
+    </Grid>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}

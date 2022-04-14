@@ -38,8 +38,8 @@ function OurProjects() {
     ]
     return ( 
         
-                <Grid container >
-                    <Grid item xs={12} md={8} >
+                <Grid container style={{background:"blue"}}>
+                    <Grid item xs={12} md={8} style={{background:"red",margin:"auto", display:"flex",justifyContent:"center"}}>
                         <Grid container >
                             {myCategories.map((category, i) => 
                                 <Grid key={i}  item xs={12} md={6} >

@@ -17,7 +17,7 @@ export default function CategoryCard({ category }) {
     <Card sx={{ display: "flex", maxWidth: 360, margin: "10px auto" }}>
       <CardMedia
         component="img"
-        sx={{ width: 150, maxHeight: 150 }}
+        sx={{ width: 160, maxHeight: 160 }}
         image={category?.image}
         alt="Live from space album cover"
         onClick={() => {
@@ -41,11 +41,9 @@ export default function CategoryCard({ category }) {
             {category?.description}
           </Typography>
         </CardContent>
-        <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
+          <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
           <Button
-            variant="outlined"
             size="small"
-            startIcon={<TravelExploreOutlinedIcon />}
           >
             Explore
           </Button>
