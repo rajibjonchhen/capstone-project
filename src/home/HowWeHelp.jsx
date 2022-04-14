@@ -10,21 +10,10 @@ import { Button, Card } from "@mui/material";
 
 function HowWeHelp() {
   return (
-    <Grid container style={{ background: "blue" }}>
-      <Grid
-        item
-        xs={12}
-        md={8}
-        style={{
-          background: "red",
-          margin: "auto",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Grid container>
-          <Grid item xs={12} md={6}>
-            <Card sx={{ maxWidth: 361, margin: "auto" }}>
+   
+        
+          
+            <Card sx={{ maxWidth: "100%", margin: "auto" }}>
               <Avatar sx={{ m: "10px auto", bgcolor: "secondary" }}>
                 <Home />
               </Avatar>
@@ -47,10 +36,9 @@ function HowWeHelp() {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+         
+        
+      
   );
 }
 

@@ -23,10 +23,10 @@ function HomePage() {
               <OurMission/>
            
            
-              <h2>Our Projects</h2>
+              <h2 className="theme-color">Our Projects</h2>
               <OurProjects/>
     
-              <h2>How we help</h2>
+              <h2 className="theme-color">How we help</h2>
                 <HowWeHelp/>
            
             

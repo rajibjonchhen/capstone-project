@@ -5,8 +5,7 @@ import "./jumbotron.css"
 function MyJumbotron() {
     return ( 
 
-      <Grid container style={{color:"rgb(5,106,145)"}}>
-      <Grid item xs={12} md={8} style={{margin:"auto", display:"flex",justifyContent:"center"}}>
+      
           
                       
                   <Grid container className="jumbotron" >
@@ -20,9 +19,7 @@ function MyJumbotron() {
               <img  src="https://blog.bonus.ly/hs-fs/hubfs/team-putting-together-puzzle-01.png?width=1200&name=team-putting-together-puzzle-01.png" />
             </Grid>
           </Grid>
-                  </Grid>
-            
-              </Grid>
+                 
       
 
      );

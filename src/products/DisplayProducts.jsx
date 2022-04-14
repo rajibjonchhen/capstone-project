@@ -7,6 +7,7 @@ import SingleCard from "./SingleCard";
 import './displayProducts.css'
 import { useNavigate } from "react-router-dom";
 import getMyInfo from "../getMyInfo";
+import { Grid } from "@material-ui/core";
 
 function DisplayProducts() {
     const [ error, setError] = useState("")
@@ -55,8 +56,11 @@ function DisplayProducts() {
 
     return ( 
         <div className='product-page'>
-           {products.map((item, i) =>  <SingleCard key={i}/>)}
-           
+            {products.map((item, i) => <Grid xs={12} sm={12} md={6} lg={4}>
+                <SingleCard key={i}/>
+            </Grid> 
+            )}
+            
         </div>
      );
 }

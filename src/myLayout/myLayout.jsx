@@ -7,6 +7,7 @@ import "./myLayout.css"
 import getMyInfo from "../getMyInfo";
 import { setMyInfoAction } from "../redux/actions/action";
 import { useDispatch } from "react-redux";
+import { Grid } from "@material-ui/core";
 
 function MyLayout({children}) {
     const navigate = useNavigate()
@@ -35,7 +36,12 @@ function MyLayout({children}) {
     return ( <>
         <MyNavbar/>
         <Container maxWidth="xs"  className="myLayout-box">
-        {children}
+
+        <Grid container >
+                    <Grid item xs={12} sm={12} md={10} lg={8} className="content-center">
+                        {children}
+                    </Grid>
+                </Grid>
         </Container>
         <MyFooter/>
     </>

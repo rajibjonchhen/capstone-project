@@ -15,7 +15,7 @@ export default function SingleCard() {
   const [likesCount, setLikesCount] = useState(100);
   const [like, setLike] = useState(false);
   return (
-    <Card sx={{ width: 345, m: 1 }}>
+    <Card sx={{ width: "100%", m: 1 }}>
       <CardMedia
         component="img"
         alt="green iguana"

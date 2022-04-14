@@ -14,7 +14,8 @@ import { useNavigate } from "react-router-dom";
 export default function CategoryCard({ category }) {
   const navigate = useNavigate();
   return (
-    <Card sx={{ display: "flex", maxWidth: 360, margin: "10px auto" }}>
+    
+    <Card className="category-card">
       <CardMedia
         component="img"
         sx={{ width: 160, maxHeight: 160 }}
@@ -50,5 +51,6 @@ export default function CategoryCard({ category }) {
         </Box>
       </Box>
     </Card>
+    
   );
 }

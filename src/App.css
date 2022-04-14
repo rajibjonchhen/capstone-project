@@ -38,6 +38,15 @@
   height: 100vh;
 }
 
+.theme-color{
+  color:rgb(5,106,145)
+}
+
+.theme-color-bg{
+  color:white;
+  background-color:rgb(5,106,145)
+}
+
 .text-blue{
 color:rgb(49, 97, 187);
 font-weight: 500;

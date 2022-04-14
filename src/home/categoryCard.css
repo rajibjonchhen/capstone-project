@@ -1,3 +1,9 @@
+.category-card{
+display: flex;
+width: 49%; 
+margin: 10px auto;
+}
+
 @media only screen and (max-width: 360px){
     .mission-box p{
         font-size: 16px;
@@ -10,4 +16,10 @@
     .MuiTypography-root.MuiTypography-body1.css-1pnmrwp-MuiTypography-root{
         font-size: 12px;
     }
+
+    .category-card{
+        display: flex;
+        width: 95%; 
+        margin: 10px auto;
+        }
 }

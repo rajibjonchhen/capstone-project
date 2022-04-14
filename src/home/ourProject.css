@@ -1,6 +1,6 @@
-.categories-box{
-    display: flex;
+.our-Project-box{
+    margin:0 auto !important;
+    display:flex;
+    justify-content:space-between !important;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin : 10px auto;
     }

@@ -37,18 +37,14 @@ function OurProjects() {
     },
     ]
     return ( 
-        
-                <Grid container style={{background:"blue"}}>
-                    <Grid item xs={12} md={8} style={{background:"red",margin:"auto", display:"flex",justifyContent:"center"}}>
-                        <Grid container >
-                            {myCategories.map((category, i) => 
-                                <Grid key={i}  item xs={12} md={6} >
-                                    <CategoryCard category={category}/> 
-                                </Grid>
-                            )}
-                            </Grid>
-                    </Grid>
-                </Grid>
+        <Grid item className="our-Project-box">
+            
+                {myCategories.map((category, i) => 
+                    
+                        <CategoryCard key={i} category={category}/> 
+                    
+                )}
+        </Grid>
 
      );
 }
