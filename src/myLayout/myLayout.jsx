@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import MyFooter from "../footer/MyFooter";
 import MyNavbar from "../myNavbar/MyNavbar";
 import "./myLayout.css"
@@ -8,9 +8,11 @@ import getMyInfo from "../getMyInfo";
 import { setMyInfoAction } from "../redux/actions/action";
 import { useDispatch } from "react-redux";
 import { Grid } from "@material-ui/core";
+import ExtraNavbar from "../extraNavbar/ExtraNavbar";
 
 function MyLayout({children}) {
     const navigate = useNavigate()
+    const location = useLocation()
     const dispatch = useDispatch()
     const [searchParams, setSearchParams] = useSearchParams();
     const tokenParam = searchParams.get("token") 
@@ -35,6 +37,9 @@ function MyLayout({children}) {
     }
     return ( <>
         <MyNavbar/>
+        <div style={{display:location.pathname === "/profile"? "block":"none"}}>
+        <ExtraNavbar />
+        </div>
         <Container maxWidth="xs"  className="myLayout-box">
 
         <Grid container >
