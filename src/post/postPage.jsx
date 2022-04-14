@@ -17,6 +17,7 @@ import "./postPage.css"
 
 
 function PostPage() {
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [error, setError] = useState("")
@@ -27,6 +28,7 @@ function PostPage() {
    
     useEffect(() =>{
         fetchPosts()
+        
     },[])
 
    
@@ -57,7 +59,7 @@ function PostPage() {
             setIsLoading(false)
         } 
     }
-
+    
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,

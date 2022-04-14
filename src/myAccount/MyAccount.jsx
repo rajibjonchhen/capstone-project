@@ -1,11 +1,13 @@
-import { Box, Typography } from "@material-ui/core";
+import { Box, Grid, Typography } from "@material-ui/core";
 import { Alert, Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import getMyInfo from "../getMyInfo";
 import { setMyInfoAction } from "../redux/actions/action";
+import Autocomplete from '@mui/material/Autocomplete';
 import "./myAccount.css"
+import { countries } from "./country.js";
 
 function MyAccount() {
     const dispatch = useDispatch()
@@ -99,9 +101,9 @@ function MyAccount() {
     }
 
     return ( 
-        <>
+    
+        <Grid className="account-box">
             {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
-        <Box className="account-box">
             <Box className='account-image-box'>
                 
                 <Image src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} width="100px" sx={{marginTop:"10px"}}/>
@@ -178,10 +180,42 @@ function MyAccount() {
             onChange={(e) => handleChange(e)}
             />
 
+            
+            {/* <Autocomplete
+      id="country-select-demo"
+      sx={{ width: 300 }}
+      options={countries}
+      
+      autoHighlight
+      getOptionLabel={(option) => option.label}
+      renderOption={(props, option) => (
+        <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+          <img
+            loading="lazy"
+            width="20"
+            src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+            srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
+            alt=""
+          />
+          {option.label} ({option.code}) +{option.phone}
+        </Box>
+      )}
+      renderInput={(params) => (
+        <TextField
+        label="Choose a country"
+          {...params}
+          inputProps={{
+            ...params.inputProps,
+            autoComplete: 'new-password', // disable autocomplete and autofill
+          }}
+         
+        />
+      )}
+    />*/}
 
             </Box>
-        </Box>
-            </>
+        </Grid> 
+        
      );
 }
 

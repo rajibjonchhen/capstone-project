@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -7,11 +7,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAllUsersAction } from '../redux/actions/action';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     maxWidth: '36ch',
+    fontSize:"10px",
     backgroundColor: theme.palette.background.paper,
   },
   inline: {
@@ -19,76 +22,61 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function RightSidebar() {
+
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
+  
+  const allUsers = useSelector(state => state.user.allUsers)
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+      fetchUsers()
+  },[])
+
+  const fetchUsers = async() => {
+    
+      try {
+          const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users`,{
+              method:"GET",
+              headers:{
+                  "authorization" : localStorage.getItem("MyToken"),
+              }
+          })
+          if(response.status !== 200){
+              const data = await response.json()
+              console.log(data)
+              setError(data.error)
+              
+          } else{
+              const data = await response.json()
+              console.log(data.users)
+              dispatch(setAllUsersAction(data.users))
+          }
+      } catch (error) {
+          console.log(error)
+      } 
+  }
+
+
 
   return (
     <List className={classes.root}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Brunch this weekend?"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
+      {allUsers?.map(user => 
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt={user.name} src={user.avatar} />
+            </ListItemAvatar>
+            <Typography
+            style={{fontSize:"12px"}}
               >
-                Ali Connors
+                  {`${user.name} ${user.surname}`}
               </Typography>
-              {" — I'll be in your neighborhood doing errands this…"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
+          </ListItem>
+          )}
       <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Summer BBQ"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                to Scott, Alex, Jennifer
-              </Typography>
-              {" — Wish I could come, but I'm out of town this…"}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Oui Oui"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                Sandra Adams
-              </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
     </List>
   );
 }

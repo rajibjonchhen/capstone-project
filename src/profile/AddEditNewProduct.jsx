@@ -1,288 +1,404 @@
-import { TextField } from "@material-ui/core";
+import { Grid, TextField } from "@material-ui/core";
 import { AddBox } from "@mui/icons-material";
-import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
-import {  Autocomplete, Button, InputLabel, MenuItem, Select, Typography,FormControl } from "@mui/material";
+import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
+import {
+  Autocomplete,
+  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+  FormControl,
+  Container,
+  Alert,
+} from "@mui/material";
 import { useState } from "react";
 
-import "./addEditNewProduct.css"
+import "./addEditNewProduct.css";
 
-function AddEditNewProduct({moreInfo, setMoreInfo}) {
-    
-    const [newProductErr, setNewProductErr] = useState({})
-    const [error, setError] = useState()
-    const [isLoading, setIsLoading] = useState()
-    const [isSubmit, setIsSubmit] = useState(false)
+function AddEditNewProduct({ moreInfo, setMoreInfo }) {
+
+    const [successMsg, setSuccessMsg] = useState(false)
+    const [selectedImages, setSelectedImages] = useState([])  
+    const [newProductErr, setNewProductErr] = useState({});
+    const [error, setError] = useState();
+    const [isLoading, setIsLoading] = useState();
+    const [isSubmit, setIsSubmit] = useState(false);
+
     const [newProduct, setNewProduct] = useState({
-        title:"",
-        category:"",
-        summary:"",
-        description:"",
-        askingPrice:"",
-        criteria:"",
-    })
+    title: "",
+    category: "",
+    summary: "",
+    description: "",
+    askingPrice: "",
+    criteria: "",
+  });
 
-    const categories = ["idea", "story", "novel", "song", "poem", "movie", "web template" ]
+  const categories = [
+    "idea",
+    "story",
+    "novel",
+    "song",
+    "poem",
+    "movie",
+    "web template",
+  ];
 
-    useState(() => {
-        if(Object.keys(newProductErr).length === 0 && isSubmit){
-            console.log("I am going to submit")
-            saveProduct()
-        }
-    },[newProductErr])
-
-    const handleChange = (e) => {
-        const {name, value} = e.target
-        setNewProduct({...newProduct, [name]:value})
-        console.log(name, value)
-
+  useState(() => {
+      
+      if (Object.keys(newProductErr).length === 0 && isSubmit) {
+        console.log("after I am going to submit");
+      saveProduct();
     }
+  }, [newProductErr]);
 
-    const handleSubmit = () => {
         setNewProductErr(verifyForm(newProduct))
-        setIsSubmit(true)
-        console.log(newProductErr)
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct({ ...newProduct, [name]: value });
+    console.log(newProduct);
+    console.log(name, value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setNewProductErr(verifyForm(newProduct));
+    setIsSubmit(true);
+    console.log(Object.keys(newProductErr).length)
+  };
+
+  const verifyForm = () => {
+    const error = {};
+    if (!newProduct.title) {
+      error.title = "title is missing";
     }
-
-    const verifyForm = () => {
-        const error ={}
-        if(!newProduct.title){
-            error.title = "title is missing"
-        }
-        if(!newProduct.category){
-            error.category = "category is missing"
-        }
-        if(!newProduct.summary){
-            error.summary = "summary is missing"
-        }
-        if(!newProduct.description){
-            error.description = "description is missing"
-        }
-        if(!newProduct.askingPrice){
-            error.askingPrice = "asking price is missing"
-        }
-        return error
+    if (!newProduct.category) {
+      error.category = "category is missing";
     }
+    if (!newProduct.summary) {
+      error.summary = "summary is missing";
+    }
+    if (!newProduct.description) {
+      error.description = "description is missing";
+    }
+    if (!newProduct.askingPrice) {
+      error.askingPrice = "asking price is missing";
+    }
+    return error;
+  };
 
-    const saveProduct = async() =>{
-        try{
-            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products`,{
-                method:"POST",
-                body : JSON.stringify(newProduct),
-                headers:{
-                    "content-type" :"application/json",
-                    "authorization": localStorage.getItem("MyToken")
-                }
-            })
-            if(response.status !== 200){
-                const data = await response.json()
-                console.log(data)
-                setError(data.error)
-                setIsLoading(false)
-              } else{
-                const data = await response.json()
-                console.log(data)
-                setIsLoading(false)
-              }
-            } catch (error) {
-              console.log(error)
-            setIsLoading(false)
+  const saveProduct = async () => {
+    setError("")
+      console.log("saving now ")
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_DEV_BE_URL}/products`,
+        {
+          method: "POST",
+          body: JSON.stringify(newProduct),
+          headers: {
+            "content-type": "application/json",
+            authorization: localStorage.getItem("MyToken"),
+          },
+        }
+      );
+      if (response.status !== 200) {
+        const data = await response.json();
+        console.log(data);
+        setError(data.error);
+        setIsLoading(false);
+      } else {
+        const data = await response.json();
+        console.log(data);
+        const productId = data.product._id
+        if(selectedImages){
+            uploadImages(productId)
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  const handleSelection = (e) => {
+    console.log(e.target.files)
+    setSelectedImages(e.target.files)
+   }
+
+   const uploadImages = async(productId) => {
+       console.log("saving the files now")
+    const formData = new FormData()
+    formData.append("images", selectedImages)
+    try {
+        const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products/me/${productId}/images`,{
+            method:"POST",
+            body : formData,
+            headers:{
+                "authorization" : localStorage.getItem("MyToken")
+            }
+        }) 
+        if(response.status !== 200){
+            const data = await response.json();
+            console.log(data);
+            setError(data.error);
+        } else {
+            setSuccessMsg(true)
+            setIsLoading(false);
         }
     }
-
-    return ( <>
-
-            
-            
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="title"
-                    label="title"
-                    name="title"
-                    value={newProduct.title}
-                    autoFocus
-                    autoComplete=""
-                    onChange={(e) => handleChange(e)}
-            />
-            <Typography>{!newProduct.title && newProductErr?.title}</Typography>
-            {/* <Autocomplete
-                disablePortal
-                id="category"
-                options={categories}
-                value={newProduct.category}
+        catch(error){
+            console.log(error)
+        }
+    }
+   
+  return (
+    
+      <Container conatianer>
+          <h2>Fill in the product details</h2>
+          {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="title"
+                label="title"
+                name="title"
+                value={newProduct.title}
+                autoFocus
+                autoComplete=""
                 onChange={(e) => handleChange(e)}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params}  name="category" value={newProduct.category} label="category" />}
-    /> */}
-                    <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                <Select
-                 margin="normal"
-                    labelId="category"
-                    size="small"
+              />
+              <Typography>
+                {!newProduct.title && newProductErr?.title}
+              </Typography>
+            </Grid>
+            {/* <Autocomplete
+                    disablePortal
                     id="category"
-                    variant="outlined"
+                    options={categories}
                     value={newProduct.category}
-                    label="category"
-                    name = "category"
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(e)}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params}  name="category" value={newProduct.category} label="category" />}
+                /> */}
+            <Grid item xs={12} md={6}>
+              <FormControl 
+                  margin="normal"
+                  required
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  id="category"
+                  
+                  name="category"
+              >
+                <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                <Select
+                  margin="normal"
+                  labelId="category"
+                  maxWidth="50%"
+                  size="small"
+                  id="category"
+                  variant="outlined"
+                  value={newProduct.category}
+                  label="category"
+                  name="category"
+                  onChange={handleChange}
                 >
-                    {categories.map( category => <MenuItem value={category}>{category}</MenuItem>)}
+                  {categories.map((category) => (
+                    <MenuItem value={category}>{category}</MenuItem>
+                  ))}
                 </Select>
-                </FormControl>
-            <Typography>{!newProduct.category && newProductErr?.category}</Typography>
+              </FormControl>
+              <Typography>
+                {!newProduct.category && newProductErr?.category}
+              </Typography>
+            </Grid>
 
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="summary"
-                    label="summary"
-                    name="summary"
-                    value={newProduct.summary}
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="summary"
+                label="summary"
+                name="summary"
+                value={newProduct.summary}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+              <Typography>
+                {!newProduct.summary && newProductErr?.summary}
+              </Typography>
+            </Grid>
 
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-            />
-            <Typography>{!newProduct.summary && newProductErr?.summary}</Typography>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="description"
+                label="description"
+                name="description"
+                value={newProduct.description}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+              <Typography>
+                {!newProduct.description && newProductErr?.description}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="askingPrice"
+                label="asking price"
+                name="askingPrice"
+                value={newProduct.askingPrice}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+              <Typography>
+                {!newProduct.askingPrice && newProductErr?.askingPrice}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                fullWidth
+                size="small"
+                id="criteria"
+                label="criteria"
+                name="criteria"
+                variant="outlined"
+                value={newProduct.criteria}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+            </Grid>
+          
 
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="description"
-                    label="description"
-                    name="description"
-                    value={newProduct.description}
+          <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="reqInvestment"
+                label="required investment"
+                name="reqInvestment"
+                value={newProduct.reqInvestment}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+            </Grid>
 
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-            />
-            <Typography>{!newProduct.description && newProductErr?.description}</Typography>
-               
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="askingPrice"
-                    label="asking price"
-                    name="askingPrice"
-                    value={newProduct.askingPrice}
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-            />
-            <Typography>{!newProduct.askingPrice && newProductErr?.askingPrice}</Typography>
+         
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="agreement"
+                label="agreement"
+                name="agreement"
+                value={newProduct.agreement}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+            </Grid>
+            
+          
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="inventionAddresses"
+                label="invention addresses"
+                name="inventionAddresses"
+                value={newProduct.inventionAddresses}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+            </Grid>
 
-            <TextField
-                    margin="normal"
-                    
-                    fullWidth
-                    size="small"
-                    id="criteria"
-                    label="criteria"
-                    name="criteria"
-                    variant="outlined"
-                    value={newProduct.criteria}
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-            />
-            <div className="text-icon" style={{display:!moreInfo? "block":"none"}} onClick={() => setMoreInfo(true) }> <span>Add More Info</span> <span><AddBox/></span> </div>
-            {/* more detail */}
-            <div style={{display:moreInfo? "block":"none"}}>
-                
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="agreement"
-                    label="agreement"
-                    name="agreement"
-                    value={newProduct.agreement}
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="auxiliaryProducts"
+                label="auxiliary products"
+                name="auxiliaryProducts"
+                value={newProduct.auxiliaryProducts}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                fullWidth
+                variant="outlined"
+                size="small"
+                id="patent"
+                label="patent"
+                name="patent"
+                value={newProduct.patent}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+            </Grid>
+
+            
+           
+     
+          </Grid>
+          <Grid container spacing={2} className="buttons">
+          <Grid item>
+            <Button
+                variant="contained"
+                component="label"
+                >
+                Upload File
+                <input
+                    type="file"
+                    hidden
+                    multiple
+                    onChange={(e) => {handleSelection(e)}}
                     />
-
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="reqInvestment"
-                    label="reqInvestment"
-                    name="reqInvestment"
-                    value={newProduct.reqInvestment}
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-                    />
-
-                <TextField
-                    margin="normal"
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="reqInvestment"
-                    label="reqInvestment"
-                    name="reqInvestment"
-                    value={newProduct.reqInvestment}
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-                    />
-
-                <TextField
-                    margin="normal"
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="inventionAddresses"
-                    label="invention addresses"
-                    name="inventionAddresses"
-                    value={newProduct.inventionAddresses}
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-                    />
-
-                <TextField
-                    margin="normal"
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="auxiliaryProducts"
-                    label="auxiliary products"
-                    name="auxiliaryProducts"
-                    value={newProduct.auxiliaryProducts}
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-                    />
-
-                <TextField
-                    margin="normal"
-                    fullWidth
-                    variant="outlined"
-                    size="small"
-                    id="patent"
-                    label="patent"
-                    name="patent"
-                    value={newProduct.patent}
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-                    />
-
-                <div className="text-icon" style={{display:moreInfo? "block":"none"}} onClick={() => setMoreInfo(false) }><span>Show Less Info</span>  <span><IndeterminateCheckBoxIcon/></span> </div>
-            </div>
-                    <Button onClick={() => handleSubmit()}>Submit</Button>
-    </> );
+            </Button>
+            </Grid>
+            <Grid item>
+          <Button 
+          variant="contained"
+          component="label"
+          onClick={(e) => handleSubmit(e)}>Submit</Button>
+          </Grid>
+          </Grid>
+      </Container>
+    
+  );
 }
 
 export default AddEditNewProduct;

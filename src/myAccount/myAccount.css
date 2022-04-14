@@ -1,9 +1,5 @@
 .account-box{
-    
-    max-width:600px;
-    height: 100%;
-    border : 1px solid grey;
-    margin: 100px auto 0px;
+   
     display: flex;
     padding: 10px;
 }

@@ -2,11 +2,16 @@
     
     cursor: pointer;
     display: flex;
-    
+    align-items: baseline;
     margin-left: auto;
     }
 
     
     .text-icon:pointer{
       background-color: rgba(128, 128, 128, 0.493);
+    }
+
+    .buttons{
+      display: flex;
+      justify-content: center;
     }
