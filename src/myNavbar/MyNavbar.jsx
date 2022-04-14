@@ -263,25 +263,29 @@ function MyNavbar() {
             >
               <Typography>Profile</Typography>
             </MenuItem>
+              <Box className="flex-center">
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+                >
+                <Badge badgeContent={4} color="error">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              </Box>
 
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={1} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+              <Box className="flex-center">
+                <IconButton
+                  size="large"
+                  aria-label="show 17 new notifications"
+                  color="inherit"
+                  >
+                  <Badge badgeContent={1} color="error">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+            </Box>
 
             <IconButton
               size="large"

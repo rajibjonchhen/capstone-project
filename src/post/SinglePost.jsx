@@ -36,20 +36,19 @@ export default function SinglePost({post}) {
 
   return (
     <Card sx={{ width: 1, mt:2 }}>
+      <Box >
       <CardHeader
         avatar={
-      <Avatar src={post?.postedBy?.avatar || "https://ui-avatars.com/api/?name=John+Doe"} sx={{ bgcolor: red[500] }} aria-label="recipe"/>
+        <Avatar src={post?.postedBy?.avatar || "https://ui-avatars.com/api/?name=John+Doe"} sx={{ bgcolor: red[500] }} aria-label="recipe"/>
         }
         title={`${post?.postedBy?.name} ${post?.postedBy?.surname}`}
         subheader={new Date(post.createdAt).toLocaleTimeString()}
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image="/static/images/cards/paella.jpg"
-        alt="Paella dish"
-      />
-      <CardContent>
+      <Typography>
+        
+      </Typography>
+      </Box>
+      <CardContent className="border-bottom border-top">
         <Typography variant="body2" color="text.secondary">
          {post.content}
         </Typography>

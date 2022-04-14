@@ -52,6 +52,20 @@ color:rgb(49, 97, 187);
 font-weight: 500;
 cursor: pointer
 }
+
+.flex-center{
+  display:flex;
+  justify-content: center;
+  align-items : center;
+  margin: auto
+}
+
+.border-bottom{
+  border-bottom:1px solid rgba(194, 194, 194, 0.205)
+}
+.border-top{
+  border-top:1px solid rgba(194, 194, 194, 0.205)
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
