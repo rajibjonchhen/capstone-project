@@ -52,7 +52,6 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
     }
   }, [newProductErr]);
 
-        setNewProductErr(verifyForm(newProduct))
   const handleChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
