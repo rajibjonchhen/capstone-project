@@ -47,9 +47,28 @@ function MyMessages() {
 
 
     return (  
+
         <Container>
+ {/* <List className={classes.root}>
+      {allUsers?.map(user => 
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt={user.name} src={user.avatar} />
+            </ListItemAvatar>
+            <Typography
+            style={{fontSize:"12px"}}
+              >
+                  {`${user.name} ${user.surname}`}
+              </Typography>
+          </ListItem>
+          )}
+      <Divider variant="inset" component="li" />
+    </List> */}
+
+
             <Grid container>
                 <Grid item>
+                    
                     <ul>
                         {myMessages.map(message => <li onClick={() => {setSingleMsg(message)}}>{message.product}</li>)}
                     </ul>

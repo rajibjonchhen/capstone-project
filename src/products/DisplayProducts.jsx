@@ -1,11 +1,11 @@
 import { getListItemAvatarUtilityClass } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../others/Loader";
 import { setAllProductsAction, setMyInfoAction } from "../redux/actions/action";
 import SingleCard from "./SingleCard";
 import './displayProducts.css'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import getMyInfo from "../getMyInfo";
 import { Grid } from "@material-ui/core";
 
@@ -13,20 +13,21 @@ function DisplayProducts() {
     const [ error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const dispatch = useDispatch()
-    const [products, setProducts] = useState(Array.apply(null, Array(20)))
+    const params = useParams()
+    
 
     const navigate = useNavigate()
-   
+    const selectedCategory = useSelector(state => state.product.selectedCategory)
+    const allProducts = useSelector(state => state.product.allProducts)
 
     useEffect(() => {
-       
-       
-        fetchProducts()
+        const category = params.category
+        fetchProducts(category)
     },[])
 
     
 
-    const fetchProducts = async() => {
+    const fetchProducts = async(category) => {
         try {
             console.log(process.env.REACT_APP_DEV_BE_URL)
             const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products`,{
@@ -42,10 +43,11 @@ function DisplayProducts() {
                 setIsLoading(false)
             } else{
                 const data = await response.json()
-                console.log(data)
-                dispatch(setAllProductsAction(data.user))
+                const products = data.products.filter(product => product.category === category)
+                console.log(products, selectedCategory)
+                dispatch(setAllProductsAction(products))
                 setIsLoading(false)
-                setIsLoading(false)
+
             }
         } catch (error) {
             console.log(error)
@@ -55,13 +57,14 @@ function DisplayProducts() {
 
 
     return ( 
-        <div className='product-page'>
-            {products.map((item, i) => <Grid xs={12} sm={12} md={6} lg={4}>
-                <SingleCard key={i}/>
+        <Grid container >
+            {allProducts.length === 0 && <h2>There are no products in this category</h2>}
+            {allProducts?.map((product, i) => <Grid item xs={12} sm={12} md={6} lg={4}>
+                <SingleCard key={i} product={product}/>
             </Grid> 
             )}
             
-        </div>
+        </Grid>
      );
 }
 

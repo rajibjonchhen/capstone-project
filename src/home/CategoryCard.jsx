@@ -10,9 +10,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSelectedCategoryAction } from "../redux/actions/action";
 
 export default function CategoryCard({ category }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+
+  const changeCategory = (e, type)=>{
+    e.preventDefault()
+    dispatch(setSelectedCategoryAction(type));
+    console.log(type); 
+     navigate(`/products/${type}`)
+  }
   return (
     
     <Card className="category-card">
@@ -29,7 +40,7 @@ export default function CategoryCard({ category }) {
         <CardContent
           sx={{ flex: "1 0 auto" }}
           onClick={() => {
-            navigate("/products");
+           ;
           }}
         >
           <Typography component="div" variant="h6" textAlign="left">
@@ -45,6 +56,7 @@ export default function CategoryCard({ category }) {
           <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
           <Button
             size="small"
+            onClick = {(e) => {changeCategory(e, category?.type)}}
           >
             Explore
           </Button>

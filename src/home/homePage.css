@@ -1,13 +1,11 @@
 
 
-.mission-box{
-    background-color: rgba(196, 194, 194, 0.589);
+
+
+
+.howWeHelp-box{
+    background-color: rgba(194, 196, 194, 0.589);
     padding: 20px 10px;
-}
-.mission-box p{
-    
-    padding: 20px 10px;
-    font-size: 20px;
 }
 
 @media only screen and (max-width: 360px){

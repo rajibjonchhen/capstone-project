@@ -53,13 +53,17 @@ function MyProfile() {
         fetchMyProducts()
     },[])
     
-    return (  
-       
-            <div item xs={12} sm={12} md={9} lg={9}>
-                <div style={{display: profilePagination === "My Creations"? "block":"none" }}>
-                    {myProducts?.length === 0 && <Typography variant="h2" paragraph>You do not have any creation yet</Typography>}
-                   {myProducts?.map(product => <SingleCard  product={product}/>)}
-                </div>
+    return (<>  
+                <Grid  container >
+                    <Grid item xs={12} >
+                            <Grid container style={{display: profilePagination === "My Creations"? "block":"none" }}>
+                                {myProducts?.length === 0 && <Typography variant="h2" paragraph>You do not have any creation yet</Typography>}
+                                {myProducts?.map((product, i) => 
+                                <Grid  key={i} item xs={12} sm={12} md={6} lg={4}>
+                                    <SingleCard product={product}/>
+                                </Grid> )}
+                            </Grid>
+                        
                 <div style={{display: profilePagination === "My Messages"? "block":"none" }}>
                     <MyMessages />
                 </div>
@@ -69,9 +73,11 @@ function MyProfile() {
                 <div style={{display: profilePagination === "My Account"? "block":"none" }}>
                     <MyAccount/>
                 </div>
-            </div>
+
+                </Grid>
+            </Grid>
        
-    );
+            </> );
 }
 
 export default MyProfile;

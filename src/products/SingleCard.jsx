@@ -10,7 +10,7 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { pink } from "@material-ui/core/colors";
 import { useNavigate } from "react-router-dom";
 
-export default function SingleCard() {
+export default function SingleCard({product}) {
   const navigate = useNavigate()
   const [likesCount, setLikesCount] = useState(100);
   const [like, setLike] = useState(false);
@@ -23,12 +23,11 @@ export default function SingleCard() {
         image="https://picsum.photos/200/300"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+        <Typography gutterBottom variant="h6" component="div">
+          {product?.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {product?.summary}
         </Typography>
       </CardContent>
       <CardActions>
