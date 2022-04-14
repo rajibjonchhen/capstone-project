@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -35,6 +36,10 @@ function MyNavbar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+useEffect(() => {
+console.log(location.pathname)
+  },[])
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -198,7 +203,7 @@ function MyNavbar() {
         <p>Profile</p>
       </MenuItem>
       <Box sx={{ display: "flex", alignItems: "center"}}>
-        <Search style={{display:location.href ==="/product"||"/post"? "none":"block" }}>
+        <Search >
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -230,11 +235,11 @@ function MyNavbar() {
             Creator's Space
           </Typography>
 
-          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: 1 }}  style={{display:location.pathname ==="/product"||"/post"? "block":"none"}}/>
 
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Search>
+            <Box style={{ display:"flex",  alignItems: "center" }}>
+              <Search >
                 <SearchIconWrapper>
                   <SearchIcon />
                 </SearchIconWrapper>

@@ -58,18 +58,20 @@ function MyFooter() {
 
   return (
     
-    <Grid item xs={12} sm={12} md={10} lg={8} style={{margin:"auto", display:"flex",justifyContent:"center"}}>
-      <Grid container spacing={2} className="footer-box">
-        {footerParts.map((part, i) => (
-          <Grid key={i} item xs={12} sm={12} md={3} lg={3} style={{width:"100%"}}>
-              <p className="footerCol-title">{part.title}</p>
-              <div className="footerCol">
-                {part.lists.map((list, j) => (
-                  <p key={j}>{list}</p>
-                  ))}
-              </div>
+      <Grid   container style={{ justifyContent:"center"}}>
+      <Grid item xs={12} md={10} lg={8} className="footer-box">
+          <Grid container spacing={2}>
+          {footerParts.map((part, i) => (
+            <Grid key={i} item xs={12} md={3} lg={3} >
+                <p className="footerCol-title">{part.title}</p>
+                <div className="footerCol">
+                  {part.lists.map((list, j) => (
+                    <p key={j}>{list}</p>
+                    ))}
+                </div>
+            </Grid>
+          ))}
           </Grid>
-        ))}
       </Grid>
   </Grid>
   
