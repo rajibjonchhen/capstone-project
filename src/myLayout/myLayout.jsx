@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import { useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import MyFooter from "../footer/MyFooter";
+
 import MyNavbar from "../myNavbar/MyNavbar";
 import "./myLayout.css"
 import getMyInfo from "../getMyInfo";
@@ -9,6 +9,7 @@ import { setMyInfoAction } from "../redux/actions/action";
 import { useDispatch } from "react-redux";
 import { Grid } from "@material-ui/core";
 import ExtraNavbar from "../extraNavbar/ExtraNavbar";
+import MyFooter from "../footer/myfooter";
 
 function MyLayout({children}) {
     const navigate = useNavigate()

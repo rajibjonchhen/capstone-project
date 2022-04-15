@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMyInfoAction } from '../redux/actions/action';
 import { Image } from 'react-bootstrap';
 import getMyInfo from '../getMyInfo';
+import "./postForm.css"
 
 
 
@@ -117,9 +118,9 @@ try {
             display: 'flex'
           }}
         >
-           <Box sx={{display:"flex"}}>
+           <Box className="user-avatar-name-box">
 
-           <Avatar src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} className="userImg"/>
+           <img src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} alt={myInfo.nam} />
            <Typography>
             {`${myInfo?.name} ${myInfo?.surname}`}
            </Typography>
@@ -146,12 +147,12 @@ try {
           </Box>
        
         </Box>
-      <Box>
+      <Box className="post-btns">
 
         <Button
               type="submit"
               variant="contained"
-              sx={{ m: 3 }}
+              sx={{ m: 1 }}
               onClick={(e) => handleSubmit(e)}
               >
                 Post
@@ -159,12 +160,12 @@ try {
         <Button
               type="submit"
               variant="contained"
-              sx={{ m: 3 }}
+              sx={{ m: 1 }}
               onClick={() => handleClose()}
               >
                 Cancel
             </Button>
-              </Box>
+        </Box>
         </Box>
         </Container>
     </ThemeProvider>

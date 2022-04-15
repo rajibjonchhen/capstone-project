@@ -39,14 +39,14 @@ export default function SinglePost({ post, fetchPosts }) {
   };
 
   useEffect(() => {
-    fetchComments()
-  },[allComments])
+    fetchComments(post._id)
+  },[])
  
-  const fetchComments = async () => {
+  const fetchComments = async (postId) => {
     try {
       console.log(process.env.REACT_APP_DEV_BE_URL);
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/posts/${post._id}/comments`,
+        `${process.env.REACT_APP_DEV_BE_URL}/posts/${postId}/comments`,
         {
           method: "GET",
           headers: {
@@ -96,8 +96,7 @@ export default function SinglePost({ post, fetchPosts }) {
         const data = await response.json();
         console.log(data);
         setIsLoading(false);
-       
-        fetchComments();
+          fetchPosts( post._id)
       }
     } catch (error) {
       console.log(error);

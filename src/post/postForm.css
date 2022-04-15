@@ -1,0 +1,16 @@
+
+
+.user-avatar-name-box{
+display: flex;
+justify-content: flex-start;
+}
+
+.user-avatar-name-box img{
+    width:15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.post-btns{
+    margin-left: auto ;
+}
