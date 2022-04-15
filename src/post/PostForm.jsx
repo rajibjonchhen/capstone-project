@@ -22,7 +22,7 @@ import getMyInfo from '../getMyInfo';
 
 const theme = createTheme();
 
-export default function PostForm({handleClose}) {
+export default function PostForm({handleClose, fetchPosts}) {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -96,7 +96,7 @@ try {
         setIsLoading(false)
         handleClose()
         
-        
+        fetchPosts()
       }
     } catch (error) {
       console.log(error)

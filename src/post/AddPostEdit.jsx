@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function AddPostEdit({open, setOpen}) {
+export default function AddPostEdit({open, setOpen, fetchPosts}) {
   const classes = useStyles();
   
   const handleOpen = () => {
@@ -49,7 +49,7 @@ export default function AddPostEdit({open, setOpen}) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <PostForm handleClose={handleClose}/>
+            <PostForm handleClose={handleClose} fetchPosts={fetchPosts}/>
           </div>
         </Fade>
       </Modal>
