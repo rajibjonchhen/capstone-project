@@ -12,7 +12,7 @@ import {
   Container,
   Alert,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./addEditNewProduct.css";
 
@@ -32,6 +32,11 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
     description: "",
     askingPrice: "",
     criteria: "",
+    patent: "",
+    reqInvestment:"",
+    auxiliaryProducts:"",
+    agreement:"",
+    inventionAddresses:"",
   });
 
   const categories = [
@@ -44,7 +49,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
     "web template",
   ];
 
-  useState(() => {
+  useEffect(() => {
       
       if (Object.keys(newProductErr).length === 0 && isSubmit) {
         console.log("after I am going to submit");
@@ -110,9 +115,26 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
         const data = await response.json();
         console.log(data);
         const productId = data.product._id
+
+        setNewProduct({
+          title: "",
+          category: "",
+          summary: "",
+          description: "",
+          askingPrice: "",
+          criteria: "",
+          patent: "",
+          reqInvestment:"",
+          auxiliaryProducts:"",
+          agreement:"",
+          inventionAddresses:"",
+        })
+
         if(selectedImages){
             uploadImages(productId)
-        }
+        } else{
+          setIsLoading(false);
+        }   
       }
     } catch (error) {
       console.log(error);
