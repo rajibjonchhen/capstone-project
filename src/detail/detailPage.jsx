@@ -21,7 +21,7 @@ function DetailPage() {
 
   
   const handleNext = () =>  {
-    if(singleProduct.images.length > 1 && imgNum !== singleProduct.images.length){
+    if(singleProduct.images.length > 1 && imgNum !== singleProduct.images.length-1){
       setImgNum(imgNum+1)
     }
   }
@@ -33,10 +33,18 @@ function DetailPage() {
     return ( 
         <div>
            <Card sx={{ display: 'flex', mt:12 }}>
-             <div style={{width:"300px", minHeight:"300px", }}>
+             <div style={{width:"300px", minHeight:"300px", margin:"0 auto"}}>
             <Image style={{ width:"100%"}} src={singleProduct?.images[imgNum]}
             alt="Live from space album cover"
             />
+            <div style={{display:"flex",margin:"5px auto",justifyContent:"center"}}>
+            <IconButton aria-label="delete" size="small" sx={{display: imgNum>0 ? "block":"none", backgroundColor:'palegoldenrod'}}>
+                  <ArrowBack fontSize="inherit" onClick={() => handlePrev()}/>
+              </IconButton>
+                <IconButton aria-label="delete" size="small" sx={{display: singleProduct.images.length-1>0 && imgNum !== singleProduct.images.length? "block":"none", backgroundColor:'palegoldenrod'}}>
+                  <ArrowForward fontSize="inherit" onClick={() => handleNext()}/>
+              </IconButton>
+          </div>
         </div>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
@@ -52,15 +60,8 @@ function DetailPage() {
         </CardContent>
       </Box>
       
+    
     </Card>
-    <div style={{display:"flex",margin:"5px auto"}}>
-    <IconButton aria-label="delete" size="small" sx={{display: imgNum>0 ? "block":"none", backgroundColor:'palegoldenrod'}}>
-          <ArrowBack fontSize="inherit" onClick={() => handlePrev()}/>
-      </IconButton>
-        <IconButton aria-label="delete" size="small" sx={{display: singleProduct.images.length>0 && imgNum !== singleProduct.images.length? "block":"none", backgroundColor:'palegoldenrod'}}>
-          <ArrowForward fontSize="inherit" onClick={() => handleNext()}/>
-      </IconButton>
-    </div>
         </div>
      );
 }
