@@ -1,4 +1,10 @@
 .posts-box{
     min-height: 100vh;
+}
+
+.all-posts{
+    height: 100vh;
     overflow: scroll;
+    
+
 }

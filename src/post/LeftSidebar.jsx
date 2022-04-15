@@ -9,7 +9,7 @@ import { Typography } from "@mui/material";
 
 function LeftSidebar({fetchPosts}) {
     const myInfo = useSelector(state => state.user.myInfo)
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
      
 
     return ( 
@@ -18,10 +18,10 @@ function LeftSidebar({fetchPosts}) {
             <Image src={myInfo?.avatar} />
             </div>
             <h4>{myInfo.name.toUpperCase()} {myInfo.surname.toUpperCase()}</h4>
-            <Typography>{myInfo.email}</Typography>
-            <Typography>{myInfo.role}</Typography>
-            <Button variant="containted" onClick={() => setOpen(true)}>Add new post</Button>
-                {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
+            <Typography>{myInfo?.email}</Typography>
+            <Typography>{myInfo?.role}</Typography>
+            {/* <Button variant="containted" onClick={() => setOpen(true)}>Add new post</Button> */}
+                {/* {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>} */}
     </Box>
      );
 }

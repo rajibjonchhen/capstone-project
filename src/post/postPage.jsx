@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./postPage.css"
 import { Avatar, Button, TextField, Typography } from '@mui/material';
 import { Photo, Videocam, VideocamOff, Work } from '@mui/icons-material';
+import AddPostEdit from './AddPostEdit';
+import { border, borderRadius } from '@mui/system';
 
 
 function PostPage() {
@@ -24,7 +26,8 @@ function PostPage() {
     const dispatch = useDispatch()
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState (false)
-
+    const [open, setOpen] = useState(false);
+     
     
     const allPosts = useSelector(state => state.post.allPosts)
     const myInfo = useSelector(state => state.user.myInfo)
@@ -91,35 +94,28 @@ function PostPage() {
                     src={myInfo.avatar}
                     alt="user image"
                     />
-                        <TextField
-                            className='comment-input'
-                            margin="normal"
-                            fullWidth
-                            size="small"
-                            id="post"
-                            label="post"
-                            name="post"
-                            onClick={(e) =>{} }
-                            autoFocus
-                            />
-                            </div>
-                <div>
-              <Button
-                onClick={()=>{}}
-                className="button start-post-btn second-btn-outline w-100 shadow-none"
-                style={{
-                  paddingLeft: "10px",
-                  paddingRight: "270px",
-                  paddingTop: "10px",
-                  paddingBottom: "10px",
-                  textAlign: "left",
-                  fontWeight: "normal",
-                }}
-              >
+                      <button
+                            onClick={()=>{setOpen(true)}}
+                            style={{
+                            paddingLeft: "10px",
+                            paddingRight: "270px",
+                            paddingTop: "10px",
+                            paddingBottom: "10px",
+                            textAlign: "left",
+                            fontWeight: "normal",
+                            width:"100%",
+                            borderRadius:"30px",
+                            
+                            }}
+                        >
                 Start a post
-              </Button>
+              </button>
+                      
+                    </div>
+                <div>
+                {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
             </div>
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex", marginTop:'10px', justifyContent:'center'}}>
                 <div style={{display:"flex"}}>
                 <Photo/>
                 <Typography sx={{margin:"0 5px"}}>Photo</Typography>
@@ -135,7 +131,7 @@ function PostPage() {
             </div>
           </div>
                 </Item>
-                <Item>
+                <Item className="all-posts">
                     {allPosts?.map(post => <SinglePost fetchPosts={fetchPosts} post={post}/>)}
                 </Item>
             </Grid>

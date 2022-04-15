@@ -9,18 +9,22 @@ import Typography from "@mui/material/Typography";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { pink } from "@material-ui/core/colors";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSingleProductAction } from "../redux/actions/action";
+
 
 export default function SingleCard({product}) {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [likesCount, setLikesCount] = useState(100);
   const [like, setLike] = useState(false);
   return (
     <Card sx={{ width: "98%", m: 1 }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt= {product?.title}
         height="140"
-        image="https://picsum.photos/200/300"
+        image={product?.images[0] || "https://res.cloudinary.com/dai5duzoj/image/upload/v1649986446/creators-space-products/lw8f79wcrzpqa4eqeane.png"}
       />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
@@ -40,8 +44,9 @@ export default function SingleCard({product}) {
             onClick={() => setLike(true)}
           />
         </Button>
-        <Button size="small"  onClick={() => navigate("/detail")}>Learn More</Button>
+        <Button size="small"  onClick={() =>{dispatch(setSingleProductAction(product)); navigate("/detail")}}>Learn More</Button>
       </CardActions>
+       
     </Card>
   );
 }

@@ -120,7 +120,7 @@ export default function SinglePost({post}) {
           {post?.comments?.map(comment => {
            <Box>
               <Typography paragraph>
-                1234{comment?.content}
+                {comment?.content}
               </Typography>
              
            </Box>   
