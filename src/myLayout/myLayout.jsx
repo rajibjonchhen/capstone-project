@@ -44,7 +44,7 @@ function MyLayout({children}) {
         <Container maxWidth="xs"  className="myLayout-box">
 
         <Grid container >
-                    <Grid item xs={12} sm={12} md={10} lg={8} className="content-center">
+                    <Grid item xs={12} sm={12} md={10} lg={10} className="content-center">
                         {children}
                     </Grid>
                 </Grid>

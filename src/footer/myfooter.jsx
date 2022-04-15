@@ -59,7 +59,7 @@ function MyFooter() {
   return (
     
       <Grid   container style={{ justifyContent:"center"}}>
-      <Grid item xs={12} md={10} lg={8} className="footer-box">
+      <Grid item xs={12} md={10} lg={10} className="footer-box">
           <Grid container spacing={2}>
           {footerParts.map((part, i) => (
             <Grid key={i} item xs={12} md={3} lg={3} >

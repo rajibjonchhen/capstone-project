@@ -102,9 +102,9 @@ function MyAccount() {
 
     return ( 
     
-        <Grid className="account-box">
+        <Grid container className="account-box">
             {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
-            <Box className='account-image-box'>
+            <Grid item xs={12}  md={4} lg={3} className='account-image-box'>
                 
                 <Image src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} width="100px" sx={{marginTop:"10px"}}/>
                 
@@ -112,6 +112,7 @@ function MyAccount() {
                     variant="contained"
                     component="label"
                     size="small"
+                    sx={{width:"150px", marginTop:"10px"}}
                     >
                     Change Image
                     <input
@@ -120,8 +121,8 @@ function MyAccount() {
                         onChange={(e) => {selectAvatar(e)}}
                         />
                 </Button>
-            </Box>
-            <Box>
+            </Grid>
+            <Grid item xs={12}  md={8} lg={9}>
                 <Button onClick={() => setEditProfile(false)}>Edit Profile</Button>
                 <Button onClick={(e) => saveChange(e)}>Save Change</Button>
                 {error.length > 0 && <Alert margin="normal" fullWidth severity="error">{error}</Alert>}
@@ -213,7 +214,7 @@ function MyAccount() {
       )}
     />*/}
 
-            </Box>
+            </Grid>
         </Grid> 
         
      );

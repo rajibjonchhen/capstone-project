@@ -222,7 +222,7 @@ console.log(location.pathname)
 
       <AppBar style={{background:"rgb(5,106,145)", color:"white"}}>  
       <Grid container >
-      <Grid item xs={12} sm={12} md={10} lg={8} style={{margin:"auto", display:"flex",justifyContent:"center"}}>
+      <Grid item xs={12} sm={12} md={10} lg={10} style={{margin:"auto", display:"flex",justifyContent:"center"}}>
         <Toolbar style={{width:"100%", padding:0}}>
           <Flare className="App-logo" onClick={() => navigate("/home")} />
 

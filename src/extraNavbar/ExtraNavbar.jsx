@@ -23,7 +23,7 @@ function ExtraNavbar() {
           xs={12}
           sm={12}
           md={10}
-          lg={8}
+          lg={10}
           style={{
             margin: "auto",
             display: "flex",
