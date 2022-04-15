@@ -1,3 +1,28 @@
 .comment-input{
     border-radius: 20% !important;
 }
+
+.comment-box{
+    border:1px solid rgb(210,210,210);
+    padding:6px;
+    border-radius:15px;
+    margin-bottom: 5px
+}
+
+
+.comment-box>div{
+display:flex;
+justify-content:flex-start;
+align-items:center
+}
+
+.comment-box>div>img {
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    margin-right: 10px
+}
+
+.MuiTypography-root.MuiTypography-body1.css-ahj2mt-MuiTypography-root{
+font-size: 12px;
+}

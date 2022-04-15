@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -33,19 +33,56 @@ export default function SinglePost({ post, fetchPosts }) {
   const [comment, setComment] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const [ allComments, setAllComments] = useState([])
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const handleComment = async (postId) => {
+  useEffect(() => {
+    fetchComments()
+  },[allComments])
+ 
+  const fetchComments = async () => {
     try {
       console.log(process.env.REACT_APP_DEV_BE_URL);
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/posts/${postId}`,
+        `${process.env.REACT_APP_DEV_BE_URL}/posts/${post._id}/comments`,
         {
           method: "GET",
           headers: {
+            authorization: localStorage.getItem("MyToken"),
+          },
+        }
+      );
+
+      if (response.status !== 200) {
+        const data = await response.json();
+        console.log(data);
+        setError(data.error);
+        setIsLoading(false);
+      } else {
+        const data = await response.json();
+        console.log(data.comments);
+        setIsLoading(false);
+        setAllComments(data.comments)
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  const handleComment = async () => {
+    setComment("")
+    try {
+      console.log(process.env.REACT_APP_DEV_BE_URL);
+      const response = await fetch(
+        `${process.env.REACT_APP_DEV_BE_URL}/posts/${post._id}/comments`,
+        {
+          method: "Post",
+          body:JSON.stringify({comment:comment }),
+          headers: {
+            "content-type": "application/json",
             authorization: localStorage.getItem("MyToken"),
           },
         }
@@ -59,7 +96,8 @@ export default function SinglePost({ post, fetchPosts }) {
         const data = await response.json();
         console.log(data);
         setIsLoading(false);
-        fetchPosts();
+       
+        fetchComments();
       }
     } catch (error) {
       console.log(error);
@@ -128,11 +166,17 @@ export default function SinglePost({ post, fetchPosts }) {
             Post
           </Button>
           <Typography paragraph>Comments:</Typography>
-          {post?.comments?.map((comment) => {
-            <Box>
-              <Typography paragraph>{comment?.content}</Typography>
-            </Box>;
-          })}
+          <div>
+          {allComments?.map((item, i) => 
+            <Box key={i} className="comment-box" >
+              <div>
+                <img src={item?.commentedBy?.avatar} alt={item?.commentedBy?.name} />
+                <Typography className="commentedBy">{item?.commentedBy?.name} {item?.commentedBy?.surname}</Typography>
+              </div>
+              <Typography paragraph>{item?.comment}</Typography>
+            </Box>
+          )}
+          </div>
         </CardContent>
       </Collapse>
     </Card>
