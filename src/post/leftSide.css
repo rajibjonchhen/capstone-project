@@ -1,0 +1,11 @@
+.left-side{
+width: 100px;
+height: 100px;
+margin: auto;
+border-radius: 50%;
+overflow: hidden;
+}
+.left-side img{
+width: 100px;
+border-radius: 50%;
+}

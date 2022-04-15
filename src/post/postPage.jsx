@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router-dom';
 import { setAllPostsAction } from '../redux/actions/action';
 import { useDispatch, useSelector } from 'react-redux';
 import "./postPage.css"
+import { Avatar, Button, TextField, Typography } from '@mui/material';
+import { Photo, Videocam, VideocamOff, Work } from '@mui/icons-material';
 
 
 function PostPage() {
@@ -23,8 +25,9 @@ function PostPage() {
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState (false)
 
+    
     const allPosts = useSelector(state => state.post.allPosts)
-
+    const myInfo = useSelector(state => state.user.myInfo)
    
     useEffect(() =>{
         fetchPosts()
@@ -59,6 +62,8 @@ function PostPage() {
             setIsLoading(false)
         } 
     }
+
+    
     
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -75,10 +80,63 @@ function PostPage() {
                     <LeftSidebar fetchPosts={fetchPosts}/>
                 </Item>
             </Grid>
+
             <Grid item sm={12} md={6} lg={6} className="posts-box">
+                <Item sx={{ margin:"3px 0px"}}>
+                    <div>
+
+                <div style={{display:"flex", alignItems:'center'}}>
+                    <Avatar
+                    sx={{margin:"0 5px"}}
+                    src={myInfo.avatar}
+                    alt="user image"
+                    />
+                        <TextField
+                            className='comment-input'
+                            margin="normal"
+                            fullWidth
+                            size="small"
+                            id="post"
+                            label="post"
+                            name="post"
+                            onClick={(e) =>{} }
+                            autoFocus
+                            />
+                            </div>
+                <div>
+              <Button
+                onClick={()=>{}}
+                className="button start-post-btn second-btn-outline w-100 shadow-none"
+                style={{
+                  paddingLeft: "10px",
+                  paddingRight: "270px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
+                  textAlign: "left",
+                  fontWeight: "normal",
+                }}
+              >
+                Start a post
+              </Button>
+            </div>
+            <div style={{display:"flex"}}>
+                <div style={{display:"flex"}}>
+                <Photo/>
+                <Typography sx={{margin:"0 5px"}}>Photo</Typography>
+                </div>
+                <div style={{display:"flex"}}>
+                <Videocam/>
+                <Typography sx={{margin:"0 5px"}}>Video</Typography>
+                </div>
+                <div style={{display:"flex"}}>
+                <Work/>
+                <Typography sx={{margin:"0 5px"}}>Job</Typography>
+                </div>
+            </div>
+          </div>
+                </Item>
                 <Item>
-                    {allPosts?.map(post => <SinglePost post={post}/>)}
-                    
+                    {allPosts?.map(post => <SinglePost fetchPosts={fetchPosts} post={post}/>)}
                 </Item>
             </Grid>
             <Grid item sm={12} md={3} lg={3}>
