@@ -9,6 +9,7 @@ import { Grid } from "@material-ui/core";
 import { Button, Container } from "@mui/material";
 import MessageForm from "./MessageForm";
 import { CloseButton } from "react-bootstrap";
+import "./detailPage.css"
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
@@ -141,28 +142,7 @@ function DetailPage() {
           </div>
 
         <div item style={{ margin: "15px auto", width:"300px",display:"flex", justifyContent:"space-around" }}>
-          {myInfo._id === singleProduct.creator? (
-            <>
-          <Button variant="contained" component="label">
-            Upload File
-            <input
-              type="file"
-              hidden
-              multiple
-              onChange={(e) => handleSelection(e)}
-              />
-          </Button> 
-          <Button variant="contained">Edit Product</Button>
-              </>
-          ):(<>
-          <Button variant="contained" component="label"  onClick={(e) => setOpen(true)}>
-           Contact Creator
-          </Button>
-          <Button variant="contained">
-            Book a meeting
-          </Button>
-          </>)
-          }
+          
          
         </div>
       </Grid>
@@ -184,7 +164,34 @@ function DetailPage() {
         </CardContent>
       </Grid>
     </Grid>
-      <Grid container style={{display:open? "block":"none"}} >
+      <Grid container style={{display:open? "block":"block"}} >
+       
+              <Grid item xs={12}>
+              {myInfo._id === singleProduct.creator? (
+            <>
+          <Button className="theme-btn">
+            Upload File
+            <input
+              type="file"
+              hidden
+              multiple
+              onChange={(e) => handleSelection(e)}
+              />
+          </Button> 
+          <Button className="theme-btn">Edit Product</Button>
+              </>
+          ):(<>
+          <Button className="theme-btn"  onClick={(e) => setOpen(true)}>
+           Contact Creator
+          </Button>
+          <Button className="theme-btn">
+            Book a meeting
+          </Button>
+          </>)
+          }
+              </Grid>
+      </Grid>
+      <Grid container style={{display:open? "block":"none", marginTop:"50px"}} >
         <CloseButton onClick={() => setOpen(false)}/>
               <Grid item xs={12}>
                   <MessageForm/>
