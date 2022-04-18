@@ -15,9 +15,11 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Image } from "react-bootstrap";
 import { Grid } from "@material-ui/core";
 import { Button } from "@mui/material";
+import ContactCreator from "./ContactCreator";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
+  const [open, setOpen] = useState(false)
   const [selectedImages, setSelectedImages] = useState(null);
   const [newProductErr, setNewProductErr] = useState({});
   const [error, setError] = useState();
@@ -153,15 +155,10 @@ function DetailPage() {
               onChange={(e) => handleSelection(e)}
             />
           </Button> :
-          <Button variant="contained" component="label">
+          <Button variant="contained" component="label"  onClick={(e) => setOpen(true)}>
            Contact Creator
-            <input
-              type="file"
-              hidden
-              multiple
-              onChange={(e) => handleSelection(e)}
-            />
           </Button>}
+         <ContactCreator open={open} setOpen={setOpen}/>
         </div>
       </Grid>
       <Grid item  sx={{ display: "flex", flexDirection: "column" }} xs={12} md={6}>
