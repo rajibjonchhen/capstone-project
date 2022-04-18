@@ -149,8 +149,9 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
 
    const uploadImages = async(productId) => {
        console.log("saving the files now")
-    const formData = new FormData()
-    formData.append("images", selectedImages)
+       const formData = new FormData()
+       formData.append("images", selectedImages)
+       console.log("saving the files now", formData)
     try {
         const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products/me/${productId}/images`,{
             method:"POST",
@@ -166,6 +167,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
         } else {
             setSuccessMsg(true)
             setIsLoading(false);
+            setTimeout(() => setSuccessMsg(false),1000)
         }
     }
         catch(error){

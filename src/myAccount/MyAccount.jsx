@@ -47,6 +47,7 @@ function MyAccount() {
     const saveAvatar = async() => {
         const formData = new FormData()
         formData.append("avatar", avatar)
+        console.log(formData)
         try {
             const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/me/avatar`,{
                 method:"POST",
