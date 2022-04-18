@@ -59,7 +59,7 @@ function MyProfile() {
                             <Grid container style={{display: profilePagination === "My Creations"? "flex":"none" }}>
                                 {myProducts?.length === 0 && <Typography variant="h2" paragraph>You do not have any creation yet</Typography>}
                                 {myProducts?.map((product, i) => 
-                                <Grid  key={i} item xs={12} sm={12} md={6} lg={4}>
+                                <Grid  key={i} item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
                                     <SingleCard product={product}/>
                                 </Grid> )}
                             </Grid>

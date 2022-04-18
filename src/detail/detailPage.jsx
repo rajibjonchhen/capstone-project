@@ -140,8 +140,10 @@ function DetailPage() {
             </IconButton>
           </div>
 
-        <div item style={{ margin: "5px" }}>
-          {myInfo._id === singleProduct.creator? <Button variant="contained" component="label">
+        <div item style={{ margin: "15px auto", width:"300px",display:"flex", justifyContent:"space-around" }}>
+          {myInfo._id === singleProduct.creator? (
+            <>
+          <Button variant="contained" component="label">
             Upload File
             <input
               type="file"
@@ -149,10 +151,18 @@ function DetailPage() {
               multiple
               onChange={(e) => handleSelection(e)}
               />
-          </Button> :
+          </Button> 
+          <Button variant="contained">Edit Product</Button>
+              </>
+          ):(<>
           <Button variant="contained" component="label"  onClick={(e) => setOpen(true)}>
            Contact Creator
-          </Button>}
+          </Button>
+          <Button variant="contained">
+            Book a meeting
+          </Button>
+          </>)
+          }
          
         </div>
       </Grid>
