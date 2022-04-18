@@ -1,6 +1,7 @@
 
 
 import * as React from 'react';
+import {useState, useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -40,18 +41,18 @@ export default function SignUp({setShowSignIn}) {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [error, setError] = React.useState("")
-    const [showPassword, setShowPassword] = React.useState(true)
-    const [isSubmit, setIsSubmit] = React.useState(false)
-    const [signUpErr, setSignUpErr] = React.useState({})
-    const [signUpUser, setSignUpUser] = React.useState({
+    const [error, setError] = useState("")
+    const [showPassword, setShowPassword] = useState(true)
+    const [isSubmit, setIsSubmit] = useState(false)
+    const [signUpErr, setSignUpErr] = useState({})
+    const [signUpUser, setSignUpUser] = useState({
     name: "",
     surname: "",
     email: "",
     password: "",
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     
     if(Object.keys(signUpErr).length === 0 && isSubmit){
         console.log("I am going to submit")

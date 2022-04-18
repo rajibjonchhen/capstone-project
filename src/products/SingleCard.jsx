@@ -19,7 +19,7 @@ export default function SingleCard({product}) {
   const [likesCount, setLikesCount] = useState(100);
   const [like, setLike] = useState(false);
   return (
-    <Card sx={{ width: "98%", minHeight:"300px", m: 1 }}>
+    <Card sx={{ width: "98%",maxWidth:"360px", minHeight:"300px", m: 1 }}>
       <CardMedia
         component="img"
         alt= {product?.title}
