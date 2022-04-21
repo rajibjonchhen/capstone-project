@@ -16,7 +16,7 @@ import { useState, useEffect } from "react";
 
 import "./addEditNewProduct.css";
 
-function AddEditNewProduct({ moreInfo, setMoreInfo }) {
+function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }) {
 
     const [successMsg, setSuccessMsg] = useState(false)
     const [selectedImages, setSelectedImages] = useState([])  
@@ -24,7 +24,8 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
     const [error, setError] = useState();
     const [isLoading, setIsLoading] = useState();
     const [isSubmit, setIsSubmit] = useState(false);
-
+    const [method,setMethod] = useState("POST")
+    const [url,setUrl] = useState("/products")
     const [newProduct, setNewProduct] = useState({
     title: "",
     category: "",
@@ -38,6 +39,29 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
     agreement:"",
     inventionAddresses:"",
   });
+
+  useEffect(() => {
+
+    if(singleProduct){
+      setMethod("PUT")
+      console.log(singleProduct)
+
+      setNewProduct({
+        title: singleProduct.title || "",
+        category: singleProduct.category ||"",
+        summary: singleProduct.summary ||"",
+        description: singleProduct.description ||"",
+        askingPrice: singleProduct.askingPrice ||"",
+        criteria: singleProduct.criteria ||"",
+        patent: singleProduct.patent ||"",
+        reqInvestment:singleProduct.reqInvestment ||"",
+        auxiliaryProducts:singleProduct.auxiliaryProducts ||"",
+        agreement:singleProduct.agreement ||"",
+        inventionAddresses:singleProduct.inventionAddresses ||"",
+      })
+      setUrl(`/products/me/${singleProduct._id}`)
+    }
+  },[])
 
   const categories = [
     "idea",
@@ -93,12 +117,12 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
 
   const saveProduct = async () => {
     setError("")
-      console.log("saving now ")
+      console.log("saving now " , process.env.REACT_APP_DEV_BE_URL + url, method , "singleProduct", singleProduct._id)
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products`,
+        `${process.env.REACT_APP_DEV_BE_URL}` + url,
         {
-          method: "POST",
+          method,
           body: JSON.stringify(newProduct),
           headers: {
             "content-type": "application/json",
@@ -114,7 +138,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
       } else {
         const data = await response.json();
         console.log(data);
-        const productId = data.product._id
+        
 
         setNewProduct({
           title: "",
@@ -129,9 +153,12 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
           agreement:"",
           inventionAddresses:"",
         })
+        if(singleProduct){
+          handleClose()
+        }
 
         if(selectedImages){
-            uploadImages(productId)
+            // uploadImages(productId)
         } else{
           setIsLoading(false);
         }   
@@ -150,6 +177,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
    const uploadImages = async(productId) => {
        console.log("saving the files now")
        const formData = new FormData()
+       
        formData.append("images", selectedImages)
        console.log("saving the files now", formData)
     try {
@@ -180,6 +208,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
       <Container conatianer>
           <h2>Fill in the product details</h2>
           {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
+          {error && <Alert margin="normal"  severity="error">{error}</Alert>}
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
               <TextField
@@ -334,7 +363,6 @@ function AddEditNewProduct({ moreInfo, setMoreInfo }) {
             <Grid item xs={12} md={6}>
               <TextField
                 margin="normal"
-                required
                 fullWidth
                 variant="outlined"
                 size="small"

@@ -10,10 +10,12 @@ import { Button, Container } from "@mui/material";
 import MessageForm from "./MessageForm";
 import { CloseButton } from "react-bootstrap";
 import "./detailPage.css"
+import EditProductPage from "./EditProductPage";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
   const [open, setOpen] = useState(false)
+  const [showEditPage, setShowEditPage] = useState(false)
   const [selectedImages, setSelectedImages] = useState(null);
   const [newProductErr, setNewProductErr] = useState({});
   const [error, setError] = useState();
@@ -185,7 +187,7 @@ function DetailPage() {
             </Button>
         {/*  */}
 
-          <Button className="theme-btn">Edit Product</Button>
+          <Button className="theme-btn" onClick={() => setShowEditPage(true)}>Edit Product</Button>
               </>
           ):(<>
           <Button className="theme-btn"  onClick={(e) => setOpen(true)}>
@@ -202,6 +204,12 @@ function DetailPage() {
         <CloseButton onClick={() => setOpen(false)}/>
               <Grid item xs={12}>
                   <MessageForm/>
+              </Grid>
+      </Grid>
+                 {showEditPage && <EditProductPage showEditPage={showEditPage} setShowEditPage={setShowEditPage}/>}
+      <Grid container style={{display:open? "block":"none", marginTop:"50px"}} >
+        <CloseButton onClick={() => setOpen(false)}/>
+              <Grid item xs={12}>
               </Grid>
       </Grid>
   </Container>
