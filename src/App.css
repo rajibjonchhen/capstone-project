@@ -66,6 +66,18 @@ cursor: pointer
 .border-top{
   border-top:1px solid rgba(194, 194, 194, 0.205)
 }
+
+
+.theme-btn{
+  background-color: rgb(12, 136, 185) !important;
+  color:white !important;
+  margin:3px !important
+}
+.theme-btn:hover{
+  background-color: rgb(21, 160, 202) !important;
+  color:white
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

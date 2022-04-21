@@ -6,10 +6,15 @@ function OurMission() {
     return ( 
         
             <div className="mission-box">
-                <h3>---------- Our Mission ----------</h3>
+                    <hr className="mission-box-hr"/>
+                <h3>
+                    Our Mission 
+                </h3>
+                    <hr className="mission-box-hr"/>
                 <p> 
                     Set the environment for brainstorming, provide value to the ideas to creating better society.
                 </p>
+                <hr className="mission-box-hr"/>
             </div>
        
     );

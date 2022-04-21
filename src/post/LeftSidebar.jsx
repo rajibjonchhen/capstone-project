@@ -17,7 +17,7 @@ function LeftSidebar({fetchPosts}) {
             <div className="left-side" >
             <Image src={myInfo?.avatar} />
             </div>
-            <h4>{myInfo.name.toUpperCase()} {myInfo.surname.toUpperCase()}</h4>
+            <h4>{myInfo.name} {myInfo.surname}</h4>
             <Typography>{myInfo?.email}</Typography>
             <Typography>{myInfo?.role}</Typography>
             {/* <Button variant="containted" onClick={() => setOpen(true)}>Add new post</Button> */}

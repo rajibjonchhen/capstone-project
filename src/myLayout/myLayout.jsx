@@ -41,7 +41,7 @@ function MyLayout({children}) {
         <div style={{display:location.pathname === "/profile"? "block":"none"}}>
         <ExtraNavbar />
         </div>
-        <Container maxWidth="xs"  className="myLayout-box">
+        <Container  className="myLayout-box">
 
         <Grid container >
                     <Grid item xs={12} sm={12} md={10} lg={10} className="content-center">

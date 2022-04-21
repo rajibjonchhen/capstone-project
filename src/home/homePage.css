@@ -8,6 +8,13 @@
     padding: 20px 10px;
 }
 
+.my-icons{
+    background-color: rgb(5,106,145);
+    font-size: 50px !important;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
 @media only screen and (max-width: 360px){
     .mission-box p{
         font-size: 16px;

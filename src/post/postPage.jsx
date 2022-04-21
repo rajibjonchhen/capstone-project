@@ -132,7 +132,7 @@ function PostPage() {
           </div>
                 </Item>
                 <Item className="all-posts">
-                    {allPosts?.map(post => <SinglePost fetchPosts={fetchPosts} post={post}/>)}
+                    {allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
                 </Item>
             </Grid>
             <Grid item sm={12} md={3} lg={3}>

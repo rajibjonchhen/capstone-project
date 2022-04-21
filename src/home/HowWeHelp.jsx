@@ -7,37 +7,19 @@ import {
 } from "@material-ui/core";
 import { Home } from "@mui/icons-material";
 import { Button, Card } from "@mui/material";
+import "./howWeHelpCard.css"
 
-function HowWeHelp() {
+
+function HowWeHelp({information}) {
   return (
-   
-        
-          
-            <Card sx={{ maxWidth: "100%", margin: "auto" }}>
-              <Avatar sx={{ m: "10px auto", bgcolor: "secondary" }}>
-                <Home />
-              </Avatar>
-              <CardContent>
-                <Typography
-                  sx={{ fontSize: 14 }}
-                  color="secondary"
-                  gutterBottom
-                >
-                  Word of the Day
-                </Typography>
-                <Typography variant="h5" component="div"></Typography>
-                <Typography sx={{ mb: 1.5 }} color="secondary">
-                  adjective
-                </Typography>
-                <Typography variant="body2">
-                  well meaning and kindly.
-                  <br />
-                  {'"a benevolent smile"'}
-                </Typography>
-              </CardContent>
-            </Card>
-         
-        
+        <div className="how-we-help-card">
+          {/* <img src={information.image} alt={information.title}/> */}
+          <div className="small-icons">
+            {information?.image}
+          </div>
+          <p>{information?.title}</p>
+          <p>{information?.description}</p>
+        </div>
       
   );
 }

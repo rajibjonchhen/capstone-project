@@ -1,0 +1,9 @@
+.single-product-card{
+background-color:rgb(199, 226, 241) !important;
+box-shadow: 0 0 2px 2px white;
+}
+
+.single-product-card:hover{
+box-shadow: 0 0 2px 2px grey;
+transform: scale(1.02);
+}

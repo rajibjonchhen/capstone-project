@@ -11,7 +11,7 @@ import { pink } from "@material-ui/core/colors";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSingleProductAction } from "../redux/actions/action";
-
+import "./singleCard.css"
 
 export default function SingleCard({product}) {
   const navigate = useNavigate()
@@ -19,7 +19,7 @@ export default function SingleCard({product}) {
   const [likesCount, setLikesCount] = useState(100);
   const [like, setLike] = useState(false);
   return (
-    <Card sx={{ width: "98%",maxWidth:"360px", minHeight:"300px", m: 1 }}>
+    <Card className="single-product-card" sx={{ width: "98%",maxWidth:"360px", minHeight:"300px", m: 1 }}>
       <CardMedia
         component="img"
         alt= {product?.title}

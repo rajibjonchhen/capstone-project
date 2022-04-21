@@ -63,8 +63,8 @@ export default function RightSidebar() {
 
   return (
     <List className={classes.root}>
-      {allUsers?.map(user => 
-          <ListItem alignItems="flex-start">
+      {allUsers?.map((user, i) => 
+          <ListItem key={i} alignItems="flex-start">
             <ListItemAvatar>
               <Avatar alt={user.name} src={user.avatar} />
             </ListItemAvatar>

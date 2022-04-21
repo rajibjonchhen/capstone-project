@@ -7,11 +7,38 @@ import HowWeHelp from "./HowWeHelp";
 import { useNavigate } from "react-router-dom";
 import OurProjects from "./OurProjects";
 import OurMission from "./OurMission";
+import { Business, Group, Support } from "@mui/icons-material";
+import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 
 function HomePage() {
 
    const navigate = useNavigate()
-   
+   const informationArray =  [
+      {
+         title:"Individuals",
+         description:"We strive to make it easier for everyone to come up with innovative ideas that can create business and job opportunity  across the world. If you have a good intention to contribute to your favorite cause, we've got you covered.",
+         body:"",
+         image:<Group className="my-icons"/>
+   },
+      {
+         title:"Investors",
+         description:"We provide business plans and particularized solutions to help investor to find right business/corporate and enable them to invest in their interested field, and support any project across the world.",
+         body:"",
+         image:<Business className="my-icons"/>
+   },
+      {
+         title:"Society",
+         description:"Any non-profit organization anywhere in the world can join Tom Parker's Giving to create fundraising pages and access tools, training, individual support, and money-seeking with the help of our community.",
+         body:"",
+         image:<AttachMoneyOutlinedIcon className="my-icons"/>
+   },
+      {
+         title:"Support",
+         description:"Through our rigorous review process and wide network, we provide foundations with the opportunity to send gifts to local nonprofit organizations around the world that would be too small for conventional grant processes.",
+         body:"",
+         image:<Support className="my-icons"/>
+   },
+]
    
    
     return ( 
@@ -23,11 +50,15 @@ function HomePage() {
               <OurMission/>
            
            
-              <h2 className="theme-color">Our Projects</h2>
+              <h1 className="theme-color">Our Projects</h1>
               <OurProjects/>
     
-              <h2 className="theme-color">How we help</h2>
-                <HowWeHelp/>
+              <h1 className="theme-color">How we help</h1>
+              <Grid container >
+              {informationArray.map((information, i) => <Grid key={i} xs={12} md={6}  item>
+                <HowWeHelp information={information}/>
+              </Grid>)}
+              </Grid>
            
             
                

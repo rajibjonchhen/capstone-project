@@ -16,6 +16,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Box, TextField } from "@mui/material";
 import "./singlePost.css";
 import { Button } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { MoreVertRounded } from "@mui/icons-material";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,16 +31,21 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function SinglePost({ post, fetchPosts }) {
+
   const [expanded, setExpanded] = useState(false);
   const [comment, setComment] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [ allComments, setAllComments] = useState([])
+  const [isLiked, setIsLiked] = useState(false)
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const myInfo = useSelector(state => state.user.myInfo)
+
   useEffect(() => {
+    setIsLiked(post.isLiked)
     fetchComments(post._id)
   },[])
  
@@ -103,24 +110,61 @@ export default function SinglePost({ post, fetchPosts }) {
       setIsLoading(false);
     }
   };
+
+  const handleLikes = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_DEV_BE_URL}/posts/${post._id}/likes`,
+        {
+          method: "PUT",
+          headers: {
+            authorization: localStorage.getItem("MyToken"),
+          },
+        }
+      );
+      if (response.status !== 200) {
+        const data = await response.json();
+        console.log(data);
+        setError(data.error);
+      } else {
+        const data = await response.json();
+        console.log(data);
+        setIsLiked(data.post.isLiked)
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+
   return (
     <Card sx={{ width: 1, mt: 2 }}>
-      <Box>
-        <CardHeader
-          avatar={
-            <Avatar
+      <Box style={{display:"flex", justifyContent:'space-between'}}>
+
+      <Box style={{display:"flex", justifyContent:'flex-start'}}>
+        <Avatar
               src={
                 post?.postedBy?.avatar ||
                 "https://ui-avatars.com/api/?name=John+Doe"
               }
               sx={{ bgcolor: red[500] }}
               aria-label="recipe"
-            />
-          }
-          title={`${post?.postedBy?.name} ${post?.postedBy?.surname}`}
-          subheader={new Date(post.createdAt).toLocaleTimeString()}
-        />
-        <Typography></Typography>
+              />
+            <div style={{textAlign:'left' , marginLeft:'10px'}}>
+
+        <Typography>
+        {`${post?.postedBy?.name} ${post?.postedBy?.surname}`}
+        </Typography>
+        <Typography>
+        {new Date(post.createdAt).toLocaleTimeString()}
+        </Typography>
+            </div>
+      </Box>
+      <IconButton onClick={() => {}}>
+      <MoreVertRounded className="three-dots"/>
+      </IconButton>
       </Box>
       <CardContent className="border-bottom border-top">
         <Typography variant="body2" color="text.secondary">
@@ -128,7 +172,7 @@ export default function SinglePost({ post, fetchPosts }) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" style={{color:isLiked? "rgb(30,131,173, 0.6)":"grey"}} onClick={()=>handleLikes()}>
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
@@ -159,7 +203,7 @@ export default function SinglePost({ post, fetchPosts }) {
           />
           <Button
             variant="contained"
-            style={{ display: comment.length > 1 ? "block" : "none" }}
+            style={{ display: comment?.length > 1 ? "block" : "none" }}
             onClick={(e) => handleComment(e)}
           >
             Post

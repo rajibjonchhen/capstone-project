@@ -46,11 +46,11 @@ function DetailPage() {
   const uploadImages = async () => {
     const formData = new FormData();
     console.log("saving the files now", formData);
-    // formData.append(`images`, selectedImages);
-    for(let i= 0; i < selectedImages.length; i++){
-      formData.append(`images[${i}]`,selectedImages[i])
-      console.log("form data", formData)
-    }
+    formData.append(`images`, selectedImages);
+    // for(let i= 0; i < selectedImages.length; i++){
+    //   formData.append(`images[${i}]`,selectedImages[i])
+    //   console.log("form data", formData)
+    // }
 
     try {
       console.log("trying saving the files now", formData);
@@ -169,15 +169,22 @@ function DetailPage() {
               <Grid item xs={12}>
               {myInfo._id === singleProduct.creator? (
             <>
-          <Button className="theme-btn">
-            Upload File
-            <input
-              type="file"
-              hidden
-              multiple
-              onChange={(e) => handleSelection(e)}
-              />
-          </Button> 
+{/*  */}
+<Button
+                className="theme-btn"
+                variant="contained"
+                component="label"
+                >
+                Upload File
+                <input
+                    type="file"
+                    hidden
+                    multiple
+                    onChange={(e) => {handleSelection(e)}}
+                    />
+            </Button>
+        {/*  */}
+
           <Button className="theme-btn">Edit Product</Button>
               </>
           ):(<>
