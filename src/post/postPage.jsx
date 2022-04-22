@@ -91,7 +91,7 @@ function PostPage() {
                 <div style={{display:"flex", alignItems:'center'}}>
                     <Avatar
                     sx={{margin:"0 5px"}}
-                    src={myInfo.avatar}
+                    src={myInfo?.avatar}
                     alt="user image"
                     />
                       <button
@@ -132,7 +132,7 @@ function PostPage() {
           </div>
                 </Item>
                 <Item className="all-posts">
-                    {allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
+                    {allPosts?.length > 0 && allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
                 </Item>
             </Grid>
             <Grid item sm={12} md={3} lg={3}>

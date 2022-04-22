@@ -26,7 +26,7 @@ function App() {
           <Route path="/home" exact element={<MyLayout><HomePage/></MyLayout>}/>
           <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
           <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
-          <Route path="/detail" exact element={<MyLayout><DetailPage/></MyLayout>}/>
+          <Route path="/detail/:productId" exact element={<MyLayout><DetailPage/></MyLayout>}/>
           <Route path="/profile" exact element={<MyLayout><MyProfile/></MyLayout>}/>
           <Route path="/products/:category" exact element={<MyLayout><DisplayProducts/></MyLayout>}/>
           <Route path="*" element={<ErrorPage/>}/>

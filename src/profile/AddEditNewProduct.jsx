@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@material-ui/core";
+import { Box, Grid, TextField } from "@material-ui/core";
 import { AddBox } from "@mui/icons-material";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import {
@@ -16,7 +16,7 @@ import { useState, useEffect } from "react";
 
 import "./addEditNewProduct.css";
 
-function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }) {
+function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct }) {
 
     const [successMsg, setSuccessMsg] = useState(false)
     const [selectedImages, setSelectedImages] = useState([])  
@@ -24,6 +24,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
     const [error, setError] = useState();
     const [isLoading, setIsLoading] = useState();
     const [isSubmit, setIsSubmit] = useState(false);
+    const [isSubmitImg, setIsSubmitImg] = useState(false);
     const [method,setMethod] = useState("POST")
     const [url,setUrl] = useState("/products")
     const [newProduct, setNewProduct] = useState({
@@ -35,7 +36,6 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
     criteria: "",
     patent: "",
     reqInvestment:"",
-    auxiliaryProducts:"",
     agreement:"",
     inventionAddresses:"",
   });
@@ -55,7 +55,6 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
         criteria: singleProduct.criteria ||"",
         patent: singleProduct.patent ||"",
         reqInvestment:singleProduct.reqInvestment ||"",
-        auxiliaryProducts:singleProduct.auxiliaryProducts ||"",
         agreement:singleProduct.agreement ||"",
         inventionAddresses:singleProduct.inventionAddresses ||"",
       })
@@ -80,6 +79,13 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
       saveProduct();
     }
   }, [newProductErr]);
+
+  useEffect(() => {
+    if (isSubmitImg && selectedImages.length > 0) {
+      console.log("selected img from useEffect", selectedImages)
+      uploadImages();
+    }
+  }, [selectedImages]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -171,17 +177,18 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
 
   const handleSelection = async(e) => {
     console.log("handle selection",e.target.files)
-     setSelectedImages([e.target.files])
-    await console.log("selected images!!!", selectedImages)
+     setSelectedImages(e.target.files)
+     setIsSubmit(true)
+     console.log("selected images!!!", selectedImages)
    }
 
 
    const uploadImages = async(productId) => {
        console.log("saving the files now")
        const formData = new FormData()
-      
-       formData.append("images", selectedImages)
-       console.log("saving the files now", formData)
+       for(let i= 0; i <= selectedImages.length; i++){
+        formData.append(`images`,selectedImages[i])
+      }
     try {
         const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products/me/${productId}/images`,{
             method:"POST",
@@ -198,6 +205,9 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
             setSuccessMsg(true)
             setIsLoading(false);
             setTimeout(() => setSuccessMsg(false),1000)
+            if(singleProduct){
+              fetchProduct()
+            }
         }
     }
         catch(error){
@@ -231,15 +241,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
                 {!newProduct.title && newProductErr?.title}
               </Typography>
             </Grid>
-            {/* <Autocomplete
-                    disablePortal
-                    id="category"
-                    options={categories}
-                    value={newProduct.category}
-                    onChange={(e) => handleChange(e)}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params}  name="category" value={newProduct.category} label="category" />}
-                /> */}
+          
             <Grid item xs={12} md={6}>
               <FormControl 
                   margin="normal"
@@ -329,23 +331,8 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
                 {!newProduct.askingPrice && newProductErr?.askingPrice}
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <TextField
-                margin="normal"
-                fullWidth
-                size="small"
-                id="criteria"
-                label="criteria"
-                name="criteria"
-                variant="outlined"
-                value={newProduct.criteria}
-                autoFocus
-                onChange={(e) => handleChange(e)}
-              />
-            </Grid>
-          
 
-          <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6}>
               <TextField
                 margin="normal"
                 required
@@ -360,6 +347,20 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
                 onChange={(e) => handleChange(e)}
               />
             </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin="normal"
+                fullWidth
+                size="small"
+                id="criteria"
+                label="criteria"
+                name="criteria"
+                variant="outlined"
+                value={newProduct.criteria}
+                autoFocus
+                onChange={(e) => handleChange(e)}
+              />
+                </Grid>
 
          
             <Grid item xs={12} md={6}>
@@ -399,21 +400,6 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
                 fullWidth
                 variant="outlined"
                 size="small"
-                id="auxiliaryProducts"
-                label="auxiliary products"
-                name="auxiliaryProducts"
-                value={newProduct.auxiliaryProducts}
-                autoFocus
-                onChange={(e) => handleChange(e)}
-              />
-            </Grid>
-
-            <Grid item xs={12} md={6}>
-              <TextField
-                margin="normal"
-                fullWidth
-                variant="outlined"
-                size="small"
                 id="patent"
                 label="patent"
                 name="patent"
@@ -427,11 +413,12 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
            
      
           </Grid>
-          <Grid container spacing={2} className="buttons">
-          <Grid item>
+          <Box spacing={2} className="buttons">
+          
             <Button
                 variant="contained"
                 component="label"
+                className="theme-btn"
                 >
                 Upload File
                 <input
@@ -441,14 +428,14 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
                     onChange={(e) => {handleSelection(e)}}
                     />
             </Button>
-            </Grid>
-            <Grid item>
+           
           <Button 
+          className="theme-btn"
           variant="contained"
           component="label"
           onClick={(e) => handleSubmit(e)}>Submit</Button>
-          </Grid>
-          </Grid>
+          
+          </Box>
       </Container>
     
   );

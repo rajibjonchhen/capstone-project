@@ -13,7 +13,7 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Box, TextField } from "@mui/material";
+import { Alert, Box, TextField } from "@mui/material";
 import "./singlePost.css";
 import { Button } from "@material-ui/core";
 import { useSelector } from "react-redux";
@@ -51,7 +51,7 @@ export default function SinglePost({ post, fetchPosts }) {
  
   const fetchComments = async (postId) => {
     try {
-      console.log(process.env.REACT_APP_DEV_BE_URL);
+      
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/posts/${postId}/comments`,
         {
@@ -69,7 +69,6 @@ export default function SinglePost({ post, fetchPosts }) {
         setIsLoading(false);
       } else {
         const data = await response.json();
-        console.log(data.comments);
         setIsLoading(false);
         setAllComments(data.comments)
       }
@@ -82,7 +81,7 @@ export default function SinglePost({ post, fetchPosts }) {
   const handleComment = async () => {
     setComment("")
     try {
-      console.log(process.env.REACT_APP_DEV_BE_URL);
+      
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/posts/${post._id}/comments`,
         {
@@ -101,12 +100,12 @@ export default function SinglePost({ post, fetchPosts }) {
         setIsLoading(false);
       } else {
         const data = await response.json();
-        console.log(data);
         setIsLoading(false);
           fetchPosts( post._id)
       }
     } catch (error) {
       console.log(error);
+      setError(error)
       setIsLoading(false);
     }
   };
@@ -141,6 +140,7 @@ export default function SinglePost({ post, fetchPosts }) {
 
   return (
     <Card sx={{ width: 1, mt: 2 }}>
+      {error && <Alert severity="error">{error}</Alert>}
       <Box style={{display:"flex", justifyContent:'space-between'}}>
 
       <Box style={{display:"flex", justifyContent:'flex-start'}}>
@@ -158,7 +158,7 @@ export default function SinglePost({ post, fetchPosts }) {
         {`${post?.postedBy?.name} ${post?.postedBy?.surname}`}
         </Typography>
         <Typography>
-        {new Date(post.createdAt).toLocaleTimeString()}
+        {new Date(post?.createdAt).toLocaleTimeString()}
         </Typography>
             </div>
       </Box>
@@ -168,7 +168,7 @@ export default function SinglePost({ post, fetchPosts }) {
       </Box>
       <CardContent className="border-bottom border-top">
         <Typography variant="body2" color="text.secondary">
-          {post.content}
+          {post?.content}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

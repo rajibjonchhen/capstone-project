@@ -1,1 +1,14 @@
 
+.creator-profile{
+    
+    display:flex;
+    justify-content: center;
+}
+.detail-title{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.arrow-btn:hover{
+    background-color: rgb(7,105,144) !important;
+}

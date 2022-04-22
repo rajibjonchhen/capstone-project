@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllUsersAction } from '../redux/actions/action';
+import { TextField } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RightSidebar() {
 
   const [error, setError] = useState("");
+  const [query, setQuery] = useState("")
   const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
   
@@ -59,10 +61,18 @@ export default function RightSidebar() {
       } 
   }
 
-
+const handleChange = (e) =>  {
+  if(e.keyCode === 13){
+    console.log(e)
+    
+  }else{
+    setQuery(e.target.value)
+  }
+}
 
   return (
     <List className={classes.root}>
+      <TextField size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
       {allUsers?.map((user, i) => 
           <ListItem key={i} alignItems="flex-start">
             <ListItemAvatar>

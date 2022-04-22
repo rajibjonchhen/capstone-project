@@ -5,12 +5,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
-import { Grid } from "@material-ui/core";
-import { Button, Container } from "@mui/material";
+import { Avatar, Grid } from "@material-ui/core";
+import { Box, Button, Container } from "@mui/material";
 import MessageForm from "./MessageForm";
 import { CloseButton } from "react-bootstrap";
 import "./detailPage.css";
 import EditProductPage from "./EditProductPage";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSingleProductAction } from "../redux/actions/action";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
@@ -25,6 +28,15 @@ function DetailPage() {
   const singleProduct = useSelector((state) => state.product.singleProduct);
   const myInfo = useSelector((state) => state.user.myInfo);
   const [imgNum, setImgNum] = useState(0);
+
+  const dispatch = useDispatch()
+  const params = useParams()
+  useEffect(() => {
+    let productId = params.productId
+    if(productId){
+      fetchProduct(productId)
+    }
+  },[])
 
   useEffect(() => {
     if (isSubmit && selectedImages.length > 0) {
@@ -47,17 +59,41 @@ function DetailPage() {
     }
   };
 
+const fetchProduct = async(productId) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_DEV_BE_URL}/products/${productId}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: localStorage.getItem("MyToken"),
+        },
+      }
+    );
+    if (response.status !== 200) {
+      const data = await response.json();
+      console.log(data, response.status);
+      setError(data.error);
+    } else {
+      const data = await response.json();
+      console.log(data.product);
+      dispatch(setSingleProductAction(data.product))
+      setIsLoading(false);
+    }
+  } catch (error) {
+    
+  }
+}
+
   const uploadImages = async (files) => {
     const userData = new FormData();
-    console.log("saving the files now selectedImages", selectedImages);
-    // formData.append(`images`, files);
+
     for(let i= 0; i <= selectedImages.length; i++){
       userData.append(`images`,selectedImages[i])
-      console.log("form data", userData)
     }
 
     try {
-      console.log("trying saving the files now", userData);
+      
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/products/me/${singleProduct._id}/images`,
         {
@@ -77,7 +113,18 @@ function DetailPage() {
         console.log(data);
         setSuccessMsg(true);
         setTimeout(() => setSuccessMsg(false), 1000);
-        setIsLoading(false);
+        if (response.status !== 200) {
+          const data = await response.json();
+          console.log(data, response.status);
+          setError(data.error);
+        } else {
+          const data = await response.json();
+          console.log(data);
+          setSuccessMsg(true);
+          setTimeout(() => setSuccessMsg(false), 1000);
+          setIsLoading(false);
+          fetchProduct(singleProduct._id)
+        }
       }
     } catch (error) {
       console.log(error);
@@ -92,13 +139,8 @@ function DetailPage() {
       imgArray.push(e.target.files[i]);
     }
     setSelectedImages(imgArray)
-   await console.log(selectedImages, "YEAH!")
-      // uploadImages(e.target.files);
-    
-
-    // await setSelectedImages(imgArray);
-    //  await console.log("setselected img" , selectedImages);
-    await setIsSubmit(true);
+    console.log(selectedImages, "YEAH!")
+     setIsSubmit(true);
 
     // uploadImages();
   };
@@ -116,7 +158,7 @@ function DetailPage() {
           >
             <img
               style={{ width: "100%" }}
-              src={
+              src={singleProduct?.images &&
                 singleProduct?.images[imgNum] ||
                 "https://via.placeholder.com/300"
               }
@@ -131,25 +173,30 @@ function DetailPage() {
             }}
           >
             <IconButton
+            className= "arrow-btn"
               aria-label="delete"
               size="small"
               sx={{
                 opacity: imgNum > 0 ? 1 : 0,
-                backgroundColor: "palegoldenrod",
+                backgroundColor: "rgb(7,105,144, 0.3)",
+                color:"white"
               }}
             >
               <ArrowBack fontSize="inherit" onClick={() => handlePrev()} />
             </IconButton>
             <IconButton
+            className= "arrow-btn"
               aria-label="delete"
               size="small"
               sx={{
                 opacity:
-                  singleProduct.images.length - 1 > 0 &&
-                  imgNum !== singleProduct.images.length
+                  singleProduct?.images?.length  > 1 &&
+                  imgNum !== singleProduct?.images?.length - 1
                     ? 1
                     : 0,
-                backgroundColor: "palegoldenrod",
+                    backgroundColor: "rgb(7,105,144, 0.3)",
+                    color:"white"
+                
               }}
             >
               <ArrowForward fontSize="inherit" onClick={() => handleNext()} />
@@ -176,16 +223,51 @@ function DetailPage() {
             <Typography component="div" variant="h5">
               {singleProduct?.title}
             </Typography>
+            
+            <Typography >
+            <span className="detail-title">Category : </span>
+              {singleProduct?.category}
+            </Typography>
             <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
+             
             >
+              <span className="detail-title">Summary : </span>
               {singleProduct?.summary}
             </Typography>
-            <Typography variant="subtitle1" component="div">
+         
+            <Typography >
+            <span className="detail-title">Description : </span>
               {singleProduct?.description}
             </Typography>
+          { singleProduct?.askingPrice && <Typography >
+            <span className="detail-title">Asking Price : </span>
+              {singleProduct?.askingPrice}
+            </Typography>}
+          { singleProduct?.criteria && <Typography >
+            <span className="detail-title">Criteria : </span>
+              {singleProduct?.criteria}
+              </Typography>}
+          { singleProduct?.reqInvestment && <Typography >
+            <span className="detail-title">Required Investment : </span>
+              {singleProduct?.reqInvestment}
+            </Typography>}
+          { singleProduct?.inventionAddresses && <Typography >
+            <span className="detail-title"> Invension Addresses : </span>
+              {singleProduct?.inventionAddresses}
+            </Typography>}
+          { singleProduct?.patent && <Typography >
+            <span className="detail-title"> Patent  : </span>
+              {singleProduct?.patent}
+            </Typography>}
+            {/* creator's profile */}
+                <h3>Creator's Profile</h3>
+            <Box className="creator-profile">
+              <Avatar style={{width:"60px", height:"60px"}}src={singleProduct?.creator?.avatar}/>
+              <Box style={{textAlign:"left"}}>
+                <Typography>Name : {singleProduct?.creator?.name} {singleProduct?.creator?.surname}</Typography>
+                <Typography>Email : {singleProduct?.creator?.email}</Typography>
+              </Box>
+            </Box>
           </CardContent>
         </Grid>
       </Grid>
@@ -239,17 +321,18 @@ function DetailPage() {
       </Grid>
       {showEditPage && (
         <EditProductPage
+        fetchProduct={fetchProduct}
           showEditPage={showEditPage}
           setShowEditPage={setShowEditPage}
         />
       )}
-      <Grid
+      {/* <Grid
         container
         style={{ display: open ? "block" : "none", marginTop: "50px" }}
       >
         <CloseButton onClick={() => setOpen(false)} />
         <Grid item xs={12}></Grid>
-      </Grid>
+      </Grid> */}
     </Container>
   );
 }

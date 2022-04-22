@@ -26,7 +26,6 @@ import { useSelector } from "react-redux";
 import "./myNavbar.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
-
 function MyNavbar() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -37,9 +36,9 @@ function MyNavbar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-useEffect(() => {
-console.log(location.pathname)
-  },[])
+  useEffect(() => {
+    console.log(location.pathname);
+  }, []);
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -202,8 +201,8 @@ console.log(location.pathname)
         </IconButton>
         <p>Profile</p>
       </MenuItem>
-      <Box sx={{ display: "flex", alignItems: "center"}}>
-        <Search >
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Search>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -220,111 +219,128 @@ console.log(location.pathname)
     <>
       <CssBaseline />
 
-      <AppBar style={{background:"rgb(5,106,145)", color:"white"}}>  
-      <Grid container >
-      <Grid item xs={12} sm={12} md={10} lg={10} style={{margin:"auto", display:"flex",justifyContent:"center"}}>
-        <Toolbar style={{width:"100%", padding:0}}>
-          <Flare className="App-logo" onClick={() => navigate("/home")} />
-
-          <Typography
-            className="brand"
-            
-            onClick={() => navigate("/home")}
+      <AppBar style={{ background: "rgb(5,106,145)", color: "white" }}>
+        <Grid container>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={10}
+            lg={10}
+            style={{
+              margin: "auto",
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
-            {" "}
-            Creator's Space
-          </Typography>
+            <Toolbar style={{ width: "100%", padding: 0 }}>
+              <Flare className="App-logo" onClick={() => navigate("/home")} />
 
-          <Box sx={{ flexGrow: 1 }}  style={{display:location.pathname ==="/product"||"/post"? 1:0}}/>
+              <Typography className="brand" onClick={() => navigate("/home")}>
+                {" "}
+                Creator's Space
+              </Typography>
 
-          <Box sx={{ display: { xs: "none", md: "flex"}  }}>
-            <Box style={{ display:"flex",  alignItems: "center" }}>
-              <Search >
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
-            </Box>
-            
-            <MenuItem onClick={() => {navigate("/home")}}>
-              <Typography>Home</Typography>
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                navigate("/posts");
-              }}
-            >
-              <Typography>Community</Typography>
-            </MenuItem>
+              <Box
+                sx={{ flexGrow: 1 }}
+                style={{
+                  display: location.pathname === "/product" || "/post" ? 1 : 0,
+                }}
+              />
 
-            <MenuItem
-              onClick={() => {
-                navigate("/profile");
-              }}
-            >
-              <Typography>Profile</Typography>
-            </MenuItem>
-              <Box className="flex-center">
-              <IconButton
-                size="large"
-                aria-label="show 4 new mails"
-                color="inherit"
+              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                <Box style={{ display: "flex", alignItems: "center" }}>
+                  <Search>
+                    <SearchIconWrapper>
+                      <SearchIcon />
+                    </SearchIconWrapper>
+                    <StyledInputBase
+                      placeholder="Search…"
+                      inputProps={{ "aria-label": "search" }}
+                    />
+                  </Search>
+                </Box>
+
+                <MenuItem className="margin-xasix"
+                  onClick={() => {
+                    navigate("/home");
+                  }}
                 >
-                <Badge badgeContent={4} color="error">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
+                  <Typography>Home</Typography>
+                </MenuItem>
+                <MenuItem className="margin-xasix"
+                  onClick={() => {
+                    navigate("/posts");
+                  }}
+                >
+                  <Typography>Community</Typography>
+                </MenuItem>
+
+                <MenuItem className="margin-xasix"
+                  onClick={() => {
+                    navigate("/profile");
+                  }}
+                >
+                  <Typography>Profile</Typography>
+                </MenuItem>
+                <Box className="margin-xasix flex-center">
+                  <IconButton
+                    size="large"
+                    aria-label="show 4 new mails"
+                    color="inherit"
+                  >
+                    <Badge badgeContent={4} color="error">
+                      <MailIcon />
+                    </Badge>
+                  </IconButton>
+                </Box>
+
+                <Box className="margin-xasix flex-center">
+                  <IconButton
+                    size="large"
+                    aria-label="show 17 new notifications"
+                    color="inherit"
+                  >
+                    <Badge badgeContent={1} color="error">
+                      <NotificationsIcon />
+                    </Badge>
+                  </IconButton>
+                </Box>
+
+                <IconButton className="margin-xasix"
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <Avatar
+                    src={
+                      myInfo?.avatar ||
+                      "https://ui-avatars.com/api/?name=John+Doe"
+                    }
+                    className="userImg"
+                  />
+                </IconButton>
               </Box>
 
-              <Box className="flex-center">
+              <Box sx={{ display: { xs: "flex", md: "none" } }}>
                 <IconButton
                   size="large"
-                  aria-label="show 17 new notifications"
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
                   color="inherit"
-                  >
-                  <Badge badgeContent={1} color="error">
-                    <NotificationsIcon />
-                  </Badge>
+                >
+                  <MoreIcon />
                 </IconButton>
-            </Box>
-
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <Avatar
-                src={
-                  myInfo?.avatar || "https://ui-avatars.com/api/?name=John+Doe"
-                }
-                className="userImg"
-              />
-            </IconButton>
-          </Box>
-
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </Grid>
-    </Grid>
+              </Box>
+            </Toolbar>
+          </Grid>
+        </Grid>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}

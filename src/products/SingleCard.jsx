@@ -44,7 +44,7 @@ export default function SingleCard({product}) {
             onClick={() => setLike(true)}
           />
         </Button>
-        <Button size="small"  onClick={() =>{dispatch(setSingleProductAction(product)); navigate("/detail")}}>Learn More</Button>
+        <Button size="small"  onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
       </CardActions>
        
     </Card>

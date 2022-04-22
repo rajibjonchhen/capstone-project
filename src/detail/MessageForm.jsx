@@ -136,7 +136,7 @@ function MessageForm() {
             id="name"
             label="place"
             name="place"
-            autoFocusx
+            autoFocus
             onChange={(e) => handleChange(e)}
             />
             <Button onClick={(e) => handleSubmit(e)}>Send</Button>

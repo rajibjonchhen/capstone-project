@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EditProductPage({showEditPage, setShowEditPage}) {
+function EditProductPage({showEditPage, setShowEditPage, fetchProduct}) {
 
     
     const singleProduct = useSelector(state => state.product.singleProduct)
@@ -62,7 +62,7 @@ function EditProductPage({showEditPage, setShowEditPage}) {
           <Grid container style={{display:showEditPage? "block":"none"}} >
         <CloseButton onClick={() => handleClose(false)}/>
               <Grid item xs={12}>
-          <AddEditNewProduct singleProduct={singleProduct} handleClose={handleClose}/>
+          <AddEditNewProduct singleProduct={singleProduct} handleClose={handleClose} fetchProduct={fetchProduct}/>
               </Grid>
       </Grid>
           </div>

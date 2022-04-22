@@ -2,17 +2,11 @@
     background-color: rgb(255, 255, 255);
     border: 1px solid rgba(202, 201, 201, 0.459);
     list-style: none;
-  
     cursor: pointer;
     width: 100%;
     min-height: 60vh;
 }
 
-
-
-.msg-list li:hover{
-    background-color: rgba(151, 181, 206, 0.336);
-}
 
 .msg-detail-box{
     background-color: rgb(255, 255, 255);
@@ -45,7 +39,8 @@
     display: flex; 
     justify-content: flex-start;
     align-items: center;
-    border: 1px solid rgb(230, 229, 229);
+    border-top: 1px solid rgb(230, 229, 229);
+    border-bottom: 1px solid rgb(230, 229, 229);
 
 }
 .sender-list:hover{
