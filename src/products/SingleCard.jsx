@@ -12,14 +12,49 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSingleProductAction } from "../redux/actions/action";
 import "./singleCard.css"
+import { Alert } from "@mui/material";
 
 export default function SingleCard({product}) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [likesCount, setLikesCount] = useState(100);
-  const [like, setLike] = useState(false);
+  const [likesCount, setLikesCount] = useState(null);
+  const [isLiked, setIsLiked] = useState(false)
+  const [error, setError] = useState("")
+
+
+  React.useEffect(() => {
+    console.log(product.isLiked)
+    setIsLiked(product.isLiked)
+  }, [])
+  const handleLikes = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_DEV_BE_URL}/products/${product._id}/likes`,
+        {
+          method: "PUT",
+          headers: {
+            authorization: localStorage.getItem("MyToken"),
+          },
+        }
+      );
+      if (response.status !== 200) {
+        const data = await response.json();
+        console.log(data);
+        setError(data.error);
+      } else {
+        const data = await response.json();
+        console.log(data);
+        setIsLiked(data.product.isLiked)
+        setLikesCount(data.product.Likes.length)
+
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Card className="single-product-card" sx={{ width: "98%",maxWidth:"360px", minHeight:"300px", m: 1 }}>
+      {error && <Alert>{error}</Alert> }
       <CardMedia
         component="img"
         alt= {product?.title}
@@ -38,10 +73,10 @@ export default function SingleCard({product}) {
         <Button size="small">Like</Button>
         <Button size="small" >
           {likesCount}
-          <Favorite sx={{ color: pink[500], display:like? "block":"none" }} onClick={() => setLike(false)} />
+          <Favorite sx={{ color: pink[500], display:isLiked? "block":"none" }} onClick={() => handleLikes()} />
           <FavoriteBorder
-            sx={{ color: pink[500], display:!like? "block":"none"  }}
-            onClick={() => setLike(true)}
+            sx={{ color: pink[500], display:!isLiked? "block":"none"  }}
+            onClick={() => handleLikes()} 
           />
         </Button>
         <Button size="small"  onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
