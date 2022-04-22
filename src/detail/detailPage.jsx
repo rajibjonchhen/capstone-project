@@ -9,28 +9,30 @@ import { Grid } from "@material-ui/core";
 import { Button, Container } from "@mui/material";
 import MessageForm from "./MessageForm";
 import { CloseButton } from "react-bootstrap";
-import "./detailPage.css"
+import "./detailPage.css";
 import EditProductPage from "./EditProductPage";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
-  const [open, setOpen] = useState(false)
-  const [showEditPage, setShowEditPage] = useState(false)
-  const [selectedImages, setSelectedImages] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [showEditPage, setShowEditPage] = useState(false);
+  const [selectedImages, setSelectedImages] = useState([]);
   const [newProductErr, setNewProductErr] = useState({});
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState();
   const [isSubmit, setIsSubmit] = useState(false);
 
   const singleProduct = useSelector((state) => state.product.singleProduct);
-  const myInfo = useSelector(state => state.user.myInfo)
+  const myInfo = useSelector((state) => state.user.myInfo);
   const [imgNum, setImgNum] = useState(0);
 
   useEffect(() => {
     if (isSubmit && selectedImages.length > 0) {
+      console.log("selected img from useEffect", selectedImages)
       uploadImages();
     }
   }, [selectedImages]);
+
   const handleNext = () => {
     if (
       singleProduct.images.length > 1 &&
@@ -45,22 +47,22 @@ function DetailPage() {
     }
   };
 
-  const uploadImages = async () => {
-    const formData = new FormData();
-    console.log("saving the files now", formData);
-    formData.append(`images`, selectedImages);
-    // for(let i= 0; i < selectedImages.length; i++){
-    //   formData.append(`images[${i}]`,selectedImages[i])
-    //   console.log("form data", formData)
-    // }
+  const uploadImages = async (files) => {
+    const userData = new FormData();
+    console.log("saving the files now selectedImages", selectedImages);
+    // formData.append(`images`, files);
+    for(let i= 0; i <= selectedImages.length; i++){
+      userData.append(`images`,selectedImages[i])
+      console.log("form data", userData)
+    }
 
     try {
-      console.log("trying saving the files now", formData);
+      console.log("trying saving the files now", userData);
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/products/me/${singleProduct._id}/images`,
         {
           method: "POST",
-          body: formData,
+          body: userData,
           headers: {
             authorization: localStorage.getItem("MyToken"),
           },
@@ -82,41 +84,52 @@ function DetailPage() {
     }
   };
 
-  const handleSelection = (e) => {
-    console.log("e.target.files", e.target.files);
+  const handleSelection = async (e) => {
+    console.log("e.target.files", e.target.files.FileList);
     console.log("singleproduct", singleProduct._id);
-    setSelectedImages(e.target.files);
-    setIsSubmit(true);
-    uploadImages();
+    let imgArray = []
+    for (let i = 0; i < e.target.files.length; i++) {
+      imgArray.push(e.target.files[i]);
+    }
+    setSelectedImages(imgArray)
+   await console.log(selectedImages, "YEAH!")
+      // uploadImages(e.target.files);
+    
+
+    // await setSelectedImages(imgArray);
+    //  await console.log("setselected img" , selectedImages);
+    await setIsSubmit(true);
+
+    // uploadImages();
   };
   return (
     <Container>
-
-    <Grid container>
-      <Grid item xs={12} md={6}>
-        <div
-          style={{
-            width: "300px",
-            height: "300px",
-            overflow: "hidden",
-            margin: "0 auto",
-          }}
+      <Grid container>
+        <Grid item xs={12} md={6}>
+          <div
+            style={{
+              width: "300px",
+              height: "300px",
+              overflow: "hidden",
+              margin: "0 auto",
+            }}
           >
-          <img
-            style={{ width: "100%" }}
-            src={
-              singleProduct?.images[imgNum] || "https://via.placeholder.com/300"
-            }
-            alt="Live from space album cover"
+            <img
+              style={{ width: "100%" }}
+              src={
+                singleProduct?.images[imgNum] ||
+                "https://via.placeholder.com/300"
+              }
+              alt="Live from space album cover"
             />
-        </div>
+          </div>
           <div
             style={{
               display: "flex",
               margin: "5px auto",
               justifyContent: "center",
             }}
-            >
+          >
             <IconButton
               aria-label="delete"
               size="small"
@@ -124,7 +137,7 @@ function DetailPage() {
                 opacity: imgNum > 0 ? 1 : 0,
                 backgroundColor: "palegoldenrod",
               }}
-              >
+            >
               <ArrowBack fontSize="inherit" onClick={() => handlePrev()} />
             </IconButton>
             <IconButton
@@ -132,88 +145,112 @@ function DetailPage() {
               size="small"
               sx={{
                 opacity:
-                singleProduct.images.length - 1 > 0 &&
-                imgNum !== singleProduct.images.length
-                ? 1
-                : 0,
+                  singleProduct.images.length - 1 > 0 &&
+                  imgNum !== singleProduct.images.length
+                    ? 1
+                    : 0,
                 backgroundColor: "palegoldenrod",
               }}
-              >
+            >
               <ArrowForward fontSize="inherit" onClick={() => handleNext()} />
             </IconButton>
           </div>
 
-        <div item style={{ margin: "15px auto", width:"300px",display:"flex", justifyContent:"space-around" }}>
-          
-         
-        </div>
-      </Grid>
-      <Grid item  sx={{ display: "flex", flexDirection: "column" }} xs={12} md={6} >
-        <CardContent sx={{ flex: "1 0 auto" }}>
-          <Typography component="div" variant="h5">
-            {singleProduct?.title}
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            color="text.secondary"
-            component="div"
+          <div
+            item
+            style={{
+              margin: "15px auto",
+              width: "300px",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          ></div>
+        </Grid>
+        <Grid
+          item
+          sx={{ display: "flex", flexDirection: "column" }}
+          xs={12}
+          md={6}
+        >
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h5">
+              {singleProduct?.title}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              component="div"
             >
-            {singleProduct?.summary}
-          </Typography>
-          <Typography variant="subtitle1" component="div">
-            {singleProduct?.description}
-          </Typography>
-        </CardContent>
+              {singleProduct?.summary}
+            </Typography>
+            <Typography variant="subtitle1" component="div">
+              {singleProduct?.description}
+            </Typography>
+          </CardContent>
+        </Grid>
       </Grid>
-    </Grid>
-      <Grid container style={{display:open? "block":"block"}} >
-       
-              <Grid item xs={12}>
-              {myInfo._id === singleProduct.creator? (
+      <Grid container style={{ display: open ? "block" : "block" }}>
+        <Grid item xs={12}>
+          {myInfo._id === singleProduct.creator ? (
             <>
-{/*  */}
-<Button
+              {/*  */}
+              <Button
                 className="theme-btn"
                 variant="contained"
                 component="label"
-                >
+              >
                 Upload File
                 <input
-                    type="file"
-                    hidden
-                    multiple
-                    onChange={(e) => {handleSelection(e)}}
-                    />
-            </Button>
-        {/*  */}
+                  type="file"
+                  hidden
+                  multiple
+                  onChange={(e) => {
+                    handleSelection(e);
+                  }}
+                />
+              </Button>
+              {/*  */}
 
-          <Button className="theme-btn" onClick={() => setShowEditPage(true)}>Edit Product</Button>
-              </>
-          ):(<>
-          <Button className="theme-btn"  onClick={(e) => setOpen(true)}>
-           Contact Creator
-          </Button>
-          <Button className="theme-btn">
-            Book a meeting
-          </Button>
-          </>)
-          }
-              </Grid>
+              <Button
+                className="theme-btn"
+                onClick={() => setShowEditPage(true)}
+              >
+                Edit Product
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button className="theme-btn" onClick={(e) => setOpen(true)}>
+                Contact Creator
+              </Button>
+              <Button className="theme-btn">Book a meeting</Button>
+            </>
+          )}
+        </Grid>
       </Grid>
-      <Grid container style={{display:open? "block":"none", marginTop:"50px"}} >
-        <CloseButton onClick={() => setOpen(false)}/>
-              <Grid item xs={12}>
-                  <MessageForm/>
-              </Grid>
+      <Grid
+        container
+        style={{ display: open ? "block" : "none", marginTop: "50px" }}
+      >
+        <CloseButton onClick={() => setOpen(false)} />
+        <Grid item xs={12}>
+          <MessageForm />
+        </Grid>
       </Grid>
-                 {showEditPage && <EditProductPage showEditPage={showEditPage} setShowEditPage={setShowEditPage}/>}
-      <Grid container style={{display:open? "block":"none", marginTop:"50px"}} >
-        <CloseButton onClick={() => setOpen(false)}/>
-              <Grid item xs={12}>
-              </Grid>
+      {showEditPage && (
+        <EditProductPage
+          showEditPage={showEditPage}
+          setShowEditPage={setShowEditPage}
+        />
+      )}
+      <Grid
+        container
+        style={{ display: open ? "block" : "none", marginTop: "50px" }}
+      >
+        <CloseButton onClick={() => setOpen(false)} />
+        <Grid item xs={12}></Grid>
       </Grid>
-  </Container>
-  
+    </Container>
   );
 }
 

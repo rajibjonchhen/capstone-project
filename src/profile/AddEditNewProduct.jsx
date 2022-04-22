@@ -158,7 +158,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
         }
 
         if(selectedImages){
-            // uploadImages(productId)
+            uploadImages(singleProduct._id)
         } else{
           setIsLoading(false);
         }   
@@ -169,15 +169,17 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose }
     }
   };
 
-  const handleSelection = (e) => {
-    console.log(e.target.files)
-    setSelectedImages(e.target.files)
+  const handleSelection = async(e) => {
+    console.log("handle selection",e.target.files)
+     setSelectedImages([e.target.files])
+    await console.log("selected images!!!", selectedImages)
    }
+
 
    const uploadImages = async(productId) => {
        console.log("saving the files now")
        const formData = new FormData()
-       
+      
        formData.append("images", selectedImages)
        console.log("saving the files now", formData)
     try {
