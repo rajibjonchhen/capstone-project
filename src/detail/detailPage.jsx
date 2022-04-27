@@ -135,18 +135,11 @@ const fetchProduct = async(productId) => {
   };
 
   const handleSelection = async (e) => {
-    console.log("e.target.files", e.target.files.FileList);
-    console.log("singleproduct", singleProduct._id);
-    let imgArray = []
-    for (let i = 0; i < e.target.files.length; i++) {
-      imgArray.push(e.target.files[i]);
-    }
-    setSelectedImages(imgArray)
-    console.log(selectedImages, "YEAH!")
+    setSelectedImages(e.target.files)
+    
      setIsSubmit(true);
-
-    // uploadImages();
   };
+
   return (
     <Container>
       <Grid container>
@@ -319,7 +312,7 @@ const fetchProduct = async(productId) => {
       >
         
         <Grid item xs={12}>
-          <MessageForm setOpen={setOpen}/>
+          {/* <MessageForm setOpen={setOpen}/> */}
         </Grid>
       </Grid>
       {showEditPage && (

@@ -40,6 +40,8 @@ function MyNavbar() {
     console.log(location.pathname);
   }, []);
 
+ 
+
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -249,7 +251,7 @@ function MyNavbar() {
               />
 
               <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                <Box style={{ display: "flex", alignItems: "center" }}>
+                {/* <Box style={{ display: "flex", alignItems: "center" }}>
                   <Search>
                     <SearchIconWrapper>
                       <SearchIcon />
@@ -259,7 +261,7 @@ function MyNavbar() {
                       inputProps={{ "aria-label": "search" }}
                     />
                   </Search>
-                </Box>
+                </Box> */}
 
                 <MenuItem className="margin-xasix"
                   onClick={() => {

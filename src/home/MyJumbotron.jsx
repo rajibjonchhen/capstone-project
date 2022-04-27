@@ -1,14 +1,19 @@
 import { Grid } from "@material-ui/core";
 import { Button, Container } from "@mui/material";
+import { useEffect } from "react";
 import "./jumbotron.css"
 
 function MyJumbotron() {
+
+  useEffect(() =>{
+    
+  },[])
     return ( 
 
       
           
                       
-                  <Grid container className="jumbotron" >
+          <Grid container className="jumbotron" >
             <Grid item  xs={12} md={6}>
             <p>
                An idea can change the the world and

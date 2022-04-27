@@ -10,6 +10,7 @@
 
 }
 
+
 .how-we-help-card>p:first-of-type {
     text-align: center;
     position:relative;
@@ -23,7 +24,10 @@
     position:relative;
     padding:10px;
     font-size: 12px;
+}
 
+.how-we-help-card>p:last-of-type:hover  {
+    font-size: 14px;
 }
 
 

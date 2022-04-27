@@ -31,17 +31,9 @@ function PostPage() {
     
     const allPosts = useSelector(state => state.post.allPosts)
     const myInfo = useSelector(state => state.user.myInfo)
-   
-    useEffect(() =>{
-        fetchPosts()
-        
-    },[])
-
-   
 
     const fetchPosts = async() => {
         try {
-            console.log(process.env.REACT_APP_DEV_BE_URL)
             const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/posts`,{
                 method:"GET",
                 headers:{
@@ -66,6 +58,9 @@ function PostPage() {
         } 
     }
 
+    useEffect(() =>{
+        fetchPosts()
+    },[])
     
     
     const Item = styled(Paper)(({ theme }) => ({
