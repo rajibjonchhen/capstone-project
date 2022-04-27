@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RightSidebar() {
 
   const [error, setError] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [query, setQuery] = useState("")
   const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
@@ -53,7 +54,6 @@ export default function RightSidebar() {
               
           } else{
               const data = await response.json()
-              console.log(data.users)
               dispatch(setAllUsersAction(data.users))
           }
       } catch (error) {
@@ -64,7 +64,7 @@ export default function RightSidebar() {
 const handleChange = (e) =>  {
   if(e.keyCode === 13){
     console.log(e)
-    
+    setFilteredUsers(allUsers.filter(user => user.name.toUpperCase().includes(e.target.value.toUpperCase()) || user.surname.toUpperCase().includes(e.target.value.toUpperCase())))
   }else{
     setQuery(e.target.value)
   }
@@ -73,7 +73,7 @@ const handleChange = (e) =>  {
   return (
     <List className={classes.root}>
       <TextField size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
-      {allUsers?.map((user, i) => 
+      {(filteredUsers || allUsers).map((user, i) => 
           <ListItem key={i} alignItems="flex-start">
             <ListItemAvatar>
               <Avatar alt={user.name} src={user.avatar} />

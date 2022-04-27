@@ -58,11 +58,11 @@ function PostPage() {
                 console.log(data.posts)
                 dispatch(setAllPostsAction(data.posts.reverse()))
                 setIsLoading(false)
-
             }
         } catch (error) {
             console.log(error)
             setIsLoading(false)
+            setError(error)
         } 
     }
 
@@ -76,72 +76,72 @@ function PostPage() {
         color: theme.palette.text.secondary,
       }));
       
-    return ( 
-        <Grid container spacing={2}> 
-            <Grid item sm={12} md={3} lg={3} >
-                <Item>
-                    <LeftSidebar fetchPosts={fetchPosts}/>
-                </Item>
-            </Grid>
-
-            <Grid item sm={12} md={6} lg={6} className="posts-box">
-                <Item sx={{ margin:"3px 0px"}}>
-                    <div>
-
-                <div style={{display:"flex", alignItems:'center'}}>
-                    <Avatar
-                    sx={{margin:"0 5px"}}
-                    src={myInfo?.avatar}
-                    alt="user image"
-                    />
-                      <button
-                            onClick={()=>{setOpen(true)}}
-                            style={{
-                            paddingLeft: "10px",
-                            paddingRight: "270px",
-                            paddingTop: "10px",
-                            paddingBottom: "10px",
-                            textAlign: "left",
-                            fontWeight: "normal",
-                            width:"100%",
-                            borderRadius:"30px",
-                            
-                            }}
-                        >
-                Start a post
-              </button>
-                      
-                    </div>
-                <div>
-                {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
-            </div>
-            <div style={{display:"flex", marginTop:'10px', justifyContent:'center'}}>
-                <div style={{display:"flex"}}>
-                <Photo/>
-                <Typography sx={{margin:"0 5px"}}>Photo</Typography>
-                </div>
-                <div style={{display:"flex"}}>
-                <Videocam/>
-                <Typography sx={{margin:"0 5px"}}>Video</Typography>
-                </div>
-                <div style={{display:"flex"}}>
-                <Work/>
-                <Typography sx={{margin:"0 5px"}}>Job</Typography>
-                </div>
-            </div>
-          </div>
-                </Item>
-                <Item className="all-posts">
-                    {allPosts?.length > 0 && allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
-                </Item>
-            </Grid>
-            <Grid item sm={12} md={3} lg={3}>
-                <Item>
-                    <RightSidebar/>
-                </Item>
-            </Grid>
+    return ( <>
+    {error? <div>{error}</div> : <Grid container spacing={2}> 
+        <Grid item sm={12} md={3} lg={3} >
+            <Item>
+                <LeftSidebar fetchPosts={fetchPosts}/>
+            </Item>
         </Grid>
-     );
+
+        <Grid item sm={12} md={6} lg={6} className="posts-box">
+            <Item sx={{ margin:"3px 0px"}}>
+                <div>
+
+            <div style={{display:"flex", alignItems:'center'}}>
+                <Avatar
+                sx={{margin:"0 5px"}}
+                src={myInfo?.avatar}
+                alt="user image"
+                />
+                    <button
+                        onClick={()=>{setOpen(true)}}
+                        style={{
+                        paddingLeft: "10px",
+                        paddingRight: "270px",
+                        paddingTop: "10px",
+                        paddingBottom: "10px",
+                        textAlign: "left",
+                        fontWeight: "normal",
+                        width:"100%",
+                        borderRadius:"30px",
+                        
+                        }}
+                    >
+            Start a post
+            </button>
+                    
+                </div>
+            <div>
+            {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
+        </div>
+        <div style={{display:"flex", marginTop:'10px', justifyContent:'center'}}>
+            <div style={{display:"flex"}}>
+            <Photo/>
+            <Typography sx={{margin:"0 5px"}}>Photo</Typography>
+            </div>
+            <div style={{display:"flex"}}>
+            <Videocam/>
+            <Typography sx={{margin:"0 5px"}}>Video</Typography>
+            </div>
+            <div style={{display:"flex"}}>
+            <Work/>
+            <Typography sx={{margin:"0 5px"}}>Job</Typography>
+            </div>
+        </div>
+        </div>
+            </Item>
+            <Item className="all-posts">
+                {allPosts?.length > 0 && allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
+            </Item>
+        </Grid>
+        <Grid item sm={12} md={3} lg={3}>
+            <Item>
+                <RightSidebar/>
+            </Item>
+        </Grid>
+    </Grid> }
+    </>);
 }
 
 export default PostPage;

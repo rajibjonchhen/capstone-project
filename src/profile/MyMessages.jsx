@@ -1,5 +1,5 @@
 import { Avatar, Container, Grid } from "@material-ui/core";
-import { ListItem } from "@mui/material";
+import { Box, ListItem } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -50,8 +50,8 @@ function MyMessages() {
     <Grid container>
       <Grid item xs={12} md={6} lg={4} className="msg-sender-list-box">
           <h3>Messages</h3>
-        {myMessages.map((message) => (
-            <div>
+        {myMessages.map((message, i ) => (
+            <div key={i}>
 
                 <div
                     className="sender-list"
@@ -71,8 +71,11 @@ function MyMessages() {
         ))}
       </Grid>
       <Grid xs={12} md={6} lg={8} item className="msg-detail-box">
+        {singleMsg &&
+         (
+          <Box>
+
         <h3>Message Detail</h3>
-        {singleMsg && (
           <div style={{ textAlign: "left", margin: "0 0 0 10px" }}>
             
             <div className="message-element">
@@ -86,16 +89,17 @@ function MyMessages() {
             <p className="message-element-title">Place :</p>
             <p className="message-element">{singleMsg.place}</p>
           </div>
-        )}
         <div onClick={() =>{dispatch(setSingleProductAction(singleMsg.product)); navigate("/detail")}}>
           <h5>{singleMsg?.product?.title}</h5>
           <img
             src={singleMsg?.product?.images[0]}
             alt={singleMsg?.product?.title}
             style={{ width: "200px" }}
-          />
+            />
         </div>
-      </Grid>
+            </Box>
+          )}
+          </Grid>
     </Grid>
   );
 }
