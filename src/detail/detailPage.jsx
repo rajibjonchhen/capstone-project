@@ -14,10 +14,12 @@ import EditProductPage from "./EditProductPage";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSingleProductAction } from "../redux/actions/action";
+// import Meeting from "./Meeting";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
   const [open, setOpen] = useState(false);
+  const [showMeeting, setShowMeeting] = useState(false);
   const [showEditPage, setShowEditPage] = useState(false);
   const [selectedImages, setSelectedImages] = useState([]);
   const [newProductErr, setNewProductErr] = useState({});
@@ -215,50 +217,51 @@ const fetchProduct = async(productId) => {
         </Grid>
         <Grid
           item
-          sx={{ display: "flex", flexDirection: "column" }}
           xs={12}
           md={6}
         >
-          <CardContent sx={{ flex: "1 0 auto" }}>
+          
             <Typography component="div" variant="h5">
               {singleProduct?.title}
             </Typography>
             
-            <Typography >
-            <span className="detail-title">Category : </span>
-              {singleProduct?.category}
-            </Typography>
-            <Typography
-             
-            >
-              <span className="detail-title">Summary : </span>
-              {singleProduct?.summary}
-            </Typography>
-         
-            <Typography >
-            <span className="detail-title">Description : </span>
-              {singleProduct?.description}
-            </Typography>
-          { singleProduct?.askingPrice && <Typography >
-            <span className="detail-title">Asking Price : </span>
-              {singleProduct?.askingPrice}
-            </Typography>}
-          { singleProduct?.criteria && <Typography >
-            <span className="detail-title">Criteria : </span>
-              {singleProduct?.criteria}
-              </Typography>}
-          { singleProduct?.reqInvestment && <Typography >
-            <span className="detail-title">Required Investment : </span>
-              {singleProduct?.reqInvestment}
-            </Typography>}
-          { singleProduct?.inventionAddresses && <Typography >
-            <span className="detail-title"> Invension Addresses : </span>
-              {singleProduct?.inventionAddresses}
-            </Typography>}
-          { singleProduct?.patent && <Typography >
-            <span className="detail-title"> Patent  : </span>
-              {singleProduct?.patent}
-            </Typography>}
+            <Box style={{textAlign:"left"}}>
+                    <Typography >
+                    <span className="detail-title">Category : </span>
+                      {singleProduct?.category}
+                    </Typography>
+                    <Typography
+                    
+                    >
+                      <span className="detail-title">Summary : </span>
+                      {singleProduct?.summary}
+                    </Typography>
+                
+                    <Typography >
+                    <span className="detail-title">Description : </span>
+                      {singleProduct?.description}
+                    </Typography>
+                  { singleProduct?.askingPrice && <Typography >
+                    <span className="detail-title">Asking Price : </span>
+                      {singleProduct?.askingPrice}
+                    </Typography>}
+                  { singleProduct?.criteria && <Typography >
+                    <span className="detail-title">Criteria : </span>
+                      {singleProduct?.criteria}
+                      </Typography>}
+                  { singleProduct?.reqInvestment && <Typography >
+                    <span className="detail-title">Required Investment : </span>
+                      {singleProduct?.reqInvestment}
+                    </Typography>}
+                  { singleProduct?.inventionAddresses && <Typography >
+                    <span className="detail-title"> Invension Addresses : </span>
+                      {singleProduct?.inventionAddresses}
+                    </Typography>}
+                  { singleProduct?.patent && <Typography >
+                    <span className="detail-title"> Patent  : </span>
+                      {singleProduct?.patent}
+                    </Typography>}
+          </Box>
             {/* creator's profile */}
                 <h3>Creator's Profile</h3>
             <Box className="creator-profile">
@@ -268,7 +271,7 @@ const fetchProduct = async(productId) => {
                 <Typography>Email : {singleProduct?.creator?.email}</Typography>
               </Box>
             </Box>
-          </CardContent>
+         
         </Grid>
       </Grid>
       <Grid container style={{ display: open ? "block" : "block" }}>
@@ -305,18 +308,19 @@ const fetchProduct = async(productId) => {
               <Button className="theme-btn" onClick={(e) => setOpen(true)}>
                 Contact Creator
               </Button>
-              <Button className="theme-btn">Book a meeting</Button>
+              <Button className="theme-btn" onClick={() => setShowMeeting(true)}>Book a meeting</Button>
             </>
           )}
+          {/* {showMeeting && <Meeting/>} */}
         </Grid>
       </Grid>
       <Grid
         container
         style={{ display: open ? "block" : "none", marginTop: "50px" }}
       >
-        <CloseButton onClick={() => setOpen(false)} />
+        
         <Grid item xs={12}>
-          <MessageForm />
+          <MessageForm setOpen={setOpen}/>
         </Grid>
       </Grid>
       {showEditPage && (

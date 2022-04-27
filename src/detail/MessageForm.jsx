@@ -3,8 +3,10 @@ import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
 import {Alert} from "@mui/material"
 import { useSelector } from "react-redux";
+import "./messageForm.css"
+import { CloseButton } from "react-bootstrap";
 
-function MessageForm() {
+function MessageForm({setOpen}) {
 
     const myInfo = useSelector(state => state.user.myInfo ) 
     const [error, setError] = useState("")
@@ -98,48 +100,49 @@ function MessageForm() {
 
 
     return ( 
-        <div style={{borderTop:"1px solid rgba(128, 128, 128, 0.493)"}}>
+        <div className="message-box">
+            <CloseButton onClick={() => setOpen(false)}  style={{marginRight:'auto'}}/>
             <h1>Write your message</h1>
            <Alert variant="danger" style={{opacity: error? 1:0}}>{error}</Alert>
-        <TextField
-            margin="normal"
-            required
-            fullWidth
-            size="small"
-            id="name"
-            label="title"
-            name="title"
-            value={message.title}
-            autoFocus
-            onChange={(e) => handleChange(e)}
-            />
-            <Typography color="secondary" align='left'>{!message.title && messageErr?.title}</Typography>
-        <TextField
-            margin="normal"
-            required
-            fullWidth
-            rows={2}
-            maxRows={4}
-            size="small"
-            id="name"
-            label="text"
-            name="text"
-            value={message.text}
-            autoFocus
-            onChange={(e) => handleChange(e)}
-            />
-            <Typography color="secondary" align='left'>{ messageErr?.text && messageErr?.text} </Typography>
-        <TextField
-            margin="normal"
-            fullWidth
-            size="small"
-            id="name"
-            label="place"
-            name="place"
-            autoFocus
-            onChange={(e) => handleChange(e)}
-            />
-            <Button onClick={(e) => handleSubmit(e)}>Send</Button>
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    size="small"
+                    id="name"
+                    label="title"
+                    name="title"
+                    value={message.title}
+                    autoFocus
+                    onChange={(e) => handleChange(e)}
+                    />
+                    <Typography color="secondary" align='left'>{!message.title && messageErr?.title}</Typography>
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    rows={2}
+                    maxRows={4}
+                    size="small"
+                    id="name"
+                    label="text"
+                    name="text"
+                    value={message.text}
+                    autoFocus
+                    onChange={(e) => handleChange(e)}
+                    />
+                    <Typography color="secondary" align='left'>{ messageErr?.text && messageErr?.text} </Typography>
+                <TextField
+                    margin="normal"
+                    fullWidth
+                    size="small"
+                    id="name"
+                    label="place"
+                    name="place"
+                    autoFocus
+                    onChange={(e) => handleChange(e)}
+                    />
+                    <Button variant="contained" className="theme-btn" onClick={(e) => handleSubmit(e)}>Send</Button>
         </div>
      );
 }

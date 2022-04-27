@@ -1,0 +1,6 @@
+.message-box{
+    border: 2px solid rgba(128, 128, 128, 0);
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 0  0 5px 5px lightgray;
+}
