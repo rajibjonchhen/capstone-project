@@ -38,6 +38,11 @@ export default function RightSidebar() {
       fetchUsers()
   },[])
 
+  useEffect(() => {
+  
+    setFilteredUsers(allUsers.filter(user => user.name.toUpperCase().includes(query.toUpperCase()) || user.surname.toUpperCase().includes(query.toUpperCase() || user.email.toUpperCase().includes(query.toUpperCase()))))
+  },[query])
+
   const fetchUsers = async() => {
     
       try {
@@ -62,13 +67,12 @@ export default function RightSidebar() {
   }
 
 const handleChange = (e) =>  {
-  if(e.keyCode === 13){
-    console.log(e)
-    setFilteredUsers(allUsers.filter(user => user.name.toUpperCase().includes(e.target.value.toUpperCase()) || user.surname.toUpperCase().includes(e.target.value.toUpperCase())))
-  }else{
+  
     setQuery(e.target.value)
-  }
+  
 }
+
+
 
   return (
     <List className={classes.root}>
