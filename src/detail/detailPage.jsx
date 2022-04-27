@@ -34,6 +34,7 @@ function DetailPage() {
   const dispatch = useDispatch()
   const params = useParams()
   useEffect(() => {
+    window.scrollTo(0,0)
     let productId = params.productId
     if(productId){
       fetchProduct(productId)
@@ -151,11 +152,9 @@ const fetchProduct = async(productId) => {
       <Grid container>
         <Grid item xs={12} md={6}>
           <div
+            className="image-box"
             style={{
-              width: "300px",
-              height: "300px",
-              overflow: "hidden",
-              margin: "0 auto",
+           
             }}
           >
             <img

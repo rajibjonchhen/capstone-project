@@ -101,11 +101,12 @@ function MyAccount() {
         }
     }
 
-    return ( 
+    return ( <>
+            <Alert margin="normal"  severity="success" style={{opacity:successMsg? 1:0, marginTop:"10px"}}>Updated successfully</Alert>
     
         <Grid container className="account-box">
-            {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
             <Grid item xs={12}  md={4} lg={3} className='account-image-box'>
+                
                 
                 <Image src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} width="100px" sx={{marginTop:"10px"}}/>
                 
@@ -218,7 +219,7 @@ function MyAccount() {
             </Grid>
         </Grid> 
         
-     );
+        </>);
 }
 
 export default MyAccount;

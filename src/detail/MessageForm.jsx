@@ -5,6 +5,7 @@ import {Alert} from "@mui/material"
 import { useSelector } from "react-redux";
 import "./messageForm.css"
 import { CloseButton } from "react-bootstrap";
+import { Close } from "@mui/icons-material";
 
 function MessageForm({setOpen}) {
 
@@ -101,7 +102,7 @@ function MessageForm({setOpen}) {
 
     return ( 
         <div className="message-box">
-            <CloseButton onClick={() => setOpen(false)}  style={{marginRight:'auto'}}/>
+            <Close onClick={() => setOpen(false)} className="pointer"/>
             <h1>Write your message</h1>
            <Alert variant="danger" style={{opacity: error? 1:0}}>{error}</Alert>
                 <TextField
@@ -121,7 +122,7 @@ function MessageForm({setOpen}) {
                     margin="normal"
                     required
                     fullWidth
-                    rows={2}
+                    minRows={2}
                     maxRows={4}
                     size="small"
                     id="name"

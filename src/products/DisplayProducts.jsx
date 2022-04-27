@@ -21,6 +21,7 @@ function DisplayProducts() {
     const allProducts = useSelector(state => state.product.allProducts)
 
     useEffect(() => {
+        window.scrollTo(0,0)
         const category = params.category
         fetchProducts(category)
     },[])
@@ -59,8 +60,8 @@ function DisplayProducts() {
     return ( 
         <Grid container >
             {allProducts.length === 0 && <h2>There are no products in this category</h2>}
-            {allProducts?.map((product, i) => <Grid item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
-                <SingleCard key={i} product={product}/>
+            {allProducts?.map((product, i) => <Grid key={i} item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
+                <SingleCard product={product}/>
             </Grid> 
             )}
             
