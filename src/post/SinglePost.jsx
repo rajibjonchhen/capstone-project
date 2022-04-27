@@ -139,7 +139,7 @@ export default function SinglePost({ post, fetchPosts }) {
 
 
   return (
-    <Card sx={{ width: 1, mt: 2 }}>
+    <Card sx={{ width: 1, mt: 2, p:1 }}>
       {error && <Alert severity="error">{error}</Alert>}
       <Box style={{display:"flex", justifyContent:'space-between'}}>
 
@@ -149,7 +149,6 @@ export default function SinglePost({ post, fetchPosts }) {
                 post?.postedBy?.avatar ||
                 "https://ui-avatars.com/api/?name=John+Doe"
               }
-              sx={{ bgcolor: red[500] }}
               aria-label="recipe"
               />
             <div style={{textAlign:'left' , marginLeft:'10px'}}>
