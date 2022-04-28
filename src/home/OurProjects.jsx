@@ -38,17 +38,17 @@ function OurProjects() {
             type : "movie",
     },
     ]
-    return ( 
-            <Grid item className="our-Project-box">
-                
+    return ( <Grid container spacing={2}>
                     {myCategories.map((category, i) => 
+                        <Grid item className="our-Project-box" xs={12} md={6}>
+                
                         
                             <CategoryCard key={i} category={category}/> 
                         
-                    )}
-            </Grid>
+                            </Grid>
+                            )}
 
-     );
+</Grid>);
 }
 
 export default OurProjects;
