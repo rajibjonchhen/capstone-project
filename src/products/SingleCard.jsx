@@ -13,11 +13,12 @@ import { useDispatch } from "react-redux";
 import { setSingleProductAction } from "../redux/actions/action";
 import "./singleCard.css"
 import { Alert } from "@mui/material";
+import { Box } from "@material-ui/core";
 
 export default function SingleCard({product}) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [likesCount, setLikesCount] = useState(null);
+  const [likes, setLikes] = useState(null);
   const [isLiked, setIsLiked] = useState(false)
   const [error, setError] = useState("")
 
@@ -45,15 +46,16 @@ export default function SingleCard({product}) {
         const data = await response.json();
         console.log(data);
         setIsLiked(data.product.isLiked)
-        setLikesCount(data.product.Likes.length)
-
+        setLikes(data.product.Likes)
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  React.useEffect(() => {},[])
   return (
-    <Card className="single-product-card" sx={{ width: "98%",maxWidth:"360px", minHeight:"300px", m: 1 }}>
+    <Card className="single-product-card" sx={{ width: "98%",maxWidth:"360px", minHeight:"300px", m: 1, position:"relative" }}>
       {error && <Alert>{error}</Alert> }
       <CardMedia
         component="img"
@@ -69,10 +71,10 @@ export default function SingleCard({product}) {
           {product?.summary}
         </Typography>
       </CardContent>
-      <CardActions sx={{marginBottom:"0"}}>
+      <Box sx={{bottom:"5px",position:"absolute"}}>
         <Button size="small">Like</Button>
         <Button size="small" >
-          {likesCount}
+          {likes?.length>0  && likes.length}
           <Favorite sx={{ color: pink[500], display:isLiked? "block":"none" }} onClick={() => handleLikes()} />
           <FavoriteBorder
             sx={{ color: pink[500], display:!isLiked? "block":"none"  }}
@@ -80,7 +82,7 @@ export default function SingleCard({product}) {
           />
         </Button>
         <Button size="small"  onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
-      </CardActions>
+      </Box>
        
     </Card>
   );

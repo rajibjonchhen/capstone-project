@@ -16,7 +16,6 @@ import "./postPage.css"
 import { Avatar, Button, TextField, Typography } from '@mui/material';
 import { Photo, Videocam, VideocamOff, Work } from '@mui/icons-material';
 import AddPostEdit from './AddPostEdit';
-import { border, borderRadius } from '@mui/system';
 
 
 function PostPage() {
