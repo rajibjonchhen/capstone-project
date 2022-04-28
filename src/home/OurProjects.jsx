@@ -17,11 +17,6 @@ function OurProjects() {
             description : "for the publishers",
             type: "novel",
     },
-        { name : "Painting",
-            image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688012/creators-space-products/v9s2fn5yxjvp3lopru7l.png",
-            description : "for the inspiration",
-            type : "painting" 
-    },
         { name : "Poem",
             image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688013/creators-space-products/fzdw29oezlqn0pmozqot.png",
             description : "for love of your life",
@@ -37,7 +32,7 @@ function OurProjects() {
             description : "for your business ",
             type :"web template"
     },
-        { name : "Story",
+        { name : "Movie",
             image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688012/creators-space-products/sg2c0jpxz9ha1phy4on7.png",
             description : "for your movie",
             type : "movie",
