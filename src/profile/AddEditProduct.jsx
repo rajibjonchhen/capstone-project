@@ -243,7 +243,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                 autoComplete=""
                 onChange={(e) => handleChange(e)}
               />
-              <Typography>
+              <Typography style={{color:"red"}}>
                 {!product.title && productErr?.title}
               </Typography>
             </Grid>
@@ -277,7 +277,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                   ))}
                 </Select>
               </FormControl>
-              <Typography>
+              <Typography style={{color:"red"}}>
                 {!product.category && productErr?.category}
               </Typography>
             </Grid>
@@ -296,7 +296,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
-              <Typography>
+              <Typography style={{color:"red"}}>
                 {!product.summary && productErr?.summary}
               </Typography>
             </Grid>
@@ -315,7 +315,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
-              <Typography>
+              <Typography style={{color:"red"}}>
                 {!product.description && productErr?.description}
               </Typography>
             </Grid>
@@ -333,7 +333,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
-              <Typography>
+              <Typography style={{color:"red"}}>
                 {!product.askingPrice && productErr?.askingPrice}
               </Typography>
             </Grid>
