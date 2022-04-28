@@ -1,25 +1,29 @@
-import { TextField, Typography } from "@material-ui/core";
+import { Box, TextField, Typography } from "@material-ui/core";
 import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
 import {Alert} from "@mui/material"
 import { useSelector } from "react-redux";
 import "./messageForm.css"
 import { Close } from "@mui/icons-material";
+import Meeting from "./Meeting";
+
 
 function MessageForm({setOpen}) {
 
     const myInfo = useSelector(state => state.user.myInfo ) 
+    const singleProduct = useSelector(state => state.product.singleProduct ) 
+    const [bookAMeeting, setBookAMeeting] = useState(false)
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmit, setIsSubmit] = useState(false)
-    const singleProduct = useSelector(state => state.product.singleProduct ) 
     const [messageErr, setMessageErr] = useState({})
     const [message, setMessage] = useState({
         text:"",
         title:"",
         place:"",
         product:"",
-        receiver : ""
+        receiver : "",
+        meetingDate: ""
 
     })
 
@@ -37,6 +41,7 @@ function MessageForm({setOpen}) {
     const handleChange = (e) => {
         const {name, value} = e.target
         setMessage({...message, [name]:value})
+        console.log(message)
     }
 
     const verifyMessage = () => {
@@ -108,7 +113,8 @@ function MessageForm({setOpen}) {
                     margin="normal"
                     required
                     fullWidth
-                    size="small"
+                    variant="outlined"
+                    
                     id="name"
                     label="title"
                     name="title"
@@ -121,9 +127,10 @@ function MessageForm({setOpen}) {
                     margin="normal"
                     required
                     fullWidth
+                    variant="outlined"
                     minRows={2}
                     maxRows={4}
-                    size="small"
+                   
                     id="name"
                     label="text"
                     name="text"
@@ -132,16 +139,21 @@ function MessageForm({setOpen}) {
                     onChange={(e) => handleChange(e)}
                     />
                     <Typography color="secondary" align='left'>{ messageErr?.text && messageErr?.text} </Typography>
-                <TextField
-                    margin="normal"
-                    fullWidth
-                    size="small"
-                    id="name"
-                    label="place"
-                    name="place"
-                    autoFocus
-                    onChange={(e) => handleChange(e)}
-                    />
+                    {!bookAMeeting ? <Button className="theme-btn" style={{display:bookAMeeting? "none":"block"}} onClick={() => setBookAMeeting(true)}>Book a meeting</Button> 
+                        :<Box style={{display:"flex", alignItems:'baseline', justifyContent:"space-between"}}>
+                    <TextField
+                        margin="normal"
+                        variant="outlined"
+                        id="name"
+                        label="Meeting Place"
+                        name="place"
+                        autoFocus
+                        onChange={(e) => handleChange(e)}
+                        style={{marginRight:"15px", width:"70%"}}
+                        />
+ 
+                     <Meeting message={message} setMessage={setMessage}/><Close onClick={() => {setBookAMeeting(false);setMessage({...message, meetingDate:"",place:""})}}/>
+                    </Box> }
                     <Button variant="contained" className="theme-btn" onClick={(e) => handleSubmit(e)}>Send</Button>
         </div>
      );

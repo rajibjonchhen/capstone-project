@@ -13,7 +13,6 @@ import EditProductPage from "./EditProductPage";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSingleProductAction } from "../redux/actions/action";
-import Meeting from "./Meeting";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
@@ -174,8 +173,9 @@ const fetchProduct = async(productId) => {
                 backgroundColor: "rgb(7,105,144, 0.3)",
                 color:"white"
               }}
+              onClick={() => handlePrev()}
             >
-              <ArrowBack fontSize="inherit" onClick={() => handlePrev()} />
+              <ArrowBack fontSize="inherit"  />
             </IconButton>
             <IconButton
             className= "arrow-btn"
@@ -191,13 +191,14 @@ const fetchProduct = async(productId) => {
                     color:"white"
                 
               }}
+              onClick={() => handleNext()}
             >
-              <ArrowForward fontSize="inherit" onClick={() => handleNext()} />
+              <ArrowForward fontSize="inherit"  />
             </IconButton>
           </div>
 
           <div
-            item
+           
             style={{
               margin: "15px auto",
               width: "300px",
@@ -212,7 +213,7 @@ const fetchProduct = async(productId) => {
           md={6}
         >
           
-            <Typography component="div" variant="h5">
+            <Typography component="div" variant="h4">
               {singleProduct?.title}
             </Typography>
             
@@ -299,10 +300,10 @@ const fetchProduct = async(productId) => {
               <Button className="theme-btn" onClick={(e) => setOpen(true)}>
                 Contact Creator
               </Button>
-              <Button className="theme-btn" onClick={() => setShowMeeting(true)}>Book a meeting</Button>
+              
             </>
           )}
-          {showMeeting && <Meeting/>}
+     
         </Grid>
       </Grid>
       <Grid
@@ -321,13 +322,7 @@ const fetchProduct = async(productId) => {
           setShowEditPage={setShowEditPage}
         />
       )}
-      {/* <Grid
-        container
-        style={{ display: open ? "block" : "none", marginTop: "50px" }}
-      >
-        <CloseButton onClick={() => setOpen(false)} />
-        <Grid item xs={12}></Grid>
-      </Grid> */}
+    
     </Container>
   );
 }

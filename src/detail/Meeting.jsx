@@ -4,17 +4,29 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import  LocalizationProvider  from '@mui/lab/LocalizationProvider';
 import  DateTimePicker  from '@mui/lab/DateTimePicker';
 
-export default function Meeting() {
-  const [value, setValue] = React.useState(new Date());
+export default function Meeting({message, setMessage}) {
+const [value, setValue] = React.useState(new Date());
+
+  const handleChange = (newValue) => {
+    setValue(newValue)
+      console.log(message)
+  }
+
+  React.useEffect(() => {
+    setMessage({...message, meetingDate:value})
+    
+  },[value])
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateTimePicker
         renderInput={(props) => <TextField {...props} />}
-        label="DateTimePicker"
+        label="Meeting Date"
         value={value}
+        minDate = {new Date()}
+        style={{marginLeft:"100%"}}
         onChange={(newValue) => {
-          setValue(newValue);
+          handleChange(newValue)
         }}
       />
     </LocalizationProvider>

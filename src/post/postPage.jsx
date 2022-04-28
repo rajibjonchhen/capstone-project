@@ -46,7 +46,8 @@ function PostPage() {
             } else{
                 const data = await response.json()
                 console.log(data.posts)
-                dispatch(setAllPostsAction(data.posts.reverse()))
+                const postsReverse =data.posts.reverse()
+                dispatch(setAllPostsAction(postsReverse))
                 setIsLoading(false)
             }
         } catch (error) {

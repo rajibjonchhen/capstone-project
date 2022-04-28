@@ -124,8 +124,7 @@ try {
             {`${myInfo?.name} ${myInfo?.surname}`}
            </Typography>
            </Box>
-        
-          {error.length > 0 && <Alert fullWidth severity="error">{error}</Alert>}
+          {error?.length > 0 && <Alert fullWidth severity="error">{error}</Alert>}
           <Box sx={{ display: 'flex', alignItems: 'left', width: '100%'  }}>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, width: '100%' }}>
             
