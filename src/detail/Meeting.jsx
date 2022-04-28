@@ -1,30 +1,34 @@
-import * as React from 'react';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import React, { useState } from "react";
+import "date-fns"
+import { Grid } from "@material-ui/core";
+import DateFnsUtils from "@date-io/date-fns"
+import {MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker} from "@material-ui/pickers"
 
+function Meeting() {
 
-export default function Meeting() {
-  const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [selectedDate, setSelectedDate] = useState( new Date("2022-05-28T10:00:00"))
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
-
-  return (
-      
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Stack spacing={3}>
-       
-        <DateTimePicker
-          label="Date&Time picker"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      </Stack>
-    </LocalizationProvider>
-  );
+    const changeHandler= (date) => {
+        setSelectedDate(date)
+    }
+    return ( 
+        <div>
+            
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Grid>
+                    <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format = "MM/dd/yyyy"
+                    margin="normal"
+                    id="date-picker"
+                    label = "Date Picker"
+                    value = {selectedDate}
+                    />
+                </Grid>
+            </MuiPickersUtilsProvider>
+            hellp</div>
+     );
 }
+
+export default Meeting;

@@ -7,7 +7,6 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import SinglePost from "./SinglePost";
 import RightSidebar from './RightSidebar';
-import { Image } from 'react-bootstrap';
 import LeftSidebar from './LeftSidebar';
 import getMyInfo from '../getMyInfo';
 import { useNavigate } from 'react-router-dom';

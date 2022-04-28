@@ -8,13 +8,12 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Avatar, Grid } from "@material-ui/core";
 import { Box, Button, Container } from "@mui/material";
 import MessageForm from "./MessageForm";
-import { CloseButton } from "react-bootstrap";
 import "./detailPage.css";
 import EditProductPage from "./EditProductPage";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSingleProductAction } from "../redux/actions/action";
-// import Meeting from "./Meeting";
+import Meeting from "./Meeting";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
@@ -303,7 +302,7 @@ const fetchProduct = async(productId) => {
               <Button className="theme-btn" onClick={() => setShowMeeting(true)}>Book a meeting</Button>
             </>
           )}
-          {/* {showMeeting && <Meeting/>} */}
+          {showMeeting && <Meeting/>}
         </Grid>
       </Grid>
       <Grid
@@ -312,7 +311,7 @@ const fetchProduct = async(productId) => {
       >
         
         <Grid item xs={12}>
-          {/* <MessageForm setOpen={setOpen}/> */}
+          <MessageForm setOpen={setOpen}/>
         </Grid>
       </Grid>
       {showEditPage && (

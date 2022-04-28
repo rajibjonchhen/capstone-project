@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+
 import { useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { Grid } from "@material-ui/core";
 import ExtraNavbar from "../extraNavbar/ExtraNavbar";
 import MyFooter from "../footer/myfooter";
+import { Container } from "@mui/material";
 
 function MyLayout({children}) {
     const navigate = useNavigate()

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import {Alert} from "@mui/material"
 import { useSelector } from "react-redux";
 import "./messageForm.css"
-import { CloseButton } from "react-bootstrap";
 import { Close } from "@mui/icons-material";
 
 function MessageForm({setOpen}) {

@@ -6,9 +6,9 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { Grid } from "@material-ui/core";
-import { CloseButton } from "react-bootstrap";
 import { setMyProductsAction } from "../redux/actions/action";
 import { useSelector } from "react-redux";
+import { Close } from "@mui/icons-material";
 
 
 
@@ -60,7 +60,7 @@ function EditProductPage({showEditPage, setShowEditPage, fetchProduct}) {
         <Fade in={showEditPage}>
           <div className={classes.paper}>
           <Grid container style={{display:showEditPage? "block":"none"}} >
-        <CloseButton onClick={() => handleClose(false)}/>
+        <Close onClick={() => handleClose(false)}/>
               <Grid item xs={12}>
           <AddEditNewProduct singleProduct={singleProduct} handleClose={handleClose} fetchProduct={fetchProduct}/>
               </Grid>

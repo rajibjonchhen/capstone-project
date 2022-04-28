@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Button } from "@material-ui/core";
 import { useState } from "react";
-import { Image } from "react-bootstrap";
 import AddPostEdit from "./AddPostEdit";
 import { useSelector } from 'react-redux';
 import "./leftSide.css"
@@ -15,7 +14,7 @@ function LeftSidebar({fetchPosts}) {
     return ( 
     <Box>
             <div className="left-side" >
-            <Image src={myInfo?.avatar} />
+            <img src={myInfo?.avatar} alt="avatar" />
             </div>
             <h4>{myInfo.name} {myInfo.surname}</h4>
             <Typography>{myInfo?.email}</Typography>

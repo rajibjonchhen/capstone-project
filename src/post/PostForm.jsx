@@ -15,7 +15,6 @@ import { Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMyInfoAction } from '../redux/actions/action';
-import { Image } from 'react-bootstrap';
 import getMyInfo from '../getMyInfo';
 import "./postForm.css"
 

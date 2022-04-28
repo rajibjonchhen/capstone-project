@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from "@material-ui/core";
 import { Alert, Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Image } from "react-bootstrap";
+
 import { useDispatch, useSelector } from "react-redux";
 import getMyInfo from "../getMyInfo";
 import { setMyInfoAction } from "../redux/actions/action";
@@ -108,7 +108,7 @@ function MyAccount() {
             <Grid item xs={12}  md={4} lg={3} className='account-image-box'>
                 
                 
-                <Image src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} width="100px" sx={{marginTop:"10px"}}/>
+                <img src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} width="100px" sx={{marginTop:"10px"}}/>
                 
                 <Button
                     variant="contained"
