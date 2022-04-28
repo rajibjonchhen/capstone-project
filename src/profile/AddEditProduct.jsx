@@ -13,21 +13,26 @@ import {
   Alert,
 } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import getMyAllProducts from "../getMyAllProducts";
+import { setMyProductsAction } from "../redux/actions/action";
 
-import "./addEditNewProduct.css";
+import "./addEditProduct.css"
 
-function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct }) {
+function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct }) {
 
     const [successMsg, setSuccessMsg] = useState(false)
     const [selectedImages, setSelectedImages] = useState([])  
-    const [newProductErr, setNewProductErr] = useState({});
+    const [productErr, setProductErr] = useState({});
     const [error, setError] = useState();
     const [isLoading, setIsLoading] = useState();
     const [isSubmit, setIsSubmit] = useState(false);
     const [isSubmitImg, setIsSubmitImg] = useState(false);
     const [method,setMethod] = useState("POST")
     const [url,setUrl] = useState("/products")
-    const [newProduct, setNewProduct] = useState({
+    
+    const dispatch = useDispatch()
+    const [product, setProduct] = useState({
     title: "",
     category: "",
     summary: "",
@@ -46,7 +51,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
       setMethod("PUT")
       console.log(singleProduct)
 
-      setNewProduct({
+      setProduct({
         title: singleProduct.title || "",
         category: singleProduct.category ||"",
         summary: singleProduct.summary ||"",
@@ -74,11 +79,11 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
 
   useEffect(() => {
       
-      if (Object.keys(newProductErr).length === 0 && isSubmit) {
+      if (Object.keys(productErr).length === 0 && isSubmit) {
         console.log("after I am going to submit");
       saveProduct();
     }
-  }, [newProductErr]);
+  }, [productErr]);
 
   useEffect(() => {
     if (isSubmitImg && selectedImages.length > 0) {
@@ -89,33 +94,33 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setNewProduct({ ...newProduct, [name]: value });
-    console.log(newProduct);
-    console.log(name, value);
+    setProduct({ ...product, [name]: value });
+    isSubmit(true)
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault()
-    setNewProductErr(verifyForm(newProduct));
+    setProductErr(verifyForm(product));
     setIsSubmit(true);
-    console.log(Object.keys(newProductErr).length)
+    console.log(Object.keys(productErr).length)
   };
 
   const verifyForm = () => {
     const error = {};
-    if (!newProduct.title) {
+    if (!product.title) {
       error.title = "title is missing";
     }
-    if (!newProduct.category) {
+    if (!product.category) {
       error.category = "category is missing";
     }
-    if (!newProduct.summary) {
+    if (!product.summary) {
       error.summary = "summary is missing";
     }
-    if (!newProduct.description) {
+    if (!product.description) {
       error.description = "description is missing";
     }
-    if (!newProduct.askingPrice) {
+    if (!product.askingPrice) {
       error.askingPrice = "asking price is missing";
     }
     return error;
@@ -129,7 +134,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
         `${process.env.REACT_APP_DEV_BE_URL}` + url,
         {
           method,
-          body: JSON.stringify(newProduct),
+          body: JSON.stringify(product),
           headers: {
             "content-type": "application/json",
             authorization: localStorage.getItem("MyToken"),
@@ -144,9 +149,8 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
       } else {
         const data = await response.json();
         console.log(data);
-        
-
-        setNewProduct({
+      
+        setProduct({
           title: "",
           category: "",
           summary: "",
@@ -159,15 +163,17 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
           agreement:"",
           inventionAddresses:"",
         })
-        if(singleProduct){
-          handleClose()
-        }
-
+        
         if(selectedImages){
             uploadImages(singleProduct._id)
         } else{
           setIsLoading(false);
-        }   
+        }  
+        if(method === "PUT"){
+          fetchProduct(singleProduct._id)
+        }
+        handleClose()
+        
       }
     } catch (error) {
       console.log(error);
@@ -217,7 +223,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
    
   return (
     
-      <Container conatianer>
+      <Container >
           <h2>Fill in the product details</h2>
           {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
           {error && <Alert margin="normal"  severity="error">{error}</Alert>}
@@ -232,13 +238,13 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 id="title"
                 label="title"
                 name="title"
-                value={newProduct.title}
+                value={product.title}
                 autoFocus
                 autoComplete=""
                 onChange={(e) => handleChange(e)}
               />
               <Typography>
-                {!newProduct.title && newProductErr?.title}
+                {!product.title && productErr?.title}
               </Typography>
             </Grid>
           
@@ -255,24 +261,24 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
               >
                 <InputLabel id="demo-simple-select-label">Category</InputLabel>
                 <Select
-                  margin="normal"
+               
+                  margin="none"
                   labelId="category"
-                  maxWidth="50%"
                   size="small"
                   id="category"
                   variant="outlined"
-                  value={newProduct.category}
+                  value={product.category}
                   label="category"
                   name="category"
                   onChange={handleChange}
                 >
-                  {categories.map((category) => (
-                    <MenuItem value={category}>{category}</MenuItem>
+                  {categories.map((category, i) => (
+                    <MenuItem key={i} value={category}>{category}</MenuItem>
                   ))}
                 </Select>
               </FormControl>
               <Typography>
-                {!newProduct.category && newProductErr?.category}
+                {!product.category && productErr?.category}
               </Typography>
             </Grid>
 
@@ -286,12 +292,12 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 id="summary"
                 label="summary"
                 name="summary"
-                value={newProduct.summary}
+                value={product.summary}
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
               <Typography>
-                {!newProduct.summary && newProductErr?.summary}
+                {!product.summary && productErr?.summary}
               </Typography>
             </Grid>
 
@@ -305,12 +311,12 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 id="description"
                 label="description"
                 name="description"
-                value={newProduct.description}
+                value={product.description}
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
               <Typography>
-                {!newProduct.description && newProductErr?.description}
+                {!product.description && productErr?.description}
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -323,12 +329,12 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 id="askingPrice"
                 label="asking price"
                 name="askingPrice"
-                value={newProduct.askingPrice}
+                value={product.askingPrice}
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
               <Typography>
-                {!newProduct.askingPrice && newProductErr?.askingPrice}
+                {!product.askingPrice && productErr?.askingPrice}
               </Typography>
             </Grid>
 
@@ -342,7 +348,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 id="reqInvestment"
                 label="required investment"
                 name="reqInvestment"
-                value={newProduct.reqInvestment}
+                value={product.reqInvestment}
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
@@ -356,7 +362,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 label="criteria"
                 name="criteria"
                 variant="outlined"
-                value={newProduct.criteria}
+                value={product.criteria}
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
@@ -372,7 +378,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 id="agreement"
                 label="agreement"
                 name="agreement"
-                value={newProduct.agreement}
+                value={product.agreement}
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
@@ -388,7 +394,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 id="inventionAddresses"
                 label="invention addresses"
                 name="inventionAddresses"
-                value={newProduct.inventionAddresses}
+                value={product.inventionAddresses}
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
@@ -403,7 +409,7 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
                 id="patent"
                 label="patent"
                 name="patent"
-                value={newProduct.patent}
+                value={product.patent}
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
@@ -441,4 +447,4 @@ function AddEditNewProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, 
   );
 }
 
-export default AddEditNewProduct;
+export default AddEditProduct;

@@ -30,6 +30,10 @@ function PostPage() {
     const allPosts = useSelector(state => state.post.allPosts)
     const myInfo = useSelector(state => state.user.myInfo)
 
+    useEffect(() =>{
+        fetchPosts()
+    },[])
+
     const fetchPosts = async() => {
         try {
             const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/posts`,{
@@ -46,8 +50,7 @@ function PostPage() {
             } else{
                 const data = await response.json()
                 console.log(data.posts)
-                const postsReverse =data.posts.reverse()
-                dispatch(setAllPostsAction(postsReverse))
+                dispatch(setAllPostsAction(data.posts))
                 setIsLoading(false)
             }
         } catch (error) {
@@ -57,9 +60,7 @@ function PostPage() {
         } 
     }
 
-    useEffect(() =>{
-        fetchPosts()
-    },[])
+   
     
     
     const Item = styled(Paper)(({ theme }) => ({
@@ -126,7 +127,7 @@ function PostPage() {
         </div>
             </Item>
             <Item className="all-posts">
-                {allPosts?.length > 0 && allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
+                {allPosts && allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
             </Item>
         </Grid>
         <Grid item sm={12} md={3} lg={3}>

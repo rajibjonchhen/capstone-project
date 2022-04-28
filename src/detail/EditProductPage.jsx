@@ -1,5 +1,5 @@
 
-import AddEditNewProduct from "../profile/AddEditNewProduct";
+import AddEditProduct from "../profile/AddEditProduct";
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -49,7 +49,7 @@ function EditProductPage({showEditPage, setShowEditPage, fetchProduct}) {
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={showEditPage}
+        open={showEditPage }
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
@@ -62,7 +62,7 @@ function EditProductPage({showEditPage, setShowEditPage, fetchProduct}) {
           <Grid container style={{display:showEditPage? "block":"none"}} >
         <Close onClick={() => handleClose(false)}/>
               <Grid item xs={12}>
-          <AddEditNewProduct singleProduct={singleProduct} handleClose={handleClose} fetchProduct={fetchProduct}/>
+                    <AddEditProduct singleProduct={singleProduct} handleClose={handleClose} fetchProduct={fetchProduct}/>
               </Grid>
       </Grid>
           </div>

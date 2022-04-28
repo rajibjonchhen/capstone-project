@@ -107,7 +107,7 @@ const fetchProduct = async(productId) => {
       );
       if (response.status !== 200) {
         const data = await response.json();
-        console.log(data, response.status);
+        console.log("response not 200 data, response.status",data, response.status);
         setError(data.error);
       } else {
         const data = await response.json();
@@ -121,10 +121,11 @@ const fetchProduct = async(productId) => {
         } else {
           const data = await response.json();
           console.log(data);
-          setSuccessMsg(true);
-          setTimeout(() => setSuccessMsg(false), 1000);
-          setIsLoading(false);
+          dispatch(setSingleProductAction(data.updatedProduct))
           fetchProduct(singleProduct._id)
+          setSuccessMsg(true);
+          setIsLoading(false);
+          setTimeout(() => setSuccessMsg(false), 1000);
         }
       }
     } catch (error) {
@@ -268,7 +269,7 @@ const fetchProduct = async(productId) => {
       </Grid>
       <Grid container style={{ display: open ? "block" : "block" }}>
         <Grid item xs={12}>
-          {myInfo._id === singleProduct.creator ? (
+          {myInfo._id === singleProduct?.creator?._id ? (
             <>
               {/*  */}
               <Button
@@ -286,8 +287,7 @@ const fetchProduct = async(productId) => {
                   }}
                 />
               </Button>
-              {/*  */}
-
+              
               <Button
                 className="theme-btn"
                 onClick={() => setShowEditPage(true)}

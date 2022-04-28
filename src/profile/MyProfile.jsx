@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import MyAccount from "../myAccount/MyAccount";
 import SingleCard from "../products/SingleCard";
 import { setMyProductsAction } from "../redux/actions/action";
-import AddEditNewProduct from "./AddEditNewProduct";
+import AddEditProduct from "./AddEditProduct";
 import MyMessages from "./MyMessages";
 import "./myProfile.css"
 
@@ -68,7 +68,7 @@ function MyProfile() {
                     <MyMessages />
                 </div>
                 <div style={{display: profilePagination === "Add New Product"? "block":"none" }}>
-                    <AddEditNewProduct moreInfo={moreInfo} setMoreInfo={setMoreInfo}/>
+                    <AddEditProduct key={1} moreInfo={moreInfo} setMoreInfo={setMoreInfo}/>
                 </div>
                 <div style={{display: profilePagination === "My Account"? "block":"none" }}>
                     <MyAccount/>

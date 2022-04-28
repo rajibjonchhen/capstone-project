@@ -104,7 +104,7 @@ function MyAccount() {
     return ( <>
             <Alert margin="normal"  severity="success" style={{opacity:successMsg? 1:0, marginTop:"10px"}}>Updated successfully</Alert>
     
-        <Grid container className="account-box">
+       {myProfile && <Grid container className="account-box">
             <Grid item xs={12}  md={4} lg={3} className='account-image-box'>
                 
                 
@@ -217,7 +217,7 @@ function MyAccount() {
     />*/}
 
             </Grid>
-        </Grid> 
+        </Grid> }
         
         </>);
 }
