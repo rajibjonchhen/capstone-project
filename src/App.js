@@ -19,7 +19,8 @@ import MyProfile from './profile/MyProfile';
 function App() {
   return (
 <Provider store={configureStore}>
-    <div className="App">
+    <div className="App" 
+>
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<LoginPage/>}/>

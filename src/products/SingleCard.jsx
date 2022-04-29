@@ -74,7 +74,7 @@ export default function SingleCard({product}) {
       <Box sx={{bottom:"5px",position:"absolute"}}>
         <Button size="small">Like</Button>
         <Button size="small" >
-          {likes?.length>0  && likes.length}
+          {product?.LikesCounts}
           <Favorite sx={{ color: pink[500], display:isLiked? "block":"none" }} onClick={() => handleLikes()} />
           <FavoriteBorder
             sx={{ color: pink[500], display:!isLiked? "block":"none"  }}

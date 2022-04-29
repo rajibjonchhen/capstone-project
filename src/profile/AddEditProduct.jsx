@@ -78,10 +78,10 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
   ];
 
   useEffect(() => {
-      
       if (Object.keys(productErr).length === 0 && isSubmit) {
         console.log("after I am going to submit");
-      saveProduct();
+        saveProduct();
+        console.log("save after I am going to submit");
     }
   }, [productErr]);
 
@@ -93,6 +93,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
   }, [selectedImages]);
 
   const handleChange = (e) => {
+    console.log(product)
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
     isSubmit(true)
@@ -127,8 +128,8 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
   };
 
   const saveProduct = async () => {
-    setError("")
-      console.log("saving now " , process.env.REACT_APP_DEV_BE_URL + url, method , "singleProduct", singleProduct._id)
+    
+      console.log("saving now " , process.env.REACT_APP_DEV_BE_URL + url, method , "singleProduct")
     try {
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}` + url,

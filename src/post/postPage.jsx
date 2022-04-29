@@ -16,6 +16,7 @@ import "./postPage.css"
 import { Avatar, Button, TextField, Typography } from '@mui/material';
 import { Photo, Videocam, VideocamOff, Work } from '@mui/icons-material';
 import AddPostEdit from './AddPostEdit';
+import Loader from '../others/Loader';
 
 
 function PostPage() {
@@ -72,7 +73,7 @@ function PostPage() {
       }));
       
     return ( <>
-    {error? <div>{error}</div> : <Grid container spacing={2}> 
+    {isLoading? <Loader/> : error? <div>{error}</div> : <Grid container spacing={2}> 
         <Grid item sm={12} md={3} lg={3} >
             <Item>
                 <LeftSidebar fetchPosts={fetchPosts}/>
@@ -127,7 +128,7 @@ function PostPage() {
         </div>
             </Item>
             <Item className="all-posts">
-                {allPosts && allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
+                { allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
             </Item>
         </Grid>
         <Grid item sm={12} md={3} lg={3}>

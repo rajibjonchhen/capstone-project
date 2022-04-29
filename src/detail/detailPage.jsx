@@ -120,7 +120,7 @@ const fetchProduct = async(productId) => {
           setError(data.error);
         } else {
           const data = await response.json();
-          console.log(data);
+          console.log(data.updatedProduct);
           dispatch(setSingleProductAction(data.updatedProduct))
           fetchProduct(singleProduct._id)
           setSuccessMsg(true);
@@ -141,8 +141,8 @@ const fetchProduct = async(productId) => {
 
   return (
     <Container>
-      <Grid container>
-        <Grid item xs={12} md={6}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6} style={{position:'relative'}}>
           <div
             className="image-box"
             style={{
@@ -163,6 +163,8 @@ const fetchProduct = async(productId) => {
               display: "flex",
               margin: "5px auto",
               justifyContent: "center",
+              position:"absolute",
+              bottom:0
             }}
           >
             <IconButton
@@ -218,7 +220,7 @@ const fetchProduct = async(productId) => {
               {singleProduct?.title}
             </Typography>
             
-            <Box style={{textAlign:"left"}}>
+            <Box  style={{textAlign:"left"}}>
                     <Typography >
                     <span className="detail-title">Category : </span>
                       {singleProduct?.category}

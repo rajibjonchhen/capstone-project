@@ -215,7 +215,7 @@ export default function SinglePost({ post, fetchPosts }) {
                 <img src={item?.commentedBy?.avatar} alt={item?.commentedBy?.name} />
                 <Typography className="commentedBy">{item?.commentedBy?.name} {item?.commentedBy?.surname}</Typography>
               </div>
-              <Typography paragraph>{item?.comment}</Typography>
+              <Typography >{item?.comment}</Typography>
             </Box>
           )}
           </div>
