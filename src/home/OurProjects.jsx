@@ -38,7 +38,10 @@ function OurProjects() {
             type : "movie",
     },
     ]
-    return ( <Grid container spacing={2}>
+    return ( 
+    <div >        
+    <h1 className="theme-color" style={{margin:"50px auto"}}>Our Projects</h1>
+    <Grid container spacing={2}>
                     {myCategories.map((category, i) => 
                         <Grid item key={i} className="our-Project-box" xs={12} md={6}>
                 
@@ -48,7 +51,9 @@ function OurProjects() {
                             </Grid>
                             )}
 
-</Grid>);
+</Grid>
+</div>
+);
 }
 
 export default OurProjects;

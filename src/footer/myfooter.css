@@ -1,9 +1,8 @@
 .footer-box{
 bottom: 0;
-margin : 20px auto 0px;
+margin : 100px 0px 0px 0px;
 text-align: left;
 width: 100%;
-margin:auto;
 display:flex;
 justify-content:center
 }

@@ -140,7 +140,7 @@ const fetchProduct = async(productId) => {
   };
 
   return (
-    <Container>
+    <Container >
       <Grid container spacing={2}>
         <Grid item xs={12} md={6} style={{position:'relative'}}>
           <div
@@ -269,7 +269,7 @@ const fetchProduct = async(productId) => {
          
         </Grid>
       </Grid>
-      <Grid container style={{ display: open ? "block" : "block" }}>
+      <Grid container style={{ display: open ? "block" : "block",margin:"50px auto" }}>
         <Grid item xs={12}>
           {myInfo._id === singleProduct?.creator?._id ? (
             <>

@@ -67,14 +67,14 @@ export default function SingleCard({product}) {
         <Typography gutterBottom variant="h6" component="div">
           {product?.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography className="text-wrap">
           {product?.summary}
         </Typography>
       </CardContent>
       <Box sx={{bottom:"5px",position:"absolute"}}>
         <Button size="small">Like</Button>
         <Button size="small" >
-          {product?.LikesCounts}
+          {likes?.length>0  && likes.length}
           <Favorite sx={{ color: pink[500], display:isLiked? "block":"none" }} onClick={() => handleLikes()} />
           <FavoriteBorder
             sx={{ color: pink[500], display:!isLiked? "block":"none"  }}

@@ -58,11 +58,11 @@ function MyFooter() {
 
   return (
     
-      <Grid   container style={{ justifyContent:"center"}}>
+      <Grid   container style={{ justifyContent:"center",marginTop:"10px"}}>
       <Grid item xs={12} md={10} lg={10} className="footer-box">
           <Grid container spacing={2}>
           {footerParts.map((part, i) => (
-            <Grid key={i} item xs={12} sm={6} md={3} lg={3} >
+            <Grid key={i} item xs={12} sm={6} md={3} lg={3} style={{margin:"auto"}}>
                 <p className="footerCol-title">{part.title}</p>
                 <div className="footerCol">
                   {part.lists.map((list, j) => (

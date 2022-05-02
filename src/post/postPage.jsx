@@ -73,7 +73,7 @@ function PostPage() {
       }));
       
     return ( <>
-    {isLoading? <Loader/> : error? <div>{error}</div> : <Grid container spacing={2}> 
+    {isLoading? <Loader/> : error? <div>{error}</div> : <Grid container spacing={1} style={{backgroundColor:'white'}}> 
         <Grid item sm={12} md={3} lg={3} >
             <Item>
                 <LeftSidebar fetchPosts={fetchPosts}/>

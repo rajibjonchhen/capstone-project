@@ -7,3 +7,14 @@ box-shadow: 0 0 2px 2px white;
 box-shadow: 0 0 2px 2px grey;
 transform: scale(1.02);
 }
+
+.text-wrap{
+max-width: 400px !important;
+height: 109.2px !important;
+-webkit-line-clamp: 4 !important;
+-webkit-box-orient: vertical !important;
+overflow: hidden !important;
+text-overflow: ellipsis;
+line-height: 1.625 !important;
+-webkit-box-orient: vertical !important;
+}

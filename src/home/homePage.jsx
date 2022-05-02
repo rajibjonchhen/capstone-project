@@ -44,17 +44,15 @@ function HomePage() {
     return ( 
         <div> 
                <MyJumbotron/>
-        
-           
-             
+      
               <OurMission/>
            
            
-              <h1 className="theme-color">Our Projects</h1>
+              
               <OurProjects/>
     
-              <h1 className="theme-color">How we help</h1>
-              <Grid container >
+              <h1 className="theme-color" style={{margin:"50px auto"}}>How we help</h1>
+              <Grid container style={{margin:"0px auto 50px"}}>
               {informationArray.map((information, i) => <Grid key={i} xs={12} md={6}  item>
                 <HowWeHelp information={information}/>
               </Grid>)}
