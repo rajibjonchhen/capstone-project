@@ -17,6 +17,7 @@ import MyFooter from "../footer/myfooter";
 import MyNavbar from "../myNavbar/MyNavbar";
 import MyCarousel from "./MyCarousel";
 import AboutUs from "./AboutUs";
+import BootstrapCarousel from "./BootstrapCarousel";
 
 function HomePage() {
 
@@ -55,14 +56,16 @@ function HomePage() {
    
     return ( <div>
        <MyNavbar/>
+       <BootstrapCarousel/>
        <MyCarousel/>
-              {informationArray.map((information, i) => 
+
+              {/* {informationArray.map((information, i) => 
                     <div key={i} className="jumbo-box" style={{position:"relative"}}> 
                      <img src={information?.backgroundImg} alt="how we help" style={{width:"100%", }}/>
-                        {/* <h1 className="theme-color" style={{margin:"50px auto"}}>How we help</h1> */}
+                        <h1 className="theme-color" style={{margin:"50px auto"}}>How we help</h1>
                            <HowWeHelp information={information}/>
             </div> 
-              )}
+              )} */}
               
               <OurProjects/>
     
