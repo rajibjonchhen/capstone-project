@@ -30,31 +30,35 @@ function MyCarousel() {
   return (
     <div className="carousel">
 
-         <div className="carousel-item" style={{backgroundImage:`url(${myCarouselData[index].backgroundImg})`}}>
-           <div className="left">
-               <IconButton   onClick={() => handlePrev(-1)}>
-                   <ArrowBackIosRounded className="arrow"/>
-               </IconButton>
-           </div>
-           
-           <div className="center">
-               
-                <h3>{myCarouselData[index].title}</h3>
-                <p>{myCarouselData[index].description}</p>
-               
-           </div>
-           <div className="right" >
+            <div className="carousel-item" style={{backgroundImage:`url(${myCarouselData[index].backgroundImg})`}}>
+            <div className="left">
+                <IconButton   onClick={() => handlePrev(-1)}>
+                    <ArrowBackIosRounded className="arrow"/>
+                </IconButton>
+            </div>
+            
+            <div className="center">
+                <div>
+                    <div className="small-icons">
+                        {myCarouselData[index]?.image}
+                    </div>
+                    <h3>{myCarouselData[index].title}</h3>
+                    <p>{myCarouselData[index].description}</p>
+                </div>
+                
+            </div>
+            <div className="right" >
                 <IconButton onClick={() => handleNext(1)}>
-           
-                   <ArrowForwardIosRounded className="arrow"/>
-           
-               </IconButton>
-           </div>
+            
+                    <ArrowForwardIosRounded className="arrow"/>
+            
+                </IconButton>
+            </div>
             
         </div>
     </div>
-  )
-}
+    )
+    }
 
 export default MyCarousel
 // import React from 'react';
