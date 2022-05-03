@@ -24,7 +24,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<LoginPage/>}/>
-          <Route path="/home" exact element={<MyLayout><HomePage/></MyLayout>}/>
+          <Route path="/home" exact element={<HomePage/>}/>
           <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
           <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
           <Route path="/detail/:productId" exact element={<MyLayout><DetailPage/></MyLayout>}/>

@@ -1,9 +1,9 @@
 import { Grid } from "@material-ui/core";
 import { Button, Container } from "@mui/material";
 import { useEffect } from "react";
-import "./jumbotron.css"
+import "./aboutUs.css"
 
-function MyJumbotron() {
+function AboutUs() {
 
   useEffect(() =>{
     
@@ -30,4 +30,4 @@ function MyJumbotron() {
      );
 }
 
-export default MyJumbotron;
+export default AboutUs;

@@ -32,6 +32,7 @@ function PostPage() {
     const myInfo = useSelector(state => state.user.myInfo)
 
     useEffect(() =>{
+        console.log(allPosts)
         fetchPosts()
     },[])
 

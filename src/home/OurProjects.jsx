@@ -39,11 +39,11 @@ function OurProjects() {
     },
     ]
     return ( 
-    <Container  className="project-container">        
-        <h1 className="theme-color" style={{margin:"50px auto"}}>Our Projects</h1>
+    <Container  className="project-container" maxWidth="xl">        
+        <h1 style={{margin:"50px auto"}}>Our Projects</h1>
         <Grid container  spacing={2}>
             {myCategories.map((category, i) => 
-                <Grid item key={i} className="our-Project-box" xs={12} md={3}>
+                <Grid item key={i} className="our-project-box" >
                     <CategoryCard  category={category}/> 
                 </Grid>
         )}

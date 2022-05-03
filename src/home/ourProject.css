@@ -1,10 +1,14 @@
-.our-Project-box{
+.project-container{
+    padding:10px 0;
+    background-color: rgb(29, 28, 28);
+    color: white;
+    height:500px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    scroll-behavior: auto;
+}
+.our-project-box{
     margin:0 auto !important;
-    justify-content:space-between !important;
-    overflow: scroll;
-    }
-
-    .project-container{
-        background-color: rgb(29, 28, 28);
-       
+    background-color: rgb(56, 55, 55);
     }

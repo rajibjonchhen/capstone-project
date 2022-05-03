@@ -1,0 +1,53 @@
+.carousel{
+margin: 0 auto;
+width: 80%;
+height: 700px;
+color:black;
+
+}
+
+.carousel-item{
+    height: 100%;
+    width:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ .left, .right{
+    flex:5%;
+    height: 100%;
+    background-color: rgba(85, 85, 85, 0.233);
+    display: grid;
+    place-items: center;
+    color: white !important;
+    cursor: pointer;
+}
+
+.center{
+    flex:80%;
+    height:100%;
+    display: grid;
+    place-items: center;
+    color: white;
+    text-align: justify;
+    text-align-last: center ;
+}
+
+.center>p, .center>h3{
+    width: 300px;
+    background-color: rgba(9, 117, 160, 0.5);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+
+.arrow{
+    border-radius: 50% ;
+    color:white;
+    padding:3px
+}
+

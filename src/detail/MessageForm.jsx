@@ -29,7 +29,7 @@ function MessageForm({setOpen}) {
 
     useEffect(() => {
         console.log("single product creator",  singleProduct.creator)
-        setMessage({...message, product: singleProduct._id,receiver:singleProduct.creator})
+        setMessage({message,recepient:singleProduct.creator})
     },[])
 
     useEffect(() => {

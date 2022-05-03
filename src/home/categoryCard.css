@@ -1,8 +1,8 @@
 .category-card{
     color: rgb(247, 248, 248) !important;
-    background-color: rgb(82, 80, 80) !important;
+    background-color: rgba(82, 80, 80, 0) !important;
     cursor: pointer;
-    width: 100%;
+    width: 200px;
 }
 
 .category-card:hover {

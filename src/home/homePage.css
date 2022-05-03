@@ -15,6 +15,13 @@
     border-radius: 50%;
 }
 
+/* .jumbo-box{
+background-image: url(../assets/idea.png);
+width: 100vw;
+min-height: 500px;
+contain: content;
+} */
+
 @media only screen and (max-width: 360px){
     .mission-box p{
         font-size: 16px;
