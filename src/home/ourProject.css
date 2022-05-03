@@ -1,6 +1,10 @@
 .our-Project-box{
     margin:0 auto !important;
-    display:flex;
     justify-content:space-between !important;
-    flex-wrap: wrap;
+    overflow: scroll;
+    }
+
+    .project-container{
+        background-color: rgb(29, 28, 28);
+       
     }

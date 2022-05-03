@@ -1,8 +1,6 @@
 .category-card{
-    display: flex;
-    color: rgb(12, 136, 185) !important;
-background-color: white !important;
-    
+    color: rgb(247, 248, 248) !important;
+    background-color: rgb(82, 80, 80) !important;
     cursor: pointer;
     width: 100%;
 }

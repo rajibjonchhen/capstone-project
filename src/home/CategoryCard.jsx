@@ -29,12 +29,9 @@ export default function CategoryCard({ category }) {
     <Card className="category-card">
       <CardMedia
         component="img"
-        sx={{ width: 200, maxHeight: 200 }}
         image={category?.image}
         alt="Live from space album cover"
-        onClick={() => {
-          navigate("/products");
-        }}
+        onClick = {(e) => {changeCategory(e, category?.type)}}
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent
@@ -46,8 +43,7 @@ export default function CategoryCard({ category }) {
           <Typography component="div" variant="h6" textAlign="left">
             {category?.name}
           </Typography>
-          <Typography
-            color="text.secondary"
+          <Typography textAlign="left"
             component="div"
           >
             {category?.description}
