@@ -13,7 +13,7 @@ function LeftSidebar({fetchPosts}) {
 
     return ( 
     <Box>
-            <div className="left-side" >
+            <div className="left-side post-bg-color" >
             <img src={myInfo?.avatar} alt="avatar" />
             </div>
             <h4>{myInfo.name} {myInfo.surname}</h4>

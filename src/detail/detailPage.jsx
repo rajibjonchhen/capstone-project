@@ -13,6 +13,7 @@ import EditProductPage from "./EditProductPage";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSingleProductAction } from "../redux/actions/action";
+import {Carousel} from "react-bootstrap";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
@@ -141,24 +142,32 @@ const fetchProduct = async(productId) => {
 
   return (
     <Container >
-      <Grid container spacing={2}>
+      <Grid container spacing={2} className="theme-light-bg mt-3 py-3">
         <Grid item xs={12} md={6} style={{position:'relative'}}>
           <div
-            className="image-box"
+           
             style={{
            
             }}
           >
-            <img
-              style={{ width: "100%" }}
-              src={singleProduct?.images &&
-                singleProduct?.images[imgNum] ||
-                "https://via.placeholder.com/300"
-              }
-              alt="Live from space album cover"
-            />
+            {/*  */}
+            <Carousel  className="carousel-img">
+              {singleProduct?.images.map((image,i ) => 
+                <Carousel.Item key={i} style={{overflow:"hidden",height:"400px"}}>
+              
+                  <img
+                    className="d-block w-100"
+                    src={image ||
+                      "https://via.placeholder.com/300"}
+                      alt="First slide"
+                      />
+                      
+                </Carousel.Item>)}
+          </Carousel>
+            {/*  */}
+            
           </div>
-          <div
+          {/* <div
             style={{
               display: "flex",
               margin: "5px auto",
@@ -198,7 +207,7 @@ const fetchProduct = async(productId) => {
             >
               <ArrowForward fontSize="inherit"  />
             </IconButton>
-          </div>
+          </div> */}
 
           <div
            
@@ -302,7 +311,6 @@ const fetchProduct = async(productId) => {
               <Button className="theme-btn" onClick={(e) => setOpen(true)}>
                 Contact Creator
               </Button>
-              
             </>
           )}
      
@@ -324,7 +332,6 @@ const fetchProduct = async(productId) => {
           setShowEditPage={setShowEditPage}
         />
       )}
-    
     </Container>
   );
 }

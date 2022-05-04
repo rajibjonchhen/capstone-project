@@ -52,6 +52,11 @@
   background-color:rgb(5,106,145)
 }
 
+.theme-light-bg{
+  background-color: white;
+  box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.151);
+}
+
 .text-blue{
 color:rgb(49, 97, 187);
 font-weight: 500;

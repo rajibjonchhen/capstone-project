@@ -101,14 +101,15 @@ function MyAccount() {
         }
     }
 
-    return ( <>
+    return ( <div className="theme-light-bg mt-3 py-3">
+        <p className="h3">Update my Information</p>
             <Alert margin="normal"  severity="success" style={{opacity:successMsg? 1:0, marginTop:"10px"}}>Updated successfully</Alert>
     
-       {myProfile && <Grid container className="account-box">
-            <Grid item xs={12}  md={4} lg={3} className='account-image-box'>
+       {myProfile && <Grid container className="account-box theme-light-bg">
+            <Grid item xs={12}  md={4} lg={3} className='account-image-box '>
                 
                 
-                <img src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`} width="100px" sx={{marginTop:"10px"}}/>
+                <img src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`}  style={{margin:"10px auto 0px", width:"100px"}}/>
                 
                 <Button
                     variant="contained"
@@ -219,7 +220,7 @@ function MyAccount() {
             </Grid>
         </Grid> }
         
-        </>);
+        </div>);
 }
 
 export default MyAccount;

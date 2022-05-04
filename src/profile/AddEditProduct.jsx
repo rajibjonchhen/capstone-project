@@ -224,7 +224,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
    
   return (
     
-      <Container >
+      <Container className="theme-light-bg mt-3 py-3">
           <h2>Fill in the product details</h2>
           {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
           {error && <Alert margin="normal"  severity="error">{error}</Alert>}

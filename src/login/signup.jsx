@@ -125,7 +125,7 @@ try {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xs">
+      <Container maxWidth="xs" className='theme-light-bg mt-3 py-3'>
         <CssBaseline />
         <Box
           sx={{

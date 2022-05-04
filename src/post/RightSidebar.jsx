@@ -78,7 +78,7 @@ const handleChange = (e) =>  {
     <List className={classes.root}>
       <TextField size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
       {(filteredUsers || allUsers).map((user, i) => 
-          <ListItem key={i} alignItems="flex-start">
+          <ListItem key={i} >
             <ListItemAvatar>
               <Avatar alt={user.name} src={user.avatar} />
             </ListItemAvatar>
