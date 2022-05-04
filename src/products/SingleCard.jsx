@@ -6,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { Favorite, FavoriteBorder, ThumbUp } from "@mui/icons-material";
 import { pink } from "@material-ui/core/colors";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -71,17 +71,22 @@ export default function SingleCard({product}) {
           {product?.summary}
         </Typography>
       </CardContent>
-      <Box sx={{bottom:"5px",position:"absolute"}}>
-        <Button size="small">Like</Button>
-        <Button size="small" >
-          {likes?.length>0  && likes.length}
-          <Favorite sx={{ color: pink[500], display:isLiked? "block":"none" }} onClick={() => handleLikes()} />
-          <FavoriteBorder
-            sx={{ color: pink[500], display:!isLiked? "block":"none"  }}
-            onClick={() => handleLikes()} 
-          />
-        </Button>
-        <Button size="small"  onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
+      <Box sx={{bottom:"5px",position:"absolute", display:"flex", justifyContent:"space-around", alignItems:"center"}}>
+      <Box>
+        <Typography style={{fontSize:"8px"}}>
+        <ThumbUp style={{width:"8px"}}/>{isLiked? `You and ${product?.Likes.length}`:`${product?.Likes.length}`}
+        </Typography>
+          <Button size="small" onClick={() => handleLikes()} >Like 
+            <Favorite sx={{ color: pink[500], display:isLiked? "block":"none", width:"15px",marginLeft:"5px" }}  />
+            <FavoriteBorder
+              sx={{ color: pink[500], display:!isLiked? "block":"none",width:"15px",marginLeft:"5px" }}
+              />
+            </Button>
+          
+      </Box>
+      
+          <Button size="small" className="theme-btn" onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
+        
       </Box>
        
     </Card>
