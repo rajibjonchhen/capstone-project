@@ -26,8 +26,8 @@
     /* overflow: hidden; */
 }
 
-.detail-carousel .carousel-indicators{
-    background-color: rgba(148, 200, 224, 0);
+.detail-carousel .carousel-indicators>li {
+    background-color: rgba(148, 200, 224, 0.493);
     }
     
 .detail-carousel .carousel-control-next-icon{
@@ -36,6 +36,7 @@ background-color: rgba(182, 182, 182, 0.39) !important;
 border-radius: 50%;
 
 }
+
 .detail-carousel .carousel-control-prev-icon{
 margin-left: -50px ;
 background-color: rgba(182, 182, 182, 0.39) !important;

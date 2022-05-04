@@ -50,7 +50,7 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
         <Row className="project-container row-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4"> 
 
             {myCategories.map((category, i) => 
-               <div style={{opacity: "1"}}>
+               <div key={i} style={{opacity: "1"}}>
                     <CategoryCard  category={category}/> 
                </div>
                

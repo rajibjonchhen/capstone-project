@@ -70,24 +70,25 @@ export default function SingleCard({product}) {
         <Typography className="text-wrap">
           {product?.summary}
         </Typography>
-      </CardContent>
-      <Box sx={{bottom:"5px",position:"absolute", display:"flex", justifyContent:"space-around", alignItems:"center"}}>
-      <Box>
-        <Typography style={{fontSize:"8px"}}>
-        <ThumbUp style={{width:"8px"}}/>{isLiked? `You and ${product?.Likes.length}`:`${product?.Likes.length}`}
-        </Typography>
-          <Button size="small" onClick={() => handleLikes()} >Like 
-            <Favorite sx={{ color: pink[500], display:isLiked? "block":"none", width:"15px",marginLeft:"5px" }}  />
-            <FavoriteBorder
-              sx={{ color: pink[500], display:!isLiked? "block":"none",width:"15px",marginLeft:"5px" }}
-              />
-            </Button>
-          
-      </Box>
-      
-          <Button size="small" className="theme-btn" onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
+      <div style={{bottom:"5px",position:"absolute", display:"flex", justifyContent:'space-between', }}>
+        <div>
+          <div >
+          <ThumbUp style={{width:"8px"}}/> <span style={{fontSize:"8px"}}>{isLiked? `You and ${product?.Likes.length}`:`${product?.Likes.length}`}</span>
+          </div>
+            <Button size="small" onClick={() => handleLikes()} >Like 
+              <Favorite sx={{ color: pink[500], display:isLiked? "block":"none", width:"15px",marginLeft:"5px" }}  />
+              <FavoriteBorder
+                sx={{ color: pink[500], display:!isLiked? "block":"none",width:"15px",marginLeft:"5px" }}
+                />
+              </Button>
+            
+        </div>
         
-      </Box>
+          <Button size="small" className="theme-btn" onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
+       
+        
+      </div>
+                </CardContent>
        
     </Card>
   );

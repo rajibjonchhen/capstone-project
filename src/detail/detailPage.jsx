@@ -87,7 +87,7 @@ const fetchProduct = async(productId) => {
   }
 }
 
-  const uploadImages = async (files) => {
+  const uploadImages = async () => {
     const userData = new FormData();
 
     for(let i= 0; i <= selectedImages.length; i++){
@@ -114,20 +114,9 @@ const fetchProduct = async(productId) => {
         const data = await response.json();
         console.log(data);
         setSuccessMsg(true);
+        dispatch(setSingleProductAction(data.updatedProduct))
         setTimeout(() => setSuccessMsg(false), 1000);
-        if (response.status !== 200) {
-          const data = await response.json();
-          console.log(data, response.status);
-          setError(data.error);
-        } else {
-          const data = await response.json();
-          console.log(data.updatedProduct);
-          dispatch(setSingleProductAction(data.updatedProduct))
-          fetchProduct(singleProduct._id)
-          setSuccessMsg(true);
-          setIsLoading(false);
-          setTimeout(() => setSuccessMsg(false), 1000);
-        }
+        setSelectedImages([])
       }
     } catch (error) {
       console.log(error);

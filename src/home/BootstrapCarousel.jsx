@@ -7,7 +7,7 @@ function BootstrapCarousel() {
   return (
     <Carousel style={{width:'100%'}}>
         {myCarouselData.map((data,i) => 
-            <Carousel.Item>
+            <Carousel.Item key={i}>
                 <img
                 className="d-block w-100"
                 src={data.backgroundImg}
