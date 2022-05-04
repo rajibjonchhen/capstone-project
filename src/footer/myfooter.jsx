@@ -62,11 +62,11 @@ function MyFooter() {
       <Grid item xs={12} md={10} lg={10} className="footer-box">
           <Grid container spacing={2}>
           {footerParts.map((part, i) => (
-            <Grid key={i} item xs={12} sm={6} md={3} lg={3} style={{margin:"0 auto"}}>
+            <Grid key={i} item xs={12} sm={6} md={3} lg={3} style={{margin:"15px auto 0px"}}>
                 <p className="footerCol-title">{part.title}</p>
                 <div className="footerCol">
                   {part.lists.map((list, j) => (
-                    <p key={j}>{list}</p>
+                    <p key={j} className=" footer-item">{list}</p>
                     ))}
                 </div>
             </Grid>

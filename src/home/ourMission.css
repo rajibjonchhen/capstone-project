@@ -1,7 +1,7 @@
 .mission-box{
    
     padding: 30px 10px;
-    color:rgb(5,106,145);
+    color:rgb(199, 201, 202);
     width: 100%;
     
 }
@@ -15,6 +15,6 @@
 }
 
 .mission-box-hr{
-    background-color: rgba(5, 105, 145, 0);
+    background-color: rgba(5, 105, 145, 0.8);
     max-width: 200px;
 }

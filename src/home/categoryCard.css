@@ -1,8 +1,8 @@
 .category-card{
-    color: rgb(247, 248, 248) !important;
-    background-color: rgba(82, 80, 80, 0) !important;
-    cursor: pointer;
-    width: 200px;
+    margin: 30px 20px !important;
+	max-height: 400px;
+	overflow: hidden;
+	padding: 3px;
 }
 
 .category-card:hover {

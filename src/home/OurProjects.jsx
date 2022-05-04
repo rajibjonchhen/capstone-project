@@ -1,9 +1,15 @@
 import { Grid } from "@material-ui/core";
-import { Container } from "@mui/material";
+import { useState } from "react";
+import { useEffect } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import CategoryCard from "./CategoryCard";
 import "./ourProject.css"
 
 function OurProjects() {
+
+const [ showCard, setShowCard] = useState([false, false, false, false])
+
+
     const myCategories = [
         { name : "Innovative Ideas",
             image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688009/creators-space-products/smgag3ddsut8rha928xu.png",
@@ -39,16 +45,19 @@ function OurProjects() {
     },
     ]
     return ( 
-    <Container  className="project-container" maxWidth="xl">        
-        <h1 style={{margin:"50px auto"}}>Our Projects</h1>
-        <Grid container  spacing={2}>
-            {myCategories.map((category, i) => 
-                <Grid item key={i} className="our-project-box" >
-                    <CategoryCard  category={category}/> 
-                </Grid>
-        )}
+    <Container   fluid className="our-projects">        
+        <h1 style={{margin:"50px auto", color:"white"}}>Our Projects</h1>
+        <Row className="project-container row-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4"> 
 
-        </Grid> 
+            {myCategories.map((category, i) => 
+               <div style={{opacity: "1"}}>
+                    <CategoryCard  category={category}/> 
+               </div>
+               
+        )}
+        </Row>
+
+        
     </Container>
 );
 }

@@ -13,3 +13,8 @@ border-top: 1px solid white
     text-align: left;
     font-weight: bold;
 }
+
+.footer-item:hover{
+cursor: pointer;
+color:lightblue
+}

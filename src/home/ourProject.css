@@ -1,13 +1,15 @@
+
+
 .project-container{
-    padding:10px 0;
-    background-color: rgb(29, 28, 28);
-    color: white;
-    height:500px;
     display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    scroll-behavior: auto;
+    height:400px;
+    margin:20px auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    flex-wrap:nowrap;
+    
 }
+
 .our-project-box{
     margin:0 auto !important;
     background-color: rgb(56, 55, 55);

@@ -55,7 +55,7 @@ function HomePage() {
    
    
     return ( <div>
-       <MyNavbar/>
+       
        <BootstrapCarousel/>
        <MyCarousel/>
 
@@ -73,7 +73,7 @@ function HomePage() {
                <AboutUs/>
       
               <OurMission/>
-              <MyFooter/>
+             
               </div>
             
                
