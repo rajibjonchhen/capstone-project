@@ -151,12 +151,12 @@ const fetchProduct = async(productId) => {
             }}
           >
             {/*  */}
-            <Carousel  className="carousel-img">
+            <Carousel  className="detail-carousel">
               {singleProduct?.images.map((image,i ) => 
-                <Carousel.Item key={i} style={{overflow:"hidden",height:"400px"}}>
+                <Carousel.Item key={i} className="detail-carousel-img">
               
                   <img
-                    className="d-block w-100"
+                    className="d-block w-100 "
                     src={image ||
                       "https://via.placeholder.com/300"}
                       alt="First slide"
@@ -167,50 +167,7 @@ const fetchProduct = async(productId) => {
             {/*  */}
             
           </div>
-          {/* <div
-            style={{
-              display: "flex",
-              margin: "5px auto",
-              justifyContent: "center",
-              position:"absolute",
-              bottom:0
-            }}
-          >
-            <IconButton
-            className= "arrow-btn"
-              aria-label="delete"
-              size="small"
-              sx={{
-                opacity: imgNum > 0 ? 1 : 0,
-                backgroundColor: "rgb(7,105,144, 0.3)",
-                color:"white"
-              }}
-              onClick={() => handlePrev()}
-            >
-              <ArrowBack fontSize="inherit"  />
-            </IconButton>
-            <IconButton
-            className= "arrow-btn"
-              aria-label="delete"
-              size="small"
-              sx={{
-                opacity:
-                  singleProduct?.images?.length  > 1 &&
-                  imgNum !== singleProduct?.images?.length - 1
-                    ? 1
-                    : 0,
-                    backgroundColor: "rgb(7,105,144, 0.3)",
-                    color:"white"
-                
-              }}
-              onClick={() => handleNext()}
-            >
-              <ArrowForward fontSize="inherit"  />
-            </IconButton>
-          </div> */}
-
           <div
-           
             style={{
               margin: "15px auto",
               width: "300px",
@@ -267,7 +224,7 @@ const fetchProduct = async(productId) => {
                     </Typography>}
           </Box>
             {/* creator's profile */}
-                <h3>Creator's Profile</h3>
+                <h5>Creator's Profile</h5>
             <Box className="creator-profile">
               <Avatar style={{width:"60px", height:"60px"}}src={singleProduct?.creator?.avatar}/>
               <Box style={{textAlign:"left"}}>

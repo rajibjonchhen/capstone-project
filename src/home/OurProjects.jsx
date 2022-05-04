@@ -45,7 +45,7 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
     },
     ]
     return ( 
-    <Container   fluid className="our-projects">        
+    <Container   fluid className="our-projects ">        
         <h1 style={{margin:"50px auto", color:"white"}}>Our Projects</h1>
         <Row className="project-container row-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4"> 
 

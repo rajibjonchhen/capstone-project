@@ -17,8 +17,8 @@ function BootstrapCarousel() {
                 <div className="small-icons">
                     {data.image}
                 </div>
-                <h3>{data.title}</h3>
-                <p style={{ margin:"0 auto 20px"}}>{data.description}</p>
+                <h3 className='mt-2'>{data.title}</h3>
+                <p className="px-2">{data.description}</p>
                 </Carousel.Caption>
             </Carousel.Item>
             )}

@@ -1,5 +1,10 @@
 
 
+.our-projects{
+
+    margin:100px auto;
+}
+
 .project-container{
     display: flex;
     height:400px;

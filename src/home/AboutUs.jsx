@@ -10,8 +10,8 @@ function AboutUs() {
   },[])
     return ( 
 
-      <>
-             <p className="h3 text-white"> About Us</p>         
+      <div className=" mt-5">
+             <p className="h1 text-white my-5">Who we are?</p>         
           <Grid container className="jumbotron" >
             <Grid item  xs={12} md={6}>
             <p>
@@ -24,7 +24,7 @@ function AboutUs() {
             </Grid>
           </Grid>
                  
-      </>
+      </div>
       
 
      );
