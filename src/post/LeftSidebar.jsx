@@ -1,11 +1,7 @@
-import React from "react";
-import { Box, Button } from "@material-ui/core";
-import { useState } from "react";
-import AddPostEdit from "./AddPostEdit";
-import { useSelector } from 'react-redux';
-import "./leftSide.css"
 import { Typography } from "@mui/material";
 import { Container } from "react-bootstrap";
+import { useSelector } from 'react-redux';
+import "./leftSide.css";
 
 function LeftSidebar({fetchPosts}) {
     const myInfo = useSelector(state => state.user.myInfo)

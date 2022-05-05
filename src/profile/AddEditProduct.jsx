@@ -1,23 +1,14 @@
 import { Box, Grid, TextField } from "@material-ui/core";
-import { AddBox } from "@mui/icons-material";
-import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import {
-  Autocomplete,
-  Button,
-  InputLabel,
+  Alert, Button, Container, FormControl, InputLabel,
   MenuItem,
   Select,
-  Typography,
-  FormControl,
-  Container,
-  Alert,
+  Typography
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import getMyAllProducts from "../getMyAllProducts";
-import { setMyProductsAction } from "../redux/actions/action";
 
-import "./addEditProduct.css"
+import "./addEditProduct.css";
 
 function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct }) {
 

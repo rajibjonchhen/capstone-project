@@ -1,30 +1,29 @@
-import * as React from "react";
-import { useEffect } from "react";
-import { styled, alpha } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
 import {
   AppBar,
   Avatar,
   CssBaseline,
   Grid,
   Toolbar,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import { Flare } from "@mui/icons-material";
-import SearchIcon from "@mui/icons-material/Search";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
+import Badge from "@mui/material/Badge";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import InputBase from "@mui/material/InputBase";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { alpha, styled } from "@mui/material/styles";
+import * as React from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import "./myNavbar.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import "./myNavbar.css";
 
 function MyNavbar() {
   const location = useLocation();

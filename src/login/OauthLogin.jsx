@@ -1,8 +1,6 @@
 
-import { Avatar, Box, Typography } from "@mui/material";
-import {AiOutlineGooglePlus, AiFillApple} from "react-icons/ai"
-import {FaFacebookSquare} from "react-icons/fa"
-import "./oauthLogin.css"
+import { Box } from "@mui/material";
+import "./oauthLogin.css";
 
 
         

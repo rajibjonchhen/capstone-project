@@ -2,15 +2,15 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-import MyNavbar from "../myNavbar/MyNavbar";
-import "./myLayout.css"
-import getMyInfo from "../getMyInfo";
-import { setMyInfoAction } from "../redux/actions/action";
-import { useDispatch } from "react-redux";
 import { Grid } from "@material-ui/core";
+import { Container } from "@mui/material";
+import { useDispatch } from "react-redux";
 import ExtraNavbar from "../extraNavbar/ExtraNavbar";
 import MyFooter from "../footer/myfooter";
-import { Container } from "@mui/material";
+import getMyInfo from "../getMyInfo";
+import MyNavbar from "../myNavbar/MyNavbar";
+import { setMyInfoAction } from "../redux/actions/action";
+import "./myLayout.css";
 
 function MyLayout({children}) {
     const navigate = useNavigate()

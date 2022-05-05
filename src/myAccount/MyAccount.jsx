@@ -1,13 +1,11 @@
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { Alert, Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import getMyInfo from "../getMyInfo";
 import { setMyInfoAction } from "../redux/actions/action";
-import Autocomplete from '@mui/material/Autocomplete';
-import "./myAccount.css"
-import { countries } from "./country.js";
+import "./myAccount.css";
 
 function MyAccount() {
     const dispatch = useDispatch()

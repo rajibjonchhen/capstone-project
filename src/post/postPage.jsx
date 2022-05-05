@@ -1,22 +1,19 @@
 
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
+import { Photo, Videocam, Work } from '@mui/icons-material';
+import { Avatar, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import SinglePost from "./SinglePost";
-import RightSidebar from './RightSidebar';
-import LeftSidebar from './LeftSidebar';
-import getMyInfo from '../getMyInfo';
-import { useNavigate } from 'react-router-dom';
-import { setAllPostsAction } from '../redux/actions/action';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import "./postPage.css"
-import { Avatar, Button, TextField, Typography } from '@mui/material';
-import { Photo, Videocam, VideocamOff, Work } from '@mui/icons-material';
-import AddPostEdit from './AddPostEdit';
+import { useNavigate } from 'react-router-dom';
 import Loader from '../others/Loader';
+import { setAllPostsAction } from '../redux/actions/action';
+import AddPostEdit from './AddPostEdit';
+import LeftSidebar from './LeftSidebar';
+import "./postPage.css";
+import RightSidebar from './RightSidebar';
+import SinglePost from "./SinglePost";
 
 
 function PostPage() {
@@ -129,9 +126,9 @@ function PostPage() {
         </div>
         </div>
             </Item>
-            <Item className="all-posts">
+           
                 { allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
-            </Item>
+            
         </Grid>
         <Grid item sm={12} md={3} lg={3} style={{width:"100%", margin:"0 auto"}}>
             <Item >

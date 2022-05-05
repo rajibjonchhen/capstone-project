@@ -13,12 +13,14 @@ function BootstrapCarousel() {
                 src={data.backgroundImg}
                 alt="First slide"
                 />
-                <Carousel.Caption style={{backgroundColor:"rgb(99,173,203,0.8)", borderRadius:"60px"}}>
+                <Carousel.Caption className='carousel-text'>
                 <div className="small-icons">
                     {data.image}
                 </div>
-                <h3 className='mt-2'>{data.title}</h3>
-                <p className="px-2">{data.description}</p>
+              
+                <h3 >{data.title}</h3>
+                <p >{data.description}</p>
+                
                 </Carousel.Caption>
             </Carousel.Item>
             )}

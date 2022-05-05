@@ -1,5 +1,5 @@
-import { Avatar, Container, Grid } from "@material-ui/core";
-import { Box, ListItem } from "@mui/material";
+import { Avatar, Grid } from "@material-ui/core";
+import { Box } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";

@@ -1,19 +1,17 @@
-import * as React from "react";
-import { useState } from "react";
+import { pink } from "@material-ui/core/colors";
+import { DeleteForeverOutlined, Favorite, FavoriteBorder, ThumbUp } from "@mui/icons-material";
+import { Alert, IconButton } from "@mui/material";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { DeleteForeverOutlined, Favorite, FavoriteBorder, ThumbUp } from "@mui/icons-material";
-import { pink } from "@material-ui/core/colors";
-import { useNavigate } from "react-router-dom";
+import * as React from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setSingleProductAction } from "../redux/actions/action";
-import "./singleCard.css"
-import { Alert, IconButton } from "@mui/material";
-import { Box } from "@material-ui/core";
+import "./singleCard.css";
 
 
 export default function SingleCard({product}) {

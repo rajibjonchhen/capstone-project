@@ -1,13 +1,10 @@
-import { getListItemAvatarUtilityClass } from "@mui/material";
+import { Grid } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Loader from "../others/Loader";
-import { setAllProductsAction, setMyInfoAction } from "../redux/actions/action";
-import SingleCard from "./SingleCard";
-import './displayProducts.css'
 import { useNavigate, useParams } from "react-router-dom";
-import getMyInfo from "../getMyInfo";
-import { Grid } from "@material-ui/core";
+import { setAllProductsAction } from "../redux/actions/action";
+import './displayProducts.css';
+import SingleCard from "./SingleCard";
 
 function DisplayProducts() {
     const [ error, setError] = useState("")

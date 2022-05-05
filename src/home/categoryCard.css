@@ -17,10 +17,6 @@
     background-color: white !important;
 }
 
-.explore-btn.theme-btn{
-position:absolute !important;
-bottom: 10px !important;
-}
 
 
 @media only screen and (max-width: 360px){
