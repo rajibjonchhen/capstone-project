@@ -75,7 +75,7 @@ const handleChange = (e) =>  {
 
 
   return (
-    <List className={classes.root}>
+    <List className={classes.root} style={{width:"100%"}}>
       <TextField size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
       {(filteredUsers || allUsers).map((user, i) => 
           <ListItem key={i} >

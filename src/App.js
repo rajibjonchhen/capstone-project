@@ -14,13 +14,14 @@ import ErrorPage from './error/ErrorPage';
 import DisplayProducts from "./products/DisplayProducts"
 import MyProfile from './profile/MyProfile';
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Container } from 'react-bootstrap';
 
 
 
 function App() {
   return (
 <Provider store={configureStore}>
-    <div className="App" style={{backgroundColor: " rgb(4, 52, 71)"}}>
+    <Container fluid className="App" style={{backgroundColor: " rgb(4, 52, 71)",margin:"auto"}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<LoginPage/>}/>
@@ -33,7 +34,7 @@ function App() {
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </BrowserRouter>
-    </div>
+    </Container>
       </Provider>
   );
 }

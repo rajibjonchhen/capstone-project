@@ -3,11 +3,7 @@
 }
 
 .all-posts{
-    height: 100vh;
+    width: 100%;
     overflow: scroll    
-
 }
 
-.post-bg-color{
-    background-color: rgb(255, 255, 255);
-}

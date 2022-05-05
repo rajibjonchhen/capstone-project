@@ -27,7 +27,7 @@ const myInfo = useSelector(state => state.user.myInfo)
 
   React.useEffect(() => {
 
-    console.log(product?.creator?._id, myInfo?._id,"product?.creator._id === myInfo?._id")
+    console.log(product?.creator, myInfo,"product?.creator._id === myInfo?._id")
     console.log(product.isLiked)
     setIsLiked(product.isLiked)
   }, [])

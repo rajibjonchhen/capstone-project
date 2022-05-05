@@ -42,7 +42,7 @@ function MyLayout({children}) {
         <div style={{display:location.pathname === "/profile"? "block":"none"}}>
         <ExtraNavbar />
         </div>
-        <Container  className="myLayout-box" >
+        <Container fluid className="myLayout-box" >
 
         <Grid container >
                     <Grid item xs={12} sm={12} md={10} lg={10} className="content-center">

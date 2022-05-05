@@ -76,8 +76,8 @@ function PostPage() {
       
     return ( <>
     {isLoading? <Loader/> : error? <div>{error}</div> : <Grid container spacing={1} style={{backgroundColor:'white'}}> 
-        <Grid item sm={12} md={3} lg={3} className="theme-light-bg">
-            <Item>
+        <Grid item sm={12} md={6} lg={3} className="theme-light-bg" style={{width:"100%", margin:"0 auto"}}>
+            <Item style={{width:"100%",margin:"auto"}}>
                 <LeftSidebar fetchPosts={fetchPosts} />
             </Item>
         </Grid>
@@ -96,7 +96,7 @@ function PostPage() {
                         onClick={()=>{setOpen(true)}}
                         style={{
                         paddingLeft: "10px",
-                        paddingRight: "270px",
+                        
                         paddingTop: "10px",
                         paddingBottom: "10px",
                         textAlign: "left",
@@ -133,8 +133,8 @@ function PostPage() {
                 { allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
             </Item>
         </Grid>
-        <Grid item sm={12} md={3} lg={3}>
-            <Item>
+        <Grid item sm={12} md={3} lg={3} style={{width:"100%", margin:"0 auto"}}>
+            <Item >
                 <RightSidebar/>
             </Item>
         </Grid>
