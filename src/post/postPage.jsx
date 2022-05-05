@@ -87,7 +87,7 @@ function PostPage() {
 
         <Grid item sm={12} md={6} lg={6} className="posts-box theme-light-bg">
 
-            { chatUser !== {}? <ChatBox/> : <>
+            {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
                 <Item sx={{ margin:"3px 0px"}}>
                     <div>
 
