@@ -34,15 +34,7 @@ function MyMessages() {
         const data = await response.json();
         console.log(data);
         setIsLoading(false);
-// --------------
-const groupData = (data) => {
-    let g = Object.entries(data.message.reduce((r,c)=>(r[c.sender._id]=[...r[c.sender._id]||[], c],r),{}))
-    return g.reduce((r,c) => (r.children.push(
-       {name: c[0], children: c[1]}), r),{name: "Children Array", children:[]})}
-  
-  console.log(groupData(data))
 
-//----------------
 
         dispatch(setMyMessagesAction(data.messages));
       }

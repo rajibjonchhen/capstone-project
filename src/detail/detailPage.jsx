@@ -225,9 +225,18 @@ const fetchProduct = async(productId) => {
             </Box>
          
         </Grid>
-      </Grid>
-      <Grid container style={{ display: open ? "block" : "block",margin:"50px auto" }}>
+        <Grid
+        container
+        style={{ display: open ? "block" : "none", marginTop: "50px" }}
+      >
+        
         <Grid item xs={12}>
+          <MessageForm setOpen={setOpen}/>
+        </Grid>
+      </Grid>
+      </Grid>
+      <Grid container style={{ margin:"50px auto" }}>
+        <Grid item xs={12} style={{ margin:"0px auto" }}>
           {myInfo._id === singleProduct?.creator?._id ? (
             <>
               {/*  */}
@@ -256,7 +265,7 @@ const fetchProduct = async(productId) => {
             </>
           ) : (
             <>
-              <Button className="theme-btn" onClick={(e) => setOpen(true)}>
+              <Button className="theme-btn" style={{display:!open? "flex":"none"}} onClick={(e) => setOpen(true)}>
                 Contact Creator
               </Button>
             </>
@@ -264,15 +273,7 @@ const fetchProduct = async(productId) => {
      
         </Grid>
       </Grid>
-      <Grid
-        container
-        style={{ display: open ? "block" : "none", marginTop: "50px" }}
-      >
-        
-        <Grid item xs={12}>
-          <MessageForm setOpen={setOpen}/>
-        </Grid>
-      </Grid>
+      
       {showEditPage && (
         <EditProductPage
         fetchProduct={fetchProduct}

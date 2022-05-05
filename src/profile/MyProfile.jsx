@@ -59,11 +59,11 @@ function MyProfile() {
     return (<>  
                 <Grid  container >
                     <Grid item xs={12} >
-                            <Grid container classNmae="theme-light-bg mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none" }}>
-                                {myProducts?.length === 0 && <Typography variant="h2" paragraph>You do not have any creation yet</Typography>}
+                            <Grid container className="theme-light-bg mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
+                                {myProducts?.length === 0 && <Typography variant="h3" paragraph>You do not have any creation yet</Typography>}
                                 {myProducts?.map((product, i) => 
                                 <Grid  key={i} item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
-                                    <SingleCard product={product}/>
+                                    <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
                                 </Grid> )}
                             </Grid>
                         

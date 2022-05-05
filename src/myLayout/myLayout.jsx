@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { Grid } from "@material-ui/core";
-import { Container } from "@mui/material";
+import { Container } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import ExtraNavbar from "../extraNavbar/ExtraNavbar";
 import MyFooter from "../footer/myfooter";
@@ -29,7 +29,7 @@ function MyLayout({children}) {
                 fetchMyInfo()
             }
         }else{
-            localStorage.setItem("MyToken", token)
+            
             fetchMyInfo()
         }
     },[])
@@ -39,10 +39,11 @@ function MyLayout({children}) {
     }
     return ( <>
         <MyNavbar/>
-        <div style={{display:location.pathname === "/profile"? "block":"none"}}>
+        <div style={{display:location.pathname === "/profile"? "block":"none", margin:"0"}}>
         <ExtraNavbar />
         </div>
-        <Container fluid className="myLayout-box" >
+        <Container  className="myLayout-box" >
+        
 
         <Grid container >
                     <Grid item xs={12} sm={12} md={10} lg={10} className="content-center">
@@ -50,6 +51,7 @@ function MyLayout({children}) {
                     </Grid>
                 </Grid>
         </Container>
+       
         <MyFooter/>
     </>
      );

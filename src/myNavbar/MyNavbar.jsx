@@ -249,7 +249,7 @@ function MyNavbar() {
                 }}
               />
 
-              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <Box sx={{ display: { xs: "none", md: "flex"} }}>
                 {/* <Box style={{ display: "flex", alignItems: "center" }}>
                   <Search>
                     <SearchIconWrapper>
@@ -261,7 +261,7 @@ function MyNavbar() {
                     />
                   </Search>
                 </Box> */}
-
+              
                 <MenuItem className="margin-xasix"
                   onClick={() => {
                     navigate("/home");

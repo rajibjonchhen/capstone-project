@@ -8,19 +8,6 @@
     padding: 20px 10px;
 }
 
-.my-icons{
-    background-color: rgba(9, 117, 160, 0.5);
-    font-size: 50px !important;
-    border: 2px solid white;
-    border-radius: 50%;
-}
-
-/* .jumbo-box{
-background-image: url(../assets/idea.png);
-width: 100vw;
-min-height: 500px;
-contain: content;
-} */
 
 @media only screen and (max-width: 360px){
     .mission-box p{

@@ -179,7 +179,8 @@ export default function SinglePost({ post, fetchPosts }) {
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-        >
+          >
+          <Typography style={{transform:expanded? "rotate(180deg)":"rotate(0deg)",padding:"5px"}}>Comment</Typography>
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>

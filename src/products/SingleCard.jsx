@@ -1,5 +1,5 @@
 import { pink } from "@material-ui/core/colors";
-import { DeleteForeverOutlined, Favorite, FavoriteBorder, ThumbUp } from "@mui/icons-material";
+import { DeleteForever, DeleteForeverOutlined, DeleteOutline, DeleteOutlineTwoTone, DeleteSweep, Favorite, FavoriteBorder, ThumbUp } from "@mui/icons-material";
 import { Alert, IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -14,7 +14,7 @@ import { setSingleProductAction } from "../redux/actions/action";
 import "./singleCard.css";
 
 
-export default function SingleCard({product}) {
+export default function SingleCard({product, fetchMyProducts }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [likes, setLikes] = useState(null);
@@ -59,7 +59,7 @@ const myInfo = useSelector(state => state.user.myInfo)
   const handleDelete = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products/${product._id}`,
+        `${process.env.REACT_APP_DEV_BE_URL}/products/me/${product._id}`,
         {
           method: "DELETE",
           headers: {
@@ -71,11 +71,11 @@ const myInfo = useSelector(state => state.user.myInfo)
         const data = await response.json();
         console.log(data);
         setError(data.error);
+        setTimeout(() => setError(""), 2000)
       } else {
         const data = await response.json();
-        console.log(data);
-        setIsLiked(data.product.isLiked)
-        setLikes(data.product.Likes)
+        console.log("data deleted successfully");
+        fetchMyProducts()
       }
     } catch (error) {
       console.log(error);
@@ -114,7 +114,8 @@ const myInfo = useSelector(state => state.user.myInfo)
         </div>
           <Button size="small" className="theme-btn" onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
           {product?.creator?._id === myInfo?._id && <IconButton onClick={() => handleDelete(product?._id)}>
-            <DeleteForeverOutlined/>
+            
+            <DeleteSweep/>
           </IconButton>}
        
       </div>

@@ -1,5 +1,5 @@
-import { Grid } from "@material-ui/core";
-import { Button, Container } from "@mui/material";
+import { Container, Grid } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfilePaginationAction } from "../redux/actions/action";
@@ -16,7 +16,7 @@ function ExtraNavbar() {
   }, []);
 
   return (
-    <Grid className="extra-header">
+    <Container  className="extra-header">
       <Grid container>
         <Grid
           item
@@ -71,8 +71,8 @@ function ExtraNavbar() {
             My Account
           </Button>
         </Grid>
-      </Grid>
-    </Grid>
+        </Grid>
+    </Container>
   );
 }
 

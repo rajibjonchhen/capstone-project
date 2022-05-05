@@ -4,11 +4,11 @@ import TravelExploreOutlinedIcon from "@mui/icons-material/TravelExploreOutlined
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
+import {Card} from "react-bootstrap";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button } from "@material-ui/core";
+import { Button, CardActionArea, CardActions } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSelectedCategoryAction } from "../redux/actions/action";
@@ -25,21 +25,51 @@ export default function CategoryCard({ category }) {
      navigate(`/products/${type}`)
   }
   return (
+
+    //  <Card sx={{ maxWidth: 345 }} className="category-card">
+    //   <CardActionArea>
+    //     <CardMedia
+    //       component="img"
+    //       height="140"
+    //       image={category?.image}
+    //       alt="green iguana"
+    //     />
+    //     <CardContent
+    //      onClick = {(e) => {changeCategory(e, category?.type)}}
+    //      style={{ position:'absolute', bottom:"10px"}}
+    //     >
+    //       <Typography gutterBottom variant="h5" component="div">
+    //       {category?.name}
+    //       </Typography>
+    //       <Typography variant="body2" color="text.secondary">
+    //       {category?.description}
+    //       </Typography>
+    //     </CardContent>
+    //   </CardActionArea>
     
-    <Card className="category-card" style={{width:'100%'}}>
+    // </Card>
+
+    <Card className="category-card" style={{maxWidth:"200px"}}>
       <CardMedia
         component="img"
         image={category?.image}
         alt="Live from space album cover"
         onClick = {(e) => {changeCategory(e, category?.type)}}
-        style={{width:"100%", height:"auto"}}
+        style={{width:"100%", height:"auto", }}
       />
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Button
+          size="small"
+          onClick = {(e) => {changeCategory(e, category?.type)}}
+          className="theme-btn"
+          style={{border:"2px solid white"}}
+        >
+          Explore
+        </Button>
+      
         <CardContent
-          sx={{ flex: "1 0 auto" }}
-          onClick={() => {
-           ;
-          }}
+          size="small"
+          onClick = {(e) => {changeCategory(e, category?.type)}}
+          style={{ bottom:"10px"}}
         >
           <Typography component="div" variant="h6" textAlign="left">
             {category?.name}
@@ -49,18 +79,11 @@ export default function CategoryCard({ category }) {
           >
             {category?.description}
           </Typography>
+      
         </CardContent>
-          <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-          <Button
-            size="small"
-            onClick = {(e) => {changeCategory(e, category?.type)}}
-            className="theme-btn"
-            style={{border:"2px solid white", position:'absolute', bottom:"10px"}}
-          >
-            Explore
-          </Button>
-        </Box>
-      </Box>
+      
+    
+    
     </Card>
     
   );

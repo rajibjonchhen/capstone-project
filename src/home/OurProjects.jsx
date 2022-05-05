@@ -46,22 +46,23 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
     },
     ]
     return ( 
-    <Container   fluid className="our-projects ">        
+    <Container   fluid className="our-projects bg-dark ">        
         
         
-        {/* <Row className="project-container row-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4" style={{display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden"}}> 
-            <Col style={{display:"flex", alignItems:"center", color:'white', width:"10%"}}>
-                <ArrowBackIos/> 
-                <h1 style={{margin:"50px auto", color:"white"}}>Our Projects</h1>
-            </Col>
+            <Row className="project-container row-cols-4 row-cols-sm-2  row-cols-md-3 row-cols-lg-5 p-1" style={{display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden"}}> 
+                <Col style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                    <ArrowBackIos className="text-white"/>
+                <h1 style={{margin:"50px auto", color:"white",transform: "rotate(270deg)"}}>Our Projects</h1>
+                </Col>
+            
 
             {myCategories.map((category, i) => 
-               <Col key={i} style={{opacity: "1", padding:'5px'}}>
-                    <CategoryCard  category={category}/> 
+               <Col key={i} style={{opacity: "1",padding:"5px"}}>
+                    <CategoryCard  key={i}  category={category}/> 
                </Col>
                
         )}
-        </Row> */}
+        </Row>
 
         
     </Container>
