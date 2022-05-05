@@ -25,3 +25,23 @@ margin-right: -200px ;
 .carousel-control-prev-icon{
 margin-left: -200px ;
 }
+
+
+@media only screen and (max-width: 360px){
+    .carousel-control-next-icon{
+        margin-right: -50px ;
+        }
+        .carousel-control-prev-icon{
+        margin-left: -50px ;
+        }
+}
+
+
+@media only screen and (max-width: 700px){
+    .carousel-control-next-icon{
+        margin-right: -100px ;
+        }
+        .carousel-control-prev-icon{
+        margin-left: -100px ;
+        }
+}

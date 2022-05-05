@@ -1,4 +1,5 @@
 import { Grid } from "@material-ui/core";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -47,12 +48,18 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
     return ( 
     <Container   fluid className="our-projects ">        
         <h1 style={{margin:"50px auto", color:"white"}}>Our Projects</h1>
-        <Row className="project-container row-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4"> 
+        <Row>
+            <Col>
+                <ArrowBackIos/>
+                <ArrowForwardIos/>
+            </Col>
+        </Row>
+        <Row className="project-container row-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-4" style={{display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden"}}> 
 
             {myCategories.map((category, i) => 
-               <div key={i} style={{opacity: "1"}}>
+               <Col key={i} style={{opacity: "1", padding:'5px'}}>
                     <CategoryCard  category={category}/> 
-               </div>
+               </Col>
                
         )}
         </Row>

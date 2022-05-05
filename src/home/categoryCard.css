@@ -1,8 +1,9 @@
 .category-card{
-    margin: 30px 20px !important;
-	max-height: 400px;
+    margin: 0px auto;
+	min-height: 400px;
 	overflow: hidden;
 	padding: 3px;
+    position: relative;
 }
 
 .category-card:hover {
@@ -14,6 +15,11 @@
 .category-card:hover + .theme-btn {
     color: rgb(12, 136, 185) !important;
     background-color: white !important;
+}
+
+.explore-btn.theme-btn{
+position:absolute !important;
+bottom: 10px !important;
 }
 
 

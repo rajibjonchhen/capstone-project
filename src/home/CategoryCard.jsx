@@ -26,12 +26,13 @@ export default function CategoryCard({ category }) {
   }
   return (
     
-    <Card className="category-card">
+    <Card className="category-card" style={{width:'100%'}}>
       <CardMedia
         component="img"
         image={category?.image}
         alt="Live from space album cover"
         onClick = {(e) => {changeCategory(e, category?.type)}}
+        style={{width:"100%", height:"auto"}}
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent
@@ -54,6 +55,7 @@ export default function CategoryCard({ category }) {
             size="small"
             onClick = {(e) => {changeCategory(e, category?.type)}}
             className="theme-btn"
+            style={{border:"2px solid white", position:'absolute', bottom:"10px"}}
           >
             Explore
           </Button>
