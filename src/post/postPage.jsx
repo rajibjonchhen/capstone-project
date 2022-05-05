@@ -32,6 +32,7 @@ function PostPage() {
     const myInfo = useSelector(state => state.user.myInfo)
 
     useEffect(() =>{
+        window.scrollTo(0,0)
         console.log("allPosts", allPosts)
         fetchPosts()
     },[])

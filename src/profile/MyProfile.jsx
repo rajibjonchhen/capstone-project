@@ -1,7 +1,7 @@
 
 import { Grid } from "@material-ui/core";
 import { Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import MyAccount from "../myAccount/MyAccount";
@@ -24,6 +24,9 @@ function MyProfile() {
 
     const dispatch = useDispatch()
    
+    useEffect(() => {
+        window.scrollTo(0,0)
+    },[profilePagination])
 
     const fetchMyProducts = async() => {
         try {

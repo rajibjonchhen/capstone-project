@@ -32,9 +32,11 @@ function DetailPage() {
 
   const dispatch = useDispatch()
   const params = useParams()
+  
   useEffect(() => {
     window.scrollTo(0,0)
     let productId = params.productId
+    console.log("detail page productId", productId)
     if(productId){
       fetchProduct(productId)
     }
@@ -141,7 +143,7 @@ const fetchProduct = async(productId) => {
           >
             {/*  */}
             <Carousel  className="detail-carousel">
-              {singleProduct?.images.map((image,i ) => 
+              {singleProduct?.images?.map((image,i ) => 
                 <Carousel.Item key={i} className="detail-carousel-img">
               
                   <img

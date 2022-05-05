@@ -6,14 +6,15 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Favorite, FavoriteBorder, ThumbUp } from "@mui/icons-material";
+import { DeleteForeverOutlined, Favorite, FavoriteBorder, ThumbUp } from "@mui/icons-material";
 import { pink } from "@material-ui/core/colors";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSingleProductAction } from "../redux/actions/action";
 import "./singleCard.css"
-import { Alert } from "@mui/material";
+import { Alert, IconButton } from "@mui/material";
 import { Box } from "@material-ui/core";
+
 
 export default function SingleCard({product}) {
   const navigate = useNavigate()
@@ -22,17 +23,47 @@ export default function SingleCard({product}) {
   const [isLiked, setIsLiked] = useState(false)
   const [error, setError] = useState("")
 
+const myInfo = useSelector(state => state.user.myInfo)
 
   React.useEffect(() => {
+
+    console.log(product?.creator?._id, myInfo?._id,"product?.creator._id === myInfo?._id")
     console.log(product.isLiked)
     setIsLiked(product.isLiked)
   }, [])
+  
   const handleLikes = async () => {
     try {
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/products/${product._id}/likes`,
         {
           method: "PUT",
+          headers: {
+            authorization: localStorage.getItem("MyToken"),
+          },
+        }
+      );
+      if (response.status !== 200) {
+        const data = await response.json();
+        console.log(data);
+        setError(data.error);
+      } else {
+        const data = await response.json();
+        console.log(data);
+        setIsLiked(data.product.isLiked)
+        setLikes(data.product.Likes)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_DEV_BE_URL}/products/${product._id}`,
+        {
+          method: "DELETE",
           headers: {
             authorization: localStorage.getItem("MyToken"),
           },
@@ -70,7 +101,7 @@ export default function SingleCard({product}) {
         <Typography className="text-wrap">
           {product?.summary}
         </Typography>
-      <div style={{bottom:"5px",position:"absolute", display:"flex", justifyContent:'space-between', }}>
+      <div style={{bottom:"5px",position:"absolute", display:"flex", justifyContent:'space-between',alignItems:"end" }}>
         <div>
           <div >
           <ThumbUp style={{width:"8px"}}/> <span style={{fontSize:"8px"}}>{isLiked? `You and ${product?.Likes.length}`:`${product?.Likes.length}`}</span>
@@ -83,10 +114,11 @@ export default function SingleCard({product}) {
               </Button>
             
         </div>
-        
           <Button size="small" className="theme-btn" onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
+          {product?.creator?._id === myInfo?._id && <IconButton onClick={() => handleDelete(product?._id)}>
+            <DeleteForeverOutlined/>
+          </IconButton>}
        
-        
       </div>
                 </CardContent>
        
