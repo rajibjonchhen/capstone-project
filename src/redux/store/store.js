@@ -11,7 +11,8 @@ user : {
     allUsers:[],
     myInfo : {},
     myMessages : [],
-    profilePagination :""
+    profilePagination :"",
+    chatUser : {}
 },
 product : {
     allProducts:[],

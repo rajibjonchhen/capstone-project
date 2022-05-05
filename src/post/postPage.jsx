@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../others/Loader';
 import { setAllPostsAction } from '../redux/actions/action';
 import AddPostEdit from './AddPostEdit';
+import ChatBox from './ChatBox';
 import LeftSidebar from './LeftSidebar';
 import "./postPage.css";
 import RightSidebar from './RightSidebar';
@@ -27,12 +28,16 @@ function PostPage() {
     
     const allPosts = useSelector(state => state.post.allPosts)
     const myInfo = useSelector(state => state.user.myInfo)
-
+    const chatUser = useSelector(state => state.user.chatUser)
     useEffect(() =>{
         window.scrollTo(0,0)
         console.log("allPosts", allPosts)
         fetchPosts()
     },[])
+
+    useEffect(() => {
+        console.log("chatUser changed", chatUser)
+    },[chatUser])
 
     const fetchPosts = async() => {
         try {
@@ -72,7 +77,8 @@ function PostPage() {
       }));
       
     return ( <>
-    {isLoading? <Loader/> : error? <div>{error}</div> : <Grid container spacing={1} style={{backgroundColor:'white'}}> 
+    {isLoading? <Loader/> : error? <div>{error}</div> :
+    <Grid container spacing={1} style={{backgroundColor:'white'}}> 
         <Grid item sm={12} md={6} lg={3} className="theme-light-bg" style={{width:"100%", margin:"0 auto"}}>
             <Item style={{width:"100%",margin:"auto"}}>
                 <LeftSidebar fetchPosts={fetchPosts} />
@@ -80,55 +86,57 @@ function PostPage() {
         </Grid>
 
         <Grid item sm={12} md={6} lg={6} className="posts-box theme-light-bg">
-            <Item sx={{ margin:"3px 0px"}}>
-                <div>
 
-            <div style={{display:"flex", alignItems:'center'}}>
-                <Avatar
-                sx={{margin:"0 5px"}}
-                src={myInfo?.avatar}
-                alt="user image"
-                />
-                    <button
-                        onClick={()=>{setOpen(true)}}
-                        style={{
-                        paddingLeft: "10px",
+            { chatUser !== {}? <ChatBox/> : <>
+                <Item sx={{ margin:"3px 0px"}}>
+                    <div>
+
+                <div style={{display:"flex", alignItems:'center'}}>
+                    <Avatar
+                    sx={{margin:"0 5px"}}
+                    src={myInfo?.avatar}
+                    alt="user image"
+                    />
+                        <button
+                            onClick={()=>{setOpen(true)}}
+                            style={{
+                            paddingLeft: "10px",
+                            
+                            paddingTop: "10px",
+                            paddingBottom: "10px",
+                            textAlign: "left",
+                            fontWeight: "normal",
+                            width:"100%",
+                            borderRadius:"30px",
+                            
+                            }}
+                        >
+                Start a post
+                </button>
                         
-                        paddingTop: "10px",
-                        paddingBottom: "10px",
-                        textAlign: "left",
-                        fontWeight: "normal",
-                        width:"100%",
-                        borderRadius:"30px",
-                        
-                        }}
-                    >
-            Start a post
-            </button>
-                    
+                    </div>
+                <div>
+                {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
+            </div>
+            <div style={{display:"flex", marginTop:'10px', justifyContent:'center'}}>
+                <div style={{display:"flex"}}>
+                <Photo/>
+                <Typography sx={{margin:"0 5px"}}>Photo</Typography>
                 </div>
-            <div>
-            {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
-        </div>
-        <div style={{display:"flex", marginTop:'10px', justifyContent:'center'}}>
-            <div style={{display:"flex"}}>
-            <Photo/>
-            <Typography sx={{margin:"0 5px"}}>Photo</Typography>
+                <div style={{display:"flex"}}>
+                <Videocam/>
+                <Typography sx={{margin:"0 5px"}}>Video</Typography>
+                </div>
+                <div style={{display:"flex"}}>
+                <Work/>
+                <Typography sx={{margin:"0 5px"}}>Job</Typography>
+                </div>
             </div>
-            <div style={{display:"flex"}}>
-            <Videocam/>
-            <Typography sx={{margin:"0 5px"}}>Video</Typography>
             </div>
-            <div style={{display:"flex"}}>
-            <Work/>
-            <Typography sx={{margin:"0 5px"}}>Job</Typography>
-            </div>
-        </div>
-        </div>
-            </Item>
+                </Item> 
            
                 { allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
-            
+                </>}
         </Grid>
         <Grid item sm={12} md={3} lg={3} style={{width:"100%", margin:"0 auto"}}>
             <Item >

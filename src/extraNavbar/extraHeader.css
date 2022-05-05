@@ -1,7 +1,8 @@
 .extra-header{
     position: fixed;
+    margin:0;
     top: 62px;
-    width:100%;
+    width:100vw;
     padding:3px 0;
     background:rgb(31, 131, 170);
     color:white;

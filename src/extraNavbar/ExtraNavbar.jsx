@@ -16,8 +16,8 @@ function ExtraNavbar() {
   }, []);
 
   return (
-    <Container  className="extra-header">
-      <Grid container>
+    <Container  className="extra-header" maxWidth="xl">
+      <Grid  container>
         <Grid
           item
           xs={12}

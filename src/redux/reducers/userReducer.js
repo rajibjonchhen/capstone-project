@@ -15,6 +15,12 @@ import { initialState } from "../store/store";
             allUsers : action.payload
             }
 
+        case ACTIONS.SET_CHAT_USER:
+            return{
+                ...state,
+                chatUser : action.payload
+            }
+
         case ACTIONS.SET_MY_MESSAGES:
             return {
                 ...state,

@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAllUsersAction } from '../redux/actions/action';
+import { setAllUsersAction, setChatUserAction } from '../redux/actions/action';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,20 +74,22 @@ const handleChange = (e) =>  {
 
 
   return (
-    <List className={classes.root} style={{width:"100%"}}>
+    <List className={classes.root} style={{width:"100%", height:"100vh"}}>
       <TextField size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
+      <div style={{ height:"60%", overflow:"scroll"}}>
       {(filteredUsers || allUsers).map((user, i) => 
-          <ListItem key={i} >
+          <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>
             <ListItemAvatar>
               <Avatar alt={user.name} src={user.avatar} />
             </ListItemAvatar>
             <Typography
             style={{fontSize:"12px"}}
-              >
+            >
                   {`${user.name} ${user.surname}`}
               </Typography>
           </ListItem>
           )}
+          </div>
       <Divider variant="inset" component="li" />
     </List>
   );

@@ -1,5 +1,5 @@
 .msg-sender-list-box{
-    background-color: rgb(255, 255, 255);
+   
     border: 1px solid rgba(202, 201, 201, 0.459);
     list-style: none;
     cursor: pointer;
@@ -9,7 +9,7 @@
 
 
 .msg-detail-box{
-    background-color: rgb(255, 255, 255);
+  
     border: 1px solid rgba(202, 201, 201, 0.459);
   
 }
