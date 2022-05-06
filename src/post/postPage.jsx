@@ -78,8 +78,8 @@ function PostPage() {
       
     return ( <>
     {isLoading? <Loader/> : error? <div>{error}</div> :
-    <Grid container spacing={1} style={{backgroundColor:'white'}}> 
-        <Grid item sm={12} md={6} lg={3} className="theme-light-bg" style={{width:"100%", margin:"0 auto"}}>
+    <Grid container spacing={1} style={{backgroundColor:'white', maxHeight:"100vh", overflow:"hidden"}}> 
+        <Grid item sm={12} md={6} lg={3} className="theme-light-bg" style={{width:"100%",height:"100%", margin:"0 auto"}}>
             <Item style={{width:"100%",margin:"auto"}}>
                 <LeftSidebar fetchPosts={fetchPosts} />
             </Item>
@@ -88,7 +88,7 @@ function PostPage() {
         <Grid item sm={12} md={6} lg={6} className="posts-box theme-light-bg">
 
             {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
-                <Item sx={{ margin:"3px 0px"}}>
+                <Item sx={{ margin:"3px 0px 0px", height:"100%"}}>
                     <div>
 
                 <div style={{display:"flex", alignItems:'center'}}>
@@ -133,12 +133,13 @@ function PostPage() {
                 </div>
             </div>
             </div>
-                </Item> 
-           
+            <div style={{height:"100%", overflow:"scroll"}}>
                 { allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
+            </div>
+                </Item> 
                 </>}
         </Grid>
-        <Grid item sm={12} md={3} lg={3} style={{width:"100%", margin:"0 auto"}}>
+        <Grid item sm={12} md={3} lg={3} style={{width:"100%",height:"100%", margin:"0 auto"}}>
             <Item >
                 <RightSidebar/>
             </Item>

@@ -74,9 +74,9 @@ const handleChange = (e) =>  {
 
 
   return (
-    <List className={classes.root} style={{width:"100%", height:"100vh"}}>
+    <List className={classes.root} style={{width:"100%", height:"100%"}}>
       <TextField size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
-      <div style={{ height:"60%", overflow:"scroll"}}>
+      <div style={{ height:"400px", overflow:"scroll"}}>
       {(filteredUsers || allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>
             <ListItemAvatar>

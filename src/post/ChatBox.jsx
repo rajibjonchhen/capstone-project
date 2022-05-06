@@ -1,31 +1,26 @@
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, List, ListItem, ListItemAvatar, Typography } from '@mui/material';
+import { Avatar, ListItem, ListItemAvatar, Typography } from '@mui/material';
+import { useEffect } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      width: '100%',
-      maxWidth: '36ch',
-      backgroundColor: theme.palette.background.paper,
-    },
-    inline: {
-      display: 'inline',
-    },
-  }));
 
 function ChatBox() {
 
-    const classes = useStyles();
+    
     const chatUser = useSelector(state => state.user.chatUser)
+    const myInfo = useSelector(state => state.user.myInfo)
+
+    useEffect(() => {
+
+        console.log("myInfo and chatUser", myInfo, chatUser)
+    },[chatUser])
 
   return (
 
     <Container  style={{display:"flex", flexDirection:"column", border:"1px solid rgb(224,224,224)",borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)"}}>
         <Row style={{ borderBottom:"1px solid rgb(224,224,224)"}}>
-            <Col className={classes.root} >
+            <Col >
                 <ListItem  className="pointer">
                     <ListItemAvatar>
                     <Avatar alt={chatUser.name} src={chatUser.avatar} />
