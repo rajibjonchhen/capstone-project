@@ -8,13 +8,34 @@ import { useSelector } from 'react-redux';
 function ChatBox() {
 
     
-    const chatUser = useSelector(state => state.user.chatUser)
+    const chatUser = useSelector(state => state.chat.chatUser)
     const myInfo = useSelector(state => state.user.myInfo)
 
     useEffect(() => {
 
         console.log("myInfo and chatUser", myInfo, chatUser)
+        fetchChat()
     },[chatUser])
+
+    const fetchChat = async() => {
+        try {
+            console.log("fetching chat")
+            const response  = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/chats`, {
+                method:"POST",
+                body:JSON.stringify({recipient:chatUser}),
+                headers:{
+                    "content-type":"application/json",
+                    authorization: localStorage.getItem("MyToken")
+                }
+            })
+            if(response.ok){
+                const data =  await response.json()
+                console.log("chat initiated", data)
+            }
+        } catch (error) {
+            console.log("error fetching chat ", error )
+        }
+    }
 
   return (
 

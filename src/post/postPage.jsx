@@ -28,7 +28,7 @@ function PostPage() {
     
     const allPosts = useSelector(state => state.post.allPosts)
     const myInfo = useSelector(state => state.user.myInfo)
-    const chatUser = useSelector(state => state.user.chatUser)
+    const chatUser = useSelector(state => state.chat.chatUser)
     useEffect(() =>{
         window.scrollTo(0,0)
         console.log("allPosts", allPosts)
