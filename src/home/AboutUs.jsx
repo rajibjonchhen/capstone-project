@@ -11,8 +11,8 @@ function AboutUs() {
     return ( 
 
       <div className=" mt-5">
-             <p className="h1 text-white my-5">Who we are?</p>         
-          <Grid container className="jumbotron" >
+             <p className="h1 my-5">Who we are?</p>         
+          <Grid container className="about-us" >
             <Grid item  xs={12} md={6}>
             <p>
                An idea can change the the world and

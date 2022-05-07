@@ -7,6 +7,7 @@ export const ACTIONS = {
     
     SET_CHAT_USER : "SET_CHAT_USER",
     SET_CURRENT_CHAT :"SET_CURRENT_CHAT",
+    SET_CURRENT_CHAT_MESSAGES :"SET_CURRENT_CHAT_MESSAGES",
 
     SET_SINGLE_PRODUCT : "SET_SINGLE_PRODUCT",
     SET_ALL_PRODUCTS : "SET_ALL_PRODUCTS",
@@ -85,4 +86,9 @@ export const setChatUserAction = (user) => ({
 export const setCurrentChatAction = (chat) => ({
     type : ACTIONS.SET_CURRENT_CHAT,
     payload : chat
+})
+
+export const setCurrentChatMessagesAction = (messages) => ({
+    type : ACTIONS.SET_CURRENT_CHAT_MESSAGES,
+    payload : messages
 })

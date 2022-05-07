@@ -1,6 +1,7 @@
 .App {
   text-align: center;
- 
+  color:white;
+  background-color: rgb(12, 136, 185);
   /* background: rgb(250,254,255); */
 /* background: radial-gradient(circle, rgba(250, 254, 255, 0.459) 0%, rgba(26, 181, 242, 0.452) 0%, rgba(6, 239, 192, 0.459) 24%, rgba(14, 214, 214, 0.452) 24%, rgba(0, 255, 179, 0.466) 52%, rgba(152, 251, 66, 0.411) 52%, rgba(245, 249, 0, 0.438) 76%, rgba(69, 162, 238, 0.425) 76%, rgba(9, 184, 253, 0.432) 100%); */
 }

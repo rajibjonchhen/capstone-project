@@ -3,6 +3,7 @@
 	overflow: hidden;
 	padding: 3px;
     position: relative;
+    background-color: rgba(240, 248, 255, 0.13) !important;
 }
 
 .category-card:hover {

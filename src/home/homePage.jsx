@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import CategoryCard from "./CategoryCard";
-import MyJumbotron from "./AboutUs";
+import MyJumbotron from "./MyJumbotron";
 import "./homePage.css"
 import { Container, Grid } from "@mui/material";
 import HowWeHelp from "./HowWeHelp";
@@ -55,24 +55,13 @@ function HomePage() {
    
    
     return ( <div>
-       
-       <BootstrapCarousel/>
-       <MyCarousel/>
-
-              {/* {informationArray.map((information, i) => 
-                    <div key={i} className="jumbo-box" style={{position:"relative"}}> 
-                     <img src={information?.backgroundImg} alt="how we help" style={{width:"100%", }}/>
-                        <h1 className="theme-color" style={{margin:"50px auto"}}>How we help</h1>
-                           <HowWeHelp information={information}/>
-            </div> 
-              )} */}
-              
-              <OurProjects/>
-    
-           
-               <AboutUs/>
+              <MyJumbotron/>
+               
+               <OurProjects/>
       
-              <OurMission/>
+               <AboutUs/>
+         
+               <OurMission/>
              
               </div>
             

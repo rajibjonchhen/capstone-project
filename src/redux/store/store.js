@@ -27,7 +27,8 @@ post : {
 },
 chat : {
     chatUser : {},
-    currentChat: {}
+    currentChat: {},
+    currentChatMessages : []
 }
 }
 

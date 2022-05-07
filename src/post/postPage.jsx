@@ -29,15 +29,15 @@ function PostPage() {
     const allPosts = useSelector(state => state.post.allPosts)
     const myInfo = useSelector(state => state.user.myInfo)
     const chatUser = useSelector(state => state.chat.chatUser)
+    const currentChat = useSelector(state => state.chat.currentChat)
+    
     useEffect(() =>{
         window.scrollTo(0,0)
         console.log("allPosts", allPosts)
         fetchPosts()
     },[])
 
-    useEffect(() => {
-        console.log("chatUser changed", chatUser)
-    },[chatUser])
+  
 
     const fetchPosts = async() => {
         try {

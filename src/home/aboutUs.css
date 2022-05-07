@@ -1,24 +1,25 @@
-.jumbotron{
+.about-us{
 display:flex;
 justify-content: space-around;
 margin: 10px auto;
+background-color: rgba(245, 222, 179, 0.048);
 }
 
-.jumbotron>div{
+.about-us>div{
     width:45%;
     margin: auto;
 }
-.jumbotron p{
+.about-us p{
     font-size: 35px;
     text-align: center;
     max-width: 90%;
 }
-.jumbotron img{
+.about-us img{
     width:100%
 }
 
 @media only screen and (max-width: 360px){
-    .jumbotron p{
+    .about-us p{
         font-size: 20px;
     }
 }

@@ -8,6 +8,19 @@ const chatReducer = (state = initialState.chat, action) => {
                 ...state,
                 chatUser : action.payload
             }
+
+        case ACTIONS.SET_CURRENT_CHAT:
+            return{
+                ...state,
+                currentChat : action.payload
+            }
+
+        case ACTIONS.SET_CURRENT_CHAT_MESSAGES:
+            return{
+                ...state,
+                currentChatMessages : action.payload
+            }
+
        default:
            return state
     }
