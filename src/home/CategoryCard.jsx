@@ -61,7 +61,7 @@ export default function CategoryCard({ category }) {
           size="small"
           onClick = {(e) => {changeCategory(e, category?.type)}}
           className="theme-btn"
-          style={{border:"2px solid white"}}
+          
         >
           Explore
         </Button>
@@ -69,7 +69,7 @@ export default function CategoryCard({ category }) {
         <CardContent
           size="small"
           onClick = {(e) => {changeCategory(e, category?.type)}}
-          style={{ bottom:"10px"}}
+          style={{ bottom:"10px",}}
         >
           <Typography component="div" variant="h6" textAlign="left">
             {category?.name}

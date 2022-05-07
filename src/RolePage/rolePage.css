@@ -1,0 +1,24 @@
+.role-container{
+height:100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.role{
+    width: 100%;
+    height: 200px;
+    border: 1px solid lightblue !important;
+    color:white !important;
+    background-color: rgba(0, 0, 255, 0);
+    font-size: 30px !important;
+}
+.role>div{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.role-icon{
+    width: 50px;
+    font-size: 40px !important;
+}

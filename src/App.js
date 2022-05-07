@@ -15,6 +15,7 @@ import DisplayProducts from "./products/DisplayProducts"
 import MyProfile from './profile/MyProfile';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Container } from 'react-bootstrap';
+import RolePage from './RolePage/RolePage';
 
 
 
@@ -25,6 +26,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<LoginPage/>}/>
+          <Route path="/role" exact element={<RolePage/>}/>
           <Route path="/home" exact element={<MyLayout><HomePage/></MyLayout>}/>
           <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
           <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
