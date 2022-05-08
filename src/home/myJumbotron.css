@@ -1,0 +1,10 @@
+.my-jumbotron{
+    background-image:url(../assets/business-idea.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    height:600px;
+    background-position:center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

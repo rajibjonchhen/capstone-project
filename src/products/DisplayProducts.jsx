@@ -11,6 +11,7 @@ function DisplayProducts() {
     const [isLoading, setIsLoading] = useState(true)
     const dispatch = useDispatch()
     const params = useParams()
+    const [category, setCategory] = useState("")
     
 
     const navigate = useNavigate()
@@ -19,8 +20,9 @@ function DisplayProducts() {
 
     useEffect(() => {
         window.scrollTo(0,0)
-        const category = params.category
-        fetchProducts(category)
+        
+        setCategory(`${params.category}`)
+        fetchProducts(`${params.category}`)
     },[])
 
     
@@ -41,9 +43,9 @@ function DisplayProducts() {
                 setIsLoading(false)
             } else{
                 const data = await response.json()
-                const products = data.products.filter(product => product.category === category)
-                console.log(products, selectedCategory)
-                dispatch(setAllProductsAction(products))
+                // const products = data.products.filter(product => product.category === category)
+                // console.log(products, selectedCategory)
+                dispatch(setAllProductsAction(data.products))
                 setIsLoading(false)
 
             }
@@ -57,7 +59,7 @@ function DisplayProducts() {
     return ( 
         <Grid container >
             {allProducts.length === 0 && <h2>There are no products in this category</h2>}
-            {allProducts?.map((product, i) => <Grid key={i} item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
+            {(!params.category?  allProducts : allProducts.filter(product => product.category === category))?.map((product, i) => <Grid key={i} item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
                 <SingleCard product={product}/>
             </Grid> 
             )}

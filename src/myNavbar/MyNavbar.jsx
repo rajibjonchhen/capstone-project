@@ -279,6 +279,14 @@ function MyNavbar() {
 
                 <MenuItem className="margin-xasix"
                   onClick={() => {
+                    navigate("/products");
+                  }}
+                >
+                  <Typography>Products</Typography>
+                </MenuItem>
+
+                <MenuItem className="margin-xasix"
+                  onClick={() => {
                     navigate("/profile");
                   }}
                 >

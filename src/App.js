@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './login/LoginPage';
@@ -16,23 +16,28 @@ import MyProfile from './profile/MyProfile';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Container } from 'react-bootstrap';
 import RolePage from './RolePage/RolePage';
+import Products from './products/Products';
 
 
 
 function App() {
+  useEffect(() => {
+    console.log(window.location.pathname)
+  },[])
   return (
 <Provider store={configureStore}>
-    <div  className="App" style={{backgroundColor: " rgb(4, 52, 71)",margin:"auto"}}>
+    <div  className="App" style={{backgroundColor: window.location.pathname === "/home" ? "rgb(13, 61, 60)" :" rgb(4, 52, 71)",margin:"auto"}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<LoginPage/>}/>
           <Route path="/role" exact element={<RolePage/>}/>
           <Route path="/home" exact element={<MyLayout><HomePage/></MyLayout>}/>
           <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
+          <Route path="/products" exact element={<MyLayout><Products/></MyLayout>}/>
           <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
           <Route path="/detail/:productId" exact element={<MyLayout><DetailPage/></MyLayout>}/>
           <Route path="/profile" exact element={<MyLayout><MyProfile/></MyLayout>}/>
-          <Route path="/products/:category" exact element={<MyLayout><DisplayProducts/></MyLayout>}/>
+          {/* <Route path="/products/:category" exact element={<MyLayout><DisplayProducts/></MyLayout>}/> */}
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </BrowserRouter>

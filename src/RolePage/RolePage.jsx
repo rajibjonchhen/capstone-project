@@ -2,6 +2,9 @@ import { Button } from '@material-ui/core'
 import { Lightbulb, MonetizationOn } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { setMyInfoAction } from '../redux/actions/action'
 import "./rolePage.css"
 
 function RolePage() {
@@ -9,6 +12,8 @@ function RolePage() {
     const [role, setRole] = useState("")
     const [error, setError] = useState("")
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     useEffect(() => {
 
         if(role === "creator" ||  role === "investor"){
@@ -26,15 +31,17 @@ function RolePage() {
                     "authorization": localStorage.getItem("MyToken")
                 }
             })
-            if(response.status !== 0){
+            if(response.status !== 200){
                 const data = await response.json()
                 console.log(data)
                 setError("Couldn't set the role try again")
             } else {
                 const data = await response.json()
-                console.log(data)
+                console.log("role set data ", data)
+                dispatch(setMyInfoAction(data.user))
+                navigate("/home")
             }
-            console.log("my role is role", role)
+            
         } catch (error) {
             console.log(error)
         }
@@ -43,7 +50,7 @@ function RolePage() {
   return (
     <div className="role-container">
         <Container>
-        <p className="h1">Select your role</p>
+        <p className="h1">How would you like to contribute</p>
             <Row>
                 <Col >
                     <Button className="role" onClick={() => setRole("creator")}>
