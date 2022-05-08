@@ -5,7 +5,7 @@ import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { setCurrentChatAction, setCurrentChatMessagesAction } from '../redux/actions/action';
-
+import "./chatBox.css"
 
 
 function ChatBox() {
@@ -114,7 +114,9 @@ function ChatBox() {
         
         <Row>
             <Col style={{width:"100%",minHeight:"70vh", overflow:"scroll"}}>
-                {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => <p key={i} style={{ width:"100%"}}>{message?.text}</p>)  }
+                {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => <div key={i} className="single-message">
+                    <p>{message?.text}</p>
+                </div>)  }
             </Col>
         </Row>
         

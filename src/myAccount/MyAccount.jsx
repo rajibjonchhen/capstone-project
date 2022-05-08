@@ -99,11 +99,11 @@ function MyAccount() {
         }
     }
 
-    return ( <div className="theme-light-bg mt-3 py-3">
+    return ( <div className="mt-3 py-3">
         <p className="h3">Update my Information</p>
             <Alert margin="normal"  severity="success" style={{opacity:successMsg? 1:0, marginTop:"10px"}}>Updated successfully</Alert>
     
-       {myProfile && <Grid container className="account-box theme-light-bg">
+       {myProfile && <Grid container className="account-box ">
             <Grid item xs={12}  md={4} lg={3} className='account-image-box '>
                 
                 

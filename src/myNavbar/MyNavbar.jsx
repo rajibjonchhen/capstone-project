@@ -21,8 +21,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
 import * as React from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { setSelectedCategoryAction } from "../redux/actions/action";
 import "./myNavbar.css";
 
 function MyNavbar() {
@@ -32,6 +33,7 @@ function MyNavbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
+  const dispatch = useDispatch()
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -220,7 +222,7 @@ function MyNavbar() {
     <>
       <CssBaseline />
 
-      <AppBar style={{ background: location.pathname ==="/home"?  "rgb(10, 55, 50)" : "rgb(4, 52, 71)", color: "white",width:"100%", position:"sticky", top:'0' }}>
+      <AppBar style={{ background: "rgb(4, 52, 71)", color: "white",width:"100%", position:"sticky", top:'0' }}>
         <Grid container>
           <Grid
             item
@@ -279,6 +281,7 @@ function MyNavbar() {
 
                 <MenuItem className="margin-xasix"
                   onClick={() => {
+                    dispatch(setSelectedCategoryAction("all"))
                     navigate("/products");
                   }}
                 >

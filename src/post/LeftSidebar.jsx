@@ -9,9 +9,9 @@ function LeftSidebar({fetchPosts}) {
      
 
     return ( 
-    <Container className="left-side" style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)",}} >
+    <Container className="left-side" style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)", padding:"10px"}} >
             <div  >
-            <img src={myInfo?.avatar} alt="avatar" />
+                <img src={myInfo?.avatar} alt="avatar" />
             </div>
             <h4>{myInfo.name} {myInfo.surname}</h4>
             <Typography>{myInfo?.email}</Typography>

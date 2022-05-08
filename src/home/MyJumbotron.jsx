@@ -1,12 +1,16 @@
+import { Button } from '@material-ui/core'
 import React from 'react'
-import {  Jumbotron } from 'react-bootstrap'
+import {  Col, Container, Jumbotron, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import JumboPic from "../assets/business-idea.jpg"
 import "./myJumbotron.css"
 function MyJumbotron() {
+
+    const navigate = useNavigate()
   return (
-    <Jumbotron fluid className="my-jumbotron">
-        <div >     
-            <div>
+    <Container fluid className="my-jumbotron">
+        <Row >     
+            <div sm={6}>
                 <p className="h3">
                     If you have an idea worth a business ?
                 </p>
@@ -17,9 +21,10 @@ function MyJumbotron() {
                     We are here to help you 
                 </p>
                 <h1>We Connect ideas with money</h1>
+                <Button style={{backgroundColor:"grey", color:"white"}} onClick={() => navigate("/")}>Connect with Us</Button>
             </div>
-        </div>
-    </Jumbotron>
+        </Row>
+    </Container>
   )
 }
 

@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../others/Loader';
@@ -78,20 +79,22 @@ function PostPage() {
       
     return ( <>
     {isLoading? <Loader/> : error? <div>{error}</div> :
-    <Grid container spacing={1} style={{height:"100vh", overflow:"hidden", paddingTop:"10px"}}> 
-        <Grid item sm={12} md={6} lg={3}  style={{width:"100%",height:"100%", margin:"0 auto"}}>
-            <div style={{width:"100%",margin:"auto"}}>
-                <LeftSidebar fetchPosts={fetchPosts} />
-            </div>
-        </Grid>
+    <Container fluid spacing={1} style={{height:"100vh", overflow:"hidden", paddingTop:"10px"}}> 
+        <Row style={{width:"100%",height:"100%", margin:"0 auto"}}>
 
-        <Grid item sm={12} md={6} lg={6} className="posts-box">
+        <Col item sm={12} md={6} lg={3}  >
+           
+                <LeftSidebar fetchPosts={fetchPosts} />
+           
+        </Col>
+
+        <Col  sm={12} md={6} lg={6} className="posts-box">
 
             {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
                 <div sx={{ margin:"3px 0px 0px", height:"100%"}}>
                     <div>
 
-                <div style={{display:"flex", alignItems:'center'}}>
+                <div style={{ display:"flex", alignItems:'center'}}>
                     <Avatar
                     sx={{margin:"0 5px"}}
                     src={myInfo?.avatar}
@@ -100,17 +103,17 @@ function PostPage() {
                         <button
                             onClick={()=>{setOpen(true)}}
                             style={{
-                            paddingLeft: "10px",
-                            
-                            paddingTop: "10px",
-                            paddingBottom: "10px",
-                            textAlign: "left",
-                            fontWeight: "normal",
-                            width:"100%",
-                            borderRadius:"30px",
-                            
+                                paddingLeft: "10px",
+                                
+                                paddingTop: "10px",
+                                paddingBottom: "10px",
+                                textAlign: "left",
+                                fontWeight: "normal",
+                                width:"100%",
+                                borderRadius:"30px",
+                                
                             }}
-                        >
+                            >
                 Start a post
                 </button>
                         
@@ -138,13 +141,14 @@ function PostPage() {
             </div>
                 </div> 
                 </>}
-        </Grid>
-        <Grid item sm={12} md={3} lg={3} style={{width:"100%",height:"100%", margin:"0 auto"}}>
-            <div >
+        </Col>
+        <Col  sm={12} md={3} lg={3} style={{width:"100%",height:"100%", margin:"0 auto"}}>
+           
                 <RightSidebar/>
-            </div>
-        </Grid>
-    </Grid> }
+            
+        </Col>
+    </Row>
+    </Container> }
     </>);
 }
 

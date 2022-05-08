@@ -1,4 +1,4 @@
-import { Box, Grid, TextField } from "@material-ui/core";
+import { Box, Grid, TextareaAutosize, TextField } from "@material-ui/core";
 import {
   Alert, Button, Container, FormControl, InputLabel,
   MenuItem,
@@ -215,7 +215,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
    
   return (
     
-      <Container className="theme-light-bg mt-3 py-3">
+      <Container className=" mt-3 py-3 text-white">
           <h2>Fill in the product details</h2>
           {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
           {error && <Alert margin="normal"  severity="error">{error}</Alert>}
@@ -288,6 +288,13 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                 autoFocus
                 onChange={(e) => handleChange(e)}
               />
+
+{/* <TextareaAutosize
+  aria-label="minimum height"
+  minRows={3}
+  placeholder="Minimum 3 rows"
+  style={{ width: "100%" }}
+/> */}
               <Typography style={{color:"red"}}>
                 {!product.summary && productErr?.summary}
               </Typography>

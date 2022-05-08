@@ -49,7 +49,7 @@ export default function CategoryCard({ category }) {
     
     // </Card>
 
-    <Card className="category-card" style={{maxWidth:"200px"}}>
+    <Card className="category-card" style={{maxWidth:"250px"}}>
       <CardMedia
         component="img"
         image={category?.image}

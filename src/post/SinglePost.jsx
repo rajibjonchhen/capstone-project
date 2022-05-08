@@ -136,9 +136,9 @@ export default function SinglePost({ post, fetchPosts }) {
 
 
   return (
-    <Card sx={{ width: 1, mt: 2, p:1 }}>
+    <Card sx={{ backgroundColor:"rgb(0,0,0,0)", color:"white", width: 1, mt: 2, p:1, border:"1px solid lightgray" }}>
       {error && <Alert severity="error">{error}</Alert>}
-      <Box style={{display:"flex", justifyContent:'space-between'}}>
+      <Box style={{display:"flex", justifyContent:'space-between',  padding:"5px",}}>
 
       <Box style={{display:"flex", justifyContent:'flex-start'}}>
         <Avatar
@@ -163,7 +163,7 @@ export default function SinglePost({ post, fetchPosts }) {
       </IconButton>
       </Box>
       <CardContent className="border-bottom border-top">
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" >
           {post?.content}
         </Typography>
       </CardContent>
