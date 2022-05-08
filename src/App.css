@@ -81,10 +81,10 @@ justify-content: center;
 }
 
 .border-bottom{
-  border-bottom:1px solid rgba(194, 194, 194, 0.205)
+  border-bottom:5px solid rgb(56,88,103);
 }
 .border-top{
-  border-top:1px solid rgba(194, 194, 194, 0.205)
+  border-top:1px solid rgb(56,88,103);
 }
 
 

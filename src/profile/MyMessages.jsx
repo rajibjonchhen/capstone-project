@@ -49,7 +49,7 @@ function MyMessages() {
   }, []);
 
   return (
-    <Grid container className="theme-light-bg mt-3 py-3">
+    <Grid container className=" mt-3 py-3">
       <Grid item xs={12} md={6} lg={4} className="msg-sender-list-box">
           <h3>Messages</h3>
         {myMessages.map((message, i ) => (

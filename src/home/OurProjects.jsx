@@ -29,7 +29,7 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
             description : "collaborate with the publisher",
             type :"poem",
     },
-        { name : "Song",
+        { name : "Songs",
             image :    "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688014/creators-space-products/vkswpt8nnmpznufocdni.png",
             description : "collaborate with the singer",
             type :"song",

@@ -28,7 +28,7 @@ function DetailPage() {
 
   const singleProduct = useSelector((state) => state.product.singleProduct);
   const myInfo = useSelector((state) => state.user.myInfo);
-  const [imgNum, setImgNum] = useState(0);
+  
 
   const dispatch = useDispatch()
   const params = useParams()
@@ -49,19 +49,7 @@ function DetailPage() {
     }
   }, [selectedImages]);
 
-  const handleNext = () => {
-    if (
-      singleProduct.images.length > 1 &&
-      imgNum !== singleProduct.images.length - 1
-    ) {
-      setImgNum(imgNum + 1);
-    }
-  };
-  const handlePrev = () => {
-    if (imgNum >= 1) {
-      setImgNum(imgNum - 1);
-    }
-  };
+  
 
 const fetchProduct = async(productId) => {
   try {
@@ -133,7 +121,7 @@ const fetchProduct = async(productId) => {
 
   return (
     <Container >
-      <Grid container spacing={2} className="theme-light-bg mt-3 py-3">
+      <Grid container spacing={2} className=" mt-3 py-3">
         <Grid item xs={12} md={6} style={{position:'relative'}}>
           <div
            

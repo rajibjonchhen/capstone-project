@@ -136,7 +136,7 @@ export default function SinglePost({ post, fetchPosts }) {
 
 
   return (
-    <Card sx={{ backgroundColor:"rgb(0,0,0,0)", color:"white", width: 1, mt: 2, p:1, border:"1px solid lightgray" }}>
+    <Card sx={{ backgroundColor:"rgb(0,0,0,0)", color:"white", width: 1, mt: 2, p:1, border:"1px solid rgb(56,88,103)" }}>
       {error && <Alert severity="error">{error}</Alert>}
       <Box style={{display:"flex", justifyContent:'space-between',  padding:"5px",}}>
 
@@ -159,20 +159,20 @@ export default function SinglePost({ post, fetchPosts }) {
             </div>
       </Box>
       <IconButton onClick={() => {}}>
-      <MoreVertRounded className="three-dots"/>
+      <MoreVertRounded className="three-dots text-white"/>
       </IconButton>
       </Box>
-      <CardContent className="border-bottom border-top">
+      <CardContent style={{borderTop:"1px solid rgb(56,88,103)", borderBottom:"1px solid rgb(56,88,103)", minHeight:'80px'}}>
         <Typography variant="body2" >
           {post?.content}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" style={{color:isLiked? "rgb(30,131,173, 0.6)":"grey"}} onClick={()=>handleLikes()}>
+        <IconButton aria-label="add to favorites" style={{color:isLiked? "rgb(30,131,173, 1)":"grey"}} onClick={()=>handleLikes()}>
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
-          <ShareIcon />
+          <ShareIcon style={{color:"white", fontSize:"20px"}}/>
         </IconButton>
         <ExpandMore
           expand={expanded}
@@ -180,8 +180,8 @@ export default function SinglePost({ post, fetchPosts }) {
           aria-expanded={expanded}
           aria-label="show more"
           >
-          <Typography style={{transform:expanded? "rotate(180deg)":"rotate(0deg)",padding:"5px"}}>Comment</Typography>
-          <ExpandMoreIcon />
+          <Typography style={{transform:expanded? "rotate(180deg)":"rotate(0deg)",padding:"5px", color:"white"}}>Comment</Typography>
+          <ExpandMoreIcon className="text-white" />
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>

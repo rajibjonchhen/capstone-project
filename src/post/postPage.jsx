@@ -79,16 +79,16 @@ function PostPage() {
       
     return ( <>
     {isLoading? <Loader/> : error? <div>{error}</div> :
-    <Container fluid spacing={1} style={{height:"100vh", overflow:"hidden", paddingTop:"10px"}}> 
-        <Row style={{width:"100%",height:"100%", margin:"0 auto"}}>
+    <Container fluid spacing={1} style={{minHeight:"100vh", paddingTop:"10px"}}> 
+        <Row >
 
-        <Col item sm={12} md={6} lg={3}  >
+        <Col  sm={12} md={6} lg={3}  style={{padding:"20px", margin:'-20px'}}>
            
                 <LeftSidebar fetchPosts={fetchPosts} />
            
         </Col>
 
-        <Col  sm={12} md={6} lg={6} className="posts-box">
+        <Col  sm={12} md={6} lg={6} className="posts-box" >
 
             {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
                 <div sx={{ margin:"3px 0px 0px", height:"100%"}}>
@@ -136,13 +136,13 @@ function PostPage() {
                 </div>
             </div>
             </div>
-            <div style={{height:"100%", overflow:"scroll"}}>
+            <div style={{height:"90vh", overflow:"scroll"}}>
                 { allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
             </div>
                 </div> 
                 </>}
         </Col>
-        <Col  sm={12} md={3} lg={3} style={{width:"100%",height:"100%", margin:"0 auto"}}>
+        <Col  sm={12} md={3} lg={3} style={{padding:"20px", margin:'-20px'}}>
            
                 <RightSidebar/>
             

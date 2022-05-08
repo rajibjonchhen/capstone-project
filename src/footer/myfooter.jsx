@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import "./myfooter.css"
 import { Typography } from "@material-ui/core";
+import { Col, Container, Row } from "react-bootstrap";
 
 function MyFooter() {
   const footerParts = [
@@ -58,22 +59,22 @@ function MyFooter() {
 
   return (
     
-      <Grid   container style={{ justifyContent:"center",marginTop:"10px"}}>
-      <Grid item xs={12} md={10} lg={10} className="footer-box">
-          <Grid container spacing={2}>
+      <Container  className="footer-box"  fluid >
+      <Row item xs={12} md={10} lg={10}  className="footer-box offset-lg-1">
+         
           {footerParts.map((part, i) => (
-            <Grid key={i} item xs={12} sm={6} md={3} lg={3} style={{margin:"15px auto 0px"}}>
+            <Col key={i} item xs={12} sm={6} md={3} lg={3} style={{margin:"15px auto 0px"}}>
                 <p className="footerCol-title">{part.title}</p>
                 <div className="footerCol">
                   {part.lists.map((list, j) => (
                     <p key={j} className=" footer-item">{list}</p>
                     ))}
                 </div>
-            </Grid>
+            </Col>
           ))}
-          </Grid>
-      </Grid>
-  </Grid>
+         
+      </Row>
+  </Container>
   
   );
 }

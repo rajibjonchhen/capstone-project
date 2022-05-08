@@ -42,10 +42,7 @@ function MyLayout({children}) {
         <div style={{display:location.pathname === "/profile"? "block":"none", margin:"0"}}>
         <ExtraNavbar />
         </div>
-        <div  className="myLayout-box" >
-                        {children}
-        </div>
-       
+            {children}
         <MyFooter/>
     </>
      );
