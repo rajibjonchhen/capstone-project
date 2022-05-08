@@ -12,7 +12,7 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
 
 
     const myCategories = [
-        { name : "Innovative Ideas",
+        { name :"Ideas",
             image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688009/creators-space-products/smgag3ddsut8rha928xu.png",
             description : "collaborate with the investor",
             type:"idea"

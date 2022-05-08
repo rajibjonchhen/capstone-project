@@ -1,0 +1,16 @@
+.product-page{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-icon{
+    position: absolute;
+    z-index: 1 ;
+    color: black;
+    right:3px;
+    top:3px;
+    background-color: lavender;
+    padding:5px;
+    border-radius: 50px;
+}

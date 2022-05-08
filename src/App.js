@@ -11,12 +11,13 @@ import { Provider } from 'react-redux';
 import configureStore from './redux/store/store';
 import Account from './myAccount/MyAccount';
 import ErrorPage from './error/ErrorPage';
-import DisplayProducts from "./products/DisplayProducts"
+import DisplayProducts from "./products/Products"
 import MyProfile from './profile/MyProfile';
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Container } from 'react-bootstrap';
 import RolePage from './RolePage/RolePage';
 import Products from './products/Products';
+
 
 
 
@@ -33,11 +34,11 @@ function App() {
           <Route path="/role" exact element={<RolePage/>}/>
           <Route path="/home" exact element={<MyLayout><HomePage/></MyLayout>}/>
           <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
-          <Route path="/products" exact element={<MyLayout><Products/></MyLayout>}/>
+          {/* <Route path="/products" exact element={<MyLayout><Products/></MyLayout>}/> */}
           <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
           <Route path="/detail/:productId" exact element={<MyLayout><DetailPage/></MyLayout>}/>
           <Route path="/profile" exact element={<MyLayout><MyProfile/></MyLayout>}/>
-          <Route path="/products/:category" exact element={<MyLayout><DisplayProducts/></MyLayout>}/>
+          <Route path="/products" exact element={<MyLayout><Products/></MyLayout>}/>
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </BrowserRouter>

@@ -22,7 +22,7 @@ export default function CategoryCard({ category }) {
     e.preventDefault()
     dispatch(setSelectedCategoryAction(type));
     console.log(type); 
-     navigate(`/products/${type}`)
+     navigate(`/products`)
   }
   return (
 
@@ -61,7 +61,6 @@ export default function CategoryCard({ category }) {
           size="small"
           onClick = {(e) => {changeCategory(e, category?.type)}}
           className="theme-btn"
-          
         >
           Explore
         </Button>
