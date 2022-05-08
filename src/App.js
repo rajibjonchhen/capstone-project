@@ -37,7 +37,7 @@ function App() {
           <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
           <Route path="/detail/:productId" exact element={<MyLayout><DetailPage/></MyLayout>}/>
           <Route path="/profile" exact element={<MyLayout><MyProfile/></MyLayout>}/>
-          {/* <Route path="/products/:category" exact element={<MyLayout><DisplayProducts/></MyLayout>}/> */}
+          <Route path="/products/:category" exact element={<MyLayout><DisplayProducts/></MyLayout>}/>
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </BrowserRouter>
