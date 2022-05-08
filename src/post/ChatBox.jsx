@@ -96,7 +96,7 @@ function ChatBox() {
 
   return (
 
-    <Container  style={{display:"flex", flexDirection:"column", border:"1px solid rgb(224,224,224)",borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)"}}>
+    <Container  style={{display:"flex", flexDirection:"column", borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)"}}>
         <Row style={{ borderBottom:"1px solid rgb(224,224,224)"}}>
             <Col >
                 <ListItem  className="pointer">
@@ -114,7 +114,7 @@ function ChatBox() {
         
         <Row>
             <Col style={{width:"100%",minHeight:"70vh", overflow:"scroll"}}>
-                {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => <p key={i} style={{backgroundColor:"lavenderblush", width:"100%"}}>{message?.text}</p>)  }
+                {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => <p key={i} style={{ width:"100%"}}>{message?.text}</p>)  }
             </Col>
         </Row>
         

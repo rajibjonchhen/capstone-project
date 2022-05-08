@@ -69,7 +69,7 @@ function PostPage() {
     
     
     const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+        backgroundColor: theme.palette.mode === 'dark' ? 'rgb(0, 0, 0, 0)' : 'rgb(0, 0, 0, 0)',
         ...theme.typography.body2,
         padding: theme.spacing(1),
         textAlign: 'center',
@@ -78,17 +78,17 @@ function PostPage() {
       
     return ( <>
     {isLoading? <Loader/> : error? <div>{error}</div> :
-    <Grid container spacing={1} style={{backgroundColor:'white', maxHeight:"100vh", overflow:"hidden"}}> 
-        <Grid item sm={12} md={6} lg={3} className="theme-light-bg" style={{width:"100%",height:"100%", margin:"0 auto"}}>
-            <Item style={{width:"100%",margin:"auto"}}>
+    <Grid container spacing={1} style={{height:"100vh", overflow:"hidden", paddingTop:"10px"}}> 
+        <Grid item sm={12} md={6} lg={3}  style={{width:"100%",height:"100%", margin:"0 auto"}}>
+            <div style={{width:"100%",margin:"auto"}}>
                 <LeftSidebar fetchPosts={fetchPosts} />
-            </Item>
+            </div>
         </Grid>
 
-        <Grid item sm={12} md={6} lg={6} className="posts-box theme-light-bg">
+        <Grid item sm={12} md={6} lg={6} className="posts-box">
 
             {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
-                <Item sx={{ margin:"3px 0px 0px", height:"100%"}}>
+                <div sx={{ margin:"3px 0px 0px", height:"100%"}}>
                     <div>
 
                 <div style={{display:"flex", alignItems:'center'}}>
@@ -136,13 +136,13 @@ function PostPage() {
             <div style={{height:"100%", overflow:"scroll"}}>
                 { allPosts?.map((post, i) => <SinglePost  key={i} fetchPosts={fetchPosts} post={post}/>)}
             </div>
-                </Item> 
+                </div> 
                 </>}
         </Grid>
         <Grid item sm={12} md={3} lg={3} style={{width:"100%",height:"100%", margin:"0 auto"}}>
-            <Item >
+            <div >
                 <RightSidebar/>
-            </Item>
+            </div>
         </Grid>
     </Grid> }
     </>);

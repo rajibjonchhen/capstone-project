@@ -220,7 +220,7 @@ function MyNavbar() {
     <>
       <CssBaseline />
 
-      <AppBar style={{ background: location.pathname ==="/home"?  "rgb(10, 55, 50)" : "rgb(4, 52, 71)", color: "white",width:"100%" }}>
+      <AppBar style={{ background: location.pathname ==="/home"?  "rgb(10, 55, 50)" : "rgb(4, 52, 71)", color: "white",width:"100%", position:"sticky", top:'0' }}>
         <Grid container>
           <Grid
             item
