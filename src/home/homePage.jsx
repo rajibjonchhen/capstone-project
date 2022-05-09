@@ -1,23 +1,15 @@
-import { useEffect } from "react";
-import CategoryCard from "./CategoryCard";
-import MyJumbotron from "./MyJumbotron";
-import "./homePage.css"
-import { Container, Grid } from "@mui/material";
-import HowWeHelp from "./HowWeHelp";
-import { useNavigate } from "react-router-dom";
-import OurProjects from "./OurProjects";
-import OurMission from "./OurMission";
 import { Business, Group, Support } from "@mui/icons-material";
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
-import Individual from "../assets/idea.png"
-import Investor from "../assets/investor.png"
-import Society from "../assets/society.png"
-import Sustainable from "../assets/sustainable.png"
-import MyFooter from "../footer/myfooter";
-import MyNavbar from "../myNavbar/MyNavbar";
-import MyCarousel from "./MyCarousel";
-import AboutUs from "./AboutUs";
-import BootstrapCarousel from "./BootstrapCarousel";
+import { useNavigate } from "react-router-dom";
+import Individual from "../assets/idea.png";
+import Investor from "../assets/investor.png";
+import Society from "../assets/society.png";
+import Sustainable from "../assets/sustainable.png";
+import "./homePage.css";
+import MyJumbotron from "./MyJumbotron";
+import OurMission from "./OurMission";
+import OurProjects from "./OurProjects";
+import WhoWeAre from "./WhoWeAre";
 
 function HomePage() {
 
@@ -59,7 +51,7 @@ function HomePage() {
                
                <OurProjects/>
       
-               <AboutUs/>
+               <WhoWeAre/>
          
                <OurMission/>
              

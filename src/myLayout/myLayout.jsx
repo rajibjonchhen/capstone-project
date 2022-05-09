@@ -21,16 +21,12 @@ function MyLayout({children}) {
 
     useEffect(() => {
         const token = localStorage.getItem("MyToken")
-        if(!token){
-            if(!tokenParam){
-                navigate("/")
-            } else{
+        if(token){
+            fetchMyInfo()
+            if(tokenParam){
                 localStorage.setItem("MyToken", tokenParam)
                 fetchMyInfo()
             }
-        }else{
-            
-            fetchMyInfo()
         }
     },[])
 

@@ -1,9 +1,9 @@
 import { Grid } from "@material-ui/core";
 import { Button, Container } from "@mui/material";
 import { useEffect } from "react";
-import "./aboutUs.css"
+import "./whoWeAre.css"
 
-function AboutUs() {
+function WhoWeAre() {
 
   useEffect(() =>{
     
@@ -30,4 +30,4 @@ function AboutUs() {
      );
 }
 
-export default AboutUs;
+export default WhoWeAre;

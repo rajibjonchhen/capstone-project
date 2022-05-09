@@ -17,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { Container } from 'react-bootstrap';
 import RolePage from './RolePage/RolePage';
 import Products from './products/Products';
+import AboutUs from './AboutUs/AboutUs';
 
 
 
@@ -34,7 +35,7 @@ function App() {
           <Route path="/role" exact element={<RolePage/>}/>
           <Route path="/home" exact element={<MyLayout><HomePage/></MyLayout>}/>
           <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
-          {/* <Route path="/products" exact element={<MyLayout><Products/></MyLayout>}/> */}
+          <Route path="/about" exact element={<MyLayout><AboutUs/></MyLayout>}/>
           <Route path="/posts" exact element={<MyLayout><PostPage/></MyLayout>}/>
           <Route path="/detail/:productId" exact element={<MyLayout><DetailPage/></MyLayout>}/>
           <Route path="/profile" exact element={<MyLayout><MyProfile/></MyLayout>}/>

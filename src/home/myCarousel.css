@@ -5,9 +5,7 @@
     font-size: 50px !important;
     border: 2px solid white;
     border-radius: 50%;
-    position:absolute;
     color: white;
-    top: -15% ;
     left:46%;
     right:46%
 }
@@ -27,7 +25,7 @@ margin-left: -200px ;
 .carousel-text{
 background-color: rgb(99,173,203,0.8);
 border-radius:50px;
-padding:5px 15px;
+padding:5px 10px;
 }
 
 .carousel-text h3{

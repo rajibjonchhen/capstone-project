@@ -9,6 +9,7 @@ import { TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllUsersAction, setChatUserAction } from '../redux/actions/action';
+import { green } from '@mui/material/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: 'inline',
   },
+  inputColor:{
+    color:"green",
+    borderColor: "green"
+  }
 }));
 
 
@@ -38,8 +43,9 @@ export default function RightSidebar() {
   },[])
 
   useEffect(() => {
-  
-    setFilteredUsers(allUsers.filter(user => user.name.toUpperCase().includes(query.toUpperCase()) || user.surname.toUpperCase().includes(query.toUpperCase() || user.email.toUpperCase().includes(query.toUpperCase()))))
+    if(query.length > 0){
+      setFilteredUsers(allUsers.filter(user => user.name.toUpperCase().includes(query.toUpperCase()) || user.surname.toUpperCase().includes(query.toUpperCase() || user.email.toUpperCase().includes(query.toUpperCase()))))
+    }
   },[query])
 
   const fetchUsers = async() => {
@@ -75,7 +81,7 @@ const handleChange = (e) =>  {
 
   return (
     <List style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)", width:"100%",}}>
-      <TextField size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
+      <TextField className={classes.inputColor} size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
       <div style={{ height:"100vh", overflow:"scroll"}}>
       {(filteredUsers || allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>

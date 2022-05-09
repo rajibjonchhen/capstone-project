@@ -114,8 +114,17 @@ function ChatBox() {
         
         <Row>
             <Col style={{width:"100%",minHeight:"70vh", overflow:"scroll"}}>
-                {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => <div key={i} className="single-message">
-                    <p>{message?.text}</p>
+                {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => 
+                <div key={i} className="p-2">
+                    <p className="single-message">{message?.text}</p>
+                    <p style={{fontSize:'10px'}}>
+                        <span className="m-1">
+                            {new Date(message?.createdAt).toLocaleTimeString()}   
+                        </span>
+                        <span className="m-1">
+                            {new Date(message?.createdAt).toLocaleDateString()} 
+                        </span>
+                    </p>
                 </div>)  }
             </Col>
         </Row>

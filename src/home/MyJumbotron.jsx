@@ -21,6 +21,7 @@ function MyJumbotron() {
                     We are here to help you 
                 </p>
                 <h1>We Connect ideas with money</h1>
+                <Button style={{backgroundColor:"grey", color:"white", marginRight:'5px'}} onClick={() => navigate("/aboutUs")}>Know more</Button>
                 <Button style={{backgroundColor:"grey", color:"white"}} onClick={() => navigate("/")}>Connect with Us</Button>
             </div>
         </Row>
