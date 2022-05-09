@@ -18,6 +18,7 @@ import { Container } from 'react-bootstrap';
 import RolePage from './RolePage/RolePage';
 import Products from './products/Products';
 import AboutUs from './AboutUs/AboutUs';
+import DirectToRegister from './DirectToLogin/DirectToRegister';
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<LoginPage/>}/>
           <Route path="/role" exact element={<RolePage/>}/>
+          <Route path="/direct" exact element={<MyLayout><DirectToRegister/></MyLayout>}/>
           <Route path="/home" exact element={<MyLayout><HomePage/></MyLayout>}/>
           <Route path="/account" exact element={<MyLayout><Account/></MyLayout>}/>
           <Route path="/about" exact element={<MyLayout><AboutUs/></MyLayout>}/>
