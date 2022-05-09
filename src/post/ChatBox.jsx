@@ -46,7 +46,7 @@ function ChatBox() {
                 setSendMsgLoading(false)
             } else {
                 const data =  await response.json()
-                console.log("chat initiated message", data.chat.messages)
+                console.log("chat initiated message", data.chat)
                 dispatch(setCurrentChatAction(data.chat))
                 dispatch(setCurrentChatMessagesAction(data.chat.messages))
                 setSendMsgLoading(false)
@@ -96,9 +96,9 @@ function ChatBox() {
 
   return (
 
-    <div  style={{display:"flex", flexDirection:"column", borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)"}}>
+    <div  style={{ borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(63,94,107)"}}>
         <div style={{ borderBottom:"1px solid rgb(224,224,224)"}}>
-            <div >
+           
                 <ListItem  className="pointer">
                     <ListItemAvatar>
                     <Avatar alt={chatUser.name} src={chatUser.avatar} />
@@ -106,17 +106,21 @@ function ChatBox() {
                     <Typography
                     style={{fontSize:"12px"}}
                     >
-                        {`${chatUser.name} ${chatUser.surname}`}
+                        {`${chatUser?.name?.toUpperCase()} ${chatUser?.surname?.toUpperCase()}`}
                     </Typography>
                 </ListItem>
-            </div>
+            
         </div>
         
-        <div>
-            <div style={{width:"100%",minHeight:"70vh", overflow:"scroll"}}>
+       
+            <div style={{minHeight:"70vh", overflow:"scroll"}}>
                 {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => 
-                <div key={i} className="p-2">
-                    <p className="single-message">{message?.text}</p>
+                <div key={i}  className={`p-2 w-25 ${message.sender === myInfo?._id?  "ml-auto":"mr-auto"}`}>
+                    <div className='single-message'>
+                        <p >
+                            {message?.text}
+                        </p>
+                        </div>
                     <p style={{fontSize:'10px'}}>
                         <span className="m-1">
                             {new Date(message?.createdAt).toLocaleTimeString()}   
@@ -127,14 +131,14 @@ function ChatBox() {
                     </p>
                 </div>)  }
             </div>
-        </div>
         
-        <div>
+        
+        
             <div style={{display:"flex",gap:"5px", marginBottom:"10px"}}>
                 <input value={message.text} onChange={(e) => handleTextChange(e)} style={{width:"100%"}}/>
                 <Button onClick={() => sendMessage()}>{sendMsgLoading?  "loading...":"Send"}</Button>
             </div>
-        </div>
+       
         
     </div>
     

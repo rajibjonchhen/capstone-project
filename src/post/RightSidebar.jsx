@@ -20,10 +20,7 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: 'inline',
   },
-  inputColor:{
-    color:"green",
-    borderColor: "green"
-  }
+ 
 }));
 
 
@@ -39,11 +36,13 @@ export default function RightSidebar() {
   const dispatch = useDispatch()
   
   useEffect(() => {
+    
       fetchUsers()
   },[])
 
   useEffect(() => {
-    if(query.length > 0){
+    console.log(query.length, "query" , query)
+    if(query.length !== 0){
       setFilteredUsers(allUsers.filter(user => user.name.toUpperCase().includes(query.toUpperCase()) || user.surname.toUpperCase().includes(query.toUpperCase() || user.email.toUpperCase().includes(query.toUpperCase()))))
     }
   },[query])
@@ -81,9 +80,9 @@ const handleChange = (e) =>  {
 
   return (
     <List style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)"}}>
-      <TextField className={classes.inputColor} size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
+      <TextField  size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
       <div style={{ height:"100vh", overflow:"scroll"}}>
-      {(filteredUsers || allUsers).map((user, i) => 
+      {(filteredUsers.length > 0? filteredUsers : allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>
             <ListItemAvatar>
               <Avatar alt={user.name} src={user.avatar} />
