@@ -96,9 +96,9 @@ function ChatBox() {
 
   return (
 
-    <Container  style={{display:"flex", flexDirection:"column", borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)"}}>
-        <Row style={{ borderBottom:"1px solid rgb(224,224,224)"}}>
-            <Col >
+    <div  style={{display:"flex", flexDirection:"column", borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)"}}>
+        <div style={{ borderBottom:"1px solid rgb(224,224,224)"}}>
+            <div >
                 <ListItem  className="pointer">
                     <ListItemAvatar>
                     <Avatar alt={chatUser.name} src={chatUser.avatar} />
@@ -109,11 +109,11 @@ function ChatBox() {
                         {`${chatUser.name} ${chatUser.surname}`}
                     </Typography>
                 </ListItem>
-            </Col>
-        </Row>
+            </div>
+        </div>
         
-        <Row>
-            <Col style={{width:"100%",minHeight:"70vh", overflow:"scroll"}}>
+        <div>
+            <div style={{width:"100%",minHeight:"70vh", overflow:"scroll"}}>
                 {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => 
                 <div key={i} className="p-2">
                     <p className="single-message">{message?.text}</p>
@@ -126,17 +126,17 @@ function ChatBox() {
                         </span>
                     </p>
                 </div>)  }
-            </Col>
-        </Row>
+            </div>
+        </div>
         
-        <Row>
-            <Col style={{display:"flex",gap:"5px", marginBottom:"10px"}}>
+        <div>
+            <div style={{display:"flex",gap:"5px", marginBottom:"10px"}}>
                 <input value={message.text} onChange={(e) => handleTextChange(e)} style={{width:"100%"}}/>
                 <Button onClick={() => sendMessage()}>{sendMsgLoading?  "loading...":"Send"}</Button>
-            </Col>
-        </Row>
+            </div>
+        </div>
         
-    </Container>
+    </div>
     
   )
 }

@@ -82,7 +82,7 @@ function PostPage() {
     <Container fluid spacing={1} style={{minHeight:"100vh", paddingTop:"10px"}}> 
         <Row >
 
-        <Col  sm={12} md={6} lg={3}  style={{padding:"20px", margin:'-20px'}}>
+        <Col  sm={12} md={3} lg={3} >
            
                 <LeftSidebar fetchPosts={fetchPosts} />
            
@@ -142,8 +142,7 @@ function PostPage() {
                 </div> 
                 </>}
         </Col>
-        <Col  sm={12} md={3} lg={3} style={{padding:"20px", margin:'-20px'}}>
-           
+        <Col  sm={12} md={3} lg={3} >
                 <RightSidebar/>
             
         </Col>
