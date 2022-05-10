@@ -97,7 +97,7 @@ function ChatBox() {
   return (
 
     <div  style={{ borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(63,94,107)",height:"100%", display:"flex", justifyContent:"space-between", flexDirection:"column"}}>
-        <div style={{ borderBottom:"1px solid rgb(224,224,224)"}}>
+        <div style={{ borderBottom:"1px solid rgb(53,85,99)"}}>
            
                 <ListItem  className="pointer">
                     <ListItemAvatar>
@@ -113,7 +113,7 @@ function ChatBox() {
         </div>
         
        
-            <div style={{overflow:"scroll", alignSelf:"stretch"}}>
+            <div style={{overflow:"scroll", alignSelf:"stretch", height:"70vh"}}>
                 {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => 
                 <div key={i}  className={`p-2 w-25 ${message.sender === myInfo?._id?  "ml-auto":"mr-auto"}`}>
                     <div className='single-message'>

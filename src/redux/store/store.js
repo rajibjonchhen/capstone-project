@@ -13,6 +13,7 @@ user : {
     myInfo : {},
     myMessages : [],
     profilePagination :"",
+    role:""
     
 },
 product : {

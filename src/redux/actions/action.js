@@ -1,6 +1,7 @@
 export const ACTIONS = {
     SET_MY_INFO : "SET_USER",
     SET_ALL_USERS : "SET_ALL_USERS",
+    SET_ROLE :"SET_ROLE",
     
     SET_MY_MESSAGES : "SET_MY_MESSAGES",
     SET_PROFILE_PAGINATION : "SET_PROFILE_PAGINATION",
@@ -29,6 +30,12 @@ export const setMyInfoAction = (user) => ({
 export const setAllUsersAction = (users) => ({
     type : ACTIONS.SET_ALL_USERS,
     payload : users
+})
+
+
+export const setRoleAction = (role) => ({
+    type : ACTIONS.SET_ROLE,
+    payload : role
 })
 
 

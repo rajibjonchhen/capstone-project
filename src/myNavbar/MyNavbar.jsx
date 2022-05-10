@@ -266,7 +266,7 @@ function MyNavbar() {
               
                 
                 
-                <MenuItem className="margin-xasix"
+                <MenuItem className="my-margin-xasix"
                   onClick={() => {
                     navigate("/home");
                   }}
@@ -274,7 +274,7 @@ function MyNavbar() {
                  Home
                 </MenuItem>
 
-                <MenuItem className="margin-xasix"
+                <MenuItem className="my-margin-xasix"
                   onClick={() => {
                     navigate("/about");
                   }}
@@ -282,7 +282,7 @@ function MyNavbar() {
                   About Us
                 </MenuItem>
 
-                <MenuItem className="margin-xasix"
+                <MenuItem className="my-margin-xasix"
                   onClick={() => {
                     dispatch(setSelectedCategoryAction("all"))
                     navigate("/products");
@@ -291,7 +291,7 @@ function MyNavbar() {
                   Products
                 </MenuItem>
 
-                <MenuItem className="margin-xasix"
+                <MenuItem className="my-margin-xasix"
                   onClick={() => {
                     if(myInfo?._id){
 
@@ -306,7 +306,7 @@ function MyNavbar() {
 
                 
 
-                <MenuItem className="margin-xasix"
+                <MenuItem className="my-margin-xasix"
                   onClick={() => {
                     if(myInfo?._id){
                      
@@ -319,7 +319,7 @@ function MyNavbar() {
                     Profile
                 </MenuItem>
 
-                <Box className="margin-xasix flex-center">
+                <Box className="my-margin-xasix flex-center">
                   <IconButton
                     size="large"
                     aria-label="show 4 new mails"
@@ -331,7 +331,7 @@ function MyNavbar() {
                   </IconButton>
                 </Box>
 
-                <Box className="margin-xasix flex-center">
+                <Box className="my-margin-xasix flex-center">
                   <IconButton
                     size="large"
                     aria-label="show 17 new notifications"
@@ -343,7 +343,7 @@ function MyNavbar() {
                   </IconButton>
                 </Box>
 
-                <IconButton className="margin-xasix"
+                <IconButton className="my-margin-xasix"
                   size="large"
                   edge="end"
                   aria-label="account of current user"

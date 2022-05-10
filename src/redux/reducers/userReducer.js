@@ -15,6 +15,12 @@ import { initialState } from "../store/store";
             allUsers : action.payload
             }
 
+        case ACTIONS.SET_ROLE:
+            return {
+                ...state,
+            role : action.payload
+            }
+
         case ACTIONS.SET_MY_MESSAGES:
             return {
                 ...state,

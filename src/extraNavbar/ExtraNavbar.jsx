@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfilePaginationAction } from "../redux/actions/action";
-import "./extraHeader.css";
+import "./extraNavbar.css";
 
 function ExtraNavbar() {
   const profilePagination = useSelector(
@@ -14,6 +14,8 @@ function ExtraNavbar() {
   useEffect(() => {
     dispatch(setProfilePaginationAction("My Creations"));
   }, []);
+
+  const highlightColor = "rgb(21, 101, 133)"
 
   return (
     <Container  className="extra-header" maxWidth="xl">
@@ -29,18 +31,21 @@ function ExtraNavbar() {
             display: "flex",
             justifyContent: "space-between",
           }}
+          
         >
           <Button
+            className="extra-header-button"
             name="My Creations"
             style={{
               backgroundColor:
-                profilePagination === "My Creations" && "rgb(160,38,38, 0.2)",
+                profilePagination === "My Creations" && `${highlightColor}`
             }}
             onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
           >
             My Creations
           </Button>
           <Button
+          className="extra-header-button"
             name="My Messages"
             style={{
               backgroundColor:

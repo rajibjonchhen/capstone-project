@@ -79,7 +79,7 @@ function PostPage() {
       
     return ( <>
     {isLoading? <Loader/> : error? <div>{error}</div> :
-    <Container fluid spacing={1} style={{height:"90vh", paddingTop:"10px 0", marginBottom:"10px"}}> 
+    <Container fluid spacing={1} style={{minHeight:"90vh", paddingTop:"100px 0", margin:"20px auto"}}> 
         <Row >
 
         <Col  sm={12} md={3} lg={3} >
@@ -104,14 +104,12 @@ function PostPage() {
                             onClick={()=>{setOpen(true)}}
                             style={{
                                 paddingLeft: "10px",
-                                
                                 paddingTop: "10px",
                                 paddingBottom: "10px",
                                 textAlign: "left",
                                 fontWeight: "normal",
                                 width:"100%",
                                 borderRadius:"30px",
-                                
                             }}
                             >
                 Start a post

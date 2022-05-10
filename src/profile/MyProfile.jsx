@@ -2,6 +2,7 @@
 import { Grid } from "@material-ui/core";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import MyAccount from "../myAccount/MyAccount";
@@ -56,16 +57,16 @@ function MyProfile() {
         fetchMyProducts()
     },[])
     
-    return (<>  
-                <Grid  container >
-                    <Grid item xs={12} >
-                            <Grid container className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
+    return (<Container style={{ minHeight:"70vh" }}>  
+                <Row   >
+                    <Col  xs={12} >
+                            <Row  className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {myProducts?.length === 0 && <Typography variant="h3" paragraph>You do not have any creation yet</Typography>}
                                 {myProducts?.map((product, i) => 
-                                <Grid  key={i} item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
+                                <Col  key={i} item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
                                     <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
-                                </Grid> )}
-                            </Grid>
+                                </Col> )}
+                            </Row>
                         
                 <div style={{display: profilePagination === "My Messages"? "block":"none" }}>
                     <MyMessages />
@@ -77,10 +78,10 @@ function MyProfile() {
                     <MyAccount/>
                 </div>
 
-                </Grid>
-            </Grid>
+                </Col>
+            </Row>
        
-            </> );
+            </Container> );
 }
 
 export default MyProfile;

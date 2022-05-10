@@ -93,11 +93,11 @@ function Products() {
   ];
 
   return (
-    <Container >
+    <Container>
       <div
         style={{
           position: "sticky",
-          top: "60px",
+          top: "50px",
           zIndex: "2",
           padding: "20px 0 5px",
           backgroundColor:"rgb(4,52,71)"
@@ -140,7 +140,8 @@ function Products() {
           </Col>
         </Row>
       </div>
-      <Row style={{ margin: "50px auto" }}>
+
+      <Row style={{ margin: "30px auto"}}>
         {error.length > 0 ? (
           <div className="error-message">Error on fetching products</div>
         ) : isLoading ? (
@@ -153,12 +154,11 @@ function Products() {
           allProducts.map((product, i) => (
             <Col
               key={i}
-              item
               xs={12}
               sm={6}
               md={4}
               lg={3}
-             
+              style={{width:'100%', padding:"5px 10px ",}}
             >
               <SingleCard product={product} />
             </Col>

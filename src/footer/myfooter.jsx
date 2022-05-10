@@ -61,10 +61,10 @@ function MyFooter() {
     
       <Container  className="footer-box"  fluid >
         <hr className="bg-light  w-100"/>
-      <Row item xs={12} md={10} lg={10}  className="footer-box offset-lg-1">
+      <Row  xs={12} md={10} lg={10}  className="footer-box offset-lg-1">
          
           {footerParts.map((part, i) => (
-            <Col key={i} item xs={12} sm={6} md={3} lg={3} style={{margin:"15px auto 0px"}}>
+            <Col key={i}  xs={12} sm={6} md={3} lg={3} style={{margin:"15px auto 0px"}}>
                 <p className="footerCol-title">{part.title}</p>
                 <div className="footerCol">
                   {part.lists.map((list, j) => (
