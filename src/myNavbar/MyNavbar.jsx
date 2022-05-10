@@ -263,14 +263,6 @@ function MyNavbar() {
                     />
                   </Search>
                 </Box> */}
-              
-                <MenuItem className="margin-xasix"
-                  onClick={() => {
-                    navigate("/about");
-                  }}
-                >
-                  <Typography>About Us</Typography>
-                </MenuItem>
                 <MenuItem className="margin-xasix"
                   onClick={() => {
                     navigate("/home");
@@ -278,13 +270,20 @@ function MyNavbar() {
                 >
                   <Typography>Home</Typography>
                 </MenuItem>
+
                 <MenuItem className="margin-xasix"
                   onClick={() => {
-                    if(myInfo._id){
-                      navigate("/posts");
-                    }else{
-                      navigate("/direct");
-                    }
+                    navigate("/about");
+                  }}
+                >
+                  <Typography>About Us</Typography>
+                </MenuItem>
+
+                
+
+                <MenuItem className="margin-xasix"
+                  onClick={() => {
+                    navigate("/posts");
                   }}
                 >
                   <Typography>Community</Typography>
@@ -294,7 +293,7 @@ function MyNavbar() {
                   onClick={() => {
                     dispatch(setSelectedCategoryAction("all"))
                     navigate("/products");
-                    
+                  
                   }}
                 >
                   <Typography>Products</Typography>

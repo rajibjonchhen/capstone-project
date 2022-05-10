@@ -1,9 +1,7 @@
 .footer-box{
 text-align: left;
 width: 100%;
-display:flex;
-justify-content:center;
-border-top: 1px solid white
+
 }
 
 .footerCol-title{

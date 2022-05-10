@@ -60,6 +60,7 @@ function MyFooter() {
   return (
     
       <Container  className="footer-box"  fluid >
+        <hr className="bg-light  w-100"/>
       <Row item xs={12} md={10} lg={10}  className="footer-box offset-lg-1">
          
           {footerParts.map((part, i) => (

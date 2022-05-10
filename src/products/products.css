@@ -9,8 +9,25 @@
     z-index: 1 ;
     color: black;
     right:3px;
-    top:3px;
+    top:2px;
     background-color: lavender;
-    padding:5px;
+    padding:11px;
     border-radius: 50px;
+}
+
+.search-icon:hover{
+    background-color: rgb(204, 204, 223);
+}
+
+#search{
+    
+        width: 100%;
+        height: 50px;
+        border-radius: 50px;
+        padding: 0 10px;
+        margin: 10px auto;
+}
+
+#search:focus{
+    background-color: lavender
 }

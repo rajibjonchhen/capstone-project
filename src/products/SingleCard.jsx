@@ -25,8 +25,8 @@ const myInfo = useSelector(state => state.user.myInfo)
 
   React.useEffect(() => {
 
-    console.log(product?.creator, myInfo,"product?.creator._id === myInfo?._id")
-    console.log(product.isLiked)
+    // console.log(product?.creator, myInfo,"product?.creator._id === myInfo?._id")
+    // console.log(product.isLiked)
     setIsLiked(product.isLiked)
   }, [])
   
@@ -84,7 +84,7 @@ const myInfo = useSelector(state => state.user.myInfo)
 
   React.useEffect(() => {},[])
   return (
-    <Card className="single-product-card" sx={{ width: "98%",maxWidth:"360px", minHeight:"300px", m: 1, position:"relative" }}>
+    <Card className="single-product-card px-0 mx-0 mt-2" sx={{ width: "100%", height:"300px", position:"relative" }}>
       {error && <Alert>{error}</Alert> }
       <CardMedia
         component="img"

@@ -46,7 +46,7 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
     },
     ]
     return ( 
-    <Container   fluid className="our-projects bg-dark ">        
+    <Container   fluid className="our-projects">        
         
         
             <Row className="project-container row-cols-4 row-cols-sm-2  row-cols-md-3 row-cols-lg-5 p-1" style={{display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden"}}> 

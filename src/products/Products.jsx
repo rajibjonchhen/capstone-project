@@ -1,12 +1,12 @@
-import { Button, Grid } from "@material-ui/core";
-import { SearchOffOutlined, SearchRounded } from "@mui/icons-material";
+import { Button } from "@material-ui/core";
+import { SearchRounded } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
-  setAllProductsAction,
-  setSelectedCategoryAction,
+    setAllProductsAction,
+    setSelectedCategoryAction
 } from "../redux/actions/action";
 import "./products.css";
 import SingleCard from "./SingleCard";
@@ -43,11 +43,12 @@ function Products() {
     }
   }, [selectedCategory]);
 
-  const fetchProducts = async (category) => {
+
+  const fetchProducts = async () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products`,
+        `${process.env.REACT_APP_DEV_BE_URL}/products?s=${search}`,
         {
           method: "GET",
           headers: {
@@ -92,7 +93,7 @@ function Products() {
   ];
 
   return (
-    <Container fluid>
+    <Container >
       <div
         style={{
           position: "sticky",
@@ -103,7 +104,7 @@ function Products() {
         }}
       >
         <Row>
-          <Col xs={12} md={6} lg={4} className="m-auto">
+          <Col xs={12} md={6} lg={6} className="m-auto">
             <div style={{ position: "relative" }}>
               <input
                 type="text"
@@ -111,14 +112,11 @@ function Products() {
                 name="search"
                 value={search}
                 placeholder="Type to search"
-                style={{
-                  width: "100%",
-                  height: "40px",
-                  borderRadius: "50px",
-                  padding: "0 10px",
-                }}
+                className="form-control"
+                onChange={(e) => setSearch(e.target.value)}
+
               />
-              <span className="search-icon">
+              <span className="search-icon pointer" onClick={() => fetchProducts()}>
                 <SearchRounded />
               </span>
             </div>
@@ -160,7 +158,7 @@ function Products() {
               sm={6}
               md={4}
               lg={3}
-              style={{ display: "flex", justifyContent: "center" }}
+             
             >
               <SingleCard product={product} />
             </Col>
