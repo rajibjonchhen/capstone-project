@@ -10,16 +10,20 @@ function DirectToRegister() {
   return (
     <Container >
       <Row>
-        <Col className="direct-to-register">
-          <div></div>
-          <img src={AGirlThinking} alt="a girl thinking" width="300px"/>
+        <Col >
+          <div className="direct-to-register">
+            <img src={AGirlThinking} alt="a girl thinking" width="100%" />
+          </div>
         </Col>
         <Col className="direct-to-register">
-        <h3 >
+          <div>
+
+        <h1 >
             Please register to use the service
-        </h3>
-        <h2 className="now">Now</h2>
-        <Button variant="warning" style={{width:"300px"}} onClick={() => navigate("/")}>Register</Button>
+        </h1>
+       
+            <Button variant="warning" style={{width:"300px", fontSize:"2rem"}} onClick={() => navigate("/")}>Register now</Button>
+          </div>
         </Col>
       </Row>
 
