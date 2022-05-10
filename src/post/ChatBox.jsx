@@ -96,7 +96,7 @@ function ChatBox() {
 
   return (
 
-    <div  style={{ borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(63,94,107)"}}>
+    <div  style={{ borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(63,94,107)",height:"100%", display:"flex", justifyContent:"space-between", flexDirection:"column"}}>
         <div style={{ borderBottom:"1px solid rgb(224,224,224)"}}>
            
                 <ListItem  className="pointer">
@@ -113,7 +113,7 @@ function ChatBox() {
         </div>
         
        
-            <div style={{minHeight:"70vh", overflow:"scroll"}}>
+            <div style={{overflow:"scroll", alignSelf:"stretch"}}>
                 {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => 
                 <div key={i}  className={`p-2 w-25 ${message.sender === myInfo?._id?  "ml-auto":"mr-auto"}`}>
                     <div className='single-message'>
@@ -134,7 +134,7 @@ function ChatBox() {
         
         
         
-            <div style={{display:"flex",gap:"5px", marginBottom:"10px"}}>
+            <div style={{display:"flex",gap:"5px", padding:"10px"}}>
                 <input value={message.text} onChange={(e) => handleTextChange(e)} style={{width:"100%"}}/>
                 <Button onClick={() => sendMessage()}>{sendMsgLoading?  "loading...":"Send"}</Button>
             </div>

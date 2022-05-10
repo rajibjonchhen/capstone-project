@@ -79,7 +79,7 @@ function PostPage() {
       
     return ( <>
     {isLoading? <Loader/> : error? <div>{error}</div> :
-    <Container fluid spacing={1} style={{minHeight:"100vh", paddingTop:"10px"}}> 
+    <Container fluid spacing={1} style={{height:"90vh", paddingTop:"10px 0", marginBottom:"10px"}}> 
         <Row >
 
         <Col  sm={12} md={3} lg={3} >
@@ -142,7 +142,7 @@ function PostPage() {
                 </div> 
                 </>}
         </Col>
-        <Col  sm={12} md={3} lg={3} >
+        <Col  sm={12} md={3} lg={3}>
                 <RightSidebar/>
             
         </Col>
