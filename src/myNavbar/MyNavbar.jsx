@@ -280,7 +280,11 @@ function MyNavbar() {
                 </MenuItem>
                 <MenuItem className="margin-xasix"
                   onClick={() => {
-                    navigate("/posts");
+                    if(myInfo._id){
+                      navigate("/posts");
+                    }else{
+                      navigate("/direct");
+                    }
                   }}
                 >
                   <Typography>Community</Typography>
@@ -290,6 +294,7 @@ function MyNavbar() {
                   onClick={() => {
                     dispatch(setSelectedCategoryAction("all"))
                     navigate("/products");
+                    
                   }}
                 >
                   <Typography>Products</Typography>
@@ -297,7 +302,12 @@ function MyNavbar() {
 
                 <MenuItem className="margin-xasix"
                   onClick={() => {
-                    navigate("/profile");
+                    if(myInfo._id){
+                     
+                      navigate("/profile");
+                    }else{
+                      navigate("/direct");
+                    }
                   }}
                 >
                   <Typography>Profile</Typography>

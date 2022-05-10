@@ -12,9 +12,9 @@ import SignUp from "./SignUp";
 function LoginPage() {
     const [showSignIn, setShowSignIn] = useState(true)
     return ( 
-        <Box className="theme-light-bg mt-3 py-3">
+        <Box className=" mt-3 py-3">
 
-            <Box className="theme-color" sx={{ display: 'flex', alignItems: 'center', mt:2, justifyContent:'center' }}>
+            <Box className="theme-color" sx={{ display: 'flex', alignItems: 'center', mt:2, justifyContent:'center',color:"white" }}>
                 <Flare className="App-logo"/>
                 <Typography sx={{fontWeight: 'bold',fontSize: 26}} > Creator's Space</Typography>
             </Box>

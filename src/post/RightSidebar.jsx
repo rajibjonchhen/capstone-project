@@ -9,8 +9,8 @@ import { TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllUsersAction, setChatUserAction } from '../redux/actions/action';
-import { green } from '@mui/material/colors';
-
+import { InputBase } from '@material-ui/core';
+import "./rightSidebar.css"
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -20,6 +20,16 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: 'inline',
   },
+  inputBase:{
+    border:"1px solid white",
+    borderRadius:theme.shape.borderRadius,
+    height:'5vh',
+    padding:theme.spacing(2),
+    width:"100%",
+  },
+  inputBase__placeholder:{
+    color:"white"
+  }
  
 }));
 
@@ -79,8 +89,9 @@ const handleChange = (e) =>  {
 
 
   return (
-    <List style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)"}}>
-      <TextField  size='small' label="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
+    <List style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)", padding:'5px'}}>
+      {/* <InputBase className={classes.inputBase} size='small' placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/> */}
+      <input className={classes.inputBase}   placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
       <div style={{ height:"100vh", overflow:"scroll"}}>
       {(filteredUsers.length > 0? filteredUsers : allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>

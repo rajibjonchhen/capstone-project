@@ -112,7 +112,7 @@ const loginUser = async()=> {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="xs"  className='theme-light-bg mt-3 py-3'>
+      <Container maxWidth="xs"  className='theme-light-bg mt-3 py-3 text-dark'>
         <CssBaseline />
         <Box
           sx={{
