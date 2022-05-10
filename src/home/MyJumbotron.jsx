@@ -2,10 +2,13 @@ import { Button } from '@material-ui/core'
 import React from 'react'
 import { useEffect } from 'react'
 import {  Col, Container, Jumbotron, Row } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import JumboPic from "../assets/business-idea.jpg"
 import "./myJumbotron.css"
 function MyJumbotron() {
+
+    const myInfo = useSelector(state => state.user.myInfo)
 
     const navigate = useNavigate()
     useEffect(() => {
@@ -25,8 +28,10 @@ function MyJumbotron() {
                     We are here to help you 
                 </p>
                 <h1>We Connect ideas with money</h1>
-                <Button style={{backgroundColor:"grey", color:"white", marginRight:'5px'}} onClick={() => navigate("/about")}>Know more</Button>
-                <Button style={{backgroundColor:"grey", color:"white"}} onClick={() => navigate("/")}>Connect with Us</Button>
+                <div style={{display:"flex" , justifyContent:"center"}}>
+                    <Button style={{backgroundColor:"grey", color:"white", marginRight:'5px'}} onClick={() => navigate("/about")}>Know more</Button>
+                    <Button style={{backgroundColor:"grey", color:"white", display:myInfo?._id? "none":"block"}} onClick={() => navigate("/")}>Connect with Us</Button>
+                </div>
             </div>
         </Row>
     </Container>
