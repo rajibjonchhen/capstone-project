@@ -22,7 +22,7 @@ function DirectToRegister() {
             Please register to use the service
         </h1>
        
-            <Button variant="warning" style={{width:"300px", fontSize:"2rem"}} onClick={() => navigate("/")}>Register now</Button>
+            <Button variant="warning" style={{width:"100%", fontSize:"1.5rem", fontWeight:"600",borderRadius:"15px", padding:"10px"}} onClick={() => navigate("/")}>Register now</Button>
           </div>
         </Col>
       </Row>

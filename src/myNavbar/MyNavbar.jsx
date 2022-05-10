@@ -263,12 +263,15 @@ function MyNavbar() {
                     />
                   </Search>
                 </Box> */}
+              
+                
+                
                 <MenuItem className="margin-xasix"
                   onClick={() => {
                     navigate("/home");
                   }}
                 >
-                  <Typography>Home</Typography>
+                 Home
                 </MenuItem>
 
                 <MenuItem className="margin-xasix"
@@ -276,32 +279,36 @@ function MyNavbar() {
                     navigate("/about");
                   }}
                 >
-                  <Typography>About Us</Typography>
-                </MenuItem>
-
-                
-
-                <MenuItem className="margin-xasix"
-                  onClick={() => {
-                    navigate("/posts");
-                  }}
-                >
-                  <Typography>Community</Typography>
+                  About Us
                 </MenuItem>
 
                 <MenuItem className="margin-xasix"
                   onClick={() => {
                     dispatch(setSelectedCategoryAction("all"))
                     navigate("/products");
-                  
                   }}
                 >
-                  <Typography>Products</Typography>
+                  Products
                 </MenuItem>
 
                 <MenuItem className="margin-xasix"
                   onClick={() => {
-                    if(myInfo._id){
+                    if(myInfo?._id){
+
+                      navigate("/posts");
+                    }else{
+                      navigate("/direct")
+                    }
+                  }}
+                >
+                 Community
+                </MenuItem>
+
+                
+
+                <MenuItem className="margin-xasix"
+                  onClick={() => {
+                    if(myInfo?._id){
                      
                       navigate("/profile");
                     }else{
@@ -309,8 +316,9 @@ function MyNavbar() {
                     }
                   }}
                 >
-                  <Typography>Profile</Typography>
+                    Profile
                 </MenuItem>
+
                 <Box className="margin-xasix flex-center">
                   <IconButton
                     size="large"

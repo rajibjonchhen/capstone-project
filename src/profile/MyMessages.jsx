@@ -1,6 +1,7 @@
 import { Avatar, Grid } from "@material-ui/core";
 import { Box } from "@mui/material";
 import { useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setMyMessagesAction, setSingleProductAction } from "../redux/actions/action";
@@ -49,30 +50,31 @@ function MyMessages() {
   }, []);
 
   return (
-    <Grid container className=" mt-3 py-3">
-      <Grid item xs={12} md={6} lg={4} className="msg-sender-list-box">
+    <Container className="py-3">
+    <Row container className=" mt-3 py-3">
+      <Col item xs={12} md={6} lg={4} className="msg-sender-list-box p-1">
           <h3>Messages</h3>
+          <hr className="bg-light pb-0 mb-0"/>
         {myMessages.map((message, i ) => (
             <div key={i}>
-
                 <div
-                    className="sender-list"
+                    className="sender-list "
                     onClick={() => {
                         setSingleMsg(message);
                     }}
                     >
-                    <span>
+                    <span className="m-1">
                         <Avatar src={message?.sender?.avatar}/>
                     </span>
-                    <span>
+                    <span className="m-1">
                         {message?.sender?.name.toUpperCase()}{" "}
                         {message?.sender?.surname.toUpperCase()}
                     </span>
                 </div>
         </div>
         ))}
-      </Grid>
-      <Grid xs={12} md={6} lg={8} item className="msg-detail-box">
+      </Col>
+      <Col xs={12} md={6} lg={8} item className="msg-detail-box p-1">
         {singleMsg &&
          (
           <Box>
@@ -82,9 +84,13 @@ function MyMessages() {
             
             <div className="message-element">
               {" "}
-              <Avatar src={singleMsg?.sender?.avatar} />{" "}
-              {singleMsg?.sender?.name}
-              {singleMsg?.sender?.surname}
+              <span className="m-1">
+                <Avatar src={singleMsg?.sender?.avatar} className="P-1"/>
+              </span>
+              <span className="m-1" style={{fontSize:"15px", fontWeight:"600"}}>
+                {singleMsg?.sender?.name.toUpperCase()} {singleMsg?.sender?.surname.toUpperCase()}
+              </span>
+              
             </div>
             <p className="message-element-title">Text :</p>
             <p className="message-element">{singleMsg.text}</p>
@@ -101,8 +107,9 @@ function MyMessages() {
         </div>
             </Box>
           )}
-          </Grid>
-    </Grid>
+          </Col>
+    </Row>
+    </Container>
   );
 }
 

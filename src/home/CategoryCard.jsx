@@ -68,7 +68,7 @@ export default function CategoryCard({ category }) {
         <CardContent
           size="small"
           onClick = {(e) => {changeCategory(e, category?.type)}}
-          style={{ bottom:"10px",}}
+          
         >
           <Typography component="div" variant="h6" textAlign="left">
             {category?.name}

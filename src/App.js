@@ -29,7 +29,7 @@ function App() {
   },[])
   return (
 <Provider store={configureStore}>
-    <div  className="App" style={{backgroundColor:"rgb(4, 52, 71)",margin:"auto"}}>
+    <div  className="App" style={{backgroundColor:"rgb(4, 52, 71)"}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<LoginPage/>}/>
