@@ -10,7 +10,8 @@ import SignUp from "./SignUp";
 
 
 function LoginPage() {
-    const [showSignIn, setShowSignIn] = useState(true)
+    const [showSignIn, setShowSignIn] = useState(false)
+
     return ( 
         <Box className=" mt-3 py-3">
 

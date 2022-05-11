@@ -50,6 +50,7 @@ export default function SignUp({setShowSignIn}) {
     surname: "",
     email: "",
     password: "",
+    repassword: "",
   });
 
   useEffect(() => {
@@ -81,9 +82,17 @@ const validateForm = (signUpUser) => {
             errors.email = "Email is not valid"
         }
     }
+    
     if(!signUpUser.password){
         errors.password = "password is missing"
     }
+    
+    if(!signUpUser.repassword){
+        errors.repassword = "repassword is missing"
+    }else if(signUpUser.repassword !== signUpUser.password){
+        errors.repassword = "password and repassword doesn ot match"
+      }
+    
 
     if(!signUpUser.name){
 
@@ -142,7 +151,9 @@ try {
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
+
           {error.length > 0 && <Alert fullWidth severity="error">{error}</Alert>}
+          {/* name field */}
             <TextField
             margin="normal"
             required
@@ -156,6 +167,8 @@ try {
             onChange={(e) => handleChange(e)}
             />
             <Typography color="secondary" align='left'>{!signUpUser.name && signUpErr.name}</Typography>
+
+          {/* surname field */}
             <TextField
             margin="normal"
             required
@@ -170,6 +183,7 @@ try {
             />
             <Typography color="secondary" align='left'>{!signUpUser.surname && signUpErr.surname}</Typography>
             
+          {/* email field */}
             <TextField
              margin="normal"
              required
@@ -183,7 +197,9 @@ try {
             value={signUpUser.email}
             onChange={(e) => handleChange(e)}
             />
-            <Typography color="secondary" align='left'>{!signUpUser.email && signUpErr.email}</Typography>
+            <Typography color="secondary" align='left'>{!signUpUser.email && signUpErr.email}{signUpUser.email && signUpErr.email} </Typography>
+            
+          {/* password field */}
             <TextField
             margin="normal"
             required
@@ -198,6 +214,22 @@ try {
             endAdornment={<IconButton> <VisibilityOff /> </IconButton>}
             />
             <Typography color="secondary"  align='left'>{!signUpUser.password && signUpErr.password}</Typography>
+            
+          {/* password field */}
+            <TextField
+            margin="normal"
+            required
+            fullWidth
+            size="small"
+            name="repassword"
+            label="RePassword"
+            type= {showPassword? "text":"password"}
+            id="password"
+            value={signUpUser.repassword}
+            onChange={(e) => handleChange(e)}
+            endAdornment={<IconButton> <VisibilityOff /> </IconButton>}
+            />
+            <Typography color="secondary"  align='left'>{!signUpUser.password || signUpErr?.repassword}</Typography>
             
         <Button
               fullWidth
