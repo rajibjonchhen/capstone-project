@@ -7,12 +7,10 @@ function OurMission() {
         
             <div className="mission-box">
                     <hr className="mission-box-hr"/>
-                <h3>
-                    Our Mission 
-                </h3>
+                
                     <hr className="mission-box-hr"/>
                 <p> 
-                    Set the environment for brainstorming, provide value to the ideas that help on creating better society.
+                    Set the environment for brainstorming, help provide value to the ideas that can contribute on creating better society.
                 </p>
                 <hr className="mission-box-hr"/>
             </div>

@@ -89,12 +89,13 @@ justify-content: center;
 
 
 .theme-btn{
-  background-color: rgb(12, 136, 185) !important;
+  background-color: rgb(5, 78, 107) !important;
   color:white !important;
   margin:3px !important
 }
+
 .theme-btn:hover{
-  background-color: rgb(21, 160, 202) !important;
+  background-color: rgb(45, 70, 97) !important;
   color:white
 }
 

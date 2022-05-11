@@ -17,7 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { Container } from 'react-bootstrap';
 import RolePage from './RolePage/RolePage';
 import Products from './products/Products';
-import AboutUs from './AboutUs/AboutUs';
+import AboutUs from './aboutUs/AboutUs';
 import DirectToRegister from './DirectToLogin/DirectToRegister';
 
 

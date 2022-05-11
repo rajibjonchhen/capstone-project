@@ -5,6 +5,8 @@ import Individual from "../assets/idea.png";
 import Investor from "../assets/investor.png";
 import Society from "../assets/society.png";
 import Sustainable from "../assets/sustainable.png";
+import ForCreator from "./ForCreator";
+import ForInvestor from "./ForInvestor";
 import "./homePage.css";
 import MyJumbotron from "./MyJumbotron";
 import OurMission from "./OurMission";
@@ -52,8 +54,10 @@ function HomePage() {
                <OurProjects/>
       
                <WhoWeAre/>
-         
-               <OurMission/>
+
+               <ForInvestor/>
+
+               <ForCreator/>
              
               </div>
             

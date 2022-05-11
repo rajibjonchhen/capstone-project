@@ -5,7 +5,7 @@ import Sustainable from "../assets/sustainable.png"
 import { Business, Group, Support } from "@mui/icons-material";
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 
-export const myCarouselData =  [
+export const ourValueData =  [
     {
        title:"Value for the Individuals",
        description:"We strive to make it easier for everyone to come up with innovative ideas that can create business and job opportunity  across the world. If you have a good intention to contribute to your favorite cause, we've got you covered.",
