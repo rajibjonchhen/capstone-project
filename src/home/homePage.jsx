@@ -1,7 +1,6 @@
-import { Container } from "@material-ui/core";
 import { Business, Group, Support } from "@mui/icons-material";
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Individual from "../assets/idea.png";
 import Investor from "../assets/investor.png";
@@ -24,7 +23,7 @@ function HomePage() {
                
                <OurProjects/>
                
-               <Container fluid>
+               <Container >
                   <Row>
                      <WhoWeAre/>
                   </Row>

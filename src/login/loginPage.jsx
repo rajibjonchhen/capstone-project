@@ -1,6 +1,9 @@
 import { Flare } from "@mui/icons-material";
 import { Avatar, Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+import { setRoleAction } from "../redux/actions/action";
 import OauthLogin from "./OauthLogin";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -10,7 +13,19 @@ import SignUp from "./SignUp";
 
 
 function LoginPage() {
+
     const [showSignIn, setShowSignIn] = useState(false)
+
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const roleParams = searchParams.get("role") 
+    const dispatch = useDispatch()
+
+    useEffect(()=> {
+        console.log("role ==",roleParams)
+        dispatch(setRoleAction(roleParams))
+
+    },[])
 
     return ( 
         <Box className=" mt-3 py-3">

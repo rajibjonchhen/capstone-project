@@ -1,0 +1,41 @@
+.extra-header{
+    position: fixed;
+    
+    top: 62px;
+    width:100vw;
+    padding:3px 0;
+    background:rgb(21, 101, 133);
+    color:white;
+    z-index: 2;
+}
+
+.extra-header button{
+color: white;
+font-size: 15px !important;
+width: 100%;
+cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 360px){
+    .extra-header{
+        padding: 5px;
+        top: 50px;
+    }
+    .extra-header button{
+        
+        font-size: 10px !important;
+        }
+}
+
+@media only screen and (max-width: 700px){
+    .extra-header{
+        padding: 3px;
+        top: 50px;
+    }
+    .extra-header button{
+        
+        font-size: 10px !important;
+        }
+}

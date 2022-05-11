@@ -197,7 +197,7 @@ try {
             value={signUpUser.email}
             onChange={(e) => handleChange(e)}
             />
-            <Typography color="secondary" align='left'>{!signUpUser.email && signUpErr.email}{signUpUser.email && signUpErr.email} </Typography>
+            <Typography color="secondary" align='left'>{!signUpUser.email && signUpErr.email || signUpUser.email && signUpErr.email} </Typography>
             
           {/* password field */}
             <TextField
@@ -211,7 +211,7 @@ try {
             id="password"
             value={signUpUser.password}
             onChange={(e) => handleChange(e)}
-            endAdornment={<IconButton> <VisibilityOff /> </IconButton>}
+            endadornment={<IconButton> <VisibilityOff /> </IconButton>}
             />
             <Typography color="secondary"  align='left'>{!signUpUser.password && signUpErr.password}</Typography>
             
@@ -227,9 +227,9 @@ try {
             id="password"
             value={signUpUser.repassword}
             onChange={(e) => handleChange(e)}
-            endAdornment={<IconButton> <VisibilityOff /> </IconButton>}
+            endadornment={<IconButton> <VisibilityOff /> </IconButton>}
             />
-            <Typography color="secondary"  align='left'>{!signUpUser.password || signUpErr?.repassword}</Typography>
+            <Typography color="secondary"  align='left'>{!signUpUser.repassword  &&  signUpErr?.repassword || signUpUser.repassword !== signUpUser.password &&  signUpErr?.repassword }</Typography>
             
         <Button
               fullWidth

@@ -11,6 +11,7 @@ import { setMyProductsAction } from "../redux/actions/action";
 import AddEditProduct from "./AddEditProduct";
 import MyMessages from "./MyMessages";
 import "./myProfile.css"
+import ProfilSidebar from "./ProfilSidebar";
 
 
 function MyProfile() {
@@ -59,7 +60,10 @@ function MyProfile() {
     
     return (<Container style={{ minHeight:"70vh", padding:"20px" }}>  
                 <Row   >
-                    <Col  xs={12} >
+                    <Col>
+                        <ProfilSidebar/>
+                    </Col>
+                    <Col  xs={10} >
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {myProducts?.length === 0 && <Typography variant="h3" paragraph>You do not have any creation yet</Typography>}
                                 {myProducts?.map((product, i) => 

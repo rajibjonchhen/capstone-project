@@ -5,7 +5,7 @@ import { IconButton } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
 import "./myCarousel.css"
-import {myCarouselData} from "./myCarouselData.js"
+import {myCarouselData} from "../home/ourValueData.js/index.js.js"
 
 
 function MyCarousel() {

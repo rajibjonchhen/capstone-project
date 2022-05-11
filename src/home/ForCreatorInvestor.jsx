@@ -22,7 +22,7 @@ function ForCreatorInvestor() {
   },
  {
     title:"Creator",
-    type:"investor",
+    type:"creator",
     description:"",
     services:[
       "",
@@ -33,12 +33,12 @@ function ForCreatorInvestor() {
     const dispatch = useDispatch()
 
   return (
-    <Container fluid>
+    <Container fluid > 
         <Row>
          
             <Col>
               {roleArray.map((role,i) =>
-                <div>
+                <div key={i}>
                   {/* <div className="d-flex flex-column">
                     <span className="text-for-the">For the</span>
                     <span className="highlight-role">{role.title}</span>
@@ -49,7 +49,7 @@ function ForCreatorInvestor() {
                      {role.services.map((service,i) => <li key={i}>{service}</li>)}
                    </ul>
                   </div>
-                    <Button className="direction-btn" onClick={() => {dispatch(setRoleAction(role.type));navigate("/")} }>{role.buttonText} </Button>
+                    <Button className="direction-btn" onClick={() => {dispatch(setRoleAction(role.type));navigate(`/?role=${role.type}`)} }>{role.buttonText} </Button>
                   </div>
                   )
                 }
