@@ -1,20 +1,21 @@
 .direction-btn{
-    background-color:rgb(4,52,71) ;
+    background-color:rgb(4,52,71)  !important;
     color:white;
-    border:1px solid rgb(7, 102, 139);
+    border:1px solid rgb(7, 102, 139) !important;
+    margin:10px auto;
 }
 .direction-btn:hover{
-    background-color:rgb(7, 102, 139) ;
+    background-color:rgb(7, 102, 139) !important;
 }
 
 .text-for-the{
     color:rgb(223, 223, 223);
-    padding: 10px 0 ;
-    border-bottom: 2px solid rgb(223, 223, 223);
-    margin: 10px;
-}
-.highligh-role{
-    color:rgb(97, 192, 230) ;
     font-size: 40px;
+}
+
+.highlight-role{
+    color:rgb(97, 192, 230) ;
+    font-size: 50px;
     margin: 0 0 0 150px;
+    font-weight: 900;
 }

@@ -23,10 +23,9 @@ function MyLayout({children}) {
         const token = localStorage.getItem("MyToken")
         if(token){
             fetchMyInfo()
-            if(tokenParam){
-                localStorage.setItem("MyToken", tokenParam)
-                fetchMyInfo()
-            }
+        } else  if(tokenParam){
+            localStorage.setItem("MyToken", tokenParam)
+            fetchMyInfo()
         }
     },[])
 

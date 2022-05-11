@@ -93,7 +93,7 @@ function Products() {
   ];
 
   return (
-    <Container>
+    <Container style={{minHeight:"80vh"}}>
       <div
         style={{
           position: "sticky",

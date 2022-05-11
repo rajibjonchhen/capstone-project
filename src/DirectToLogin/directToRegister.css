@@ -5,7 +5,20 @@
     padding:3rem 0;
 }
 
-.now{
-    padding:10px;
-    
+.direct-btn{
+    width:100% ;
+    color:rgb(4,52,71);
+    background-color: rgb(230, 176, 14);
+    border: none;
+    font-size:1.5rem;
+    font-weight:600;
+    border-radius:15px; 
+    padding:10px; 
+    margin:5px
+}
+
+.direct-btn:hover{
+    background-color: rgb(255,192,7);
+    color:rgb(9, 124, 170);
+   box-shadow: 0 0 5px 5px rgb(73, 86, 92)
 }

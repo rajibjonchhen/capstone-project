@@ -91,7 +91,7 @@ const handleChange = (e) =>  {
   return (
     <List style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)", padding:'5px', height:"100%"}}>
       {/* <InputBase className={classes.inputBase} size='small' placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/> */}
-      <input className={classes.inputBase}   placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
+      <input className="form-control"   placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
       <div style={{ height:"83vh", overflow:"scroll"}}>
       {(filteredUsers.length > 0? filteredUsers : allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>

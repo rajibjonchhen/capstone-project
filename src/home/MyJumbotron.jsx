@@ -29,8 +29,8 @@ function MyJumbotron() {
                 </p>
                 <h1>We Connect ideas with money</h1>
                 <div style={{display:"flex" , justifyContent:"center"}}>
-                    <Button style={{backgroundColor:"grey", color:"white", marginRight:'5px'}} onClick={() => navigate("/about")}>Know more</Button>
-                    <Button style={{backgroundColor:"grey", color:"white", display:myInfo?._id? "none":"block"}} onClick={() => navigate("/")}>Connect with Us</Button>
+                    <Button className="jumbotron-btn" style={{ marginRight:'5px'}} onClick={() => navigate("/about")}>Know more</Button>
+                    <Button className="jumbotron-btn" style={{ display:myInfo?._id? "none":"block"}} onClick={() => navigate("/")}>Connect with Us</Button>
                 </div>
             </div>
         </Row>

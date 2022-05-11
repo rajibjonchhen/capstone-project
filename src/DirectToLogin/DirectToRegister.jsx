@@ -4,25 +4,32 @@ import { Col, Container, Row } from 'react-bootstrap'
 import "./directToRegister.css"
 import { useNavigate } from 'react-router-dom'
 import AGirlThinking from "../assets/think.png"
+import { useDispatch } from 'react-redux'
+import { setRoleAction } from '../redux/actions/action'
+import { Lightbulb, MonetizationOn } from '@mui/icons-material'
 function DirectToRegister() {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   return (
     <Container >
       <Row>
-        <Col >
+        <Col sm={12} md={6}>
           <div className="direct-to-register">
             <img src={AGirlThinking} alt="a girl thinking" width="100%" />
           </div>
         </Col>
-        <Col className="direct-to-register">
+        <Col sm={12} md={6} className="direct-to-register">
           <div>
 
         <h1 >
             Please register to use the service
         </h1>
-       
-            <Button variant="warning" style={{width:"100%", fontSize:"1.5rem", fontWeight:"600",borderRadius:"15px", padding:"10px"}} onClick={() => navigate("/")}>Register now</Button>
+       <div className="d-flex">
+            <Button className="direct-btn" onClick={() => {dispatch(setRoleAction("creator")); navigate("/")}}>Become a Creator <Lightbulb/></Button>
+            <Button className="direct-btn" onClick={() => {dispatch(setRoleAction("investor")); navigate("/")}}>Become an Investor <MonetizationOn/> </Button>
+       </div>
           </div>
         </Col>
       </Row>

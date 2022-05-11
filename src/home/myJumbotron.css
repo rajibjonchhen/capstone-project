@@ -8,3 +8,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.jumbotron-btn{
+    color:white !important;
+    background-color: rgb(58,86,106) !important;
+    padding:15px !important;
+    font-size: 15px !important;
+}
+
+.jumbotron-btn:hover{
+    
+    background-color: rgb(115,137,152) !important;
+}

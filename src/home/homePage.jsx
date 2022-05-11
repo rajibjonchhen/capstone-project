@@ -24,13 +24,32 @@ function HomePage() {
                
                <OurProjects/>
                
-               <Container>
+               <Container fluid>
                   <Row>
+                     <WhoWeAre/>
+                  </Row>
+                  <Row>
+                     <Col >
+                     <div className="d-flex flex-column justify-content-between  ">
+                           <div className="bg-dark ">
+                              <div className="d-flex flex-column">
+                                 <span className="text-for-the">For the</span>
+                                 <span className="highlight-role">Creator</span>
+                              </div>
+                           </div>
+                           <div className="bg-primary py-5" style={{width:"5px", alignSelf:"stretch", margin:"auto"}}>
+                           </div>
+                           
+                           <div className="bg-dark">
+                              <div className="d-flex flex-column">
+                                 <span className="text-for-the">For the</span>
+                                 <span className="highlight-role">Investor</span>
+                              </div>
+                           </div>
+                     </div>
+                  </Col>
                      <Col>
-      
-                     x<WhoWeAre/>
-
-                     <ForCreatorInvestor role="creator"/>
+                        <ForCreatorInvestor role="creator"/>
                      </Col>
                   </Row>
                </Container>

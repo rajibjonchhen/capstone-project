@@ -57,7 +57,7 @@ function MyProfile() {
         fetchMyProducts()
     },[])
     
-    return (<Container style={{ minHeight:"70vh" }}>  
+    return (<Container style={{ minHeight:"70vh", padding:"20px" }}>  
                 <Row   >
                     <Col  xs={12} >
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
