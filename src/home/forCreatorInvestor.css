@@ -1,11 +1,15 @@
+.role-box{
+    background-color :  rgb(18,60,76) !important;
+}
 .direction-btn{
-    background-color:rgb(4,52,71)  !important;
+    background-color:rgb(3, 84, 116)  !important;
+   
     color:white;
     border:1px solid rgb(7, 102, 139) !important;
     margin:10px auto;
 }
 .direction-btn:hover{
-    background-color:rgb(7, 102, 139) !important;
+    background-color:rgb(4,52,71)  !important;
 }
 
 .text-for-the{
@@ -18,4 +22,13 @@
     font-size: 50px;
     margin: 0 0 0 150px;
     font-weight: 900;
+}
+
+.role-title-card{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height:500px;
+    transform: rotate(-30deg);
+    padding:10px;
 }

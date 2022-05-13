@@ -38,8 +38,19 @@ function MyNavbar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   useEffect(() => {
-    console.log(location.pathname);
+    if(myInfo){
+      fetchUnreadMsgCount()
+    }
   }, []);
+
+
+  const fetchUnreadMsgCount = async() =>{
+    try {
+      const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/messages`)
+    } catch (error) {
+      
+    }
+  }
 
  
 

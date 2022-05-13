@@ -1,13 +1,12 @@
 .category-card{
     min-height: 400px;
 	overflow: hidden;
-	
     position: relative;
     background-color:rgb(18,36,56) !important;
 }
 
 .category-card:hover {
-    background-color: rgb(41, 98, 121) !important;
+    background-color: rgb(18,36,56) !important;
     box-shadow: 0px 0px 5px 5px rgba(12, 136, 185, 0.29) !important;
     color: white !important;
 }

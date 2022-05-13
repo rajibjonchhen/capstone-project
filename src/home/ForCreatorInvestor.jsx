@@ -1,3 +1,4 @@
+import { MonetizationOn, MonetizationOnOutlined, Person } from '@mui/icons-material'
 import React from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
@@ -16,9 +17,10 @@ function ForCreatorInvestor() {
       "Providing non-financial data for you to evaluate",
       "",
       "",
-      "",
+    
     ],
     buttonText:"Join as an Investor",
+    icon:<MonetizationOn style={{fontSize:"40px"}}/>
   },
  {
     title:"Creator",
@@ -28,35 +30,47 @@ function ForCreatorInvestor() {
       "",
       ""
     ],
-    buttonText:"Join as Creator"
+    buttonText:"Join as Creator",
+    icon:<Person style={{fontSize:"40px"}}/>
+
   }]
     const dispatch = useDispatch()
 
-  return (
-    <Container fluid > 
-        <Row>
-         
-            <Col>
-              {roleArray.map((role,i) =>
-                <div key={i}>
-                  {/* <div className="d-flex flex-column">
-                    <span className="text-for-the">For the</span>
-                    <span className="highlight-role">{role.title}</span>
-                  </div> */}
-                  <div>
-                   <p>{role.description}</p>
-                   <ul>
-                     {role.services.map((service,i) => <li key={i}>{service}</li>)}
-                   </ul>
-                  </div>
-                    <Button className="direction-btn" onClick={() => {dispatch(setRoleAction(role.type));navigate(`/?role=${role.type}`)} }>{role.buttonText} </Button>
-                  </div>
+  return (<>    
+    {roleArray.map((role,i) =>
+    <Container key={i} className="role-box p-3 mt-5"> 
+          <Row  className="d-flex">
+               <Col style={{backgroundColor :  "rgb(17,72,95)", order: i===0? 1:2, margin:"0 20px"}} >
+                     <div className="role-title-card">
+                          
+                              <div className="d-flex flex-column">
+                                 <span className="text-for-the">For the</span>
+                                 <p  className="highlight-role">
+                                    <span>{role.title}</span>
+                                    <span>{role.icon}</span>
+                                 </p>
+                              </div>
+                          
+                           
+                     </div>
+                  </Col>
+                  <Col className="h-100" style={{order: i===0? 2:1}}>
+                      <div >
+                        <div>
+                        <p className="h4">{role.description}</p>
+                        <ul>
+                          {role.services.map((service,i) => <li key={i}>{service}</li>)}
+                        </ul>
+                        </div>
+                          <Button className="direction-btn" onClick={() => {dispatch(setRoleAction(role.type));navigate(`/?role=${role.type}`)} }>{role.buttonText} </Button>
+                        </div>
+                    </Col>
+          </Row>
+        </Container>
                   )
                 }
-            </Col>
-        </Row>
-    </Container>
-  )
+  </>
+)
 }
 
 export default ForCreatorInvestor

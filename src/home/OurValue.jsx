@@ -6,26 +6,35 @@ import { ourValueData } from "./ourValueData.js"
 function OurValue() {
   return (
         <Container className='py-2'>
+            <hr className="mission-box-hr"/>
+            <hr className="mission-box-hr"/>
             <h1 className="my-3">Our Mission</h1>
+            <hr className="mission-box-hr"/>
+            <hr className="mission-box-hr"/>
             <Row>
               <OurMission/>
             </Row>
+            <hr className="mission-box-hr"/>
+            <hr className="mission-box-hr"/>
             <h1 className="my-3">Value we provide</h1>
-            <Row  style={{display:'flex'}}>
-        {ourValueData.map((data,i) => <>
-                  <Col sm={12} md={6} lg={3} style={{display:'flex',padding:"0", margin:"0", alignItems:"center", justifyContent:"center", order:i%2 === 0? 1:2}}>
-                 <div className="box-outline">
+            <hr className="mission-box-hr"/>
+            <hr className="mission-box-hr"/>
+          <Row>
+          {ourValueData.map((data,i) => 
+          <Col sm={6}>
+            <div  style={{display:'flex',borderRadius: "15px", marginTop:"15px", border:"1px solid rgb(187, 186, 186)", borderRadius: "15px", overflow:"hidden", minHeight:"400px"}}>
+                  <Col sm={12} md={6} style={{justifyContent:"center", order:i%2 === 0? 1:2, backgroundImage:`url(${data.backgroundImg})`, backgroundPosition:"center", backgroundSize:"cover"}}>
 
-                  <img
+                  {/* <img
                   width="100%"
                   className="inner-box"
-                  style={{borderRadius:"25px"}}
+                  style={{borderRadius:"15px"}}
                   src={data.backgroundImg}
-                  alt="First slide"
-                  />
-                  </div>
+                  alt="represention of value we provide"
+                  /> */}
+                  
                   </Col>
-                  <Col  sm={12} md={6} lg={3} style={{display:'flex', padding:"0", margin:"0", alignItems:"center", justifyContent:"center",  order:i%2 !== 0? 1:2}}>
+                  <Col  sm={12} md={6}  style={{display:'flex', alignItems:"center", justifyContent:"center",  order:i%2 !== 0? 1:2}}>
                       <div className="box-outline">
 
                       <div className="inner-box" style={{margin:"0 auto", width:"100%", padding:"10px"}}>
@@ -41,9 +50,9 @@ function OurValue() {
                 
                 
                 
-                </>)}
+                </div>
+                </Col>)}
                 </Row>
-               
             </Container>
 
   )
