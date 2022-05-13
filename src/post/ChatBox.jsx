@@ -87,6 +87,7 @@ function ChatBox() {
                 // dispatch(setCurrentChatMessagesAction(data.chat.messages))
                 setSendMsgLoading(false)
                 setMessage({...message,text:""})
+                fetchChat()
             }
         } catch (error) {
             console.log("error fetching chat ", error )
@@ -136,7 +137,12 @@ function ChatBox() {
         
             <div style={{display:"flex",gap:"5px", padding:"10px"}}>
                 <input value={message.text} onChange={(e) => handleTextChange(e)} style={{width:"100%"}}/>
-                <Button onClick={() => sendMessage()}>{sendMsgLoading?  "loading...":"Send"}</Button>
+                <Button className="send-btn" 
+                onClick={() => {
+                    if(message.text.length > 0){
+                        sendMessage()
+                }}}>
+                    {sendMsgLoading?  "loading...":"Send"}</Button>
             </div>
        
         

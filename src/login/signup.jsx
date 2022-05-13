@@ -14,7 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setMyInfoAction } from '../redux/actions/action';
 import { IconButton, InputAdornment } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
@@ -37,20 +37,23 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp({setShowSignIn}) {
+const SignUp = ({setShowSignIn})  => {
 
+    const role = useSelector(state => state.user.role)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [error, setError] = useState("")
     const [showPassword, setShowPassword] = useState(true)
     const [isSubmit, setIsSubmit] = useState(false)
     const [signUpErr, setSignUpErr] = useState({})
+
     const [signUpUser, setSignUpUser] = useState({
     name: "",
     surname: "",
     email: "",
     password: "",
     repassword: "",
+    role:""
   });
 
   useEffect(() => {
@@ -263,3 +266,6 @@ try {
     </ThemeProvider>
   );
 }
+
+
+export default SignUp

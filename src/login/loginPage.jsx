@@ -20,7 +20,7 @@ function LoginPage() {
 
     const roleParams = searchParams.get("role") 
     const dispatch = useDispatch()
-
+  
     useEffect(()=> {
         console.log("role ==",roleParams)
         dispatch(setRoleAction(roleParams))

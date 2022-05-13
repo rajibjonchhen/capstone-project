@@ -17,13 +17,15 @@ function ProfilSidebar() {
   const highlightColor = "rgb(160,38,38, 0.2)"
 
   return (
-    
-      <div className="d-flex justify-content-between align-items-end text-left">
+      <div  style={{ position:"fixed"}} >
+      <div className="text-left" style={{  alignSelf:"stretch", minHeight:"100vh", borderRight:"1px solid grey"}} >
         <div
           style={{
             margin: "auto",
-            alignSelf:"strech",
-            borderRight:"1px solid grey"
+            height:"100%",
+            display:"flex",
+            flexDirection:"column",
+            textAlign:"left"
           }}
           
         >
@@ -50,6 +52,7 @@ function ProfilSidebar() {
             My Messages
           </Button>
           <Button
+          className="extra-header-button"
             name="Add New Product"
             style={{
               backgroundColor:
@@ -60,6 +63,7 @@ function ProfilSidebar() {
             Add New Product
           </Button>
           <Button
+          className="extra-header-button"
             name="My Account"
             style={{
               backgroundColor:
@@ -71,6 +75,7 @@ function ProfilSidebar() {
           </Button>
         </div>
       </div>
+    </div>
   );
 }
 

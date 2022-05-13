@@ -34,11 +34,11 @@ function MyLayout({children}) {
     }
     return ( <>
         <MyNavbar/>
-        <div style={{display:location.pathname === "/profile"? "block":"none", margin:"0"}}>
         {/* <ExtraNavbar /> */}
-        </div>
             {children}
+        <div style={{display:location.pathname === "/profile"? "none" : "block", margin:"0"}}>
         <MyFooter/>
+        </div>
     </>
      );
 }

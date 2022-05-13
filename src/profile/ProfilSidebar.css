@@ -1,6 +1,5 @@
 .extra-header{
     position: fixed;
-    
     top: 62px;
     width:100vw;
     padding:3px 0;
@@ -9,8 +8,8 @@
     z-index: 2;
 }
 
-.extra-header button{
-color: white;
+.extra-header-button{
+color: white !important;
 font-size: 15px !important;
 width: 100%;
 cursor: pointer;

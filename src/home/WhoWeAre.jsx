@@ -1,7 +1,6 @@
 import { Grid } from "@material-ui/core";
-import { Button, Container } from "@mui/material";
 import { useEffect } from "react";
-import "./whoWeAre.css"
+import "./whoWeAre.css";
 
 function WhoWeAre() {
 
