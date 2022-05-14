@@ -5,6 +5,13 @@ import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import CategoryCard from "./CategoryCard";
 import "./ourProject.css"
+import songs from "../assets/songs.jpg"
+import poems from "../assets/poems.jpg"
+import movies from "../assets/movies.jpg"
+import novels from "../assets/novels.jpg"
+import webTemplate from "../assets/web template.jpg"
+import paintings from "../assets/paintings.jpg"
+import ideas from "../assets/ideas.jpg"
 
 function OurProjects() {
 
@@ -13,34 +20,34 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
 
     const myCategories = [
         { name :"Ideas",
-            image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688009/creators-space-products/smgag3ddsut8rha928xu.png",
+            image : ideas,
             description : "collaborate with the investor",
             type:"idea"
     },
          
         
         { name : "Novels",
-            image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688011/creators-space-products/gptlibei9aykwy6f9sea.png",
+            image : novels,
             description : "collaborate with the publisher",
             type: "novel",
     },
         { name : "Poem",
-            image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688013/creators-space-products/fzdw29oezlqn0pmozqot.png",
+            image : poems,
             description : "collaborate with the publisher",
             type :"poem",
     },
         { name : "Songs",
-            image :    "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688014/creators-space-products/vkswpt8nnmpznufocdni.png",
+            image :    songs,
             description : "collaborate with the singer",
             type :"song",
     },
         { name : "Web Template",
-            image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688015/creators-space-products/hvdci6ohvnuyfupgr9go.png",
+            image : webTemplate,
             description : "collaborate with the business & individual ",
             type :"web template"
     },
         { name : "Movie",
-            image : "https://res.cloudinary.com/dai5duzoj/image/upload/v1649688012/creators-space-products/sg2c0jpxz9ha1phy4on7.png",
+            image : movies,
             description : "collaborate with the movie producer",
             type : "movie",
     },

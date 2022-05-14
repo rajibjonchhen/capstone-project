@@ -99,7 +99,7 @@ function Products() {
           position: "sticky",
           top: "50px",
           zIndex: "2",
-          padding: "20px 0 5px",
+          padding: "20px 0 0 0 ",
           backgroundColor:"rgb(4,52,71)"
         }}
       >
@@ -122,12 +122,12 @@ function Products() {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row style={{borderBottom:"1px solid gray"}}>
           <Col>
             {categoryArray.map((category, i) => (
               <Button
                 size="large"
-                style={{ width: "150px" }}
+                style={{ width: "180px" }}
                 name={category.type}
                 onClick={(e) => {
                   changeCategory(category.type);
@@ -139,6 +139,7 @@ function Products() {
             ))}
           </Col>
         </Row>
+        
       </div>
 
       <Row style={{ margin: "30px auto"}}>
@@ -158,7 +159,7 @@ function Products() {
               sm={6}
               md={4}
               lg={3}
-              style={{width:'100%', padding:"5px 10px ",}}
+              style={{width:'100%',}}
             >
               <SingleCard product={product} />
             </Col>

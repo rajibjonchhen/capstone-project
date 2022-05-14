@@ -38,7 +38,7 @@ function ForCreatorInvestor() {
 
   return (<>    
     {roleArray.map((role,i) =>
-    <Container key={i} className="role-box p-3 mt-5"> 
+    <Container key={i} className="role-box p-3"> 
           <Row  className="d-flex">
                <Col style={{ order: i===0? 1:2, margin:"20px"}} >
                      <div className="role-title-card">
