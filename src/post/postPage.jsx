@@ -22,6 +22,10 @@ function PostPage() {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [newPost, setNewPost] = useState({
+        content: "",
+      });
+    
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState (false)
     const [open, setOpen] = useState(false);
@@ -55,7 +59,7 @@ function PostPage() {
                 setIsLoading(false)
             } else{
                 const data = await response.json()
-                console.log(data.posts)
+                console.log(data.posts.reverse())
                 dispatch(setAllPostsAction(data.posts))
                 setIsLoading(false)
             }
@@ -66,7 +70,37 @@ function PostPage() {
         } 
     }
 
-   
+
+    
+
+    const uploadPost = async() => {
+        try {
+           
+            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/posts`,{
+                method:"POST",
+                body : JSON.stringify(newPost),
+                headers:{
+                    "content-type" :"application/json",
+                    "authorization": localStorage.getItem("MyToken")
+                }
+            })
+            if(response.status !== 200){
+                const data = await response.json()
+                console.log(data)
+                setError(data.error)
+                setIsLoading(false)
+              } else{
+                const data = await response.json()
+                console.log(data)
+                setIsLoading(false)
+                setNewPost({content:""})
+                fetchPosts()
+              }
+            } catch (error) {
+              console.log(error)
+              setIsLoading(false)
+        }
+        }
     
     
     const Item = styled(Paper)(({ theme }) => ({
@@ -82,13 +116,13 @@ function PostPage() {
     <Container spacing={1} style={{minHeight:"90vh", paddingTop:"100px 0", margin:"20px auto"}}> 
         <Row >
 
-        <Col  sm={12} md={3} lg={3} >
+        <Col  sm={12} md={3} lg={3} style={{padding:"3px"}}>
            
                 <LeftSidebar fetchPosts={fetchPosts} />
            
         </Col>
 
-        <Col  sm={12} md={6} lg={9} >
+        <Col  sm={12} md={6} lg={9} style={{padding:"0 3px"}}>
 
             {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
                 <div sx={{ margin:"3px 0px 0px", height:"100%"}}>
@@ -103,6 +137,9 @@ function PostPage() {
                     />
                         <input
                             // onClick={()=>{setOpen(true)}}
+                            value={newPost.content}
+                            onChange={(e) => setNewPost({content:e.target.value})}
+
                             placeholder = 'Start a post'
                             className="form-control"
                             style={{
@@ -115,10 +152,13 @@ function PostPage() {
                                 width:"100%",
                                 borderRadius:"30px",
                             }}
+
                             />
                 
                 
-                        <button className='theme-btn' style={{position:"absolute",right:"14px", borderRadius:"30px", height:'35px'}}>send</button>
+                        <button className='theme-btn' style={{position:"absolute",right:"14px", borderRadius:"30px", height:'35px'}} 
+                    
+                            onClick={(e) => { if(newPost.content.length > 1){uploadPost()}}}>send</button>
                     </div>
                 <div>
                 {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
