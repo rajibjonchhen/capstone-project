@@ -19,6 +19,7 @@ function Products() {
   const selectedCategory = useSelector(
     (state) => state.product.selectedCategory
   );
+
   const allProducts = useSelector((state) => state.product.allProducts);
   const dispatch = useDispatch();
   const params = useParams();
@@ -31,6 +32,7 @@ function Products() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(setSelectedCategoryAction("all"))
     console.log(selectedCategory);
     fetchProducts();
   }, []);
@@ -126,13 +128,14 @@ function Products() {
           <Col>
             {categoryArray.map((category, i) => (
               <Button
+              
                 size="large"
-                style={{ width: "180px" }}
+                style={{ width: "150px",color:"white", backgroundColor: selectedCategory !== category.type? "rgb(4,52,71)":"rgb(6, 98, 134) " }}
                 name={category.type}
                 onClick={(e) => {
                   changeCategory(category.type);
                 }}
-                className="theme-btn"
+                
               >
                 {category.title}
               </Button>
@@ -159,7 +162,7 @@ function Products() {
               sm={6}
               md={4}
               lg={3}
-              style={{width:'100%',}}
+              style={{width:'100%', padding:'5px'}}
             >
               <SingleCard product={product} />
             </Col>

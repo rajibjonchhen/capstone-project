@@ -51,6 +51,11 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
             description : "collaborate with the movie producer",
             type : "movie",
     },
+        { name : "Painting",
+            image : paintings,
+            description : "collaborate with the producer",
+            type : "painting",
+    },
     ]
     return ( 
     <Container   fluid className="our-projects">        

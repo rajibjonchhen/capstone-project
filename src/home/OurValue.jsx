@@ -22,7 +22,7 @@ function OurValue() {
           <Row>
           {ourValueData.map((data,i) => 
           <Col sm={6}>
-            <div  style={{display:'flex',borderRadius: "15px", marginTop:"15px", border:"1px solid rgb(187, 186, 186)", borderRadius: "15px", overflow:"hidden", minHeight:"400px"}}>
+            <div  style={{display:'flex',borderRadius: "15px", marginTop:"30px", border:"1px solid rgb(187, 186, 186)", borderRadius: "15px", overflow:"hidden", minHeight:"400px"}}>
                   <Col sm={12} md={6} style={{justifyContent:"center", order:i%2 === 0? 1:2, backgroundImage:`url(${data.backgroundImg})`, backgroundPosition:"center", backgroundSize:"cover"}}>
 
                   {/* <img

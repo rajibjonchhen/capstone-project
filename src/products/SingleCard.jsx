@@ -84,7 +84,7 @@ const myInfo = useSelector(state => state.user.myInfo)
 
   React.useEffect(() => {},[])
   return (
-    <Card className="single-product-card px-0 mx-0 mt-2" sx={{ width: "100%", height:"300px", position:"relative" }}>
+    <Card className="single-product-card" sx={{ width: "100%", height:"300px", position:"relative" }}>
       {error && <Alert>{error}</Alert> }
       <CardMedia
         component="img"

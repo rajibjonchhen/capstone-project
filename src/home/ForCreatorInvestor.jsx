@@ -50,7 +50,7 @@ function ForCreatorInvestor() {
                      </div>
                   </Col>
                   <Col className="h-100" style={{order: i===0? 2:1}}>
-                      <div >
+                      <div style={{height:'100%'}}>
                           <div>
                           <p >{role.description}</p>
                           <ul>
