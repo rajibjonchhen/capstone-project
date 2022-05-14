@@ -93,29 +93,30 @@ const myInfo = useSelector(state => state.user.myInfo)
         image={product?.images[0] || "https://res.cloudinary.com/dai5duzoj/image/upload/v1649986446/creators-space-products/lw8f79wcrzpqa4eqeane.png"}
       />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography gutterBottom variant="h6" component="div" style={{overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap"}}>
           {product?.title}
         </Typography>
         <Typography className="text-wrap">
           {product?.summary}
         </Typography>
+          <Button size="small" className="theme-btn" onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
       <div style={{bottom:"5px",position:"absolute", display:"flex", justifyContent:'space-between',alignItems:"end" }}>
         <div>
-          <div >
+          
+            <Button size="small" onClick={() => handleLikes()} >
           <ThumbUp style={{width:"8px"}}/> <span style={{fontSize:"8px"}}>{isLiked? `You and ${product?.Likes.length}`:`${product?.Likes.length}`}</span>
-          </div>
-            <Button size="small" onClick={() => handleLikes()} >Like 
-              <Favorite sx={{ color: pink[500], display:isLiked? "block":"none", width:"15px",marginLeft:"5px" }}  />
+          
+              <Favorite sx={{ color: pink[500], display:isLiked? "block":"none", width:"25px",marginLeft:"5px" }}  />
               <FavoriteBorder
-                sx={{ color: pink[500], display:!isLiked? "block":"none",width:"15px",marginLeft:"5px" }}
+                sx={{ color: pink[500], display:!isLiked? "block":"none",width:"25px",marginLeft:"5px" }}
                 />
               </Button>
             
         </div>
-          <Button size="small" className="theme-btn" onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
+          
           {product?.creator?._id === myInfo?._id && <IconButton onClick={() => handleDelete(product?._id)}>
             
-            <DeleteSweep/>
+            <DeleteOutline/>
           </IconButton>}
        
       </div>

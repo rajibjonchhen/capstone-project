@@ -1,5 +1,9 @@
 
-
+.project-container{
+scroll-snap-type: mandatory ;
+scrollbar-darkshadow-color:aqua;
+scrollbar-color: blue !important;
+}
 .our-projects{
     margin: auto;
     padding:50px ;

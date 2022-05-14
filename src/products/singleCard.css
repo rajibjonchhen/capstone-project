@@ -1,6 +1,8 @@
 .single-product-card{
 background-color:rgb(199, 226, 241) !important;
 box-shadow: 0 0 2px 2px white;
+height: 350px !important;
+
 }
 
 .single-product-card:hover{
@@ -10,11 +12,11 @@ transform: scale(1.02);
 
 .text-wrap{
 max-width: 400px !important;
- height: 80px !important; 
+height: 60px !important; 
 -webkit-line-clamp: 4 !important;
--webkit-box-orient: vertical !important;
 -webkit-box-orient: vertical !important;
 overflow: hidden !important;
 text-overflow: ellipsis;
 line-height: 1.625 !important;
+white-space: nowrap;
 }

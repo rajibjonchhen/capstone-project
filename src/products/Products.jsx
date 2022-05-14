@@ -75,7 +75,8 @@ function Products() {
           setIsLoading(false);
         } else {
           dispatch(setAllProductsAction(data.products));
-          setIsLoading(false);
+          setTimeout(() => setIsLoading(false),200 )
+         
         }
       }
     } catch (error) {
@@ -92,6 +93,7 @@ function Products() {
     { title: "Songs", type: "song" },
     { title: "Web Template", type: "web template" },
     { title: "Movies", type: "movie" },
+    { title: "Paintings", type: "painting"}
   ];
 
   return (
@@ -102,7 +104,8 @@ function Products() {
           top: "50px",
           zIndex: "2",
           padding: "20px 0 0 0 ",
-          backgroundColor:"rgb(4,52,71)"
+          backgroundColor:"rgb(4,52,71)",
+          
         }}
       >
         <Row>
@@ -124,19 +127,17 @@ function Products() {
             </div>
           </Col>
         </Row>
-        <Row style={{borderBottom:"1px solid gray"}}>
-          <Col>
+        <Row style={{borderBottom:"1px solid gray", }}>
+          <Col className="w-100 p-0 m-0">
             {categoryArray.map((category, i) => (
               <Button
               
                 size="large"
-                style={{ width: "150px",color:"white", backgroundColor: selectedCategory !== category.type? "rgb(4,52,71)":"rgb(6, 98, 134) " }}
+                style={{ width: "142px", height:"50px",color:"white", backgroundColor: selectedCategory !== category.type? "rgb(4,52,71)":"rgb(6, 98, 134) " }}
                 name={category.type}
                 onClick={(e) => {
                   changeCategory(category.type);
-                }}
-                
-              >
+                }}>
                 {category.title}
               </Button>
             ))}
@@ -145,7 +146,7 @@ function Products() {
         
       </div>
 
-      <Row style={{ margin: "30px auto"}}>
+      <Row style={{ margin: "30px auto"}} >
         {error.length > 0 ? (
           <div className="error-message">Error on fetching products</div>
         ) : isLoading ? (
@@ -162,7 +163,7 @@ function Products() {
               sm={6}
               md={4}
               lg={3}
-              style={{width:'100%', padding:'5px'}}
+              style={{width:'100%', padding:'5px',}}
             >
               <SingleCard product={product} />
             </Col>

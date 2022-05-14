@@ -149,7 +149,7 @@ const fetchProduct = async(productId) => {
           md={6}
         >
           
-            <Typography component="div" variant="h4">
+            <Typography className="text-left my-3" component="div" variant="h4">
               {singleProduct?.title}
             </Typography>
             
@@ -171,7 +171,7 @@ const fetchProduct = async(productId) => {
                     </Typography>
                   { singleProduct?.askingPrice && <Typography >
                     <span className="detail-title">Asking Price : </span>
-                      {singleProduct?.askingPrice}
+                      $ {singleProduct?.askingPrice}.00
                     </Typography>}
                   { singleProduct?.criteria && <Typography >
                     <span className="detail-title">Criteria : </span>
@@ -191,7 +191,7 @@ const fetchProduct = async(productId) => {
                     </Typography>}
           </Box>
             {/* creator's profile */}
-                <h5>Creator's Profile</h5>
+                <h5 className="text-left my-3">Creator's Profile</h5>
             <Box >
               <Avatar style={{width:"60px", height:"60px"}}src={singleProduct?.creator?.avatar}/>
               <Box style={{textAlign:"left"}}>
@@ -222,6 +222,7 @@ const fetchProduct = async(productId) => {
               {/*  */}
               <Button
                 className="theme-btn"
+                style={{border:"1px solid white"}}
                 variant="contained"
                 component="label"
               >
@@ -238,6 +239,8 @@ const fetchProduct = async(productId) => {
               
               <Button
                 className="theme-btn"
+                style={{border:"1px solid white"}}
+
                 onClick={() => setShowEditPage(true)}
               >
                 Edit Product

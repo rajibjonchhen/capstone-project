@@ -61,10 +61,12 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
     <Container   fluid className="our-projects">        
         
         
-            <Row className="project-container row-cols-4 row-cols-sm-2  row-cols-md-3 row-cols-lg-5 p-1" style={{display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden"}}> 
+            <Row className="project-container row-cols-4 row-cols-sm-2  row-cols-md-3 row-cols-lg-5 p-5" 
+                style={{display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden",
+               }}> 
                 <Col style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                     <ArrowBackIos className="text-white"/>
-                <h1 style={{margin:"50px auto", color:"white",transform: "rotate(270deg)"}}>Our Projects</h1>
+                <h1 style={{margin:"30px auto", color:"white",transform: "rotate(270deg)"}}>Our Projects</h1>
                 </Col>
             
 
