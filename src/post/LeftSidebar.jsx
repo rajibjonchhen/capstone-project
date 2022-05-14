@@ -10,7 +10,7 @@ function LeftSidebar({fetchPosts}) {
      
 
     return ( 
-    <div className="left-side" style={{border:"1px solid rgb(56,88,102)", width:"280px"}} >
+    <div className="left-side" style={{border:"1px solid rgb(56,88,102)", paddingTop:"10px"}} >
             <div >
                 <div>
                     <img src={myInfo?.avatar} alt="avatar" />

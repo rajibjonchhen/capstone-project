@@ -106,8 +106,8 @@ function MessageForm({setOpen}) {
 
     return ( 
         <div className="message-box bg-white">
-            <Close onClick={() => setOpen(false)} className="pointer"/>
-            <h1>Write your message</h1>
+            <Close onClick={() => setOpen(false)} className="pointer text-dark"/>
+            <h1 className="text-dark">Write your message</h1>
            <Alert variant="danger" style={{opacity: error? 1:0}}>{error}</Alert>
                 <TextField
                     margin="normal"
