@@ -1,19 +1,14 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
-import CardContent from "@mui/material/CardContent";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import { useSelector } from "react-redux";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Avatar, Grid } from "@material-ui/core";
-import { Box, Button, Container } from "@mui/material";
-import MessageForm from "./MessageForm";
+import { Box, Button } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
+import { Carousel, Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { setSingleProductAction } from "../redux/actions/action";
 import "./detailPage.css";
 import EditProductPage from "./EditProductPage";
-import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setSingleProductAction } from "../redux/actions/action";
-import {Carousel} from "react-bootstrap";
+import MessageForm from "./MessageForm";
 
 function DetailPage() {
   const [successMsg, setSuccessMsg] = useState(false);
@@ -121,8 +116,8 @@ const fetchProduct = async(productId) => {
 
   return (
     <Container >
-      <Grid container spacing={2} className=" mt-3 py-3">
-        <Grid item xs={12} md={6} style={{position:'relative'}}>
+      <Row  spacing={2} className=" mt-3 py-3">
+        <Col  xs={12} md={6} style={{position:'relative'}}>
           <div
            
             style={{
@@ -133,30 +128,23 @@ const fetchProduct = async(productId) => {
             <Carousel  className="detail-carousel">
               {singleProduct?.images?.map((image,i ) => 
                 <Carousel.Item key={i} className="detail-carousel-img">
-              
+                  <div style={{padding:"15px"}}>
+
                   <img
                     className="d-block w-100 "
                     src={image ||
                       "https://via.placeholder.com/300"}
                       alt="First slide"
                       />
+                      </div>
                       
                 </Carousel.Item>)}
           </Carousel>
             {/*  */}
             
           </div>
-          <div
-            style={{
-              margin: "15px auto",
-              width: "300px",
-              display: "flex",
-              justifyContent: "space-around",
-            }}
-          ></div>
-        </Grid>
-        <Grid
-          item
+        </Col>
+        <Col
           xs={12}
           md={6}
         >
@@ -204,28 +192,32 @@ const fetchProduct = async(productId) => {
           </Box>
             {/* creator's profile */}
                 <h5>Creator's Profile</h5>
-            <Box className="creator-profile">
+            <Box >
               <Avatar style={{width:"60px", height:"60px"}}src={singleProduct?.creator?.avatar}/>
               <Box style={{textAlign:"left"}}>
                 <Typography>Name : {singleProduct?.creator?.name} {singleProduct?.creator?.surname}</Typography>
                 <Typography>Email : {singleProduct?.creator?.email}</Typography>
               </Box>
             </Box>
+
+            {myInfo._id !== singleProduct?.creator?._id &&
+              <Button className="theme-btn" style={{border:"1px solid white", display:!open? "flex":"none"}} onClick={(e) => setOpen(true)}>
+                Contact Creator
+              </Button>}
          
-        </Grid>
-        <Grid
-        container
+        </Col>
+      </Row>
+        <Row
         style={{ display: open ? "block" : "none", marginTop: "50px" }}
       >
         
-        <Grid item xs={12}>
+        <Col  xs={12}>
           <MessageForm setOpen={setOpen}/>
-        </Grid>
-      </Grid>
-      </Grid>
-      <Grid container style={{ margin:"50px auto" }}>
-        <Grid item xs={12} style={{ margin:"0px auto" }}>
-          {myInfo._id === singleProduct?.creator?._id ? (
+        </Col>
+      </Row>
+      <Row  style={{ margin:"50px auto" }}>
+        <Col  xs={12} style={{ margin:"0px auto" }}>
+          {myInfo._id === singleProduct?.creator?._id  && (
             <>
               {/*  */}
               <Button
@@ -251,16 +243,10 @@ const fetchProduct = async(productId) => {
                 Edit Product
               </Button>
             </>
-          ) : (
-            <>
-              <Button className="theme-btn" style={{display:!open? "flex":"none"}} onClick={(e) => setOpen(true)}>
-                Contact Creator
-              </Button>
-            </>
-          )}
+          ) }
      
-        </Grid>
-      </Grid>
+        </Col>
+      </Row>
       
       {showEditPage && (
         <EditProductPage
