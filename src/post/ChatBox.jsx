@@ -136,8 +136,18 @@ function ChatBox() {
         
         
             <div style={{display:"flex",gap:"5px", padding:"10px"}}>
-                <input value={message.text} onChange={(e) => handleTextChange(e)} style={{width:"100%"}}/>
-                <Button className="send-btn" 
+                <input value={message.text} onChange={(e) => handleTextChange(e)} 
+                className="form-control"
+                style={{
+                  paddingLeft: "10px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
+                  textAlign: "left",
+                  fontWeight: "normal",
+                  width:"100%",
+                  borderRadius:"30px",
+              }}/>
+                <Button className="theme-btn" 
                 onClick={() => {
                     if(message.text.length > 0){
                         sendMessage()

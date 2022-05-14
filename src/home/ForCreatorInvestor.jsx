@@ -20,7 +20,7 @@ function ForCreatorInvestor() {
     
     ],
     buttonText:"Join as an Investor",
-    icon:<MonetizationOn style={{fontSize:"40px"}}/>
+    icon:<MonetizationOn style={{fontSize:"60px"}}/>
   },
  {
     title:"Creator",
@@ -31,7 +31,7 @@ function ForCreatorInvestor() {
       ""
     ],
     buttonText:"Join as Creator",
-    icon:<Person style={{fontSize:"40px"}}/>
+    icon:<Person style={{fontSize:"60px"}}/>
 
   }]
     const dispatch = useDispatch()
@@ -40,28 +40,23 @@ function ForCreatorInvestor() {
     {roleArray.map((role,i) =>
     <Container key={i} className="role-box p-3 mt-5"> 
           <Row  className="d-flex">
-               <Col style={{backgroundColor :  "rgb(17,72,95)", order: i===0? 1:2, margin:"0 20px"}} >
+               <Col style={{ order: i===0? 1:2, margin:"20px"}} >
                      <div className="role-title-card">
-                          
-                              <div className="d-flex flex-column">
-                                 <span className="text-for-the">For the</span>
-                                 <p  className="highlight-role">
-                                    <span>{role.title}</span>
-                                    <span>{role.icon}</span>
-                                 </p>
-                              </div>
-                          
-                           
+                       <div className="d-flex flex-column align-items-center justify-content-center w-100">
+                          <p className="highlight-role text-white mr-auto">For the</p>
+                          <p className="highlight-role ml-auto">{role.title} {role.icon}</p>
+                         
+                       </div>
                      </div>
                   </Col>
                   <Col className="h-100" style={{order: i===0? 2:1}}>
                       <div >
-                        <div>
-                        <p className="h4">{role.description}</p>
-                        <ul>
-                          {role.services.map((service,i) => <li key={i}>{service}</li>)}
-                        </ul>
-                        </div>
+                          <div>
+                          <p >{role.description}</p>
+                          <ul>
+                            {role.services.map((service,i) => <li key={i}>{service}</li>)}
+                          </ul>
+                          </div>
                           <Button className="direction-btn" onClick={() => {dispatch(setRoleAction(role.type));navigate(`/?role=${role.type}`)} }>{role.buttonText} </Button>
                         </div>
                     </Col>

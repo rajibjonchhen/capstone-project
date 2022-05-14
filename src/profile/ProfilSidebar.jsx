@@ -14,7 +14,7 @@ function ProfilSidebar() {
     dispatch(setProfilePaginationAction("My Creations"));
   }, []);
 
-  const highlightColor = "rgb(160,38,38, 0.2)"
+  const highlightColor = "rgb(3,78,106)"
 
   return (
       <div  style={{ position:"fixed"}} >

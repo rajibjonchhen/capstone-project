@@ -89,10 +89,21 @@ const handleChange = (e) =>  {
 
 
   return (
-    <List style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)", padding:'5px', height:"100%"}}>
+    <List style={{ padding:"3px"}} >
       {/* <InputBase className={classes.inputBase} size='small' placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/> */}
-      <input className="form-control"   placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
-      <div style={{ height:"83vh", overflow:"scroll"}}>
+      <input  
+      className="form-control"
+      style={{
+                  paddingLeft: "10px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
+                  textAlign: "left",
+                  fontWeight: "normal",
+                  width:"100%",
+                  borderRadius:"30px",
+              }}
+            placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
+      <div style={{ height:"400px", overflow:"scroll", background:"rgb(5,52,71)",}}>
       {(filteredUsers.length > 0? filteredUsers : allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>
             <ListItemAvatar>

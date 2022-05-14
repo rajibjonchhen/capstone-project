@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from 'react-redux';
 import "./leftSide.css";
+import RightSidebar from "./RightSidebar";
 
 function LeftSidebar({fetchPosts}) {
     const myInfo = useSelector(state => state.user.myInfo)
@@ -9,7 +10,7 @@ function LeftSidebar({fetchPosts}) {
      
 
     return ( 
-    <div className="left-side" style={{boxShadow:"0 0 3px 3px rgb(224,224,224,0.3)", padding:"10px"}} >
+    <div className="left-side" style={{border:"1px solid rgb(56,88,102)", width:"280px"}} >
             <div >
                 <div>
                     <img src={myInfo?.avatar} alt="avatar" />
@@ -25,6 +26,7 @@ function LeftSidebar({fetchPosts}) {
                 {/* {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>} */}
                 </div>
             </div>
+            <RightSidebar/>
     </div>
      );
 }

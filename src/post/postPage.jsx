@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../others/Loader';
@@ -79,7 +79,7 @@ function PostPage() {
       
     return ( <>
     {isLoading? <Loader/> : error? <div>{error}</div> :
-    <Container fluid spacing={1} style={{minHeight:"90vh", paddingTop:"100px 0", margin:"20px auto"}}> 
+    <Container spacing={1} style={{minHeight:"90vh", paddingTop:"100px 0", margin:"20px auto"}}> 
         <Row >
 
         <Col  sm={12} md={3} lg={3} >
@@ -88,7 +88,7 @@ function PostPage() {
            
         </Col>
 
-        <Col  sm={12} md={6} lg={6} >
+        <Col  sm={12} md={6} lg={9} >
 
             {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
                 <div sx={{ margin:"3px 0px 0px", height:"100%"}}>
@@ -99,22 +99,26 @@ function PostPage() {
                     sx={{margin:"0 5px"}}
                     src={myInfo?.avatar}
                     alt="user image"
+                    style={{position:'relative'}}
                     />
-                        <button
-                            onClick={()=>{setOpen(true)}}
+                        <input
+                            // onClick={()=>{setOpen(true)}}
+                            placeholder = 'Start a post'
+                            className="form-control"
                             style={{
                                 paddingLeft: "10px",
                                 paddingTop: "10px",
                                 paddingBottom: "10px",
+                                paddingRight:"70px",
                                 textAlign: "left",
                                 fontWeight: "normal",
                                 width:"100%",
                                 borderRadius:"30px",
                             }}
-                            >
-                Start a post
-                </button>
-                        
+                            />
+                
+                
+                        <button className='theme-btn' style={{position:"absolute",right:"14px", borderRadius:"30px", height:'35px'}}>send</button>
                     </div>
                 <div>
                 {open && <AddPostEdit  fetchPosts={fetchPosts} open={open} setOpen={setOpen}/>}
@@ -140,10 +144,10 @@ function PostPage() {
                 </div> 
                 </>}
         </Col>
-        <Col  sm={12} md={3} lg={3}>
+        {/* <Col  sm={12} md={3} lg={3}>
                 <RightSidebar/>
             
-        </Col>
+        </Col> */}
     </Row>
     </Container> }
     </>);

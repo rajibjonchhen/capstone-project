@@ -58,7 +58,7 @@ function MyProfile() {
         fetchMyProducts()
     },[])
     
-    return (<Container fluid style={{ minHeight:"70vh", padding:"20px" }}>  
+    return (<Container style={{ minHeight:"70vh", padding:"20px" }}>  
                 <Row   className="h-100">
                     <Col className="h-100 d-flex" >
                         <ProfilSidebar/>
