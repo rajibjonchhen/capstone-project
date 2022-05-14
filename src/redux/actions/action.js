@@ -5,6 +5,7 @@ export const ACTIONS = {
     
     SET_MY_MESSAGES : "SET_MY_MESSAGES",
     SET_PROFILE_PAGINATION : "SET_PROFILE_PAGINATION",
+    SET_UNREAD_MESSAGES : "SET_UNREAD_MESSAGES",
     
     SET_CHAT_USER : "SET_CHAT_USER",
     SET_CURRENT_CHAT :"SET_CURRENT_CHAT",
@@ -48,6 +49,11 @@ export const setMyMessagesAction = (messages) => ({
 export const setProfilePaginationAction = (selected) => ({
     type : ACTIONS.SET_PROFILE_PAGINATION,
     payload : selected
+})
+
+export const setUnreadMessageAction = (messages) => ({
+    type : ACTIONS.SET_UNREAD_MESSAGES,
+    payload : messages
 })
 
 

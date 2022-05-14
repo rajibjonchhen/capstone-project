@@ -20,6 +20,12 @@ const chatReducer = (state = initialState.chat, action) => {
                 ...state,
                 currentChatMessages : action.payload
             }
+        
+        case ACTIONS.SET_UNREAD_MESSAGES:
+            return{
+                ...state,
+                unreadMessages : action.payload
+            }
 
        default:
            return state
