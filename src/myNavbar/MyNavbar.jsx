@@ -277,15 +277,16 @@ function MyNavbar() {
               
                 
                 
-                <MenuItem className="my-margin-xasix"
+                <MenuItem className={location.pathname !== "/home"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
                   onClick={() => {
                     navigate("/home");
                   }}
+                
                 >
                  Home
                 </MenuItem>
 
-                <MenuItem className="my-margin-xasix"
+                <MenuItem className={location.pathname !== "/about"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
                   onClick={() => {
                     navigate("/about");
                   }}
@@ -293,7 +294,7 @@ function MyNavbar() {
                   About Us
                 </MenuItem>
 
-                <MenuItem className="my-margin-xasix"
+                <MenuItem className={location.pathname !== "/products"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
                   onClick={() => {
                     dispatch(setSelectedCategoryAction("all"))
                     navigate("/products");
@@ -302,7 +303,7 @@ function MyNavbar() {
                   Products
                 </MenuItem>
 
-                <MenuItem className="my-margin-xasix"
+                <MenuItem className={location.pathname !== "/posts"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
                   onClick={() => {
                     if(myInfo?._id){
 
@@ -317,7 +318,7 @@ function MyNavbar() {
 
                 
 
-                <MenuItem className="my-margin-xasix"
+                <MenuItem className={location.pathname !== "/profile"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
                   onClick={() => {
                     if(myInfo?._id){
                      
