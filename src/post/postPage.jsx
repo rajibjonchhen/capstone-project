@@ -116,13 +116,13 @@ function PostPage() {
     <Container spacing={1} style={{minHeight:"90vh", paddingTop:"100px 0", margin:"20px auto"}}> 
         <Row >
 
-        <Col  sm={12} md={3} lg={3} style={{padding:"3px"}}>
+        <Col  sm={12} md={4} lg={3} style={{padding:"3px"}}>
            
                 <LeftSidebar fetchPosts={fetchPosts} />
            
         </Col>
 
-        <Col  sm={12} md={6} lg={9} style={{padding:"0 3px"}}>
+        <Col  sm={12} md={8} lg={9} style={{padding:"0 3px"}}>
 
             {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
                 <div sx={{ margin:"3px 0px 0px", height:"100%"}}>
@@ -156,7 +156,7 @@ function PostPage() {
                             />
                 
                 
-                        <button className='theme-btn' style={{position:"absolute",right:"14px", borderRadius:"30px", height:'35px'}} 
+                        <button className='theme-btn' style={{position:"absolute",right:"4px", borderRadius:"30px", height:'35px'}} 
                     
                             onClick={(e) => { if(newPost.content.length > 1){uploadPost()}}}>send</button>
                     </div>

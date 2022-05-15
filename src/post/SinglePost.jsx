@@ -44,7 +44,7 @@ export default function SinglePost({ post, fetchPosts }) {
   useEffect(() => {
     setIsLiked(post.isLiked)
     fetchComments(post._id)
-  },[])
+  },[allComments])
  
   const fetchComments = async (postId) => {
     try {
@@ -99,6 +99,7 @@ export default function SinglePost({ post, fetchPosts }) {
         const data = await response.json();
         setIsLoading(false);
           fetchPosts( post._id)
+          setAllComments([...allComments, data.comment])
       }
     } catch (error) {
       console.log(error);
@@ -136,7 +137,7 @@ export default function SinglePost({ post, fetchPosts }) {
 
 
   return (
-    <Card sx={{ backgroundColor:"rgb(0,0,0,0)", color:"white", width: 1, mt: 2, p:1, border:"1px solid rgb(56,88,103)" }}>
+    <Card sx={{ backgroundColor:"rgb(34,73,90)", color:"white", width: 1, mt: 2, p:1, border:"1px solid rgb(56,88,103)" }}>
       {error && <Alert severity="error">{error}</Alert>}
       <Box style={{display:"flex", justifyContent:'space-between',  padding:"5px",}}>
 
@@ -186,8 +187,34 @@ export default function SinglePost({ post, fetchPosts }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <TextField
-            className="comment-input"
+        <div style={{ display:"flex", alignItems:'center',position:'relative'}}>
+                    
+                        <input
+                            // onClick={()=>{setOpen(true)}}
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+
+                            placeholder = 'Post a comment'
+                            className="form-control"
+                            style={{
+                                paddingLeft: "10px",
+                                paddingTop: "10px",
+                                paddingBottom: "10px",
+                                paddingRight:"70px",
+                                textAlign: "left",
+                                fontWeight: "normal",
+                                width:"100%",
+                                borderRadius:"30px",
+                            }}
+
+                            />
+                
+                
+                        <button className='theme-btn' style={{position:"absolute",right:"1px", borderRadius:"30px", height:'35px'}} 
+                            onClick={(e) => { if(comment.length > 1){handleComment(e)}}}>Send</button>
+                    </div>
+          {/* <input
+            className="form-control"
             margin="normal"
             fullWidth
             size="small"
@@ -197,14 +224,25 @@ export default function SinglePost({ post, fetchPosts }) {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             autoFocus
+            style={{
+              paddingLeft: "10px",
+              paddingTop: "10px",
+              paddingBottom: "10px",
+              paddingRight:"70px",
+              textAlign: "left",
+              fontWeight: "normal",
+              width:"100%",
+              borderRadius:"30px",
+          }}
+
           />
           <Button
             variant="contained"
-            style={{ display: comment?.length > 1 ? "block" : "none" }}
+            style={{ display: comment?.length > 1 ? "block" : "none", borderRadius:"30px" }}
             onClick={(e) => handleComment(e)}
           >
             Post
-          </Button>
+          </Button> */}
           <Typography paragraph>Comments:</Typography>
           <div>
           {allComments?.map((item, i) => 

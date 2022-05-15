@@ -68,7 +68,7 @@ function MyProfile() {
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {myProducts?.length === 0 && <Typography variant="h3" paragraph>You do not have any creation yet</Typography>}
                                 {myProducts?.map((product, i) => 
-                                <Col  key={i} item xs={12} sm={6} md={4} lg={3} style={{display:"flex", justifyContent:"center"}}>
+                                <Col  key={i} item xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
                                     <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
                                 </Col> )}
                             </Row>

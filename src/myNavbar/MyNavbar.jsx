@@ -23,13 +23,17 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setSelectedCategoryAction } from "../redux/actions/action";
+import { setSelectedCategoryAction, setUnreadMessageAction } from "../redux/actions/action";
 import "./myNavbar.css";
 
 function MyNavbar() {
+
   const location = useLocation();
   const navigate = useNavigate();
+
   const myInfo = useSelector((state) => state.user.myInfo);
+  const unreadMessages = useSelector((state) => state.chat.unreadMessages);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -46,9 +50,21 @@ function MyNavbar() {
 
   const fetchUnreadMsgCount = async() =>{
     try {
-      const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/messages`)
+      const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/chats/me/unreadMsg`, {
+        method:"GET",
+        headers:{
+          authorization: localStorage.getItem("MyToken")
+        }
+      })
+      if(response.status !== 200){
+        console.log("error on fetching unread messages")
+      } else {
+        const data = await response.json()
+        console.log("unread messages", data)
+        dispatch(setUnreadMessageAction(data.messages))
+      }
     } catch (error) {
-      
+      console.log(error)
     }
   }
 
@@ -110,6 +126,16 @@ function MyNavbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const renderUnreadMessages = (
+    <Menu>
+
+      {unreadMessages.map((message, i) => 
+      <div key={i}>
+
+      </div>)}
+    </Menu>
+  )
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -173,7 +199,7 @@ function MyNavbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={() => {}}>
+      <MenuItem onClick={() => {navigate("/products");}}>
         <Typography>Product</Typography>
       </MenuItem>
       <MenuItem
@@ -185,13 +211,13 @@ function MyNavbar() {
       </MenuItem>
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+          <Badge badgeContent={unreadMessages?.length} color="error">
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
       </MenuItem>
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton
           size="large"
           aria-label="show 1 new notifications"
@@ -202,7 +228,7 @@ function MyNavbar() {
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -337,23 +363,23 @@ function MyNavbar() {
                     aria-label="show 4 new mails"
                     color="inherit"
                   >
-                    <Badge badgeContent={4} color="error">
+                    <Badge badgeContent={unreadMessages.length} color="error">
                       <MailIcon />
                     </Badge>
                   </IconButton>
                 </Box>
 
-                <Box className="my-margin-xasix flex-center">
+                {/* <Box className="my-margin-xasix flex-center">
                   <IconButton
                     size="large"
                     aria-label="show 17 new notifications"
                     color="inherit"
                   >
-                    <Badge badgeContent={1} color="error">
+                    <Badge badgeContent={unreadMessages?.length} color="error">
                       <NotificationsIcon />
                     </Badge>
                   </IconButton>
-                </Box>
+                </Box> */}
 
                 <IconButton className="my-margin-xasix"
                   size="large"

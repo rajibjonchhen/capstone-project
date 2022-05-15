@@ -152,7 +152,7 @@ function MessageForm({setOpen}) {
                         style={{marginRight:"15px", width:"70%"}}
                         />
  
-                     <Meeting message={message} setMessage={setMessage}/><Close onClick={() => {setBookAMeeting(false);setMessage({...message, meetingDate:"",place:""})}}/>
+                     <Meeting message={message} setMessage={setMessage}/><Close className="text-dark" onClick={() => {setBookAMeeting(false);setMessage({...message, meetingDate:"",place:""})}}/>
                     </Box> }
                     <Button variant="contained" className="theme-btn" onClick={(e) => handleSubmit(e)}>Send</Button>
         </div>

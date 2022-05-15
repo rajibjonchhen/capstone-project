@@ -110,6 +110,7 @@ function MyAccount() {
                 <img src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo?.name}+${myInfo?.surname}`}  style={{margin:"10px auto 0px", width:"100px"}}/>
                 
                 <Button
+                    className="theme-btn"
                     variant="contained"
                     component="label"
                     size="small"
@@ -124,8 +125,8 @@ function MyAccount() {
                 </Button>
             </Grid>
             <Grid item xs={12}  md={8} lg={9}>
-                <Button onClick={() => setEditProfile(false)}>Edit Profile</Button>
-                <Button onClick={(e) => saveChange(e)}>Save Change</Button>
+                <Button className="theme-btn" onClick={() => setEditProfile(false)}>Edit Profile</Button>
+                <Button className="theme-btn" onClick={(e) => saveChange(e)}>Save Change</Button>
                 {error.length > 0 && <Alert margin="normal" fullWidth severity="error">{error}</Alert>}
             <TextField
             margin="normal"
