@@ -29,6 +29,7 @@ post : {
 chat : {
     chatUser : {},
     currentChat: {},
+    allChats : [],
     currentChatMessages : [],
     unreadMessages :[]
 }

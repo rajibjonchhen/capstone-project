@@ -8,6 +8,7 @@ export const ACTIONS = {
     SET_UNREAD_MESSAGES : "SET_UNREAD_MESSAGES",
     
     SET_CHAT_USER : "SET_CHAT_USER",
+    SET_ALL_CHATS : "SET_ALL_CHATS",
     SET_CURRENT_CHAT :"SET_CURRENT_CHAT",
     SET_CURRENT_CHAT_MESSAGES :"SET_CURRENT_CHAT_MESSAGES",
 
@@ -44,6 +45,11 @@ export const setRoleAction = (role) => ({
 export const setMyMessagesAction = (messages) => ({
     type : ACTIONS.SET_MY_MESSAGES,
     payload : messages
+})
+
+export const setAllChatsAction = (chats) => ({
+    type : ACTIONS.SET_ALL_CHATS,
+    payload : chats
 })
 
 export const setProfilePaginationAction = (selected) => ({

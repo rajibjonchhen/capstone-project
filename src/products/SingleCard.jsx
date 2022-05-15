@@ -104,19 +104,17 @@ const myInfo = useSelector(state => state.user.myInfo)
       <div style={{bottom:"5px",position:"absolute", display:"flex", justifyContent:'space-between',alignItems:"end" }}>
         <div>
           
-            <Button size="small" onClick={() => handleLikes()} >
-          <ThumbUp style={{width:"8px"}}/> <span style={{fontSize:"8px"}}>{isLiked? `You and ${product?.Likes.length}`:`${product?.Likes.length}`}</span>
+            <Button size="small" onClick={() => handleLikes()} style={{width:"150px", textAlign:"left"}}>
           
               <Favorite sx={{ color: pink[500], display:isLiked? "block":"none", width:"25px",marginLeft:"5px" }}  />
               <FavoriteBorder
                 sx={{ color: pink[500], display:!isLiked? "block":"none",width:"25px",marginLeft:"5px" }}
                 />
+           <span style={{fontSize:"10px"}}>{isLiked? `You and ${product?.Likes.length} other`:`${product?.Likes.length}`}</span>
               </Button>
             
         </div>
-          
           {product?.creator?._id === myInfo?._id && <IconButton onClick={() => handleDelete(product?._id)}>
-            
             <DeleteOutline/>
           </IconButton>}
        

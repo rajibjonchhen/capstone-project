@@ -139,6 +139,7 @@ function MyAccount() {
             disabled={editProfile}
             value={myProfile?.name}
             onChange={(e) => handleChange(e)}
+            focused
             />
 
             <TextField

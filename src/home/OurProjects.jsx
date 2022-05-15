@@ -61,7 +61,7 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
     <Container   fluid className="our-projects">        
         
         
-            <Row className="project-container row-cols-4 row-cols-sm-2  row-cols-md-3 row-cols-lg-5 p-5" 
+            <Row className="project-container row-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-5 p-5" 
                 style={{display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden",
                }}> 
                 <Col style={{display:"flex", justifyContent:"center", alignItems:"center"}}>

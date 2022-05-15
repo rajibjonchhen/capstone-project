@@ -58,13 +58,13 @@ function MyProfile() {
         fetchMyProducts()
     },[])
     
-    return (<Container style={{ minHeight:"70vh", padding:"20px" }}>  
+    return (<Container style={{ minHeight:"70vh", padding:"20px",  }}>  
                 <Row   className="h-100">
                     <Col className="h-100 d-flex" >
                         <ProfilSidebar/>
                     </Col>
                     
-                    <Col  xs={10}  style={{ minHeight:"70vh",}} >
+                    <Col  xs={10}  style={{ minHeight:"70vh"}} >
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {myProducts?.length === 0 && <Typography variant="h3" paragraph>You do not have any creation yet</Typography>}
                                 {myProducts?.map((product, i) => 

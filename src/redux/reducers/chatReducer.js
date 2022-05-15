@@ -21,6 +21,12 @@ const chatReducer = (state = initialState.chat, action) => {
                 currentChatMessages : action.payload
             }
         
+        case ACTIONS.SET_ALL_CHATS:
+            return{
+                ...state,
+                allChats : action.payload
+            }
+        
         case ACTIONS.SET_UNREAD_MESSAGES:
             return{
                 ...state,

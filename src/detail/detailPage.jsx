@@ -179,7 +179,7 @@ const fetchProduct = async(productId) => {
                       </Typography>}
                   { singleProduct?.reqInvestment && <Typography >
                     <span className="detail-title">Required Investment : </span>
-                      {singleProduct?.reqInvestment}
+                      $ {singleProduct?.reqInvestment}.00
                     </Typography>}
                   { singleProduct?.inventionAddresses && <Typography >
                     <span className="detail-title"> Invension Addresses : </span>

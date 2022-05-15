@@ -112,14 +112,15 @@ function Products() {
           position: "sticky",
           top: "50px",
           zIndex: "2",
-          padding: "20px 0 0 0 ",
+          padding: "20px 10px 0 10px ",
           backgroundColor:"rgb(4,52,71)",
+          margin:"0 -10px"
           
         }}
       >
         <Row>
           <Col xs={12} md={6} lg={6} className="m-auto">
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative" , width:"100%"}}>
               <input
                 type="text"
                 id="search"

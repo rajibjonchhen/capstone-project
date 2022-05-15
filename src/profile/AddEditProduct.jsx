@@ -284,6 +284,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                 id="summary"
                 label="summary"
                 name="summary"
+                multiline
                 value={product.summary}
                 autoFocus
                 onChange={(e) => handleChange(e)}
@@ -310,6 +311,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                 id="description"
                 label="description"
                 name="description"
+                multiline
                 value={product.description}
                 autoFocus
                 onChange={(e) => handleChange(e)}
