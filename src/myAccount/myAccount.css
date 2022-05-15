@@ -20,3 +20,18 @@
 .account-image-box button{
     width:100px !important;
 }
+
+
+.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-shrink.MuiInputLabel-sizeSmall.MuiInputLabel-outlined.MuiFormLabel-root.MuiFormLabel-colorPrimary.MuiFormLabel-filled.Mui-required.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root{
+    color: white !important
+    
+}
+
+.MuiOutlinedInput-input.MuiInputBase-input.MuiInputBase-inputSizeSmall.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input{
+    color:white !important;
+    background-color: rgb(6, 131, 180);
+    border-radius: 5px;
+}
+
+
+

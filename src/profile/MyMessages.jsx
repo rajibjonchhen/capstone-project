@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setMyMessagesAction, setSingleProductAction } from "../redux/actions/action";
+import { setAllChatsAction, setMyMessagesAction, setSingleProductAction } from "../redux/actions/action";
 import "./myMessage.css";
 function MyMessages() {
   const [error, setError] = useState();
@@ -12,13 +12,14 @@ function MyMessages() {
   const [isLoading, setIsLoading] = useState();
 
   const myMessages = useSelector((state) => state.user.myMessages);
+  const allChats = useSelector((state) => state.chat.allChats);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const getMessages = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/users/me/messages`,
+        `${process.env.REACT_APP_DEV_BE_URL}/chats/me`,
         {
           method: "GET",
           headers: {
@@ -35,9 +36,7 @@ function MyMessages() {
         const data = await response.json();
         console.log(data);
         setIsLoading(false);
-
-
-        dispatch(setMyMessagesAction(data.messages));
+        dispatch(setAllChatsAction(data.messages));
       }
     } catch (error) {
       console.log(error);
@@ -55,22 +54,25 @@ function MyMessages() {
       <Col item xs={12} md={6} lg={4} className="msg-sender-list-box p-1">
           <h3>Messages</h3>
           <hr className="bg-light pb-0 mb-0"/>
-        {myMessages.map((message, i ) => (
+        {allChats.map((chat, i ) => (
             <div key={i}>
+              {chat.members.map((member, i) => {
                 <div
                     className="sender-list "
                     onClick={() => {
-                        setSingleMsg(message);
+                        setSingleMsg(chat);
                     }}
                     >
+                      hello
                     <span className="m-1">
-                        <Avatar src={message?.sender?.avatar}/>
+                        <Avatar src={member?.avatar}/>
                     </span>
-                    <span className="m-1">
-                        {message?.sender?.name.toUpperCase()}{" "}
-                        {message?.sender?.surname.toUpperCase()}
+                      <span className="m-1">
+                        {member?.name.toUpperCase()}{" "}
+                        {member?.surname.toUpperCase()}
                     </span>
                 </div>
+                    })}
         </div>
         ))}
       </Col>

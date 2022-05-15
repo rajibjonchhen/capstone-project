@@ -1,4 +1,4 @@
-import { Box, Grid, TextareaAutosize, TextField } from "@material-ui/core";
+import { Box, Grid, styled, TextareaAutosize, TextField } from "@material-ui/core";
 import {
   Alert, Button, Container, FormControl, InputLabel,
   MenuItem,
@@ -9,6 +9,29 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import "./addEditProduct.css";
+
+const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'white',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'green',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'none',
+    },
+    '&:hover fieldset': {
+      borderColor: 'yellow',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'white',
+    },
+    '& label':{
+        color:'white'
+    }
+  },
+});
 
 function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct }) {
 
@@ -221,7 +244,8 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
           {error && <Alert margin="normal"  severity="error">{error}</Alert>}
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
+              className="form-control"
                 margin="normal"
                 required
                 fullWidth
@@ -275,7 +299,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
                 margin="normal"
                 required
                 fullWidth
@@ -302,7 +326,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
                 margin="normal"
                 required
                 fullWidth
@@ -321,7 +345,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
                 margin="normal"
                 required
                 fullWidth
@@ -340,7 +364,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
                 margin="normal"
                 required
                 fullWidth
@@ -355,7 +379,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
                 margin="normal"
                 fullWidth
                 size="small"
@@ -371,7 +395,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
 
          
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
                 margin="normal"
                 fullWidth
                 variant="outlined"
@@ -387,7 +411,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             
           
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
                 margin="normal"
                 fullWidth
                 variant="outlined"
@@ -402,7 +426,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <TextField
+              <CssTextField
                 margin="normal"
                 fullWidth
                 variant="outlined"

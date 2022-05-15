@@ -1,13 +1,40 @@
-import { Grid } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import { Alert, Button, TextField } from "@mui/material";
+import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import getMyInfo from "../getMyInfo";
 import { setMyInfoAction } from "../redux/actions/action";
 import "./myAccount.css";
 
+
+
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: 'white',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'white',
+      },
+      '&:hover fieldset': {
+        borderColor: 'yellow',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'green',
+      },
+      '& label':{
+          color:'white'
+      }
+    },
+  });
+
 function MyAccount() {
+
+    
     const dispatch = useDispatch()
     const[editProfile, setEditProfile] = useState(true)
     const [myProfile, setMyProfile] = useState({})
@@ -125,10 +152,12 @@ function MyAccount() {
                 </Button>
             </Grid>
             <Grid item xs={12}  md={8} lg={9}>
-                <Button className="theme-btn" onClick={() => setEditProfile(false)}>Edit Profile</Button>
+                {/* <Button className="theme-btn" onClick={() => setEditProfile(false)}>Edit Profile</Button> */}
                 <Button className="theme-btn" onClick={(e) => saveChange(e)}>Save Change</Button>
                 {error.length > 0 && <Alert margin="normal" fullWidth severity="error">{error}</Alert>}
-            <TextField
+           
+            <CssTextField
+            className="form-control"
             margin="normal"
             required
             fullWidth
@@ -136,13 +165,14 @@ function MyAccount() {
             id="name"
             label="First Name"
             name="name"
-            disabled={editProfile}
+            // disabled={editProfile}
             value={myProfile?.name}
             onChange={(e) => handleChange(e)}
-            focused
+            
             />
 
-            <TextField
+
+            <CssTextField
             margin="normal"
             required
             fullWidth
@@ -150,12 +180,12 @@ function MyAccount() {
             id="surname"
             label="Last Name"
             name="surname"
-            disabled={editProfile}
+            // disabled={editProfile}
             value={myProfile?.surname}
             onChange={(e) => handleChange(e)}
             />
 
-            <TextField
+            <CssTextField
             margin="normal"
             required
             fullWidth
@@ -165,12 +195,12 @@ function MyAccount() {
             id="email"
             label="Email Address"
             name="email"
-            disabled={editProfile}
+            // disabled={editProfile}
             value={myProfile?.email}
             onChange={(e) => handleChange(e)}
             />
 
-            <TextField
+            <CssTextField
             margin="normal"
             required
             fullWidth
