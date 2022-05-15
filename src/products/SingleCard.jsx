@@ -25,12 +25,13 @@ const myInfo = useSelector(state => state.user.myInfo)
 
   React.useEffect(() => {
 
-    // console.log(product?.creator, myInfo,"product?.creator._id === myInfo?._id")
-    // console.log(product.isLiked)
+    console.log(product?.creator, myInfo,"product?.creator._id === myInfo?._id")
+    console.log(product?.isLiked)
     setIsLiked(product.isLiked)
   }, [])
   
   const handleLikes = async () => {
+    setIsLiked(!product.isLiked)
     try {
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/products/${product._id}/likes`,

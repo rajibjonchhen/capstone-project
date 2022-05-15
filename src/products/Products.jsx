@@ -32,7 +32,7 @@ function Products() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(setSelectedCategoryAction("all"))
+    // dispatch(setSelectedCategoryAction("all"))
     console.log(selectedCategory);
     fetchProducts();
   }, []);
@@ -73,6 +73,7 @@ function Products() {
           console.log(products, selectedCategory);
           dispatch(setAllProductsAction(products));
           setIsLoading(false);
+          setSearch("")
         } else {
           dispatch(setAllProductsAction(data.products));
           setTimeout(() => setIsLoading(false),200 )
@@ -128,7 +129,7 @@ function Products() {
           </Col>
         </Row>
         <Row style={{borderBottom:"1px solid gray", }}>
-          <Col className="w-100 p-0 m-0">
+          <Col className="w-100 d-flex justify-between">
             {categoryArray.map((category, i) => (
               <Button
               
@@ -146,7 +147,7 @@ function Products() {
         
       </div>
 
-      <Row style={{ margin: "30px auto"}} >
+      <Row className="d-flex justify-between" style={{ margin: "30px auto"}} >
         {error.length > 0 ? (
           <div className="error-message">Error on fetching products</div>
         ) : isLoading ? (
@@ -154,7 +155,7 @@ function Products() {
             <Spinner animation="border" variant="primary" />{" "}
           </div>
         ) : allProducts?.length === 0 ? (
-          <h2>There are no products</h2>
+          <h2 className="w-100 mt-4 text-center">There are no products from this category</h2>
         ) : (
           allProducts.map((product, i) => (
             <Col
@@ -163,7 +164,7 @@ function Products() {
               sm={6}
               md={4}
               lg={3}
-              style={{width:'100%', padding:'5px',}}
+              style={{width:'100%'}}
             >
               <SingleCard product={product} />
             </Col>

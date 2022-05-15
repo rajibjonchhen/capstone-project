@@ -19,7 +19,7 @@ user : {
 product : {
     allProducts:[],
     singleProduct : {},
-    selectedCategory : "",
+    selectedCategory : "all",
     myProducts : []
 },
 post : {

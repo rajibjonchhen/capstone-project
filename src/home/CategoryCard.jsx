@@ -22,7 +22,7 @@ export default function CategoryCard({ category }) {
     e.preventDefault()
     dispatch(setSelectedCategoryAction(type));
     console.log(type); 
-     navigate(`/products`)
+     navigate(`/products?category=${type}`)
   }
   return (
 
