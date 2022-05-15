@@ -15,6 +15,7 @@ function Products() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [searchedProducts, setSearchProducts] = useState([])
 
   const selectedCategory = useSelector(
     (state) => state.product.selectedCategory
@@ -45,6 +46,14 @@ function Products() {
     }
   }, [selectedCategory]);
 
+ 
+  useEffect(() => {
+    console.log(search.length, "search" , search)
+    if(search.length !== 0){
+      setSearchProducts(allProducts.filter(product => product.title.toUpperCase().includes(search.toUpperCase()) || product.category.toUpperCase().includes(search.toUpperCase() || product.creator.name.toUpperCase().includes(search.toUpperCase()))))
+      // dispatch(setAllProductsAction(allProducts.filter(product => product.title.toUpperCase().includes(search.toUpperCase()) || product.category.toUpperCase().includes(search.toUpperCase() || product.creator.name.toUpperCase().includes(search.toUpperCase())))))
+    }
+  },[search])
 
   const fetchProducts = async () => {
     setIsLoading(true);
@@ -73,7 +82,6 @@ function Products() {
           console.log(products, selectedCategory);
           dispatch(setAllProductsAction(products));
           setIsLoading(false);
-          setSearch("")
         } else {
           dispatch(setAllProductsAction(data.products));
           setTimeout(() => setIsLoading(false),200 )
@@ -129,7 +137,7 @@ function Products() {
           </Col>
         </Row>
         <Row style={{borderBottom:"1px solid gray", }}>
-          <Col className="w-100 d-flex justify-between">
+          <Col className="w-100 p-0 m-0">
             {categoryArray.map((category, i) => (
               <Button
               
@@ -147,7 +155,7 @@ function Products() {
         
       </div>
 
-      <Row className="d-flex justify-between" style={{ margin: "30px auto"}} >
+      <Row style={{ margin: "30px auto d-flex justify-between"}} >
         {error.length > 0 ? (
           <div className="error-message">Error on fetching products</div>
         ) : isLoading ? (
@@ -155,16 +163,16 @@ function Products() {
             <Spinner animation="border" variant="primary" />{" "}
           </div>
         ) : allProducts?.length === 0 ? (
-          <h2 className="w-100 mt-4 text-center">There are no products from this category</h2>
+          <h2 className="mt-5 text-center w-100">There are no products from this category</h2>
         ) : (
-          allProducts.map((product, i) => (
+          (search? searchedProducts : allProducts).map((product, i) => (
             <Col
               key={i}
               xs={12}
               sm={6}
               md={4}
               lg={3}
-              style={{width:'100%'}}
+              style={{width:'100%', padding:'5px',}}
             >
               <SingleCard product={product} />
             </Col>
