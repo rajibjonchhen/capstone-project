@@ -33,22 +33,23 @@ function Products() {
     dispatch(setSelectedCategoryAction(type));
     console.log("selectedCategory", selectedCategory);
   };
+  useEffect(() => {
+    if (selectedCategory.length > 0 ) {
+      window.scrollTo(0, 0);
+      console.log(selectedCategory);
+      fetchProducts(selectedCategory);
+    }
+  }, [selectedCategory]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     // dispatch(setSelectedCategoryAction("all"))
     setUrl(myInfo? `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`:`${process.env.REACT_APP_DEV_BE_URL}/products?s=${search}`)
     console.log(myInfo,"myInfo");
-    fetchProducts();
+    fetchProducts("all");
   }, []);
 
-  useEffect(() => {
-    if (selectedCategory.length > 0) {
-      window.scrollTo(0, 0);
-      console.log(selectedCategory);
-      fetchProducts(selectedCategory);
-    }
-  }, [selectedCategory]);
+
 
  
   useEffect(() => {

@@ -57,7 +57,7 @@ function ForCreatorInvestor() {
                       <div style={{height:'100%',margin:"auto"}}>
                           <div style={{margin:"auto"}}>
                             <p className="role-description">{role.description}</p>
-                            <ul className=" text-left">
+                            <ul className=" text-left role-description-list">
                               {role.services.map((service,i) => <li key={i}>{service}</li>)}
                             </ul>
                           </div>
