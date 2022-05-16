@@ -2,10 +2,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-import { Grid } from "@material-ui/core";
-import { Container } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import ExtraNavbar from "../extraNavbar/ExtraNavbar";
 import MyFooter from "../footer/myfooter";
 import getMyInfo from "../getMyInfo";
 import MyNavbar from "../myNavbar/MyNavbar";

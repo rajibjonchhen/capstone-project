@@ -1,10 +1,8 @@
 import { Button } from '@material-ui/core'
-import React from 'react'
 import { useEffect } from 'react'
-import {  Col, Container, Jumbotron, Row } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import JumboPic from "../assets/business-idea.jpg"
 import "./myJumbotron.css"
 function MyJumbotron() {
 

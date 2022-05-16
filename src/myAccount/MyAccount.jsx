@@ -1,6 +1,5 @@
-import { Box, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { Alert, Button, TextField } from "@mui/material";
-import { styled } from '@mui/material/styles';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getMyInfo from "../getMyInfo";

@@ -13,7 +13,8 @@
 
 .text-for-the{
     color:rgb(223, 223, 223);
-    font-size: 40px;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(97, 192, 230)   ;
 }
 
 .highlight-role{
@@ -29,4 +30,11 @@
     height:500px;
     /* transform: rotate(-40deg); */
     padding:10px;
+}
+
+.role-description{
+ line-height: 1.5;
+ max-width: 500px;
+ padding: 0px 10px;
+ text-align:justify;
 }

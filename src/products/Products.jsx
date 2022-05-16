@@ -5,8 +5,8 @@ import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-    setAllProductsAction,
-    setSelectedCategoryAction
+  setAllProductsAction,
+  setSelectedCategoryAction
 } from "../redux/actions/action";
 import "./products.css";
 import SingleCard from "./SingleCard";
@@ -15,8 +15,11 @@ function Products() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [url, setUrl] = useState("")
   const [searchedProducts, setSearchProducts] = useState([])
 
+  const myInfo = useSelector(state => state.user.myInfo);
+  
   const selectedCategory = useSelector(
     (state) => state.product.selectedCategory
   );
@@ -34,7 +37,8 @@ function Products() {
   useEffect(() => {
     window.scrollTo(0, 0);
     // dispatch(setSelectedCategoryAction("all"))
-    console.log(selectedCategory);
+    setUrl(myInfo? `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`:`${process.env.REACT_APP_DEV_BE_URL}/products?s=${search}`)
+    console.log(myInfo,"myInfo");
     fetchProducts();
   }, []);
 
@@ -57,9 +61,10 @@ function Products() {
 
   const fetchProducts = async () => {
     setIsLoading(true);
+      
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products?s=${search}`,
+       url,
         {
           method: "GET",
           headers: {
@@ -106,20 +111,21 @@ function Products() {
   ];
 
   return (
-    <Container style={{minHeight:"80vh"}}>
-      <div
+    <Container fluid style={{minHeight:"80vh"}}>
+      <Container
         style={{
           position: "sticky",
           top: "50px",
           zIndex: "2",
           padding: "20px 10px 0 10px ",
           backgroundColor:"rgb(4,52,71)",
-          margin:"0 -10px"
+          margin:"0 auto"
+
           
         }}
       >
         <Row>
-          <Col xs={12} md={6} lg={6} className="m-auto">
+          <Col xs={12} md={6} lg={6} style={{margin:"0 auto"}}>
             <div style={{ position: "relative" , width:"100%"}}>
               <input
                 type="text"
@@ -154,8 +160,9 @@ function Products() {
           </Col>
         </Row>
         
-      </div>
+      </Container>
 
+      <Container>
       <Row style={{ margin: "30px auto d-flex justify-between"}} >
         {error.length > 0 ? (
           <div className="error-message">Error on fetching products</div>
@@ -180,6 +187,8 @@ function Products() {
           ))
         )}
       </Row>
+      </Container>
+
     </Container>
   );
 }

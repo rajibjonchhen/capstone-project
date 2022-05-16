@@ -1,11 +1,9 @@
-import { Avatar, Grid } from "@material-ui/core";
-import { Box } from "@mui/material";
-import { useEffect } from "react";
-import { useState } from "react";
+import { Avatar } from "@material-ui/core";
+import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setAllChatsAction, setMyMessagesAction, setSingleProductAction } from "../redux/actions/action";
+import { setAllChatsAction } from "../redux/actions/action";
 import "./myMessage.css";
 function MyMessages() {
   const [error, setError] = useState();

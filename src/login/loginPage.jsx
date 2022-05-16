@@ -1,10 +1,9 @@
 import { Flare } from "@mui/icons-material";
-import { Avatar, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { setRoleAction } from "../redux/actions/action";
-import OauthLogin from "./OauthLogin";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 

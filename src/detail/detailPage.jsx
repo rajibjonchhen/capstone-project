@@ -1,4 +1,4 @@
-import { Avatar, Grid } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 import { Box, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";

@@ -5,12 +5,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAllUsersAction, setChatUserAction } from '../redux/actions/action';
-import { InputBase } from '@material-ui/core';
-import "./rightSidebar.css"
+import "./rightSidebar.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',

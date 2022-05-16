@@ -1,6 +1,4 @@
-import { Grid } from "@material-ui/core";
-import { Button, Container } from "@mui/material";
-import "./ourMission.css"
+import "./ourMission.css";
 
 function OurMission() {
     return ( 

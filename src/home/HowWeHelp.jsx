@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  CardActions,
-  CardContent,
-  Grid,
-  Typography,
-} from "@material-ui/core";
-import { Home } from "@mui/icons-material";
-import { Button, Card } from "@mui/material";
-import "./howWeHelpCard.css"
+import "./howWeHelpCard.css";
 
 
 function HowWeHelp({information}) {

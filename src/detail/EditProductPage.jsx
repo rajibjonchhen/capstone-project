@@ -1,14 +1,12 @@
 
-import AddEditProduct from "../profile/AddEditProduct";
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import { Grid } from "@material-ui/core";
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import { Grid } from "@material-ui/core";
-import { setMyProductsAction } from "../redux/actions/action";
-import { useSelector } from "react-redux";
+import Modal from '@material-ui/core/Modal';
+import { makeStyles } from '@material-ui/core/styles';
 import { Close } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+import AddEditProduct from "../profile/AddEditProduct";
 
 
 

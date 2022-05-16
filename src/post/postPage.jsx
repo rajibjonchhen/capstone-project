@@ -1,11 +1,10 @@
 
 import { Photo, Videocam, Work } from '@mui/icons-material';
 import { Avatar, Typography } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../others/Loader';
@@ -14,7 +13,6 @@ import AddPostEdit from './AddPostEdit';
 import ChatBox from './ChatBox';
 import LeftSidebar from './LeftSidebar';
 import "./postPage.css";
-import RightSidebar from './RightSidebar';
 import SinglePost from "./SinglePost";
 
 

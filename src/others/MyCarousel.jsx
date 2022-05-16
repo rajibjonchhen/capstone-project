@@ -1,11 +1,10 @@
 
 
-import {  ArrowBackIosRounded, ArrowForwardIosRounded } from '@mui/icons-material'
+import { ArrowBackIosRounded, ArrowForwardIosRounded } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
-import React from 'react'
 import { useState } from 'react'
+import { myCarouselData } from "../home/ourValueData.js/index.js.js"
 import "./myCarousel.css"
-import {myCarouselData} from "../home/ourValueData.js/index.js.js"
 
 
 function MyCarousel() {

@@ -1,11 +1,5 @@
-import { Business, Group, Support } from "@mui/icons-material";
-import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Individual from "../assets/idea.png";
-import Investor from "../assets/investor.png";
-import Society from "../assets/society.png";
-import Sustainable from "../assets/sustainable.png";
 import ForCreatorInvestor from "./ForCreatorInvestor";
 import "./homePage.css";
 import MyJumbotron from "./MyJumbotron";

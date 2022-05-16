@@ -1,19 +1,15 @@
-import { Grid } from "@material-ui/core";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { useState } from "react";
-import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import ideas from "../assets/ideas.jpg";
+import movies from "../assets/movies.jpg";
+import novels from "../assets/novels.jpg";
+import paintings from "../assets/paintings.jpg";
+import poems from "../assets/poems.jpg";
+import songs from "../assets/songs.jpg";
+import webTemplate from "../assets/web template.jpg";
 import CategoryCard from "./CategoryCard";
-import "./ourProject.css"
-import songs from "../assets/songs.jpg"
-import poems from "../assets/poems.jpg"
-import movies from "../assets/movies.jpg"
-import novels from "../assets/novels.jpg"
-import webTemplate from "../assets/web template.jpg"
-import paintings from "../assets/paintings.jpg"
-import ideas from "../assets/ideas.jpg"
-import { useScroll } from "react-use-gesture";
-import { animated, useSpring } from "react-spring";
+import "./ourProject.css";
 
 
 function OurProjects() {
@@ -22,17 +18,8 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
 
 
 
-const [style, set] = useSpring(() => ({
-    transform: "perspective(500px) rotateY(0deg)"
-  }));
-const bind = useScroll(event => {
-    set({
-      transform: `perspective(500px) rotateY(${
-        event.scrolling ? event.delta[0] : 0
-      }deg)`
-    });
-  });
-
+  const [scroll, setScroll] = useState(false)
+  
 
     const myCategories = [
         { name :"Ideas",
@@ -79,10 +66,10 @@ const bind = useScroll(event => {
         
             <Row className="project-container row-cols-1 row-cols-sm-2  row-cols-md-3 row-cols-lg-5 p-5" 
                 style={{display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden", 
-               }} {...bind()}> 
-                <Col style={{display:"flex", justifyContent:"center", alignItems:"center",position:"relative"}}>
-                    <div style={{ display:"flex", justifyContent:"center", alignItems:"center", position:"absolute", }}>
-                    <ArrowBackIos className="text-white pointer" style={{  right:0}}/>
+               }} > 
+                <Col style={{display:"flex", justifyContent:"center", alignItems:"center",position:"relative", scrollLeft:"scrollLeft"}}>
+                    <div style={{ display:"flex", justifyContent:"center", alignItems:"center", position:"absolute",scroll }}>
+                    <ArrowBackIos className="text-white pointer" style={{  right:0}} onClick={() => { setScroll(true); setTimeout(() => setScroll(false),1000)} }/>
                     <h1 style={{margin:"30px auto", color:"white",transform: "rotate(270deg)"}}>Our Projects</h1>
                     </div>
                 </Col>
@@ -90,7 +77,9 @@ const bind = useScroll(event => {
 
             {myCategories.map((category, i) => 
                <Col key={i} style={{opacity: "1",padding:"5px"}}>
+                   <div classsName="card">
                     <CategoryCard  key={i}  category={category}/> 
+                   </div>
                </Col>
                
         )}

@@ -1,11 +1,9 @@
 import { Avatar, ListItem, ListItemAvatar, Typography } from '@mui/material';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentChatAction, setCurrentChatMessagesAction } from '../redux/actions/action';
-import "./chatBox.css"
+import "./chatBox.css";
 
 
 function ChatBox() {

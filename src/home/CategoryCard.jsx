@@ -1,16 +1,12 @@
 import "./categoryCard.css";
-import TravelExploreOutlinedIcon from "@mui/icons-material/TravelExploreOutlined";
 
-import * as React from "react";
-import { useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import {Card} from "react-bootstrap";
+import { Button } from "@material-ui/core";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
+import { Card } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setSelectedCategoryAction } from "../redux/actions/action";
 
 export default function CategoryCard({ category }) {
@@ -22,7 +18,7 @@ export default function CategoryCard({ category }) {
     e.preventDefault()
     dispatch(setSelectedCategoryAction(type));
     console.log(type); 
-     navigate(`/products?category=${type}`)
+     navigate(`/products`)
   }
   return (
 

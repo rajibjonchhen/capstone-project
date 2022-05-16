@@ -5,6 +5,7 @@ import "./ourValue.css"
 import { ourValueData } from "./ourValueData.js"
 
 function OurValue() {
+
   return (
         <Container className='py-2'>
             <hr className="mission-box-hr"/>
