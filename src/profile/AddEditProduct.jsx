@@ -1,4 +1,4 @@
-import { Box, Grid, styled, TextareaAutosize, TextField } from "@material-ui/core";
+import { Box, Grid, styled, TextField } from "@material-ui/core";
 import {
   Alert, Button, Container, FormControl, InputLabel,
   MenuItem,
@@ -33,7 +33,7 @@ const CssTextField = styled(TextField)({
   },
 });
 
-function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct }) {
+function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct, fetchMyProducts }) {
 
     const [successMsg, setSuccessMsg] = useState(false)
     const [selectedImages, setSelectedImages] = useState([])  
@@ -164,7 +164,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
       } else {
         const data = await response.json();
         console.log(data);
-      
+        fetchMyProducts()
         setProduct({
           title: "",
           category: "",
@@ -238,14 +238,14 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
    
   return (
     
-      <Container className=" mt-3 py-3 text-white">
+      <Container className="mt-3 p-5 text-dark" style={{backgroundColor:"rgb(211, 211, 211, 0.9)", borderRadius:"5px"}}>
           <h2>Fill in the product details</h2>
           {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
           {error && <Alert margin="normal"  severity="error">{error}</Alert>}
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <CssTextField
-              className="form-control"
+
+            <CssTextField
                 margin="normal"
                 required
                 fullWidth
@@ -256,9 +256,9 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
                 name="title"
                 value={product.title}
                 autoFocus
-                autoComplete=""
                 onChange={(e) => handleChange(e)}
               />
+             
               <Typography style={{color:"red"}}>
                 {!product.title && productErr?.title}
               </Typography>
@@ -266,6 +266,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
           
             <Grid item xs={12} md={6}>
               <FormControl 
+                className="blue-input"
                   margin="normal"
                   required
                   fullWidth

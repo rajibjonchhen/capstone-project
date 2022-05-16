@@ -9,28 +9,28 @@ import "./myAccount.css";
 
 
 
-const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
-      color: 'white',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'green',
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'white',
-      },
-      '&:hover fieldset': {
-        borderColor: 'yellow',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: 'green',
-      },
-      '& label':{
-          color:'white'
-      }
-    },
-  });
+// const CssTextField = styled(TextField)({
+//     '& label.Mui-focused': {
+//       color: 'white',
+//     },
+//     '& .MuiInput-underline:after': {
+//       borderBottomColor: 'green',
+//     },
+//     '& .MuiOutlinedInput-root': {
+//       '& fieldset': {
+//         borderColor: 'white',
+//       },
+//       '&:hover fieldset': {
+//         borderColor: 'yellow',
+//       },
+//       '&.Mui-focused fieldset': {
+//         borderColor: 'green',
+//       },
+//       '& label':{
+//           color:'white'
+//       }
+//     },
+//   });
 
 function MyAccount() {
 
@@ -50,7 +50,9 @@ function MyAccount() {
             name: myInfo.name,
             surname: myInfo.surname,
             email: myInfo.email,
-            role: myInfo.role
+            role: myInfo.role,
+            bio: myInfo.bio,
+            interest : myInfo.interest
         })
     },[myInfo])
 
@@ -126,8 +128,8 @@ function MyAccount() {
         }
     }
 
-    return ( <div className="mt-3 py-3">
-        <p className="h3">Update my Information</p>
+    return ( <div className="mt-3 p-5" style={{backgroundColor:"rgb(211, 211, 211, 0.9)", borderRadius:"5px"}}>
+        <p className="h3 text-dark">Update my Information</p>
             <Alert margin="normal"  severity="success" style={{opacity:successMsg? 1:0, marginTop:"10px"}}>Updated successfully</Alert>
     
        {myProfile && <Grid container className="account-box ">
@@ -156,8 +158,7 @@ function MyAccount() {
                 <Button className="theme-btn" onClick={(e) => saveChange(e)}>Save Change</Button>
                 {error.length > 0 && <Alert margin="normal" fullWidth severity="error">{error}</Alert>}
            
-            <CssTextField
-            className="form-control"
+            <TextField
             margin="normal"
             required
             fullWidth
@@ -165,6 +166,7 @@ function MyAccount() {
             id="name"
             label="First Name"
             name="name"
+           
             // disabled={editProfile}
             value={myProfile?.name}
             onChange={(e) => handleChange(e)}
@@ -172,7 +174,7 @@ function MyAccount() {
             />
 
 
-            <CssTextField
+            <TextField
             margin="normal"
             required
             fullWidth
@@ -185,7 +187,7 @@ function MyAccount() {
             onChange={(e) => handleChange(e)}
             />
 
-            <CssTextField
+            <TextField
             margin="normal"
             required
             fullWidth
@@ -200,7 +202,36 @@ function MyAccount() {
             onChange={(e) => handleChange(e)}
             />
 
-            <CssTextField
+            <TextField
+            margin="normal"
+            
+            fullWidth
+            size="small"
+            autoFocus
+            id="bio"
+            label="bio"
+            name="bio"
+             // disabled={editProfile}
+            value={myProfile?.bio}
+            onChange={(e) => handleChange(e)}
+            />
+
+            <TextField
+            margin="normal"
+            
+            fullWidth
+            size="small"
+            autoFocus
+            id="interest"
+            label="interest"
+            name="interest"
+             // disabled={editProfile}
+
+            value={myProfile?.interest}
+            onChange={(e) => handleChange(e)}
+            />
+
+            <TextField
             margin="normal"
             required
             fullWidth

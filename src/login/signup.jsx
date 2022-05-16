@@ -20,6 +20,11 @@ import { IconButton, InputAdornment } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import Home from '../home/HomePage';
 import OauthLogin from './OauthLogin';
+import {
+  FormControl, InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
 
 
 function Copyright(props) {
@@ -65,6 +70,7 @@ const SignUp = ({setShowSignIn})  => {
   },[signUpErr])
 
   const handleChange = (e) => {
+    console.log("signUpUser", signUpUser)
     const { name, value } = e.target;
     setSignUpUser({ ...signUpUser, [name]: value });
   };
@@ -103,6 +109,9 @@ const validateForm = (signUpUser) => {
     }
     if(!signUpUser.surname ){
         errors.surname = "surname is missing"
+    }
+    if(!signUpUser.role ){
+        errors.role = "role is missing"
     }
     
     return errors
@@ -210,7 +219,7 @@ try {
             size="small"
             name="password"
             label="Password"
-            type= {showPassword? "text":"password"}
+            type= {showPassword? "password":"password"}
             id="password"
             value={signUpUser.password}
             onChange={(e) => handleChange(e)}
@@ -226,13 +235,49 @@ try {
             size="small"
             name="repassword"
             label="RePassword"
-            type= {showPassword? "text":"password"}
+            type= {showPassword? "password":"password"}
             id="password"
             value={signUpUser.repassword}
             onChange={(e) => handleChange(e)}
             endadornment={<IconButton> <VisibilityOff /> </IconButton>}
             />
             <Typography color="secondary"  align='left'>{!signUpUser.repassword  &&  signUpErr?.repassword || signUpUser.repassword !== signUpUser.password &&  signUpErr?.repassword }</Typography>
+            
+          {/* role field */}
+            
+
+            <FormControl 
+                className="blue-input"
+                  margin="normal"
+                  required
+                  fullWidth
+                  variant="outlined"
+                  size="small"
+                  id="role"
+                  
+                  name="role"
+              >
+                <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                <Select
+               
+                  margin="none"
+                  labelId="role"
+                  size="small"
+                  id="role"
+                  variant="outlined"
+                  label="role"
+                  name="role"
+                  onChange={handleChange}
+                  value={signUpUser.role}
+                  default="creator"
+                >
+                  {["creator","investor"].map((category, i) => (
+                    <MenuItem key={i} value={category}>{category}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+
+            <Typography color="secondary"  align='left'>{!signUpUser.role  &&    signUpErr?.role }</Typography>
             
         <Button
               fullWidth

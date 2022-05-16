@@ -144,9 +144,22 @@ const fetchProduct = async(productId) => {
             
           </div>
         </Col>
+        <Col>
+              {/* creator's profile */}
+              <h5 className="text-left my-3">Creator's Profile</h5>
+            <Box >
+              <Avatar style={{width:"60px", height:"60px"}}src={singleProduct?.creator?.avatar}/>
+              <Box style={{textAlign:"left"}}>
+                <Typography>Name : {singleProduct?.creator?.name} {singleProduct?.creator?.surname}</Typography>
+                <Typography>Email : {singleProduct?.creator?.email}</Typography>
+                <Typography>Bio : {singleProduct?.creator?.bio}</Typography>
+                <Typography>Interest : {singleProduct?.creator?.interest}</Typography>
+              </Box>
+            </Box>          
+        </Col>
         <Col
           xs={12}
-          md={6}
+          md={12}
         >
           
             <Typography className="text-left my-3" component="div" variant="h4">
@@ -154,51 +167,41 @@ const fetchProduct = async(productId) => {
             </Typography>
             
             <Box  style={{textAlign:"left"}}>
-                    <Typography >
+                    <Typography className="product-details">
                     <span className="detail-title">Category : </span>
                       {singleProduct?.category}
                     </Typography>
-                    <Typography
-                    
-                    >
+                    <Typography className="product-details">
                       <span className="detail-title">Summary : </span>
                       {singleProduct?.summary}
                     </Typography>
                 
-                    <Typography >
+                    <Typography className="product-details">
                     <span className="detail-title">Description : </span>
                       {singleProduct?.description}
                     </Typography>
-                  { singleProduct?.askingPrice && <Typography >
+                  { singleProduct?.askingPrice && <Typography className="product-details">
                     <span className="detail-title">Asking Price : </span>
                       $ {singleProduct?.askingPrice}.00
                     </Typography>}
-                  { singleProduct?.criteria && <Typography >
+                  { singleProduct?.criteria && <Typography className="product-details">
                     <span className="detail-title">Criteria : </span>
                       {singleProduct?.criteria}
                       </Typography>}
-                  { singleProduct?.reqInvestment && <Typography >
+                  { singleProduct?.reqInvestment && <Typography className="product-details">
                     <span className="detail-title">Required Investment : </span>
                       $ {singleProduct?.reqInvestment}.00
                     </Typography>}
-                  { singleProduct?.inventionAddresses && <Typography >
+                  { singleProduct?.inventionAddresses && <Typography className="product-details">
                     <span className="detail-title"> Invension Addresses : </span>
                       {singleProduct?.inventionAddresses}
                     </Typography>}
-                  { singleProduct?.patent && <Typography >
+                  { singleProduct?.patent && <Typography className="product-details">
                     <span className="detail-title"> Patent  : </span>
                       {singleProduct?.patent}
                     </Typography>}
           </Box>
-            {/* creator's profile */}
-                <h5 className="text-left my-3">Creator's Profile</h5>
-            <Box >
-              <Avatar style={{width:"60px", height:"60px"}}src={singleProduct?.creator?.avatar}/>
-              <Box style={{textAlign:"left"}}>
-                <Typography>Name : {singleProduct?.creator?.name} {singleProduct?.creator?.surname}</Typography>
-                <Typography>Email : {singleProduct?.creator?.email}</Typography>
-              </Box>
-            </Box>
+          
 
             {myInfo._id !== singleProduct?.creator?._id &&
               <Button className="theme-btn" style={{border:"1px solid white", display:!open? "flex":"none"}} onClick={(e) => setOpen(true)}>

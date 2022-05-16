@@ -155,22 +155,28 @@ function MyNavbar() {
       onClose={handleMenuClose}
     >
       <MenuItem
-        onClick={() => {
+        onClick={() => {if(myInfo._id){
           handleMenuClose();
-          navigate("/profile");
+          navigate("/profile")
+        } else{
+          navigate("/direct");
+        }
         }}
       >
         Profile
       </MenuItem>
       <MenuItem
-        onClick={() => {
+        onClick={() => {if(myInfo._id){
           handleMenuClose();
           navigate("/account");
+        } else{
+          navigate("/direct");
+        }
         }}
       >
         My account
       </MenuItem>
-      <MenuItem
+      {myInfo._id?  <MenuItem
         onClick={() => {
           handleMenuClose();
           localStorage.removeItem("MyToken");
@@ -178,7 +184,16 @@ function MyNavbar() {
         }}
       >
         Logout
-      </MenuItem>
+      </MenuItem> : 
+      <MenuItem
+      onClick={() => {
+        handleMenuClose();
+        localStorage.removeItem("MyToken");
+        navigate("/");
+      }}
+    >
+      Login
+    </MenuItem>}
     </Menu>
   );
 

@@ -1,4 +1,5 @@
 import { Col, Container, Row } from 'react-bootstrap'
+import ForCreatorInvestor from './ForCreatorInvestor.jsx'
 import OurMission from './OurMission.jsx'
 import "./ourValue.css"
 import { ourValueData } from "./ourValueData.js"
@@ -52,6 +53,17 @@ function OurValue() {
                 
                 </div>
                 </Col>)}
+                </Row>
+                <hr className="mission-box-hr"/>
+                <hr className="mission-box-hr"/>
+                <h1 className="my-3">Our Services</h1>
+                <hr className="mission-box-hr"/>
+                <hr className="mission-box-hr"/>
+                <Row>
+                  <div style={{borderRadius:"15px", overflow:"hidden"}}>
+
+                      <ForCreatorInvestor/>
+                  </div>
                 </Row>
             </Container>
 
