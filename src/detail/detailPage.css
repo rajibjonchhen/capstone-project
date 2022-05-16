@@ -3,11 +3,7 @@
     display:flex;
     justify-content: center;
 }
-.detail-title{
-    font-size: 14px;
-    font-weight: 700;
-    text-align: left;
-}
+
 
 .arrow-btn:hover{
     background-color: rgb(7,105,144) !important;
@@ -48,7 +44,15 @@ border-radius: 50%;
     border: 2px solid red;
 }
 
+.detail-title{
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+    
+}
+
 .product-details{
+text-align: justify;
 padding: 10px;
-font-size: 15px !important;
+font-size: 20px !important;
 }

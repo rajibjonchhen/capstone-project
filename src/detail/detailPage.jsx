@@ -117,6 +117,20 @@ const fetchProduct = async(productId) => {
   return (
     <Container >
       <Row  spacing={2} className=" mt-3 py-3">
+
+      <Col>
+              {/* creator's profile */}
+              <Typography variant="h5" className="text-center my-3">Creator's Profile</Typography>
+            <div className="d-flex justify-content-center">
+              <Avatar style={{width:"100px", height:"100px", marginRight:"15px"}}src={singleProduct?.creator?.avatar}/>
+              <Box style={{textAlign:"left"}}>
+                <Typography variant="h6">Name : {singleProduct?.creator?.name} {singleProduct?.creator?.surname}</Typography>
+                <Typography variant="h6">Email : {singleProduct?.creator?.email}</Typography>
+                <Typography variant="h6">Bio : {singleProduct?.creator?.bio}</Typography>
+                <Typography variant="h6">Interest : {singleProduct?.creator?.interest}</Typography>
+              </Box>
+            </div>          
+        </Col>
         <Col  xs={12} md={6} style={{position:'relative'}}>
           <div
            
@@ -144,27 +158,25 @@ const fetchProduct = async(productId) => {
             
           </div>
         </Col>
-        <Col>
-              {/* creator's profile */}
-              <h5 className="text-left my-3">Creator's Profile</h5>
-            <Box >
-              <Avatar style={{width:"60px", height:"60px"}}src={singleProduct?.creator?.avatar}/>
-              <Box style={{textAlign:"left"}}>
-                <Typography>Name : {singleProduct?.creator?.name} {singleProduct?.creator?.surname}</Typography>
-                <Typography>Email : {singleProduct?.creator?.email}</Typography>
-                <Typography>Bio : {singleProduct?.creator?.bio}</Typography>
-                <Typography>Interest : {singleProduct?.creator?.interest}</Typography>
-              </Box>
-            </Box>          
+      
+        </Row>
+        <Typography className="text-center my-3" component="div" variant="h3">
+              Title :  "{singleProduct?.title}"
+            </Typography>
+        <Row style={{backgroundColor:"rgb(18,60,76)", padding:"30px 10px"}}>
+        <Col   xs={12}
+          md={6}>
+            <Typography className="product-details">
+                    <span className="detail-title">Description : </span>
+                      {singleProduct?.description}
+            </Typography>
         </Col>
         <Col
           xs={12}
-          md={12}
+          md={6}
         >
           
-            <Typography className="text-left my-3" component="div" variant="h4">
-              {singleProduct?.title}
-            </Typography>
+            
             
             <Box  style={{textAlign:"left"}}>
                     <Typography className="product-details">
@@ -176,10 +188,7 @@ const fetchProduct = async(productId) => {
                       {singleProduct?.summary}
                     </Typography>
                 
-                    <Typography className="product-details">
-                    <span className="detail-title">Description : </span>
-                      {singleProduct?.description}
-                    </Typography>
+                    
                   { singleProduct?.askingPrice && <Typography className="product-details">
                     <span className="detail-title">Asking Price : </span>
                       $ {singleProduct?.askingPrice}.00
@@ -209,6 +218,7 @@ const fetchProduct = async(productId) => {
               </Button>}
          
         </Col>
+        
       </Row>
         <Row
         style={{ display: open ? "block" : "none", marginTop: "50px" }}
