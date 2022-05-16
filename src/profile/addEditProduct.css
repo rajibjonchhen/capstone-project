@@ -22,22 +22,26 @@
   
   
 
-  .MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputMarginDense.MuiOutlinedInput-inputMarginDense{
+  /* .MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputMarginDense.MuiOutlinedInput-inputMarginDense{
     color:white !important;
     background-color: rgb(6, 131, 180);
-  }
+    border-radius: 5px;
+    
+  } */
 
   /* for category */
-  .MuiSelect-select.MuiSelect-outlined.MuiOutlinedInput-input.MuiInputBase-input.MuiInputBase-inputSizeSmall.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+  /* .MuiSelect-select.MuiSelect-outlined.MuiOutlinedInput-input.MuiInputBase-input.MuiInputBase-inputSizeSmall.css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
     border-color:white !important;
     background-color: rgb(6, 131, 180);
-
+    color:white
+   
   }
  
  .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-fullWidth.MuiInputBase-formControl.MuiInputBase-multiline.MuiOutlinedInput-multiline.MuiInputBase-marginDense.MuiOutlinedInput-marginDense{
    border-color:white !important;
     background-color: rgb(6, 131, 180);
-  }
+   
+  } */
  
   
  

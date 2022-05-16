@@ -5,6 +5,8 @@ import { setProfilePaginationAction } from "../redux/actions/action";
 import "./ProfilSidebar.css";
 
 function ProfilSidebar() {
+
+  const myInfo = useSelector(state => state.user.myInfo)
   const profilePagination = useSelector(
     (state) => state.user.profilePagination
   );
@@ -12,7 +14,7 @@ function ProfilSidebar() {
 
   useEffect(() => {
     dispatch(setProfilePaginationAction("My Creations"));
-  }, []);
+  }, [dispatch]);
 
   const highlightColor = "rgb(3,78,106)"
 
@@ -29,7 +31,7 @@ function ProfilSidebar() {
           }}
           
         >
-          <Button
+          {myInfo?.role === "creator"? <Button
             className="extra-header-button"
             name="My Creations"
             style={{
@@ -39,7 +41,20 @@ function ProfilSidebar() {
             onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
           >
             My Creations
-          </Button>
+          </Button> 
+          :
+           <Button
+           className="extra-header-button"
+           name="Projects Liked"
+           style={{
+             backgroundColor:
+               profilePagination === "Projects Liked" && `${highlightColor}`
+           }}
+           onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+         >
+           Projects Liked
+         </Button>
+          }
           <Button
           className="extra-header-button"
             name="My Messages"

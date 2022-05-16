@@ -1,5 +1,5 @@
 import { pink } from "@material-ui/core/colors";
-import { DeleteForever, DeleteForeverOutlined, DeleteOutline, DeleteOutlineTwoTone, DeleteSweep, Favorite, FavoriteBorder, ThumbUp } from "@mui/icons-material";
+import { Delete, DeleteOutline, Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Alert, IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -7,31 +7,38 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSingleProductAction } from "../redux/actions/action";
+import MyVerticallyCenteredModal from "./DeleteConfirmation";
+import DeleteConfirmation from "./DeleteConfirmation";
 import "./singleCard.css";
 
+export default function SingleCard({ product, fetchMyProducts }) {
+  const [show, setShow] = useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-export default function SingleCard({product, fetchMyProducts }) {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [openDeleteConfirm, setOpenDeleteConfirm] = useState(false);
   const [likes, setLikes] = useState(null);
-  const [isLiked, setIsLiked] = useState(false)
-  const [error, setError] = useState("")
+  const [isLiked, setIsLiked] = useState(false);
+  const [error, setError] = useState("");
 
-const myInfo = useSelector(state => state.user.myInfo)
+  const myInfo = useSelector((state) => state.user.myInfo);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    console.log(product?.creator, "product?.creator._id === myInfo?._id");
+    // console.log(product?.isLiked)
+    setIsLiked(product.isLiked);
+  }, []);
 
-    console.log(product?.creator, myInfo,"product?.creator._id === myInfo?._id")
-    console.log(product?.isLiked)
-    setIsLiked(product.isLiked)
-  }, [])
-  
   const handleLikes = async () => {
-    setIsLiked(!product.isLiked)
+    // setIsLiked(!product.isLiked)
     try {
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/products/${product._id}/likes`,
@@ -46,81 +53,124 @@ const myInfo = useSelector(state => state.user.myInfo)
         const data = await response.json();
         console.log(data);
         setError(data.error);
+        setTimeout(() => setError(""), 400);
       } else {
         const data = await response.json();
         console.log(data);
-        setIsLiked(data.product.isLiked)
-        setLikes(data.product.Likes)
+        setIsLiked(data.product.isLiked);
+        setLikes(data.product.Likes);
+        setTimeout(() => setError(""), 400);
       }
     } catch (error) {
       console.log(error);
+      setError(error);
+      setTimeout(() => setError(""), 400);
     }
   };
 
-  const handleDelete = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products/me/${product._id}`,
-        {
-          method: "DELETE",
-          headers: {
-            authorization: localStorage.getItem("MyToken"),
-          },
-        }
-      );
-      if (response.status !== 200) {
-        const data = await response.json();
-        console.log(data);
-        setError(data.error);
-        setTimeout(() => setError(""), 2000)
-      } else {
-        const data = await response.json();
-        console.log("data deleted successfully");
-        fetchMyProducts()
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  React.useEffect(() => {},[])
+  React.useEffect(() => {}, []);
   return (
-    <Card className="single-product-card" sx={{ width: "100%", height:"300px", position:"relative" }}>
-      {error && <Alert>{error}</Alert> }
+    <Card
+      className="single-product-card"
+      sx={{ width: "100%", height: "300px", position: "relative" }}
+    >
+      {error && <Alert>{error}</Alert>}
       <CardMedia
         component="img"
-        alt= {product?.title}
+        alt={product?.title}
         height="140"
-        image={product?.images[0] || "https://res.cloudinary.com/dai5duzoj/image/upload/v1649986446/creators-space-products/lw8f79wcrzpqa4eqeane.png"}
+        image={
+          product?.images[0] ||
+          "https://res.cloudinary.com/dai5duzoj/image/upload/v1649986446/creators-space-products/lw8f79wcrzpqa4eqeane.png"
+        }
       />
       <CardContent>
-        <Typography gutterBottom variant="h6" component="div" style={{overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap"}}>
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="div"
+          style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
           {product?.title}
         </Typography>
-        <Typography className="text-wrap">
-          {product?.summary}
-        </Typography>
-          <Button size="small" className="theme-btn" onClick={() =>{dispatch(setSingleProductAction(product)); navigate(`/detail/${product?._id}`)}}>Learn More</Button>
-      <div style={{bottom:"5px",position:"absolute", display:"flex", justifyContent:'space-between',alignItems:"end" }}>
-        <div>
-          
-            <Button size="small" onClick={() => handleLikes()} style={{width:"150px", textAlign:"left"}}>
-          
-              <Favorite sx={{ color: pink[500], display:isLiked? "block":"none", width:"25px",marginLeft:"5px" }}  />
+        <Typography className="text-wrap">{product?.summary}</Typography>
+        <Button
+          size="small"
+          className="theme-btn"
+          onClick={() => {
+            dispatch(setSingleProductAction(product));
+            navigate(`/detail/${product?._id}`);
+          }}
+        >
+          Learn More
+        </Button>
+        <div
+          style={{
+            bottom: "5px",
+            position: "absolute",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "end",
+            width:"100%"
+          }}
+        >
+          <div>
+            <Button
+              size="small"
+              style={{
+                width: "150px",
+                display: "flex",
+                justifyContent: "flex-start",
+              }}
+              onClick={() => {
+                if (myInfo) {
+                  handleLikes();
+                } else {
+                  navigate("/direct");
+                }
+              }}
+            >
+              <Favorite
+                sx={{
+                  color: pink[500],
+                  display: isLiked ? "block" : "none",
+                  width: "25px",
+                  marginLeft: "5px",
+                }}
+              />
               <FavoriteBorder
-                sx={{ color: pink[500], display:!isLiked? "block":"none",width:"25px",marginLeft:"5px" }}
-                />
-           <span style={{fontSize:"10px"}}>{isLiked? `You and ${product?.Likes.length} other`:`${product?.Likes.length}`}</span>
-              </Button>
-            
+                sx={{
+                  color: pink[500],
+                  display: !isLiked ? "block" : "none",
+                  width: "25px",
+                  marginLeft: "5px",
+                }}
+              />
+              <span style={{ fontSize: "10px", textAlign: "left" }}>
+                {isLiked
+                  ? `You and ${product?.Likes.length} other`
+                  : `${product?.Likes.length}`}
+              </span>
+            </Button>
+          </div>
+          {product?.creator?._id === myInfo?._id && (
+            <IconButton style={{marginRight:"20px"}} onClick={() => setModalShow(true)}>
+              <Delete />
+            </IconButton>
+          )}
+
+          <DeleteConfirmation
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            product={product}
+            fetchMyProducts={fetchMyProducts}
+          />
         </div>
-          {product?.creator?._id === myInfo?._id && <IconButton onClick={() => handleDelete(product?._id)}>
-            <DeleteOutline/>
-          </IconButton>}
-       
-      </div>
-                </CardContent>
-       
+      </CardContent>
     </Card>
   );
 }
