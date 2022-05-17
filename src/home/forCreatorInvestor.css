@@ -36,8 +36,9 @@
  line-height: 1.6;
  font-size: 16px;
  max-width: 500px;
- padding: 0px 10px;
+ /* padding: 0px 10px; */
  text-align:justify;
+ margin: 10px auto;
 }
 
 .role-description-list{

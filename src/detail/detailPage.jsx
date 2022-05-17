@@ -1,10 +1,12 @@
 import { Avatar } from "@material-ui/core";
+import { Delete } from "@mui/icons-material";
 import { Box, Button } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { Carousel, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import DeleteConfirmation from "../products/DeleteConfirmation";
 import { setSingleProductAction } from "../redux/actions/action";
 import "./detailPage.css";
 import EditProductPage from "./EditProductPage";
@@ -20,6 +22,8 @@ function DetailPage() {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState();
   const [isSubmit, setIsSubmit] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+
 
   const singleProduct = useSelector((state) => state.product.singleProduct);
   const myInfo = useSelector((state) => state.user.myInfo);
@@ -78,9 +82,7 @@ const fetchProduct = async(productId) => {
     for(let i= 0; i <= selectedImages.length; i++){
       userData.append(`images`,selectedImages[i])
     }
-
     try {
-      
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/products/me/${singleProduct._id}/images`,
         {
@@ -258,6 +260,14 @@ const fetchProduct = async(productId) => {
               >
                 Edit Product
               </Button>
+              <Button
+                className="theme-btn"
+                style={{border:"1px solid white"}}
+
+                onClick={() => setModalShow(true)}
+              >
+                <Delete/>
+              </Button>
             </>
           ) }
      
@@ -266,11 +276,18 @@ const fetchProduct = async(productId) => {
       
       {showEditPage && (
         <EditProductPage
-        fetchProduct={fetchProduct}
+          fetchProduct={fetchProduct}
           showEditPage={showEditPage}
           setShowEditPage={setShowEditPage}
-        />
-      )}
+          />
+          )}
+
+          <DeleteConfirmation
+          singleProduct={singleProduct}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            // fetchMyProducts={fetchMyProducts}
+          />
     </Container>
   );
 }

@@ -7,31 +7,11 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { setSingleProductAction } from "../redux/actions/action";
 
 import "./addEditProduct.css";
 
-const CssTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: 'white',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: 'green',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'none',
-    },
-    '&:hover fieldset': {
-      borderColor: 'yellow',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'white',
-    },
-    '& label':{
-        color:'white'
-    }
-  },
-});
+
 
 function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct, fetchMyProducts }) {
 
@@ -164,7 +144,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
       } else {
         const data = await response.json();
         console.log(data);
-        fetchMyProducts()
+        
         setProduct({
           title: "",
           category: "",
@@ -178,17 +158,19 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
           agreement:"",
           inventionAddresses:"",
         })
+      
         
-        if(selectedImages){
-            uploadImages(singleProduct._id)
-        } else{
-          setIsLoading(false);
-        }  
         if(method === "PUT"){
-          fetchProduct(singleProduct._id)
+          setIsLoading(false);
+          dispatch(setSingleProductAction(data.updatedProduct))
+          
+        }else{
+          if(selectedImages){
+            uploadImages(data.product._id)
+          }  
         }
         handleClose()
-        
+       
       }
     } catch (error) {
       console.log(error);
@@ -204,37 +186,85 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
    }
 
 
-   const uploadImages = async(productId) => {
-       console.log("saving the files now")
-       const formData = new FormData()
-       for(let i= 0; i <= selectedImages.length; i++){
-        formData.append(`images`,selectedImages[i])
-      }
+   
+   
+   
+   
+   
+  //  const uploadImages = async(productId) => {
+  //      console.log("saving the files now")
+  //      const formData = new FormData()
+  //      for(let i= 0; i <= selectedImages.length; i++){
+  //       formData.append(`images`,selectedImages[i])
+  //     }
+  //   try {
+  //       const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products/me/${productId}/images`,{
+  //           method:"POST",
+  //           body : formData,
+  //           headers:{
+  //               "authorization" : localStorage.getItem("MyToken")
+  //           }
+  //       }) 
+  //       if(response.status !== 200){
+  //           const data = await response.json();
+  //           console.log(data);
+  //           setError(data.error);
+  //       } else {
+  //           setSuccessMsg(true)
+  //           setIsLoading(false);
+  //           setTimeout(() => setSuccessMsg(false),1000)
+  //           if(singleProduct){
+  //             fetchProduct()
+  //             setSelectedImages([])
+  //             handleClose()
+  //           }
+  //       }
+  //   }
+  //       catch(error){
+  //           console.log(error)
+  //           setError(error)
+  //       }
+  //   }
+
+const uploadImages = async () => {
+    const userData = new FormData();
+    for(let i= 0; i <= selectedImages.length; i++){
+      userData.append(`images`,selectedImages[i])
+    }
     try {
-        const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products/me/${productId}/images`,{
-            method:"POST",
-            body : formData,
-            headers:{
-                "authorization" : localStorage.getItem("MyToken")
-            }
-        }) 
-        if(response.status !== 200){
-            const data = await response.json();
-            console.log(data);
-            setError(data.error);
-        } else {
-            setSuccessMsg(true)
-            setIsLoading(false);
-            setTimeout(() => setSuccessMsg(false),1000)
-            if(singleProduct){
-              fetchProduct()
-            }
+      const response = await fetch(
+        `${process.env.REACT_APP_DEV_BE_URL}/products/me/${singleProduct._id}/images`,
+        {
+          method: "POST",
+          body: userData,
+          headers: {
+            authorization: localStorage.getItem("MyToken"),
+          },
         }
+      );
+      if (response.status !== 200) {
+        const data = await response.json();
+        console.log("response not 200 data, response.status",data, response.status);
+        setError(data.error);
+      } else {
+        const data = await response.json();
+        console.log(data);
+        setSuccessMsg(true);
+        dispatch(setSingleProductAction(data.updatedProduct))
+        setTimeout(() => setSuccessMsg(false), 1000);
+        setSelectedImages([])
+      }
+    } catch (error) {
+      console.log(error);
     }
-        catch(error){
-            console.log(error)
-        }
-    }
+  };
+
+
+
+
+
+
+  
    
   return (
     
@@ -245,7 +275,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
 
-            <CssTextField
+            <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -300,7 +330,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <CssTextField
+              <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -327,7 +357,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <CssTextField
+              <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -346,7 +376,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <CssTextField
+              <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -365,7 +395,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <CssTextField
+              <TextField
                 margin="normal"
                 required
                 fullWidth
@@ -380,7 +410,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <CssTextField
+              <TextField
                 margin="normal"
                 fullWidth
                 size="small"
@@ -396,7 +426,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
 
          
             <Grid item xs={12} md={6}>
-              <CssTextField
+              <TextField
                 margin="normal"
                 fullWidth
                 variant="outlined"
@@ -412,7 +442,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             
           
             <Grid item xs={12} md={6}>
-              <CssTextField
+              <TextField
                 margin="normal"
                 fullWidth
                 variant="outlined"
@@ -427,7 +457,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
             </Grid>
 
             <Grid item xs={12} md={6}>
-              <CssTextField
+              <TextField
                 margin="normal"
                 fullWidth
                 variant="outlined"

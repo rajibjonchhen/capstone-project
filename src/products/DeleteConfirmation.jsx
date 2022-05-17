@@ -1,15 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux';
+import {  useNavigate } from 'react-router-dom';
+import { setProfilePaginationAction } from '../redux/actions/action';
 
 export default function DeleteConfirmation(props) {
 
     const [error, setError] = useState("")
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const singleProduct = useSelector(state => state.product.singleProduct)
 
+    useEffect(() => {
+        // console.log(singleProduct," from useEffect lets delete singleProduct", props.singleProduct._id)
+
+    },[])
 
     const deleteProduct = async () => {
+        console.log(singleProduct,"lets delete singleProduct", props.singleProduct._id)
         try {
           const response = await fetch(
-            `${process.env.REACT_APP_DEV_BE_URL}/products/me/${props.product._id}`,
+            `${process.env.REACT_APP_DEV_BE_URL}/products/me/${props.singleProduct._id}`,
             {
               method: "DELETE",
               headers: {
@@ -25,7 +36,9 @@ export default function DeleteConfirmation(props) {
           } else {
             const data = await response.json();
             console.log("data deleted successfully");
-            props.fetchMyProducts()
+            // props.fetchMyProducts()
+            dispatch(setProfilePaginationAction("My Products"))
+            navigate("/profile")
           }
         } catch (error) {
           console.log(error);
@@ -56,8 +69,8 @@ export default function DeleteConfirmation(props) {
             </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => {props.onHide()}}>Confirm</Button>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button onClick={() => {deleteProduct();props.onHide()}}>Confirm</Button>
+          <Button onClick={() => {props.onHide()}}>Close</Button>
         </Modal.Footer>
       </Modal>
     );

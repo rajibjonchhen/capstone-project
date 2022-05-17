@@ -157,18 +157,9 @@ export default function SingleCard({ product, fetchMyProducts }) {
               </span>
             </Button>
           </div>
-          {product?.creator?._id === myInfo?._id && (
-            <IconButton style={{marginRight:"20px"}} onClick={() => setModalShow(true)}>
-              <Delete />
-            </IconButton>
-          )}
+         
 
-          <DeleteConfirmation
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            product={product}
-            fetchMyProducts={fetchMyProducts}
-          />
+          
         </div>
       </CardContent>
     </Card>
