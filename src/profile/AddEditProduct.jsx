@@ -144,6 +144,7 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
       } else {
         const data = await response.json();
         console.log(data);
+        fetchMyProducts()
         
         setProduct({
           title: "",
@@ -159,7 +160,6 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
           inventionAddresses:"",
         })
       
-        
         if(method === "PUT"){
           setIsLoading(false);
           dispatch(setSingleProductAction(data.updatedProduct))
@@ -185,46 +185,6 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
      console.log("selected images!!!", selectedImages)
    }
 
-
-   
-   
-   
-   
-   
-  //  const uploadImages = async(productId) => {
-  //      console.log("saving the files now")
-  //      const formData = new FormData()
-  //      for(let i= 0; i <= selectedImages.length; i++){
-  //       formData.append(`images`,selectedImages[i])
-  //     }
-  //   try {
-  //       const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products/me/${productId}/images`,{
-  //           method:"POST",
-  //           body : formData,
-  //           headers:{
-  //               "authorization" : localStorage.getItem("MyToken")
-  //           }
-  //       }) 
-  //       if(response.status !== 200){
-  //           const data = await response.json();
-  //           console.log(data);
-  //           setError(data.error);
-  //       } else {
-  //           setSuccessMsg(true)
-  //           setIsLoading(false);
-  //           setTimeout(() => setSuccessMsg(false),1000)
-  //           if(singleProduct){
-  //             fetchProduct()
-  //             setSelectedImages([])
-  //             handleClose()
-  //           }
-  //       }
-  //   }
-  //       catch(error){
-  //           console.log(error)
-  //           setError(error)
-  //       }
-  //   }
 
 const uploadImages = async () => {
     const userData = new FormData();

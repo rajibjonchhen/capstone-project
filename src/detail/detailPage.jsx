@@ -215,19 +215,23 @@ const fetchProduct = async(productId) => {
           
 
             {myInfo._id !== singleProduct?.creator?._id &&
-              <Button className="theme-btn" style={{border:"1px solid white", display:!open? "flex":"none"}} onClick={(e) => setOpen(true)}>
+           
+              <Button className="theme-btn" style={{border:"1px solid white", display:!open? "flex":"none"}} onClick={(e) => {setOpen(true);}}>
                 Contact Creator
-              </Button>}
+              </Button>
+           
+              }
          
         </Col>
         
       </Row>
         <Row
-        style={{ display: open ? "block" : "none", marginTop: "50px" }}
+
+        style={{ display: open ? "block" : "none", marginTop: "50px",backgroundColor:"white" }}
       >
         
-        <Col  xs={12}>
-          <MessageForm setOpen={setOpen}/>
+        <Col  xs={12} id="123">
+          <MessageForm setOpen={setOpen} singleProduct={singleProduct}/>
         </Col>
       </Row>
       <Row  style={{ margin:"50px auto" }}>
@@ -271,9 +275,6 @@ const fetchProduct = async(productId) => {
             </>
           ) }
      
-        </Col>
-      </Row>
-      
       {showEditPage && (
         <EditProductPage
           fetchProduct={fetchProduct}
@@ -288,6 +289,10 @@ const fetchProduct = async(productId) => {
             onHide={() => setModalShow(false)}
             // fetchMyProducts={fetchMyProducts}
           />
+        </Col>
+      </Row>
+      
+
     </Container>
   );
 }

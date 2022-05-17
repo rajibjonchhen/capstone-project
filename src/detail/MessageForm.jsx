@@ -8,29 +8,31 @@ import { Close } from "@mui/icons-material";
 import Meeting from "./Meeting";
 
 
-function MessageForm({setOpen}) {
+function MessageForm({setOpen, singleProduct}) {
 
     const myInfo = useSelector(state => state.user.myInfo ) 
-    const singleProduct = useSelector(state => state.product.singleProduct ) 
     const [bookAMeeting, setBookAMeeting] = useState(false)
+    const [successMsg, setSuccessMsg] = useState("")
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [isSubmit, setIsSubmit] = useState(false)
     const [messageErr, setMessageErr] = useState({})
+    const [recipient, setRecipient] = useState( )
     const [message, setMessage] = useState({
         text:"",
         title:"",
         place:"",
-        product:"",
+        productId:"",
         receiver : "",
         meetingDate: ""
 
     })
 
     useEffect(() => {
-        console.log("single product creator",  singleProduct.creator)
-        setMessage({message,recepient:singleProduct.creator})
-    },[])
+        // console.log("single product creator",  singleProduct?.creator?._id)
+        setRecipient(singleProduct?.creator?._id)
+        setMessage({...message,productId:singleProduct?._id})
+    },[singleProduct])
 
     useEffect(() => {
         if(Object.keys(messageErr).length === 0 && isSubmit){
@@ -41,7 +43,7 @@ function MessageForm({setOpen}) {
     const handleChange = (e) => {
         const {name, value} = e.target
         setMessage({...message, [name]:value})
-        console.log(message)
+        // console.log(message)
     }
 
     const verifyMessage = () => {
@@ -53,7 +55,6 @@ function MessageForm({setOpen}) {
             if(message.text.length < 10){
                 error.text = "message must be longer than 10 characters"
             }
-
         }
         if(!message.title){
             error.title = "title must be provided"
@@ -62,19 +63,19 @@ function MessageForm({setOpen}) {
     }
 
     const handleSubmit = () => {
-        console.log(message)
+        // console.log(message)
         setMessageErr(verifyMessage(messageErr))
         setIsSubmit(true)
     }
 
     const submitMessage = async() => {
-        console.log("trying to submit")
+        // console.log("trying to submit")
         try {
             const response = await fetch(
-                `${process.env.REACT_APP_DEV_BE_URL}/users/me/messages`,
+                `${process.env.REACT_APP_DEV_BE_URL}/chats`,
                 {
                 method: "POST",
-                body :JSON.stringify(message),
+                body :JSON.stringify({recipient,message}),
                 headers: {
                     "content-type":"application/json",
                     authorization: localStorage.getItem("MyToken"),
@@ -86,29 +87,40 @@ function MessageForm({setOpen}) {
                 console.log(data);
                 setError(data.error)
                 setTimeout(() => setError(""),2000)
-                ;
                 setIsLoading(false);
             } else {
                 const data = await response.json();
                 console.log(data);
                 setIsLoading(false);
+                setMessage({
+                    text:"",
+                    title:"",
+                    place:"",
+                    product:"",
+                    receiver : "",
+                    meetingDate: ""
+                })
+                setSuccessMsg("Successfully send message")
+                setTimeout(() => setSuccessMsg(""), 500)
+                setTimeout(() => setOpen(false), 500)
+
             }
             } catch (error) {
-            console.log(error);
-            setIsLoading(false);
-            setError(error)
-            setTimeout(() => setError(""),2000)
-
+                console.log(error);
+                setIsLoading(false);
+                setError(error)
+                setTimeout(() => setError(""),2000)
             }
     }
 
 
 
     return ( 
-        <div className="message-box bg-white">
-            <Close onClick={() => setOpen(false)} className="pointer text-dark"/>
+        <div className="message-box" style={{scrollBehavior:"smooth"}}>
+            <Close onClick={() => {setOpen(false); window.scrollTo({ behavior: 'smooth', top: 0 })}} className="pointer text-dark"/>
             <h1 className="text-dark">Write your message</h1>
            <Alert variant="danger" style={{opacity: error? 1:0}}>{error}</Alert>
+           <Alert variant="success" style={{opacity: successMsg? 1:0}}>{successMsg}</Alert>
                 <TextField
                     margin="normal"
                     required
@@ -138,7 +150,7 @@ function MessageForm({setOpen}) {
                     autoFocus
                     onChange={(e) => handleChange(e)}
                     />
-                    <Typography color="secondary" align='left'>{ messageErr?.text && messageErr?.text} </Typography>
+                    <Typography color="secondary" align='left'>{ !message?.text && messageErr?.text} </Typography>
                     {!bookAMeeting ? <Button className="theme-btn" style={{display:bookAMeeting? "none":"block"}} onClick={() => setBookAMeeting(true)}>Book a meeting</Button> 
                         :<Box style={{display:"flex", alignItems:'baseline', justifyContent:"space-between"}}>
                     <TextField

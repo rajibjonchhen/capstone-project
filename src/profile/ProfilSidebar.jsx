@@ -31,7 +31,21 @@ function ProfilSidebar() {
           }}
           
         >
-          {myInfo?.role === "creator"? <Button
+          {myInfo?.role === "investor"? 
+
+          <Button
+          className="extra-header-button"
+          name="Projects Liked"
+          style={{
+            backgroundColor:
+              profilePagination === "Projects Liked" && `${highlightColor}`
+          }}
+          onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+          >
+          Projects Liked
+          </Button>
+          :
+          <Button
             className="extra-header-button"
             name="My Creations"
             style={{
@@ -42,18 +56,6 @@ function ProfilSidebar() {
           >
             My Creations
           </Button> 
-          :
-           <Button
-           className="extra-header-button"
-           name="Projects Liked"
-           style={{
-             backgroundColor:
-               profilePagination === "Projects Liked" && `${highlightColor}`
-           }}
-           onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
-         >
-           Projects Liked
-         </Button>
           }
           <Button
           className="extra-header-button"

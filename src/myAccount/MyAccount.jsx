@@ -129,7 +129,7 @@ function MyAccount() {
 
     return ( <div className="mt-3 p-5" style={{backgroundColor:"rgb(211, 211, 211, 0.9)", borderRadius:"5px"}}>
         <p className="h3 text-dark">Update my Information</p>
-            <Alert margin="normal"  severity="success" style={{opacity:successMsg? 1:0, marginTop:"10px"}}>Updated successfully</Alert>
+            <Alert margin="normal"  severity="success" style={{opacity:successMsg? 1:0, width:"100%", margin:" 10px auto 0px"}}>Updated successfully</Alert>
     
        {myProfile && <Grid container className="account-box ">
             <Grid item xs={12}  md={4} lg={3} className='account-image-box '>
