@@ -68,7 +68,7 @@ function ProfilSidebar() {
           >
             My Messages
           </Button>
-          <Button
+         {myInfo?.role !== "investor" && <Button
           className="extra-header-button"
             name="Add New Product"
             style={{
@@ -78,7 +78,7 @@ function ProfilSidebar() {
             onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
           >
             Add New Product
-          </Button>
+          </Button>}
           <Button
           className="extra-header-button"
             name="My Account"

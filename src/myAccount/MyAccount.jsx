@@ -8,28 +8,6 @@ import "./myAccount.css";
 
 
 
-// const CssTextField = styled(TextField)({
-//     '& label.Mui-focused': {
-//       color: 'white',
-//     },
-//     '& .MuiInput-underline:after': {
-//       borderBottomColor: 'green',
-//     },
-//     '& .MuiOutlinedInput-root': {
-//       '& fieldset': {
-//         borderColor: 'white',
-//       },
-//       '&:hover fieldset': {
-//         borderColor: 'yellow',
-//       },
-//       '&.Mui-focused fieldset': {
-//         borderColor: 'green',
-//       },
-//       '& label':{
-//           color:'white'
-//       }
-//     },
-//   });
 
 function MyAccount() {
 
@@ -127,7 +105,7 @@ function MyAccount() {
         }
     }
 
-    return ( <div className="mt-3 p-5" style={{backgroundColor:"rgb(211, 211, 211, 0.9)", borderRadius:"5px"}}>
+    return ( <div className="mt-3 p-5" style={{backgroundColor:"rgb(214,227,220)", borderRadius:"5px"}}>
         <p className="h3 text-dark">Update my Information</p>
             <Alert margin="normal"  severity="success" style={{opacity:successMsg? 1:0, width:"100%", margin:" 10px auto 0px"}}>Updated successfully</Alert>
     

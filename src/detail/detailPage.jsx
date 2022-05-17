@@ -216,7 +216,7 @@ const fetchProduct = async(productId) => {
 
             {myInfo._id !== singleProduct?.creator?._id &&
            
-              <Button className="theme-btn" style={{border:"1px solid white", display:!open? "flex":"none"}} onClick={(e) => {setOpen(true);}}>
+              <Button className="theme-btn" style={{border:"1px solid white", display:!open? "flex":"none"}} onClick={(e) => {setOpen(true);  window.scrollTo({ behavior: 'smooth', top: 1000 })}}>
                 Contact Creator
               </Button>
            
@@ -230,7 +230,7 @@ const fetchProduct = async(productId) => {
         style={{ display: open ? "block" : "none", marginTop: "50px",backgroundColor:"white" }}
       >
         
-        <Col  xs={12} id="123">
+        <Col  xs={12} id="123" >
           <MessageForm setOpen={setOpen} singleProduct={singleProduct}/>
         </Col>
       </Row>

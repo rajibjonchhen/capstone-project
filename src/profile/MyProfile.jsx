@@ -78,10 +78,13 @@ function MyProfile() {
 
                                 {/* showing projects liked */}
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "Projects Liked"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
-                                {myInfo?.productLiked?.length === 0 && <Typography variant="h3" paragraph>You do not have any projects liked</Typography>}
-                                {myInfo?.productLiked?.map((product, i) => 
-                                <Col  key={i} item xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
-                                    <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
+                                {myInfo?.productsLiked?.length === 0 && <Typography variant="h3" paragraph>You do not have any projects liked</Typography>}
+                                {myInfo?.productsLiked?.map((product, i) => 
+                                <Col  key={i}  xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
+                                    <div className="py-2 px-0 w-100">
+
+                                        <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
+                                    </div>
                                 </Col> )}
                             </Row>
                         
