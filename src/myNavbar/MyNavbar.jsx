@@ -22,7 +22,7 @@ import * as React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setSelectedCategoryAction, setUnreadMessageAction } from "../redux/actions/action";
+import { setProfilePaginationAction, setSelectedCategoryAction, setUnreadMessageAction } from "../redux/actions/action";
 import "./myNavbar.css";
 
 function MyNavbar() {
@@ -128,10 +128,9 @@ function MyNavbar() {
 
   const renderUnreadMessages = (
     <Menu>
-
       {unreadMessages.map((message, i) => 
       <div key={i}>
-
+          <p>{message.text}</p>
       </div>)}
     </Menu>
   )
@@ -376,6 +375,7 @@ function MyNavbar() {
                     size="large"
                     aria-label="show 4 new mails"
                     color="inherit"
+                    onClick={() => {dispatch(setProfilePaginationAction("My Messages")); navigate("/profile")}}
                   >
                     <Badge badgeContent={unreadMessages.length} color="error">
                       <MailIcon />

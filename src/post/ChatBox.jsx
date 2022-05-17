@@ -95,7 +95,7 @@ function ChatBox() {
 
   return (
 
-    <div  style={{ borderRadius:'5px',overflow:"hidden", boxShadow:"0 0 3px 3px rgb(63,94,107)",height:"100%", display:"flex", justifyContent:"space-between", flexDirection:"column"}}>
+    <div  style={{ overflow:"hidden", border:"1px solid rgb(63,94,107)",height:"100%", display:"flex", justifyContent:"space-between", flexDirection:"column"}}>
         <div style={{ borderBottom:"1px solid rgb(53,85,99)"}}>
            
                 <ListItem  className="pointer">
@@ -112,7 +112,7 @@ function ChatBox() {
         </div>
         
        
-            <div style={{overflow:"scroll", alignSelf:"stretch", height:"70vh"}}>
+            <div style={{overflow:"scroll", alignSelf:"stretch", height:"65vh"}}>
                 {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => 
                 <div key={i}  className={`p-2 w-25 ${message.sender === myInfo?._id?  "ml-auto":"mr-auto"}`}>
                     <div className='single-message'>
@@ -133,7 +133,7 @@ function ChatBox() {
         
         
         
-            <div style={{display:"flex",gap:"5px", padding:"10px"}}>
+            <div style={{display:"flex", padding:"10px", position:'relative'}}>
                 <input value={message.text} onChange={(e) => handleTextChange(e)} 
                 className="form-control"
                 style={{
@@ -145,7 +145,8 @@ function ChatBox() {
                   width:"100%",
                   borderRadius:"30px",
               }}/>
-                <Button className="theme-btn" 
+                <Button className="theme-btn"
+                style={{position:"absolute",right:"10px", height:"100%", borderRadius:"30px", height:'35px'}} 
                 onClick={() => {
                     if(message.text.length > 0){
                         sendMessage()

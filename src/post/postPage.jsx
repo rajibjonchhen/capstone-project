@@ -120,7 +120,7 @@ function PostPage() {
            
         </Col>
 
-        <Col  sm={12} md={8} lg={9} style={{padding:"0 3px"}}>
+        <Col  sm={12} md={8} lg={9} style={{padding:"3px"}}>
 
             {Object.keys(chatUser).length  > 0? <ChatBox/> : <>
                 <div sx={{ margin:"3px 0px 0px", height:"100%"}}>

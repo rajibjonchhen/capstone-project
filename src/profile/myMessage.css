@@ -44,3 +44,9 @@
 .sender-list:hover{
     background-color: rgb(145, 145, 145);
 }
+
+.unread-message{
+    background-color: rgb(13, 97, 153);
+    margin: 10px auto;
+    padding:10px
+}

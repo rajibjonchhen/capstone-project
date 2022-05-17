@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setAllChatsAction } from "../redux/actions/action";
 import "./myMessage.css";
 function MyMessages() {
   const [error, setError] = useState();
@@ -16,66 +15,82 @@ function MyMessages() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const getMessages = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/chats/me`,
-        {
-          method: "GET",
-          headers: {
-            authorization: localStorage.getItem("MyToken"),
-          },
-        }
-      );
-      if (response.status !== 200) {
-        const data = await response.json();
-        console.log(data);
-        setError(data.error);
-        setIsLoading(false);
-      } else {
-        const data = await response.json();
-        console.log(data);
-        setIsLoading(false);
-        dispatch(setAllChatsAction(data.messages));
-      }
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
+  const unreadMessages = useSelector((state) => state.chat.unreadMessages);
+
+
+  // const getMessages = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.REACT_APP_DEV_BE_URL}/chats/me`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           authorization: localStorage.getItem("MyToken"),
+  //         },
+  //       }
+  //     );
+  //     if (response.status !== 200) {
+  //       const data = await response.json();
+  //       console.log(data);
+  //       setError(data.error);
+  //       setIsLoading(false);
+  //     } else {
+  //       const data = await response.json();
+  //       console.log(data);
+  //       setIsLoading(false);
+  //       dispatch(setAllChatsAction(data.messages));
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     setIsLoading(false);
+  //   }
+  // };
 
   useEffect(() => {
-    getMessages();
+    // getMessages();
+    console.log("unreadMessages", unreadMessages);
   }, []);
 
   return (
     <Container  className="py-3">
+        <Row  style={{position:"sticky", top:"10px", background:"rgb(4,52,71)"}}>
+          <Col>
+
+          <h3>New Messages</h3>
+          <h5>Total number of messages {unreadMessages.length}</h5>
+          {/* <hr className="bg-light pb-0 mb-0"/> */}
+          </Col>
+        </Row>
     <Row  className=" mt-3 py-3">
-      <Col  xs={12} md={6} lg={4} className="msg-sender-list-box p-1">
-          <h3>Messages</h3>
-          <hr className="bg-light pb-0 mb-0"/>
-        {allChats.map((chat, i ) => (
-            <div key={i}>
-              
-                <div
+      <Col  xs={12} md={12} lg={12} className="msg-sender-list-box p-1" style={{height:"70vh", overflow:"scroll"}}>
+        {unreadMessages?.map((message, i ) => (
+            <div key={i} >
+              <div className='unread-message'>
+                <p>
+                  {message?.text}
+                </p>
+                <p>
+                  {message?.createdAt}
+                </p>
+                </div>
+                {/* <div
                     className="sender-list "
                     onClick={() => {
                       setSingleChat(chat);
                     }}
                     >
                     <span className="m-1">
-                        <Avatar src={chat?.members[1]?.avatar}/>
+                        <Avatar src={message?.members[1]?.avatar}/>
                     </span>
                       <span className="m-1">
                         {chat?.members[1]?.name.toUpperCase()}{" "}
                         {chat?.members[1]?.surname.toUpperCase()}
                     </span>
-                </div>
+                </div> */}
                   
         </div>
         ))}
-      </Col>
-      <Col xs={12} md={6} lg={8} item className="msg-detail-box p-1">
+      
       
         {Object.keys(singleChat).length > 0 &&
          

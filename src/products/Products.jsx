@@ -46,7 +46,7 @@ function Products() {
     // dispatch(setSelectedCategoryAction("all"))
     setUrl(myInfo? `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`:`${process.env.REACT_APP_DEV_BE_URL}/products?s=${search}`)
     console.log(myInfo,"myInfo");
-    fetchProducts("all");
+    // fetchProducts("all");
   }, []);
 
 

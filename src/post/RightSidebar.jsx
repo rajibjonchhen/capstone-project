@@ -101,12 +101,12 @@ const handleChange = (e) =>  {
                   borderRadius:"30px",
               }}
             placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
-      <div style={{ height:"400px", overflow:"scroll", background:"rgb(5,52,71)",}}>
+      <div style={{ height:"500px", overflow:"scroll", background:"rgb(5,52,71)",}}>
       {(filteredUsers.length > 0? filteredUsers : allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>
-            <ListItemAvatar>
-              <Avatar alt={user.name} src={user.avatar} />
-            </ListItemAvatar>
+            
+              <img alt={user.name} src={user.avatar} style={{width:"50px", height:"50px", marginRight:"10px"}}/>
+           
             <Typography
             style={{fontSize:"12px"}}
             >
