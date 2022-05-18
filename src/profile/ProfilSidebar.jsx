@@ -13,7 +13,7 @@ function ProfilSidebar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(profilePagination.length<0){
+    if(profilePagination.length === 0){
       dispatch(setProfilePaginationAction("My Creations"));
     }
   }, []);

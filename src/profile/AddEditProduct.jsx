@@ -233,7 +233,7 @@ const uploadImages = async () => {
       <Container className="mt-3 p-5 text-dark" style={{backgroundColor:"rgb(173,191,190)"}}>
           <h2>Fill in the product details</h2>
           
-          <div className="bg-success p-3" style={{opacity:success? "1":"0"}}>Successfully updated</div>
+          <div className="p-3" style={{display:success? "block":"none", backgroundColor:"rgb(0,128,1,0.2)"}}>Successfully updated</div>
           {error && <Alert margin="normal"  severity="error">{error}</Alert>}
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>

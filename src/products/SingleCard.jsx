@@ -160,9 +160,9 @@ export default function SingleCard({ product, fetchMyProducts, getProductsLiked}
                 }}
               />
               <span style={{ fontSize: "10px", textAlign: "left" }}>
-                {isLiked
-                  ? `You and ${product?.Likes.length} other`
-                  : `${product?.Likes.length}`}
+                {!isLiked? (product?.Likes.length > 0 && product?.Likes.length) 
+                :(product?.Likes.length>0 ? `You and ${product?.Likes.length} other`:
+                   "You")}
               </span>
             </Button>
           </div>

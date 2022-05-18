@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setUnreadMessageAction } from "../redux/actions/action";
+import { setChatUserAction, setUnreadMessageAction } from "../redux/actions/action";
 import "./myMessage.css";
+
 function MyMessages() {
   const [error, setError] = useState();
   const [singleChat, setSingleChat] = useState({});
@@ -66,7 +67,7 @@ function MyMessages() {
       <Col  xs={12} md={12} lg={12} className="msg-sender-list-box p-1" style={{height:"70vh", overflow:"scroll"}}>
         {unreadMessages?.map((message, i ) => (
             <div key={i} >
-                <div className='unread-message'>
+                <div className='unread-message' onClick={() => {dispatch(setChatUserAction(message?.sender)); navigate("/posts")}}>
                     <div className="message-element">
                     {" "}
                     <span className="m-1">

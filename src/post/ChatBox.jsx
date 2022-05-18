@@ -96,7 +96,8 @@ function ChatBox() {
   return (
 
     <div  style={{ overflow:"hidden", border:"1px solid rgb(63,94,107)",height:"100%", display:"flex", justifyContent:"space-between", flexDirection:"column"}}>
-        <div style={{ borderBottom:"1px solid rgb(53,85,99)"}}>
+        <div style={{ borderBottom:"1px solid rgb(53,85,99)", diplay:"flex", alignItems:'center', justifyContent:"space-between"}}>
+                   
            
                 <ListItem  className="pointer">
                     <ListItemAvatar>
