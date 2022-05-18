@@ -15,7 +15,7 @@ import "./addEditProduct.css";
 
 function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fetchProduct, fetchMyProducts }) {
 
-    const [successMsg, setSuccessMsg] = useState(false)
+    const [success, setSuccess] = useState(false)
     const [selectedImages, setSelectedImages] = useState([])  
     const [productErr, setProductErr] = useState({});
     const [error, setError] = useState();
@@ -145,31 +145,32 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
         const data = await response.json();
         console.log(data);
         // fetchMyProducts()
-        
-        
-        setProduct({
-          title: "",
-          category: "",
-          summary: "",
-          description: "",
-          askingPrice: "",
-          criteria: "",
-          patent: "",
-          reqInvestment:"",
-          auxiliaryProducts:"",
-          agreement:"",
-          inventionAddresses:"",
-        })
-      
        
-          handleClose()
-          setIsLoading(false);
+        setIsLoading(false);
           dispatch(setSingleProductAction(data.updatedProduct))
-          handleClose()
-       
-          if(selectedImages){
-            uploadImages(data.product._id)
-          }  
+          setSuccess(true)
+        setTimeout(() => setSuccess(false),1000)
+        setTimeout(() => handleClose(),1000)
+        
+        if(selectedImages){
+          uploadImages(data.product._id)
+        }
+        if(method === "POST"){
+            fetchMyProducts()
+          setProduct({
+            title: "",
+            category: "",
+            summary: "",
+            description: "",
+            askingPrice: "",
+            criteria: "",
+            patent: "",
+            reqInvestment:"",
+            auxiliaryProducts:"",
+            agreement:"",
+            inventionAddresses:"",
+          })
+        }
         
        
       }
@@ -210,9 +211,9 @@ const uploadImages = async () => {
       } else {
         const data = await response.json();
         console.log(data);
-        setSuccessMsg(true);
+        setSuccess(true);
         dispatch(setSingleProductAction(data.updatedProduct))
-        setTimeout(() => setSuccessMsg(false), 1000);
+        setTimeout(() => setSuccess(false), 1000);
         setSelectedImages([])
       }
     } catch (error) {
@@ -231,7 +232,8 @@ const uploadImages = async () => {
     
       <Container className="mt-3 p-5 text-dark" style={{backgroundColor:"rgb(173,191,190)"}}>
           <h2>Fill in the product details</h2>
-          {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
+          
+          <div className="bg-success p-3" style={{opacity:success? "1":"0"}}>Successfully updated</div>
           {error && <Alert margin="normal"  severity="error">{error}</Alert>}
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
@@ -453,10 +455,10 @@ const uploadImages = async () => {
             </Button>
            
           <Button 
-          className="theme-btn"
+          className={success? "bg-success":"theme-btn"}
           variant="contained"
           component="label"
-          onClick={(e) => handleSubmit(e)}>Submit</Button>
+          onClick={(e) => handleSubmit(e)}> Submit</Button>
           
           </Box>
       </Container>
