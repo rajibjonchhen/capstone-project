@@ -66,19 +66,32 @@ function MyMessages() {
       <Col  xs={12} md={12} lg={12} className="msg-sender-list-box p-1" style={{height:"70vh", overflow:"scroll"}}>
         {unreadMessages?.map((message, i ) => (
             <div key={i} >
-              <div className='unread-message'>
-                <p>
-                  {message?.text}
-                </p>
-                <p>
-                  <span className="m-1">
-                    {new Date(message?.createdAt).toLocaleTimeString()}   
-                  </span>
-                  <span >
-                    {new Date(message?.createdAt).toLocaleDateString()}   
-                  </span>
+                <div className='unread-message'>
+                    <div className="message-element">
+                    {" "}
+                    <span className="m-1">
+                      <Avatar src={message?.sender?.avatar} className="p-1"/>
+                    </span>
+                    <span className="m-1" style={{fontSize:"15px", fontWeight:"600"}}>
+                      {message?.sender?.name.toUpperCase()} {message?.sender?.surname.toUpperCase()}
+                    </span>
+                    
+                  </div>
+                  <div>
 
-                </p>
+                  <p>
+                    {message?.text}
+                  </p>
+                  <p>
+                    <span className="m-1">
+                      {new Date(message?.createdAt).toLocaleTimeString()}   
+                    </span>
+                    <span >
+                      {new Date(message?.createdAt).toLocaleDateString()}   
+                    </span>
+
+                  </p>
+                  </div>
                 </div>
                 {/* <div
                     className="sender-list "

@@ -82,7 +82,7 @@ function ForCreatorInvestor() {
                   </ul>
                 </div>
                 <Button
-                  style={{ position: "absolute", bottom: "10px", left: "40%" }}
+                  style={{ position: "absolute", bottom: "10px", left: "37%" }}
                   className="direction-btn"
                   onClick={() => {
                     dispatch(setRoleAction(role.type));
