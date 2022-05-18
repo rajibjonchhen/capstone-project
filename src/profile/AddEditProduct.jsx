@@ -228,7 +228,7 @@ const uploadImages = async () => {
    
   return (
     
-      <Container className="mt-3 p-5 text-dark" style={{backgroundColor:"rgb(211, 211, 211, 0.9)", borderRadius:"5px"}}>
+      <Container className="mt-3 p-5 text-dark" style={{backgroundColor:"rgb(173,191,190)"}}>
           <h2>Fill in the product details</h2>
           {successMsg && <Alert margin="normal"  severity="success">Updated successfully</Alert>}
           {error && <Alert margin="normal"  severity="error">{error}</Alert>}
