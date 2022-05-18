@@ -49,7 +49,7 @@ export default function SinglePost({ post, fetchPosts }) {
     try {
       
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/posts/${postId}/comments`,
+        `${process.env.REACT_APP_PROD_BE_URL}/posts/${postId}/comments`,
         {
           method: "GET",
           headers: {
@@ -79,7 +79,7 @@ export default function SinglePost({ post, fetchPosts }) {
     try {
       
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/posts/${post._id}/comments`,
+        `${process.env.REACT_APP_PROD_BE_URL}/posts/${post._id}/comments`,
         {
           method: "Post",
           body:JSON.stringify({comment:comment }),
@@ -110,7 +110,7 @@ export default function SinglePost({ post, fetchPosts }) {
   const handleLikes = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/posts/${post._id}/likes`,
+        `${process.env.REACT_APP_PROD_BE_URL}/posts/${post._id}/likes`,
         {
           method: "PUT",
           headers: {

@@ -28,7 +28,7 @@ function OauthLogin() {
             
             
             
-          <a style={{textDecoration:"none"}} href={role !== "investor"? `${process.env.REACT_APP_DEV_BE_URL}/users/googleLoginCreator` : `${process.env.REACT_APP_DEV_BE_URL}/users/googleLoginInvestor`}>
+          <a style={{textDecoration:"none"}} href={role !== "investor"? `${process.env.REACT_APP_PROD_BE_URL}/users/googleLoginCreator` : `${process.env.REACT_APP_PROD_BE_URL}/users/googleLoginInvestor`}>
           <Box className = "continue-with-btn pointer" >
               <img className="oauth-icon"  src="https://res.cloudinary.com/dai5duzoj/image/upload/v1649765911/creators-space-products/ajmzft8zovrlpewx3un9.png"/>
                 Google

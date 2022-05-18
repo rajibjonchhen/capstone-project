@@ -3,7 +3,7 @@ import { setMyInfoAction } from "./redux/actions/action"
 const  getMyInfo =async() => {
     
         try {
-            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/me`,{
+            const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/users/me`,{
                 method:"GET",
                 headers:{
                     "authorization" : localStorage.getItem("MyToken"),

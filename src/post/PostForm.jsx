@@ -70,9 +70,9 @@ const validateForm = (signInUser) => {
 
 const uploadPost = async() => {
 try {
-    console.log(process.env.REACT_APP_DEV_BE_URL)
+    console.log(process.env.REACT_APP_PROD_BE_URL)
     console.log(newPost)
-    const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/posts`,{
+    const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/posts`,{
         method:"POST",
         body : JSON.stringify(newPost),
         headers:{

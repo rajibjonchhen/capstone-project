@@ -58,7 +58,7 @@ export default function RightSidebar() {
   const fetchUsers = async() => {
     
       try {
-          const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users`,{
+          const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/users`,{
               method:"GET",
               headers:{
                   "authorization" : localStorage.getItem("MyToken"),

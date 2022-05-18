@@ -53,7 +53,7 @@ function DetailPage() {
 const fetchProduct = async(productId) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_DEV_BE_URL}/products/${productId}`,
+      `${process.env.REACT_APP_PROD_BE_URL}/products/${productId}`,
       {
         method: "GET",
         headers: {
@@ -84,7 +84,7 @@ const fetchProduct = async(productId) => {
     }
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products/me/${singleProduct._id}/images`,
+        `${process.env.REACT_APP_PROD_BE_URL}/products/me/${singleProduct._id}/images`,
         {
           method: "POST",
           body: userData,

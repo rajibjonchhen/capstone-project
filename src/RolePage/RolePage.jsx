@@ -26,7 +26,7 @@ function RolePage() {
     
     const handleRole = async(role) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/me`,{
+            const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/users/me`,{
                 method:"PUT",
                 body:JSON.stringify({role}),
                 headers:{

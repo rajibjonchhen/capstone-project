@@ -29,7 +29,7 @@ function ChatBox() {
     const fetchChat = async() => {
         try {
             console.log("fetching chat")
-            const response  = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/chats`, {
+            const response  = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/chats`, {
                 method:"POST",
                 body:JSON.stringify({recipient:chatUser}),
                 headers:{
@@ -65,7 +65,7 @@ function ChatBox() {
         setSendMsgLoading(true)
         try {
             console.log("fetching chat")
-            const response  = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/chats/${currentChat._id}`, {
+            const response  = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/chats/${currentChat._id}`, {
                 method:"POST",
                 body:JSON.stringify({message}),
                 headers:{

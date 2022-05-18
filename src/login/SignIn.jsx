@@ -89,9 +89,9 @@ const validateForm = (signInUser) => {
 
 const loginUser = async()=> {
     try {
-        console.log(process.env.REACT_APP_DEV_BE_URL)
+        console.log(process.env.REACT_APP_PROD_BE_URL)
         console.log(signInUser)
-        const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/signIn`,{
+        const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/users/signIn`,{
             method:"POST",
             body : JSON.stringify(signInUser),
             headers:{

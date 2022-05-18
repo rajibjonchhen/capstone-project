@@ -44,7 +44,7 @@ function PostPage() {
 
     const fetchPosts = async() => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/posts`,{
+            const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/posts`,{
                 method:"GET",
                 headers:{
                     "authorization" : localStorage.getItem("MyToken"),
@@ -74,7 +74,7 @@ function PostPage() {
     const uploadPost = async() => {
         try {
            
-            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/posts`,{
+            const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/posts`,{
                 method:"POST",
                 body : JSON.stringify(newPost),
                 headers:{

@@ -42,7 +42,7 @@ function Products() {
   useEffect(() => {
     window.scrollTo(0, 0);
     // dispatch(setSelectedCategoryAction("all"))
-    setUrl(myInfo? `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`:`${process.env.REACT_APP_DEV_BE_URL}/products?s=${search}`)
+    setUrl(myInfo? `${process.env.REACT_APP_PROD_BE_URL}/products/allProducts?s=${search}`:`${process.env.REACT_APP_PROD_BE_URL}/products?s=${search}`)
     
     // console.log(myInfo,"myInfo");
     fetchProducts("all");
@@ -67,7 +67,7 @@ function Products() {
       
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`,
+        `${process.env.REACT_APP_PROD_BE_URL}/products/allProducts?s=${search}`,
         {
           method: "GET",
           headers: {
@@ -106,7 +106,7 @@ function Products() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`,
+        `${process.env.REACT_APP_PROD_BE_URL}/products/allProducts?s=${search}`,
         {
           method: "GET",
           headers: {

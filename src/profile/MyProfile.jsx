@@ -39,7 +39,7 @@ function MyProfile() {
         console.log("getProductsLiked")
         try {
           const response = await fetch(
-            `${process.env.REACT_APP_DEV_BE_URL}/users/me/productsLiked`, {
+            `${process.env.REACT_APP_PROD_BE_URL}/users/me/productsLiked`, {
               method : "GET",
               headers :{
                 authorization : localStorage.getItem("MyToken")
@@ -66,7 +66,7 @@ function MyProfile() {
 
     const fetchMyProducts = async() => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/products/me`,{
+            const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/products/me`,{
                 method:"GET",
                 headers:{
                     "authorization" : localStorage.getItem("MyToken"),

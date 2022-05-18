@@ -53,7 +53,7 @@ function MyAccount() {
         formData.append("avatar", avatar)
         console.log(formData)
         try {
-            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/me/avatar`,{
+            const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/users/me/avatar`,{
                 method:"POST",
                 body : formData,
                 headers:{
@@ -77,7 +77,7 @@ function MyAccount() {
     const saveChange = async() => {
         setError("")
         try {
-            const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/users/me`,{
+            const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/users/me`,{
                 method:"PUT",
                 body : JSON.stringify(myProfile),
                 headers:{

@@ -49,7 +49,7 @@ function MyNavbar() {
 
   const fetchUnreadMsgCount = async() =>{
     try {
-      const response = await fetch(`${process.env.REACT_APP_DEV_BE_URL}/chats/me/unreadMsg`, {
+      const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/chats/me/unreadMsg`, {
         method:"GET",
         headers:{
           authorization: localStorage.getItem("MyToken")

@@ -72,7 +72,7 @@ function MessageForm({setOpen, singleProduct}) {
         // console.log("trying to submit")
         try {
             const response = await fetch(
-                `${process.env.REACT_APP_DEV_BE_URL}/chats`,
+                `${process.env.REACT_APP_PROD_BE_URL}/chats`,
                 {
                 method: "POST",
                 body :JSON.stringify({recipient,message}),

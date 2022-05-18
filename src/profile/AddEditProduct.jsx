@@ -123,10 +123,10 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
 
   const saveProduct = async () => {
     
-      console.log("saving now " , process.env.REACT_APP_DEV_BE_URL + url, method , "singleProduct")
+      console.log("saving now " , process.env.REACT_APP_PROD_BE_URL + url, method , "singleProduct")
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}` + url,
+        `${process.env.REACT_APP_PROD_BE_URL}` + url,
         {
           method,
           body: JSON.stringify(product),
@@ -195,7 +195,7 @@ const uploadImages = async () => {
     }
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/products/me/${singleProduct._id}/images`,
+        `${process.env.REACT_APP_PROD_BE_URL}/products/me/${singleProduct._id}/images`,
         {
           method: "POST",
           body: userData,

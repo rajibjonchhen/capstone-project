@@ -20,7 +20,7 @@ export default function DeleteConfirmation(props) {
         console.log(singleProduct,"lets delete singleProduct", props.singleProduct._id)
         try {
           const response = await fetch(
-            `${process.env.REACT_APP_DEV_BE_URL}/products/me/${props.singleProduct._id}`,
+            `${process.env.REACT_APP_PROD_BE_URL}/products/me/${props.singleProduct._id}`,
             {
               method: "DELETE",
               headers: {
