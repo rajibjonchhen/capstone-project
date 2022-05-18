@@ -16,6 +16,7 @@ export const ACTIONS = {
     SET_ALL_PRODUCTS : "SET_ALL_PRODUCTS",
     SET_MY_PRODUCTS : "SET_MY_PRODUCTS",
     SET_SELECTED_CATEGORY : "SET_SELECTED_CATEGORY",
+    SET_PRODUCTS_LIKED : "SET_PRODUCTS_LIKED",
 
     SET_SINGLE_POST : " SET_SINGLE_POST",
     SET_ALL_POSTS : "SET_ALL_POSTS",
@@ -76,6 +77,11 @@ export const setAllProductsAction = (products) => ({
 
 export const setMyProductsAction = (products) => ({
     type : ACTIONS.SET_MY_PRODUCTS,
+    payload : products
+})
+
+export const setProductsLikedAction = (products) => ({
+    type : ACTIONS.SET_PRODUCTS_LIKED,
     payload : products
 })
 

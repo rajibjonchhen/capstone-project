@@ -5,15 +5,15 @@ import { initialState } from "../store/store";
     switch (action.type){
 
         case ACTIONS.SET_SINGLE_PRODUCT: 
-        return {
-            ...state,
-            singleProduct : action.payload
-        }
+            return {
+                ...state,
+                singleProduct : action.payload
+            }
 
         case ACTIONS.SET_ALL_PRODUCTS:
             return {
                 ...state,
-            allProducts : action.payload
+                allProducts : action.payload
             }
 
         case  ACTIONS.SET_SELECTED_CATEGORY:
@@ -26,6 +26,12 @@ import { initialState } from "../store/store";
             return{
                 ...state,
                 myProducts : action.payload
+            }
+
+        case ACTIONS.SET_PRODUCTS_LIKED:
+            return{
+                ...state,
+                productsLiked : action.payload
             }
         default: return state
     }

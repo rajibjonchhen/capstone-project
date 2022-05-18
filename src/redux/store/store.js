@@ -20,7 +20,8 @@ product : {
     allProducts:[],
     singleProduct : {},
     selectedCategory : "all",
-    myProducts : []
+    myProducts : [],
+    productsLiked : []
 },
 post : {
     allPosts:[],
