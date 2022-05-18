@@ -13,8 +13,10 @@ function ProfilSidebar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setProfilePaginationAction("My Creations"));
-  }, [dispatch]);
+    if(profilePagination.length<0){
+      dispatch(setProfilePaginationAction("My Creations"));
+    }
+  }, []);
 
   const highlightColor = "rgb(3,78,106)"
 
