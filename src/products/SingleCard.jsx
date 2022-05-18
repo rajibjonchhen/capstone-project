@@ -10,7 +10,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setSingleProductAction } from "../redux/actions/action";
+import { setMyInfoAction, setSingleProductAction } from "../redux/actions/action";
 import MyVerticallyCenteredModal from "./DeleteConfirmation";
 import DeleteConfirmation from "./DeleteConfirmation";
 import "./singleCard.css";
@@ -32,10 +32,13 @@ export default function SingleCard({ product, fetchMyProducts }) {
   const myInfo = useSelector((state) => state.user.myInfo);
 
   useEffect(() => {
-    console.log(product?.creator, "product?.creator._id === myInfo?._id");
+    // console.log(product?.creator, "product?.creator._id === myInfo?._id");
     // console.log(product?.isLiked)
     setIsLiked(product.isLiked);
   }, []);
+
+
+ 
 
   const handleLikes = async () => {
     // setIsLiked(!product.isLiked)
@@ -60,6 +63,7 @@ export default function SingleCard({ product, fetchMyProducts }) {
         setIsLiked(data.product.isLiked);
         setLikes(data.product.Likes);
         setTimeout(() => setError(""), 400);
+        dispatch(setMyInfoAction(data.user))
       }
     } catch (error) {
       console.log(error);

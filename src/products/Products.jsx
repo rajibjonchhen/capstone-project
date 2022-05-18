@@ -29,14 +29,12 @@ function Products() {
   const params = useParams();
 
   const changeCategory = (type) => {
-    console.log(type);
     dispatch(setSelectedCategoryAction(type));
-    console.log("selectedCategory", selectedCategory);
   };
+
   useEffect(() => {
     if (selectedCategory.length > 0 ) {
       window.scrollTo(0, 0);
-      console.log(selectedCategory);
       fetchProducts(selectedCategory);
     }
   }, [selectedCategory]);
@@ -45,7 +43,7 @@ function Products() {
     window.scrollTo(0, 0);
     // dispatch(setSelectedCategoryAction("all"))
     setUrl(myInfo? `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`:`${process.env.REACT_APP_DEV_BE_URL}/products?s=${search}`)
-    console.log(myInfo,"myInfo");
+    // console.log(myInfo,"myInfo");
     fetchProducts("all");
   }, []);
 
@@ -59,6 +57,9 @@ function Products() {
       // dispatch(setAllProductsAction(allProducts.filter(product => product.title.toUpperCase().includes(search.toUpperCase()) || product.category.toUpperCase().includes(search.toUpperCase() || product.creator.name.toUpperCase().includes(search.toUpperCase())))))
     }
   },[search])
+
+
+  
 
   const fetchProducts = async () => {
     setIsLoading(true);
