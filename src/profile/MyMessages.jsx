@@ -19,42 +19,38 @@ function MyMessages() {
   const unreadMessages = useSelector((state) => state.chat.unreadMessages);
 
 
-  useEffect(() => {
-    getMessages()
-  },[])
+  // useEffect(() => {
+  //   getMessages()
+  // },[])
 
-  const getMessages = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_DEV_BE_URL}/chats/me`,
-        {
-          method: "GET",
-          headers: {
-            authorization: localStorage.getItem("MyToken"),
-          },
-        }
-      );
-      if (response.status !== 200) {
-        const data = await response.json();
-        console.log(data);
-        setError(data.error);
-        setIsLoading(false);
-      } else {
-        const data = await response.json();
-        console.log(data);
-        setIsLoading(false);
-        dispatch(setUnreadMessageAction(data.messages));
-      }
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
+  // const getMessages = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.REACT_APP_DEV_BE_URL}/chats/me`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           authorization: localStorage.getItem("MyToken"),
+  //         },
+  //       }
+  //     );
+  //     if (response.status !== 200) {
+  //       const data = await response.json();
+  //       console.log(data);
+  //       setError(data.error);
+  //       setIsLoading(false);
+  //     } else {
+  //       const data = await response.json();
+  //       console.log(data.messages);
+  //       setIsLoading(false);
+  //       dispatch(setUnreadMessageAction(data.messages));
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     setIsLoading(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    
-    console.log("unreadMessages", unreadMessages);
-  }, [unreadMessages]);
 
   return (
     <Container  className="py-3">
@@ -75,7 +71,13 @@ function MyMessages() {
                   {message?.text}
                 </p>
                 <p>
-                  {message?.createdAt}
+                  <span className="m-1">
+                    {new Date(message?.createdAt).toLocaleTimeString()}   
+                  </span>
+                  <span className="m-1">
+                    {new Date(message?.createdAt).toLocaleDateString()}   
+                  </span>
+
                 </p>
                 </div>
                 {/* <div
@@ -138,7 +140,7 @@ function MyMessages() {
                           </p>
                           <p style={{fontSize:'10px'}}>
                         <span className="m-1">
-                            {new Date(message?.createdAt).toLocaleTimeString()}   
+                        {new Date(message?.createdAt).toLocaleTimeString()}   
                         </span>
                         <span className="m-1">
                             {new Date(message?.createdAt).toLocaleDateString()} 

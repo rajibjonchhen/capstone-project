@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EditProductPage({showEditPage, setShowEditPage, fetchProduct}) {
+function EditProductPage({showEditPage, setShowEditPage}) {
 
     
     const singleProduct = useSelector(state => state.product.singleProduct)
@@ -46,6 +46,7 @@ function EditProductPage({showEditPage, setShowEditPage, fetchProduct}) {
 
     return ( 
         <Modal
+        
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
@@ -58,11 +59,11 @@ function EditProductPage({showEditPage, setShowEditPage, fetchProduct}) {
         }}
       >
         <Fade in={showEditPage}>
-          <div className={classes.paper}>
+          <div className={classes.paper} style={{backgroundColor:"rgb(173,191,190)"}}>
           <Grid container style={{display:showEditPage? "block":"none"}} >
         <Close onClick={() => handleClose(false)}/>
-              <Grid item xs={12}>
-                    <AddEditProduct singleProduct={singleProduct} handleClose={handleClose} fetchProduct={fetchProduct}/>
+              <Grid item xs={12} >
+                    <AddEditProduct singleProduct={singleProduct} handleClose={handleClose} />
               </Grid>
       </Grid>
           </div>

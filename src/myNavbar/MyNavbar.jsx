@@ -31,7 +31,7 @@ function MyNavbar() {
   const navigate = useNavigate();
 
   const myInfo = useSelector((state) => state.user.myInfo);
-  const unreadMessages = useSelector((state) => state.chat.unreadMessages);
+  const unreadMessages = useSelector(state => state.chat.unreadMessages);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -212,6 +212,22 @@ function MyNavbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+
+    <MenuItem className={location.pathname !== "/home"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+                  onClick={() => {
+                    navigate("/home");
+                  }}
+                
+                >
+                 Home
+                </MenuItem>
+    <MenuItem className={location.pathname !== "/about"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+                  onClick={() => {
+                    navigate("/about");
+                  }}
+                >
+                  About Us
+                </MenuItem>
       <MenuItem onClick={() => {navigate("/products");}}>
         <Typography>Product</Typography>
       </MenuItem>

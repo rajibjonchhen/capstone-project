@@ -91,13 +91,13 @@ function MyProfile() {
     
     return (<Container style={{ minHeight:"70vh", padding:"20px",  }}>  
                 <Row   className="h-100">
-                    <Col sm={12} md={3} lg={3} className="profile-sidebar  d-flex" >
-                        <div  >
+                    <Col  xs={3} sm={3} md={3} lg={3} className="profile-sidebar  d-flex" >
+                      
                             <ProfilSidebar/>
-                        </div>
+                        
                     </Col>
                     
-                    <Col  xs={12} md={9} lg={9} style={{ minHeight:"70vh"}} >
+                    <Col  xs={9} sm={3} md={9} lg={9} style={{ minHeight:"70vh"}} >
                         {/* showing my creation */}
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {myProducts?.length === 0 && <Typography variant="h3" paragraph>You do not have any creation yet</Typography>}

@@ -69,7 +69,11 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
                }} > 
                 <Col style={{display:"flex", justifyContent:"center", alignItems:"center",position:"relative", scrollLeft:"scrollLeft"}}>
                     <div style={{ display:"flex", justifyContent:"center", alignItems:"center", position:"absolute",scroll }}>
-                    <ArrowBackIos className="text-white pointer" style={{  right:0}} onClick={() => { setScroll(true); setTimeout(() => setScroll(false),1000)} }/>
+                        <a href="#category5">
+
+                            <ArrowBackIos className="text-white pointer" style={{  right:0}} onClick={() => { setScroll(true)} }/>
+                        </a>
+                       
                     <h1 style={{margin:"30px auto", color:"white",transform: "rotate(270deg)"}}>Our Projects</h1>
                     </div>
                 </Col>
@@ -78,7 +82,7 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
             {myCategories.map((category, i) => 
                <Col key={i} style={{opacity: "1",padding:"5px"}}>
                    <div classsName="card">
-                    <CategoryCard  key={i}  category={category}/> 
+                    <CategoryCard  key={i}  i={i} category={category}/> 
                    </div>
                </Col>
                

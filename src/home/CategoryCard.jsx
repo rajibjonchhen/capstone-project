@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSelectedCategoryAction } from "../redux/actions/action";
 
-export default function CategoryCard({ category }) {
+export default function CategoryCard({ category, i }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
@@ -45,7 +45,7 @@ export default function CategoryCard({ category }) {
     
     // </Card>
 
-    <Card className="category-card" style={{maxWidth:"250px"}}>
+    <Card id={`category${i}`} className="category-card" style={{maxWidth:"250px"}}>
       <CardMedia
         component="img"
         image={category?.image}

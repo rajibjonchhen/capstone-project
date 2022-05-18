@@ -144,7 +144,8 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
       } else {
         const data = await response.json();
         console.log(data);
-        fetchMyProducts()
+        // fetchMyProducts()
+        
         
         setProduct({
           title: "",
@@ -160,16 +161,16 @@ function AddEditProduct({ moreInfo, setMoreInfo, singleProduct, handleClose, fet
           inventionAddresses:"",
         })
       
-        if(method === "PUT"){
+       
+          handleClose()
           setIsLoading(false);
           dispatch(setSingleProductAction(data.updatedProduct))
-          
-        }else{
+          handleClose()
+       
           if(selectedImages){
             uploadImages(data.product._id)
           }  
-        }
-        handleClose()
+        
        
       }
     } catch (error) {

@@ -46,7 +46,8 @@
 }
 
 .unread-message{
-    background-color: rgb(13, 97, 153);
+    background-color: rgb(172,190,190);
+    color:black;
     margin: 10px auto;
     padding:10px
 }
