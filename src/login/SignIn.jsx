@@ -1,6 +1,7 @@
 
 
 import { Alert } from '@mui/material';
+import { useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -44,6 +45,10 @@ export default function SignIn({setShowSignIn}) {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
 React.useEffect(() => {
     if(Object.keys(signInErr).length === 0 && isSubmit){

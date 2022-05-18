@@ -40,15 +40,17 @@ function Copyright(props) {
 const theme = createTheme();
 
 const SignUp = ({setShowSignIn})  => {
+  
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const role = useSelector(state => state.user.role)
 
-    const role = useSelector(state => state.user.role)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const [error, setError] = useState("")
-    const [showPassword, setShowPassword] = useState(true)
-    const [isSubmit, setIsSubmit] = useState(false)
-    const [signUpErr, setSignUpErr] = useState({})
-
+  const [error, setError] = useState("")
+  const [showPassword, setShowPassword] = useState(true)
+  const [isSubmit, setIsSubmit] = useState(false)
+  const [signUpErr, setSignUpErr] = useState({})
+  
+  
     const [signUpUser, setSignUpUser] = useState({
     name: "",
     surname: "",
@@ -59,7 +61,13 @@ const SignUp = ({setShowSignIn})  => {
   });
 
   useEffect(() => {
-    
+    window.scrollTo(0, 0)
+    if(role){
+      setSignUpUser({...signUpUser, role:role})
+    }
+  }, [])
+
+  useEffect(() => {
     if(Object.keys(signUpErr).length === 0 && isSubmit){
         console.log("I am going to submit")
         registerUser()

@@ -13,7 +13,7 @@ import SignUp from "./SignUp";
 
 function LoginPage() {
 
-    const [showSignIn, setShowSignIn] = useState(false)
+    const [showSignIn, setShowSignIn] = useState(true)
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -23,7 +23,6 @@ function LoginPage() {
     useEffect(()=> {
         console.log("role ==",roleParams)
         dispatch(setRoleAction(roleParams))
-
     },[])
 
     return ( 
