@@ -71,6 +71,7 @@ function ProfilSidebar() {
           >
             My Messages
           </Button>
+
          {myInfo?.role !== "investor" && <Button
           className="extra-header-button"
             name="Add New Product"
@@ -82,6 +83,7 @@ function ProfilSidebar() {
           >
             Add New Product
           </Button>}
+          
           <Button
           className="extra-header-button"
             name="My Account"
