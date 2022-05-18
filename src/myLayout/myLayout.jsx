@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import MyFooter from "../footer/myfooter";
+import MyFooter from "../footer/Myfooter";
 import getMyInfo from "../getMyInfo";
 import MyNavbar from "../myNavbar/MyNavbar";
 import { setMyInfoAction } from "../redux/actions/action";

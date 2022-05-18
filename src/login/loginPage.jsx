@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { setRoleAction } from "../redux/actions/action";
 import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import SignUp from "./Signup";
 
 
 
