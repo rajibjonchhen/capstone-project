@@ -25,14 +25,43 @@ function MyProfile() {
      
     useEffect(() => {
         fetchMyProducts()
+        getProductsLiked()
+
     },[])
 
     const dispatch = useDispatch()
    
     useEffect(() => {
         window.scrollTo(0,0)
-        console.log("myInfo", myInfo)
     },[profilePagination])
+
+    const getProductsLiked = async() => {
+        console.log("getProductsLiked")
+        try {
+          const response = await fetch(
+            `${process.env.REACT_APP_DEV_BE_URL}/users/me/productsLiked`, {
+              method : "GET",
+              headers :{
+                authorization : localStorage.getItem("MyToken")
+              }
+            }
+      
+          )
+          if(response.status !== 200){
+            const data = await response.json()
+            console.log(data);
+            setError(data.error);
+            setIsLoading(false);
+          } else {
+            const data = await response.json()
+            console.log("getProductsLiked",data)
+            setIsLoading(false);
+          }
+        } catch (error) {
+          console.log(error)
+          setError(error)
+        }
+      } 
 
     const fetchMyProducts = async() => {
         try {
@@ -62,17 +91,22 @@ function MyProfile() {
     
     return (<Container style={{ minHeight:"70vh", padding:"20px",  }}>  
                 <Row   className="h-100">
-                    <Col sm={12} md={12} lg={2} className="h-100 d-flex" >
-                        <ProfilSidebar/>
+                    <Col sm={12} md={3} lg={3} className="profile-sidebar  d-flex" >
+                        <div  >
+                            <ProfilSidebar/>
+                        </div>
                     </Col>
                     
-                    <Col  xs={12} md={12} lg={10} style={{ minHeight:"70vh"}} >
+                    <Col  xs={12} md={9} lg={9} style={{ minHeight:"70vh"}} >
                         {/* showing my creation */}
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {myProducts?.length === 0 && <Typography variant="h3" paragraph>You do not have any creation yet</Typography>}
                                 {myProducts?.map((product, i) => 
-                                <Col  key={i} item xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
+                                <Col  key={i} item xs={12} sm={6} md={6}  style={{display:"flex", justifyContent:"center"}}>
+                                   <div className="py-2 px-0 w-100">
                                     <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
+                                </div>
+                                    
                                 </Col> )}
                             </Row>
 
@@ -80,7 +114,7 @@ function MyProfile() {
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "Projects Liked"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {myInfo?.productsLiked?.length === 0 && <Typography variant="h3" paragraph>You do not have any projects liked</Typography>}
                                 {myInfo?.productsLiked?.map((product, i) => 
-                                <Col  key={i}  xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
+                                <Col  key={i}  xs={12} sm={6} md={6}  style={{display:"flex", justifyContent:"center"}}>
                                     <div className="py-2 px-0 w-100">
 
                                         <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
