@@ -116,6 +116,13 @@ const fetchProduct = async(productId) => {
      setIsSubmit(true);
   };
 
+  const handleScroll = () => {
+    setOpen(true);  
+    window.scrollTo({ top: 400, behavior: 
+      'smooth' 
+    })
+  }
+
   return (
     <Container >
       <Row  spacing={2} className=" mt-3 py-3">
@@ -216,7 +223,7 @@ const fetchProduct = async(productId) => {
 
             {myInfo._id !== singleProduct?.creator?._id &&
            
-              <Button className="theme-btn" style={{border:"1px solid white", display:!open? "flex":"none"}} onClick={(e) => {setOpen(true);  window.scrollTo({ behavior: 'smooth', top: 1000 })}}>
+              <Button className="theme-btn" style={{border:"1px solid white", display:!open? "flex":"none"}} onClick={(e) => handleScroll()}>
                 Contact Creator
               </Button>
            
