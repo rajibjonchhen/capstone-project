@@ -17,19 +17,9 @@ function HomePage() {
                
                <OurProjects/>
                
-                     <WhoWeAre/>
-               <Container >
-                  <Row>
-                     <Col>
-                     </Col>
-                  </Row>
-                  <Row>
-                     
-                     <Col>
-                     </Col>
-                  </Row>
-               </Container>
-                        <ForCreatorInvestor role="creator"/>
+               <WhoWeAre/>
+               
+               <ForCreatorInvestor role="creator"/>
                
               </div>
             

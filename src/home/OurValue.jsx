@@ -21,7 +21,7 @@ function OurValue() {
             <h1 className="my-3">Value we provide</h1>
             <hr className="mission-box-hr"/>
             <hr className="mission-box-hr"/>
-          <Row>
+          <Row className="mb-5">
           {ourValueData.map((data,i) => 
           <Col sm={6}>
             <div  style={{display:'flex',borderRadius: "15px", marginTop:"30px", border:"1px solid rgb(187, 186, 186)", borderRadius: "15px", overflow:"hidden", minHeight:"400px"}}>
@@ -60,11 +60,10 @@ function OurValue() {
                 <h1 className="my-3">Our Services</h1>
                 <hr className="mission-box-hr"/>
                 <hr className="mission-box-hr"/>
-                <Row>
-                  <div style={{borderRadius:"15px", overflow:"hidden"}}>
-
+                <Row  className="my-5">
+                 <Col>
                       <ForCreatorInvestor/>
-                  </div>
+                 </Col>
                 </Row>
             </Container>
 
