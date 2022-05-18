@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setUnreadMessageAction } from "../redux/actions/action";
 import "./myMessage.css";
 function MyMessages() {
   const [error, setError] = useState();
@@ -18,38 +19,42 @@ function MyMessages() {
   const unreadMessages = useSelector((state) => state.chat.unreadMessages);
 
 
-  // const getMessages = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `${process.env.REACT_APP_DEV_BE_URL}/chats/me`,
-  //       {
-  //         method: "GET",
-  //         headers: {
-  //           authorization: localStorage.getItem("MyToken"),
-  //         },
-  //       }
-  //     );
-  //     if (response.status !== 200) {
-  //       const data = await response.json();
-  //       console.log(data);
-  //       setError(data.error);
-  //       setIsLoading(false);
-  //     } else {
-  //       const data = await response.json();
-  //       console.log(data);
-  //       setIsLoading(false);
-  //       dispatch(setAllChatsAction(data.messages));
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     setIsLoading(false);
-  //   }
-  // };
+  useEffect(() => {
+    getMessages()
+  },[])
+
+  const getMessages = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_DEV_BE_URL}/chats/me`,
+        {
+          method: "GET",
+          headers: {
+            authorization: localStorage.getItem("MyToken"),
+          },
+        }
+      );
+      if (response.status !== 200) {
+        const data = await response.json();
+        console.log(data);
+        setError(data.error);
+        setIsLoading(false);
+      } else {
+        const data = await response.json();
+        console.log(data);
+        setIsLoading(false);
+        dispatch(setUnreadMessageAction(data.messages));
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    // getMessages();
+    
     console.log("unreadMessages", unreadMessages);
-  }, []);
+  }, [unreadMessages]);
 
   return (
     <Container  className="py-3">
