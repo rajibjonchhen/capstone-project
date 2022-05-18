@@ -115,21 +115,29 @@ function ChatBox() {
        
             <div style={{overflow:"scroll", alignSelf:"stretch", height:"65vh"}}>
                 {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => 
-                <div key={i}  className={`p-2 w-25 ${message.sender === myInfo?._id?  "ml-auto":"mr-auto"}`}>
-                    <div className='single-message'>
-                        <p >
-                            {message?.text}
+                
+                <div className={`p-2 w-100  ${message?.sender?._id === myInfo?._id?  "mr-auto":"ml-auto"}`}>
+                    <div  key={i} className="d-flex p-2   align-items-baseline" style={{justifyContent : message?.sender?._id === myInfo?._id?"right":"left"}}>
+                        <div style={{order:message?.sender?._id === myInfo?._id? "2":"1"}}>
+                            <img src={message?.sender?.avatar} alt={message?.sender?.name} style={{width:"40px",height:"40px", borderRadius:"50%"}}/>
+                        </div>
+                        <div className='single-message' style={{order:message?.sender?._id !== myInfo?._id? "2":"1"}}>
+                            <p style={{backgroundColor:"rgb(63,94,108)", padding:'15px', borderRadius:"10px"}}>
+                                {message?.text}
+                            </p>
+                            <p style={{fontSize:'10px'}}>
+                            <span className="m-1">
+                                {new Date(message?.createdAt).toLocaleTimeString()}   
+                            </span>
+                            <span className="m-1">
+                                {new Date(message?.createdAt).toLocaleDateString()} 
+                            </span>
                         </p>
                         </div>
-                    <p style={{fontSize:'10px'}}>
-                        <span className="m-1">
-                            {new Date(message?.createdAt).toLocaleTimeString()}   
-                        </span>
-                        <span className="m-1">
-                            {new Date(message?.createdAt).toLocaleDateString()} 
-                        </span>
-                    </p>
-                </div>)  }
+                    </div>
+                </div>
+                
+                )  }
             </div>
         
         
