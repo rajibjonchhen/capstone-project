@@ -5,7 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import MyAccount from "../myAccount/MyAccount";
 import SingleCard from "../products/SingleCard";
-import { setMyProductsAction } from "../redux/actions/action";
+import { setMyProductsAction, setProductsLikedAction } from "../redux/actions/action";
 import AddEditProduct from "./AddEditProduct";
 import MyMessages from "./MyMessages";
 import "./myProfile.css";
@@ -21,7 +21,7 @@ function MyProfile() {
     const myProducts = useSelector(state => state.product.myProducts)
     const myInfo = useSelector(state => state.user.myInfo)
     const profilePagination = useSelector(state => state.user.profilePagination)
-    
+    const productsLiked = useSelector(state => state.product.productsLiked)
      
     useEffect(() => {
         fetchMyProducts()
@@ -54,8 +54,9 @@ function MyProfile() {
             setIsLoading(false);
           } else {
             const data = await response.json()
-            console.log("getProductsLiked",data)
+            console.log("getProductsLiked",data.productsLiked)
             setIsLoading(false);
+            dispatch(setProductsLikedAction(data.productsLiked))
           }
         } catch (error) {
           console.log(error)
@@ -104,7 +105,7 @@ function MyProfile() {
                                 {myProducts?.map((product, i) => 
                                 <Col  key={i} item xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
                                    <div className="py-2 px-0 w-100">
-                                    <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
+                                    <SingleCard product={product} fetchMyProducts={fetchMyProducts} getProductsLiked={getProductsLiked}/>
                                 </div>
                                     
                                 </Col> )}
@@ -112,12 +113,12 @@ function MyProfile() {
 
                                 {/* showing projects liked */}
                             <Row  className=" mt-3 py-3" style={{display: profilePagination === "Projects Liked"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
-                                {myInfo?.productsLiked?.length === 0 && <Typography variant="h3" paragraph>You do not have any projects liked</Typography>}
-                                {myInfo?.productsLiked?.map((product, i) => 
+                                {productsLiked?.length === 0 && <Typography variant="h3" paragraph>You do not have any projects liked</Typography>}
+                                {productsLiked?.map((product, i) => 
                                 <Col  key={i}  xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
                                     <div className="py-2 px-0 w-100">
 
-                                        <SingleCard product={product} fetchMyProducts={fetchMyProducts}/>
+                                        <SingleCard getProductsLiked={getProductsLiked} product={product} fetchMyProducts={fetchMyProducts}/>
                                     </div>
                                 </Col> )}
                             </Row>

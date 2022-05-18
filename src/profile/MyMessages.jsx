@@ -74,7 +74,7 @@ function MyMessages() {
                   <span className="m-1">
                     {new Date(message?.createdAt).toLocaleTimeString()}   
                   </span>
-                  <span className="m-1">
+                  <span >
                     {new Date(message?.createdAt).toLocaleDateString()}   
                   </span>
 

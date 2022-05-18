@@ -9,18 +9,19 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { setMyInfoAction, setSingleProductAction } from "../redux/actions/action";
 import MyVerticallyCenteredModal from "./DeleteConfirmation";
 import DeleteConfirmation from "./DeleteConfirmation";
 import "./singleCard.css";
 
-export default function SingleCard({ product, fetchMyProducts }) {
+export default function SingleCard({ product, fetchMyProducts, getProductsLiked}) {
   const [show, setShow] = useState(false);
   const [modalShow, setModalShow] = React.useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const location = useLocation()
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,6 +35,7 @@ export default function SingleCard({ product, fetchMyProducts }) {
   useEffect(() => {
     // console.log(product?.creator, "product?.creator._id === myInfo?._id");
     // console.log(product?.isLiked)
+    console.log();
     setIsLiked(product.isLiked);
   }, []);
 
@@ -63,7 +65,10 @@ export default function SingleCard({ product, fetchMyProducts }) {
         setIsLiked(data.product.isLiked);
         setLikes(data.product.Likes);
         setTimeout(() => setError(""), 400);
-        dispatch(setMyInfoAction(data.user))
+        if(location.pathname === "/profile"){
+          getProductsLiked()
+        }
+        
       }
     } catch (error) {
       console.log(error);

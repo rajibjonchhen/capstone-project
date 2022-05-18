@@ -43,9 +43,10 @@ function Products() {
     window.scrollTo(0, 0);
     // dispatch(setSelectedCategoryAction("all"))
     setUrl(myInfo? `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`:`${process.env.REACT_APP_DEV_BE_URL}/products?s=${search}`)
+    
     // console.log(myInfo,"myInfo");
     fetchProducts("all");
-  }, []);
+  }, [myInfo]);
 
 
 
@@ -64,6 +65,45 @@ function Products() {
   const fetchProducts = async () => {
     setIsLoading(true);
       
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: localStorage.getItem("MyToken"),
+          },
+        }
+      );
+      if (response.status !== 200) {
+        const data = await response.json();
+        console.log(data);
+        setError(data.error);
+        setIsLoading(false);
+      } else {
+        const data = await response.json();
+        console.log("category.length", selectedCategory.length);
+        if (selectedCategory?.length > 0 && selectedCategory !== "all") {
+          const products = data.products.filter(
+            (product) => product.category === selectedCategory
+          );
+          console.log(products, selectedCategory);
+          dispatch(setAllProductsAction(products));
+          setIsLoading(false);
+        } else {
+          dispatch(setAllProductsAction(data.products));
+          setTimeout(() => setIsLoading(false),200 )
+         
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  const fetchProductsNoUsers = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `${process.env.REACT_APP_DEV_BE_URL}/products/allProducts?s=${search}`,
