@@ -1,5 +1,7 @@
 .single-product-card{
-background-color:rgb(199, 226, 241) !important;
+/* background-color:rgb(199, 226, 241) !important; */
+color:white !important;
+background-color:rgba(18, 36, 55, 0.548) !important;
 box-shadow: 0 0 2px 2px white;
 height: 350px !important;
 

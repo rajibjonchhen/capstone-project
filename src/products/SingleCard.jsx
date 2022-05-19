@@ -1,18 +1,16 @@
 import { pink } from "@material-ui/core/colors";
-import { Delete, DeleteOutline, Favorite, FavoriteBorder } from "@mui/icons-material";
-import { Alert, IconButton } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { Alert } from "@mui/material";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { setMyInfoAction, setSingleProductAction } from "../redux/actions/action";
-import MyVerticallyCenteredModal from "./DeleteConfirmation";
-import DeleteConfirmation from "./DeleteConfirmation";
+import { setSingleProductAction } from "../redux/actions/action";
 import "./singleCard.css";
 
 export default function SingleCard({ product, fetchMyProducts, getProductsLiked}) {
