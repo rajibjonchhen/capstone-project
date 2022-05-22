@@ -21,25 +21,19 @@ function ProfilSidebar() {
   const highlightColor = "rgb(3,78,106)"
 
   return (
-      <div  >
+     
       <div className="profile-btn-grand-box text-left"  >
         <div
         className="profile-btn-box"
-          // style={{
-          //   margin: "auto",
-          //   height:"100%",
-          //   display:"flex",
-          //   flexDirection:"column",
-          //   textAlign:"left"
-          // }}
-          
-        >
-          
-
-         
+          style={{
+            display:"flex", 
+            flexWrap:"nowrap", 
+            overflowX:"scroll", 
+            overflowY:"hidden",
+          }}>
           {myInfo?.role === "creator" &&
           <Button
-            className="extra-header-button"
+            className="profile-btn"
             name="My Creations"
             style={{
               backgroundColor:
@@ -50,8 +44,8 @@ function ProfilSidebar() {
             My Creations
           </Button> 
           }
-           <Button
-          className="extra-header-button"
+          <Button
+          className="profile-btn"
           name="Projects Liked"
           style={{
             backgroundColor:
@@ -62,7 +56,7 @@ function ProfilSidebar() {
           Projects Liked
           </Button>
           <Button
-          className="extra-header-button"
+          className="profile-btn"
             name="My Messages"
             style={{
               backgroundColor:
@@ -74,7 +68,7 @@ function ProfilSidebar() {
           </Button>
 
          {myInfo?.role !== "investor" && <Button
-          className="extra-header-button"
+          className="profile-btn"
             name="Add New Product"
             style={{
               backgroundColor:
@@ -86,7 +80,7 @@ function ProfilSidebar() {
           </Button>}
           
           <Button
-          className="extra-header-button"
+          className="profile-btn"
             name="My Account"
             style={{
               backgroundColor:
@@ -98,7 +92,6 @@ function ProfilSidebar() {
           </Button>
         </div>
       </div>
-    </div>
   );
 }
 

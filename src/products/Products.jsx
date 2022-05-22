@@ -185,11 +185,11 @@ function Products() {
             </div>
           </Col>
         </Row>
-        <Row style={{borderBottom:"1px solid gray", }}>
-          <Col className="w-100 p-0 m-0">
+        <Row className="inline-buttons" style={{borderBottom:"1px solid gray", display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden", }} >
             {categoryArray.map((category, i) => (
+          <Col key={i}  className="p-0 m-0">
               <Button
-              
+               key={i}
                 size="large"
                 style={{ width: "140px", height:"50px",color:"white", backgroundColor: selectedCategory !== category.type? "rgb(4,52,71)":"rgb(6, 98, 134) " }}
                 name={category.type}
@@ -198,8 +198,8 @@ function Products() {
                 }}>
                 {category.title}
               </Button>
+           </Col>
             ))}
-          </Col>
         </Row>
         
       </Container>

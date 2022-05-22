@@ -24,7 +24,8 @@ cursor: pointer;
         display:flex;
         flex-direction:column;
         text-align:left;
-        position:fixed
+        position:fixed;
+        z-index: 105;
 }
 
 
@@ -51,16 +52,4 @@ cursor: pointer;
         }
 }
 
-/* @media only screen and (max-width: 767px){
-    .profile-btn-box{
-        margin:auto auto 100px;
-        z-index: 5;
-        height:100%;
-        display:flex;
-        position: sticky;
-        top:60px;
-        flex-direction:row;
-        justify-content: center;
-        align-items: center;
-}
-} */
+

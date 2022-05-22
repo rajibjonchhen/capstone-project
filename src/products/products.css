@@ -31,3 +31,15 @@
     background-color: lavender
 }
 
+
+
+
+@media only screen and (max-width: 360px){
+    .inline-buttons{
+       
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: scroll !important;
+       
+    }
+}

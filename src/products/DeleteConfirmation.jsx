@@ -54,16 +54,16 @@ export default function DeleteConfirmation(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-           Are you sure? Do you really want to delete you creation?
+           Are you sure? Do you really want to delete your project?
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="m-auto">
             <div className="d-flex justify-around">
-                <img src={props.product?.images[0] || "https://res.cloudinary.com/dai5duzoj/image/upload/v1649986446/creators-space-products/lw8f79wcrzpqa4eqeane.png"} alt={props.product?.title} width="150px"/>
+                <img src={props.singleProduct?.images[0] } alt={props.product?.title} width="150px"/>
                 <div>
-                    <h3> {props.product?.title}</h3>
+                    <h3> {props.singleProduct?.title}</h3>
                     <p>
-                    {props.product?.summary}
+                    {props.singleProduct?.summary}
                     </p>
                 </div>
             </div>
