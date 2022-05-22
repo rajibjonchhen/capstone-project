@@ -191,7 +191,7 @@ function Products() {
               <Button
               
                 size="large"
-                style={{ width: "142px", height:"50px",color:"white", backgroundColor: selectedCategory !== category.type? "rgb(4,52,71)":"rgb(6, 98, 134) " }}
+                style={{ width: "140px", height:"50px",color:"white", backgroundColor: selectedCategory !== category.type? "rgb(4,52,71)":"rgb(6, 98, 134) " }}
                 name={category.type}
                 onClick={(e) => {
                   changeCategory(category.type);

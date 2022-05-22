@@ -1,7 +1,4 @@
-.profile-box{
-    
-    
-}
+
 
 .profile-box{
     border-right : 1px solid grey;
@@ -18,6 +15,21 @@
 
 .profile-box>div>ul>li:hover{
     background-color : rgba(128, 128, 128, 0.274);
+}
+
+.profile-sidebar-box{
+    position:fixed;
+    border-right: 2px solid grey !important;
+}
+
+
+@media only screen and (max-width: 767px){
+
+    .profile-sidebar{
+        position:sticky;
+        margin: 50px;
+        max-height: 100px;
+    }
 }
 
 

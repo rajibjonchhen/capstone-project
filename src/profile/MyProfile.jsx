@@ -90,20 +90,24 @@ function MyProfile() {
 
    
     
-    return (<Container style={{ minHeight:"70vh", padding:"20px",  }}>  
+    return (<Container style={{ minHeight:"70vh", padding:"20px",  }}> 
+        {/* <Row className="profilSidebar-box">
+            <ProfilSidebar/>
+        </Row>  */}
                 <Row   className="h-100">
-                    <Col  xs={3} sm={3} md={3} lg={3} className="profile-sidebar  d-flex" >
-                      
+                    <Col  xs={12} sm={12} md={3} lg={3} className="profile-sidebar"  >
+                      <div className="profile-sidebar-box">
                             <ProfilSidebar/>
+                      </div>
                         
                     </Col>
                     
-                    <Col  xs={9} sm={3} md={9} lg={9} style={{ minHeight:"70vh"}} >
+                    <Col  xs={12} sm={12} md={9} lg={9} className="offset-xs-2 offset-sm-2 offset-md-3 offset-lg-3" style={{ minHeight:"70vh"}} >
                         {/* showing my creation */}
-                            <Row  className=" mt-3 py-3" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
+                            <Row  className="  profile-rightside" style={{display: profilePagination === "My Creations"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {myProducts?.length === 0 && <Typography variant="h3" paragraph>You do not have any creation yet</Typography>}
                                 {myProducts?.map((product, i) => 
-                                <Col  key={i} item xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
+                                <Col  key={i}  xs={12} sm={12} md={6} lg={4}  style={{display:"flex", justifyContent:"center"}}>
                                    <div className="py-2 px-0 w-100">
                                     <SingleCard product={product} fetchMyProducts={fetchMyProducts} getProductsLiked={getProductsLiked}/>
                                 </div>
@@ -112,7 +116,7 @@ function MyProfile() {
                             </Row>
 
                                 {/* showing projects liked */}
-                            <Row  className=" mt-3 py-3" style={{display: profilePagination === "Projects Liked"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
+                            <Row  className=" profile-rightside" style={{display: profilePagination === "Projects Liked"? "flex":"none",alignItems:"center", justifyContent:"center", color:"gray" }}>
                                 {productsLiked?.length === 0 && <Typography variant="h3" paragraph>You do not have any projects liked</Typography>}
                                 {productsLiked?.map((product, i) => 
                                 <Col  key={i}  xs={12} sm={6} md={4}  style={{display:"flex", justifyContent:"center"}}>
@@ -123,13 +127,13 @@ function MyProfile() {
                                 </Col> )}
                             </Row>
                         
-                <div style={{display: profilePagination === "My Messages"? "block":"none" }}>
+                <div className="profile-rightside" style={{display: profilePagination === "My Messages"? "block":"none" }}>
                     <MyMessages />
                 </div>
-                <div style={{display: profilePagination === "Add New Product"? "block":"none" }}>
+                <div className="profile-rightside" style={{display: profilePagination === "Add New Product"? "block":"none" }}>
                     <AddEditProduct key={1} moreInfo={moreInfo} setMoreInfo={setMoreInfo} fetchMyProducts={fetchMyProducts}/>
                 </div>
-                <div style={{display: profilePagination === "My Account"? "block":"none" }}>
+                <div className="profile-rightside" style={{display: profilePagination === "My Account"? "block":"none" }}>
                     <MyAccount/>
                 </div>
 

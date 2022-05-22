@@ -21,16 +21,17 @@ function ProfilSidebar() {
   const highlightColor = "rgb(3,78,106)"
 
   return (
-      <div  style={{ position:"fixed"}} >
-      <div className="text-left" style={{  alignSelf:"stretch", minHeight:"100vh", borderRight:"1px solid grey"}} >
+      <div  >
+      <div className="profile-btn-grand-box text-left"  >
         <div
-          style={{
-            margin: "auto",
-            height:"100%",
-            display:"flex",
-            flexDirection:"column",
-            textAlign:"left"
-          }}
+        className="profile-btn-box"
+          // style={{
+          //   margin: "auto",
+          //   height:"100%",
+          //   display:"flex",
+          //   flexDirection:"column",
+          //   textAlign:"left"
+          // }}
           
         >
           

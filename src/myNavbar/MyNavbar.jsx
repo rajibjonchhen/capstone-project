@@ -239,12 +239,18 @@ function MyNavbar() {
         <Typography>Community</Typography>
       </MenuItem>
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={unreadMessages?.length} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+      
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+              onClick={() => {dispatch(setProfilePaginationAction("My Messages")); navigate("/profile")}}
+            >
+              <Badge badgeContent={unreadMessages.length} color="error">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+              
       </MenuItem>
       {/* <MenuItem>
         <IconButton
