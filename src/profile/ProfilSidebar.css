@@ -1,21 +1,9 @@
-.extra-header{
-    position: fixed;
-    top: 62px;
-    padding:3px 0;
-    background:rgb(21, 101, 133);
-    color:white;
-    z-index: 2;
-}
 
-.extra-header-button{
-color: white !important;
-font-size: 15px !important;
-width: 100%;
-cursor: pointer;
-}
 
 .profile-btn-grand-box {
   align-self:stretch; 
+  border-right: 1px solid lightcyan !important;
+  background-color: red;
 }
 
 .profile-btn-box{
@@ -27,6 +15,14 @@ cursor: pointer;
         position:fixed;
         z-index: 105;
 }
+
+.profile-btn{
+    color: white !important;
+    font-size: 15px !important;
+    width: 100%;
+    cursor: pointer;
+    }
+    
 
 
 

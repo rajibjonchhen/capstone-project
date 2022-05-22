@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfilePaginationAction } from "../redux/actions/action";
-import "./ProfilSidebar.css";
+import "./profilSidebar.css";
 
 function ProfilSidebar() {
 
@@ -26,10 +26,7 @@ function ProfilSidebar() {
         <div
         className="profile-btn-box"
           style={{
-            display:"flex", 
-            flexWrap:"nowrap", 
-            overflowX:"scroll", 
-            overflowY:"hidden",
+         
           }}>
           {myInfo?.role === "creator" &&
           <Button

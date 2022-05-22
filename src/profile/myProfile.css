@@ -1,34 +1,14 @@
 
 
-.profile-box{
-    border-right : 1px solid grey;
-}
-
-.profile-box>div>ul>li{
-    list-style-type: none;
-    text-align: left;
-    font-weight: 900;
-    margin: 3px 0px;
-    cursor: pointer;
-    padding:3px
-}
-
-.profile-box>div>ul>li:hover{
-    background-color : rgba(128, 128, 128, 0.274);
-}
-
-.profile-sidebar-box{
-    position:fixed;
-    border-right: 2px solid grey !important;
-}
 
 
 @media only screen and (max-width: 767px){
 
     .profile-sidebar{
-        position:sticky;
+       display: none;
         margin: 50px;
         max-height: 100px;
+        background-color:rgb(4,52,71) !important
     }
 }
 

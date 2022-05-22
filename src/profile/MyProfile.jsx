@@ -1,4 +1,5 @@
 
+import { ArrowBackIosNew, ArrowForward, ArrowForwardIosOutlined, KeyboardArrowLeftOutlined } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
@@ -17,6 +18,7 @@ function MyProfile() {
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const [moreInfo, setMoreInfo] = useState(false)
+    const [showProfileMenu, setShowProfileMenu] = useState(false)
     
     const myProducts = useSelector(state => state.product.myProducts)
     const myInfo = useSelector(state => state.user.myInfo)
@@ -91,12 +93,14 @@ function MyProfile() {
    
     
     return (<Container style={{ minHeight:"70vh", padding:"20px",  }}> 
-        {/* <Row className="profilSidebar-box">
-            <ProfilSidebar/>
-        </Row>  */}
+                  <div className="text-left" onClick={() => setShowProfileMenu(!showProfileMenu)} style={{width:"20px", transform: showProfileMenu? "rotate(90deg)":"rotate(0deg)"}}>
+                   <span >
+                    <ArrowForwardIosOutlined/>
+                   </span>
+                </div>  
                 <Row   className="h-100">
-                    <Col  xs={12} sm={12} md={3} lg={3} className="profile-sidebar"  >
-                      <div className="profile-sidebar-box">
+                    <Col  xs={showProfileMenu? 12:0} sm={12} md={3} lg={3} className="profile-sidebar" style={{display:showProfileMenu? "block":"none", borderColor:"rgb(4,52,71)"}} >
+                      <div className="profile-sidebar-box" style={{ backgroundColor:"rgb(4,52,71)"}}>
                             <ProfilSidebar/>
                       </div>
                         
