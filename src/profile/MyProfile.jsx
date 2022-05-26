@@ -96,14 +96,13 @@ function MyProfile() {
    }
     
     return (<Container style={{ minHeight:"70vh", padding:"20px",  }}> 
-                  <div className="arrow-btn text-left" onClick={() => setShowProfileMenu(!showProfileMenu)} style={{width:"20px", transform: showProfileMenu? "rotate(90deg)":"rotate(0deg)"}}>
-                   <span >
-                    <ArrowForwardIosOutlined/>
-                   </span>
-                </div>  
+                  
                 <Row   className="h-100">
-                    <Col   md={3} lg={3}  style={{display:showProfileMenu? "block":"none", backgroundColor:"rgb(4,52,71)"}} >
-                      <div className="profile-mobile" style={{ backgroundColor:"rgb(4,52,71)"}}>
+                    <Col className="h-100 profile-mobile"  md={3} lg={3}  style={{ backgroundColor:"rgb(4,52,71)"}} >
+                    <div className="arrow-btn text-left" onClick={() => setShowProfileMenu(!showProfileMenu)} style={{ transform: showProfileMenu? "rotate(90deg)":"rotate(0deg)"}}>
+                        <ArrowForwardIosOutlined/>
+                    </div> 
+                      <div className="h-100" style={{ display:showProfileMenu? "block":"none", }}>
                             <ProfilSidebar handlePagination={handlePagination} />
                       </div>
                         
