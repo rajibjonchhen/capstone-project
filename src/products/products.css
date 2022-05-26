@@ -9,7 +9,7 @@
     z-index: 1 ;
     color: black;
     right:3px;
-    top:2px;
+    top:11px;
     background-color: lavender;
     padding:11px;
     border-radius: 50px;
@@ -31,15 +31,31 @@
     background-color: lavender
 }
 
+.category-buttons{
+    border-bottom:1px solid gray;
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:scroll;
+    overflow-y:hidden;
+}
 
+.burger-menu{
+    display: none;
+}
 
 
 @media only screen and (max-width: 360px){
     .inline-buttons{
-       
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: scroll !important;
-       
+        display: none !important;
+    }
+
+    .category-buttons{
+        flex-direction: column !important;
+        overflow-x:auto;
+        overflow-y:auto;
+    }
+
+    .burger-menu{
+        display: block;
     }
 }

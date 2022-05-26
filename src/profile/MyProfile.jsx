@@ -99,9 +99,9 @@ function MyProfile() {
                    </span>
                 </div>  
                 <Row   className="h-100">
-                    <Col  xs={showProfileMenu? 12:0} sm={12} md={3} lg={3} className="profile-sidebar" style={{display:showProfileMenu? "block":"none", borderColor:"rgb(4,52,71)"}} >
+                    <Col   md={3} lg={3} className="profile-sidebar" style={{display:showProfileMenu? "block":"none", backgroundColor:"rgb(4,52,71)"}} >
                       <div className="profile-sidebar-box" style={{ backgroundColor:"rgb(4,52,71)"}}>
-                            <ProfilSidebar/>
+                            <ProfilSidebar setShowProfileMenu={setShowProfileMenu} showProfileMenu={showProfileMenu}/>
                       </div>
                         
                     </Col>

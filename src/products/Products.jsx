@@ -10,8 +10,11 @@ import {
 } from "../redux/actions/action";
 import "./products.css";
 import SingleCard from "./SingleCard";
+import {FcMenu} from "react-icons/fc"
+import CategoriesBtns from "./CategoriesBtns";
 
 function Products() {
+  const [showCategories, setShowCategories] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -30,6 +33,7 @@ function Products() {
 
   const changeCategory = (type) => {
     dispatch(setSelectedCategoryAction(type));
+    setShowCategories(false)
   };
 
   useEffect(() => {
@@ -141,16 +145,7 @@ function Products() {
     }
   };
 
-  const categoryArray = [
-    { title: "All Products", type: "all" },
-    { title: "Ideas", type: "idea" },
-    { title: "Novels", type: "novel" },
-    { title: "Poems", type: "poem" },
-    { title: "Songs", type: "song" },
-    { title: "Web Template", type: "web template" },
-    { title: "Movies", type: "movie" },
-    { title: "Paintings", type: "painting"}
-  ];
+  
 
   return (
     <Container fluid style={{minHeight:"80vh"}}>
@@ -167,7 +162,7 @@ function Products() {
         }}
       >
         <Row>
-          <Col xs={12} md={6} lg={6} style={{margin:"0 auto"}}>
+          <Col xs={12} md={6} lg={6} style={{margin:"0 auto", display:"flex", alignItems:"center"}}>
             <div style={{ position: "relative" , width:"100%"}}>
               <input
                 type="text"
@@ -183,23 +178,14 @@ function Products() {
                 <SearchRounded />
               </span>
             </div>
+            <span className="burger-menu" style={{fontSize:"40px"}} onClick={() => {setShowCategories(!showCategories)}}><FcMenu/> </span>
           </Col>
         </Row>
-        <Row className="inline-buttons" style={{borderBottom:"1px solid gray", display:"flex", flexWrap:"nowrap", overflowX:"scroll", overflowY:"hidden", }} >
-            {categoryArray.map((category, i) => (
-          <Col key={i}  className="p-0 m-0">
-              <Button
-               key={i}
-                size="large"
-                style={{ width: "140px", height:"50px",color:"white", backgroundColor: selectedCategory !== category.type? "rgb(4,52,71)":"rgb(6, 98, 134) " }}
-                name={category.type}
-                onClick={(e) => {
-                  changeCategory(category.type);
-                }}>
-                {category.title}
-              </Button>
-           </Col>
-            ))}
+        <Row className="inline-buttons"  >
+            <CategoriesBtns selectedCategory={selectedCategory} changeCategory={changeCategory}/>
+        </Row>
+        <Row className="mobile-btns"  style={{display:showCategories? "block":"none"}} >
+            <CategoriesBtns selectedCategory={selectedCategory} changeCategory={changeCategory}/>
         </Row>
         
       </Container>

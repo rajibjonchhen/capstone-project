@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProfilePaginationAction } from "../redux/actions/action";
 import "./profilSidebar.css";
 
-function ProfilSidebar() {
+function ProfilSidebar({setShowProfileMenu, showProfileMenu}) {
 
   const myInfo = useSelector(state => state.user.myInfo)
   const profilePagination = useSelector(
@@ -36,7 +36,7 @@ function ProfilSidebar() {
               backgroundColor:
                 profilePagination === "My Creations" && `${highlightColor}`
             }}
-            onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+            onClick={(e) =>{ dispatch(setProfilePaginationAction(e.target.name)); setShowProfileMenu(!showProfileMenu)}}
           >
             My Creations
           </Button> 
@@ -48,7 +48,7 @@ function ProfilSidebar() {
             backgroundColor:
               profilePagination === "Projects Liked" && `${highlightColor}`
           }}
-          onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+          onClick={(e) => {dispatch(setProfilePaginationAction(e.target.name)); setShowProfileMenu(!showProfileMenu)}}
           >
           Projects Liked
           </Button>
@@ -59,7 +59,7 @@ function ProfilSidebar() {
               backgroundColor:
                 profilePagination === "My Messages" && `${highlightColor}`
             }}
-            onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+            onClick={(e) => {dispatch(setProfilePaginationAction(e.target.name)); setShowProfileMenu(!showProfileMenu)}}
           >
             My Messages
           </Button>
@@ -71,7 +71,7 @@ function ProfilSidebar() {
               backgroundColor:
                 profilePagination === "Add New Product" && `${highlightColor}`
             }}
-            onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+            onClick={(e) => {dispatch(setProfilePaginationAction(e.target.name)); setShowProfileMenu(!showProfileMenu)}}
           >
             Add New Product
           </Button>}
@@ -83,7 +83,7 @@ function ProfilSidebar() {
               backgroundColor:
                 profilePagination === "My Account" && `${highlightColor}`
             }}
-            onClick={(e) => dispatch(setProfilePaginationAction(e.target.name))}
+            onClick={(e) => {dispatch(setProfilePaginationAction(e.target.name)) ; setShowProfileMenu(!showProfileMenu)}}
           >
             My Account
           </Button>
