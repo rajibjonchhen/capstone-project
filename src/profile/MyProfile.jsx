@@ -6,7 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import MyAccount from "../myAccount/MyAccount";
 import SingleCard from "../products/SingleCard";
-import { setMyProductsAction, setProductsLikedAction } from "../redux/actions/action";
+import { setMyProductsAction, setProductsLikedAction, setProfilePaginationAction } from "../redux/actions/action";
 import AddEditProduct from "./AddEditProduct";
 import MyMessages from "./MyMessages";
 import "./myProfile.css";
@@ -90,18 +90,27 @@ function MyProfile() {
         } 
     }
 
-   
+    const handlePagination = (e) => {
+    dispatch(setProfilePaginationAction(e.target.name)); 
+    setShowProfileMenu(false)
+   }
     
     return (<Container style={{ minHeight:"70vh", padding:"20px",  }}> 
-                  <div className="text-left" onClick={() => setShowProfileMenu(!showProfileMenu)} style={{width:"20px", transform: showProfileMenu? "rotate(90deg)":"rotate(0deg)"}}>
+                  <div className="arrow-btn text-left" onClick={() => setShowProfileMenu(!showProfileMenu)} style={{width:"20px", transform: showProfileMenu? "rotate(90deg)":"rotate(0deg)"}}>
                    <span >
                     <ArrowForwardIosOutlined/>
                    </span>
                 </div>  
                 <Row   className="h-100">
-                    <Col   md={3} lg={3} className="profile-sidebar" style={{display:showProfileMenu? "block":"none", backgroundColor:"rgb(4,52,71)"}} >
-                      <div className="profile-sidebar-box" style={{ backgroundColor:"rgb(4,52,71)"}}>
-                            <ProfilSidebar setShowProfileMenu={setShowProfileMenu} showProfileMenu={showProfileMenu}/>
+                    <Col   md={3} lg={3}  style={{display:showProfileMenu? "block":"none", backgroundColor:"rgb(4,52,71)"}} >
+                      <div className="profile-mobile" style={{ backgroundColor:"rgb(4,52,71)"}}>
+                            <ProfilSidebar handlePagination={handlePagination} />
+                      </div>
+                        
+                    </Col>
+                    <Col   md={3} lg={3}  style={{ backgroundColor:"rgb(4,52,71)"}} >
+                      <div className="profile-sidebar" style={{ backgroundColor:"rgb(4,52,71)"}}>
+                            <ProfilSidebar handlePagination={handlePagination} />
                       </div>
                         
                     </Col>

@@ -1,12 +1,21 @@
 
-
+.arrow-btn{
+    display: none;
+}
 
 
 @media only screen and (max-width: 767px){
 
-    .profile-sidebar{
+    .profile-mobile{
         position: absolute;
         background-color:rgb(4,52,71) !important
+    }
+
+    .profile-sidebar{
+        display:none !important;
+    }
+    .arrow-btn{
+        display: block;
     }
 }
 
