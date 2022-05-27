@@ -41,7 +41,7 @@ export default function SingleCard({ product, fetchMyProducts, getProductsLiked}
  
 
   const handleLikes = async () => {
-    // setIsLiked(!product.isLiked)
+    setIsLiked(!product.isLiked)
     try {
       const response = await fetch(
         `${process.env.REACT_APP_PROD_BE_URL}/products/${product._id}/likes`,

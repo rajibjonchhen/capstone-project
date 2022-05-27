@@ -44,7 +44,7 @@
 }
 
 
-@media only screen and (max-width: 360px){
+@media only screen and (max-width: 700px){
     .inline-buttons{
         display: none !important;
     }
