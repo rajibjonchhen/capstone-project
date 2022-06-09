@@ -101,17 +101,19 @@ const handleChange = (e) =>  {
                   borderRadius:"30px",
               }}
             placeholder="search user" type="text" onKeyDown={(e) => handleChange(e)}/>
-      <div style={{ height:"500px", overflow:"scroll", background:"rgb(5,52,71)",}}>
+      <div className='chat-user'>
       {(filteredUsers.length > 0? filteredUsers : allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>
             
               <img alt={user.name} src={user.avatar} style={{width:"50px", height:"50px", marginRight:"10px"}}/>
            
-            <Typography
+            <div className='chat-username'>
+            <Typography 
             style={{fontSize:"12px"}}
             >
                   {`${user.name} ${user.surname}`}
               </Typography>
+              </div>            
           </ListItem>
           )}
           </div>

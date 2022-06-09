@@ -1,4 +1,4 @@
-::label { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::label { /* Chrome; Firefox; Opera; Safari 10.1+ */
     color: white !important;
     opacity: 1; /* Firefox */
   }
@@ -10,3 +10,25 @@
   ::-ms-input-placeholder { /* Microsoft Edge */
     color: white !important;
   }
+
+  .chat-user{
+    height:500px; 
+    overflow:scroll; 
+    background-color:rgb(5,52,71);
+  }
+
+  @media only screen and (max-width: 767px){
+
+    .chat-user{
+      height:100px;
+      display: flex;
+      overflow-y:scroll; 
+      background-color:rgb(5,52,71);
+      align-items:center;
+      
+    }
+
+  .chat-username{
+    display: none !important;
+  }
+}
