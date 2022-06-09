@@ -213,26 +213,32 @@ function MyNavbar() {
       onClose={handleMobileMenuClose}
     >
 
-    <MenuItem className={location.pathname !== "/home"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+    <MenuItem className={location.pathname !== "/home"? "margin-xasix":"margin-xasix white-bottom-border"}
                   onClick={() => {
+                    handleMobileMenuClose();
                     navigate("/home");
                   }}
                 
                 >
                  Home
                 </MenuItem>
-    <MenuItem className={location.pathname !== "/about"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+    <MenuItem className={location.pathname !== "/about"? "margin-xasix":"margin-xasix white-bottom-border"}
                   onClick={() => {
+                    handleMobileMenuClose();
                     navigate("/about");
                   }}
                 >
                   About Us
                 </MenuItem>
-      <MenuItem onClick={() => {navigate("/products");}}>
+      <MenuItem className={location.pathname !== "/product"? "margin-xasix":"margin-xasix white-bottom-border"}
+      onClick={() => {
+              handleMobileMenuClose();
+              navigate("/products");}}>
         <Typography>Product</Typography>
       </MenuItem>
-      <MenuItem
+      <MenuItem className={location.pathname !== "/posts"? "margin-xasix":"margin-xasix white-bottom-border"}
         onClick={() => {
+          handleMobileMenuClose();
           navigate("/posts");
         }}
       >
@@ -338,7 +344,7 @@ function MyNavbar() {
               
                 
                 
-                <MenuItem className={location.pathname !== "/home"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+                <MenuItem className={location.pathname !== "/home"? "margin-xasix":"margin-xasix white-bottom-border"}
                   onClick={() => {
                     navigate("/home");
                   }}
@@ -347,7 +353,7 @@ function MyNavbar() {
                  Home
                 </MenuItem>
 
-                <MenuItem className={location.pathname !== "/about"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+                <MenuItem className={location.pathname !== "/about"? "margin-xasix":"margin-xasix white-bottom-border"}
                   onClick={() => {
                     navigate("/about");
                   }}
@@ -355,7 +361,7 @@ function MyNavbar() {
                   About Us
                 </MenuItem>
 
-                <MenuItem className={location.pathname !== "/products"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+                <MenuItem className={location.pathname !== "/products"? "margin-xasix":"margin-xasix white-bottom-border"}
                   onClick={() => {
                     dispatch(setSelectedCategoryAction("all"))
                     navigate("/products");
@@ -364,7 +370,7 @@ function MyNavbar() {
                   Products
                 </MenuItem>
 
-                <MenuItem className={location.pathname !== "/posts"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+                <MenuItem className={location.pathname !== "/posts"? "margin-xasix":"margin-xasix white-bottom-border"}
                   onClick={() => {
                     if(myInfo?._id){
 
@@ -379,7 +385,7 @@ function MyNavbar() {
 
                 
 
-                <MenuItem className={location.pathname !== "/profile"? "my-margin-xasix":"my-margin-xasix white-bottom-border"}
+                <MenuItem className={location.pathname !== "/profile"? "margin-xasix":"margin-xasix white-bottom-border"}
                   onClick={() => {
                     if(myInfo?._id){
                      
@@ -392,7 +398,7 @@ function MyNavbar() {
                     Profile
                 </MenuItem>
 
-                <Box className="my-margin-xasix flex-center">
+                <Box className="margin-xasix flex-center">
                   <IconButton
                     size="large"
                     aria-label="show 4 new mails"
@@ -405,7 +411,7 @@ function MyNavbar() {
                   </IconButton>
                 </Box>
 
-                {/* <Box className="my-margin-xasix flex-center">
+                {/* <Box className="margin-xasix flex-center">
                   <IconButton
                     size="large"
                     aria-label="show 17 new notifications"
@@ -417,7 +423,7 @@ function MyNavbar() {
                   </IconButton>
                 </Box> */}
 
-                <IconButton className="my-margin-xasix"
+                <IconButton className="margin-xasix"
                   size="large"
                   edge="end"
                   aria-label="account of current user"
