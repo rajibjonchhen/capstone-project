@@ -81,7 +81,7 @@ const [ showCard, setShowCard] = useState([false, false, false, false])
 
             {myCategories.map((category, i) => 
                <Col key={i} style={{opacity: "1",padding:"5px"}}>
-                   <div classsName="card">
+                   <div className="card">
                     <CategoryCard  key={i}  i={i} category={category}/> 
                    </div>
                </Col>

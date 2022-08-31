@@ -38,7 +38,7 @@ function MyProfile() {
     },[profilePagination])
 
     const getProductsLiked = async() => {
-        console.log("getProductsLiked")
+        // console.log("getProductsLiked")
         try {
           const response = await fetch(
             `${process.env.REACT_APP_PROD_BE_URL}/users/me/productsLiked`, {
@@ -56,7 +56,7 @@ function MyProfile() {
             setIsLoading(false);
           } else {
             const data = await response.json()
-            console.log("getProductsLiked",data.productsLiked)
+            // console.log("getProductsLiked",data.productsLiked)
             setIsLoading(false);
             dispatch(setProductsLikedAction(data.productsLiked))
           }

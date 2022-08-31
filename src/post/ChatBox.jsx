@@ -2,7 +2,7 @@ import { Avatar, ListItem, ListItemAvatar, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentChatAction, setCurrentChatMessagesAction } from '../redux/actions/action';
+import { setCurrentChatAction, setCurrentChatMessagesAction, setInitSocketAction } from '../redux/actions/action';
 import "./chatBox.css";
 
 
@@ -27,11 +27,13 @@ function ChatBox() {
     },[chatUser])
 
     const fetchChat = async() => {
+        // dispatch(setInitSocketAction(localStorage.getItem("MyToken")))
+
         try {
             console.log("fetching chat")
             const response  = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/chats`, {
                 method:"POST",
-                body:JSON.stringify({recipient:chatUser}),
+                body:JSON.stringify({recipient:chatUser?._id}),
                 headers:{
                     "content-type":"application/json",
                     authorization: localStorage.getItem("MyToken")
@@ -101,7 +103,7 @@ function ChatBox() {
            
                 <ListItem  className="pointer">
                     <ListItemAvatar>
-                    <Avatar alt={chatUser.name} src={chatUser.avatar} />
+                    <Avatar alt={chatUser?.name} src={chatUser?.avatar} />
                     </ListItemAvatar>
                     <Typography
                     style={{fontSize:"12px"}}
@@ -114,10 +116,10 @@ function ChatBox() {
         
        
             <div style={{overflow:"scroll", alignSelf:"stretch", height:"65vh"}}>
-                {error? <div>{error}</div> : currentChatMessages?.map((message,i ) => 
+                {error? <div>{error}</div> : currentChatMessages?.map((message) => 
                 
-                <div className={`p-2 w-100  ${message?.sender?._id === myInfo?._id?  "mr-auto":"ml-auto"}`}>
-                    <div  key={i} className="d-flex p-2   align-items-baseline" style={{justifyContent : message?.sender?._id === myInfo?._id?"right":"left"}}>
+                <div key={message._id} className={`p-2 w-100  ${message?.sender?._id === myInfo?._id?  "mr-auto":"ml-auto"}`}>
+                    <div   className="d-flex p-2   align-items-baseline" style={{justifyContent : message?.sender?._id === myInfo?._id?"right":"left"}}>
                         <div style={{order:message?.sender?._id === myInfo?._id? "2":"1"}}>
                             <img src={message?.sender?.avatar} alt={message?.sender?.name} style={{width:"40px",height:"40px", borderRadius:"50%"}}/>
                         </div>

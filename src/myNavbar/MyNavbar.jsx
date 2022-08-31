@@ -33,10 +33,11 @@ function MyNavbar() {
   const myInfo = useSelector((state) => state.user.myInfo);
   const unreadMessages = useSelector(state => state.chat.unreadMessages);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(false);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const dispatch = useDispatch()
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -52,7 +53,7 @@ function MyNavbar() {
       const response = await fetch(`${process.env.REACT_APP_PROD_BE_URL}/chats/me/unreadMsg`, {
         method:"GET",
         headers:{
-          authorization: localStorage.getItem("MyToken")
+          "authorization" : localStorage.getItem("MyToken")
         }
       })
       if(response.status !== 200){
@@ -127,12 +128,12 @@ function MyNavbar() {
   };
 
   const renderUnreadMessages = (
-    <Menu>
+    <div>
       {unreadMessages.map((message, i) => 
       <div key={i}>
           <p>{message.text}</p>
       </div>)}
-    </Menu>
+    </div>
   )
 
   const menuId = "primary-search-account-menu";
@@ -149,7 +150,7 @@ function MyNavbar() {
         vertical: "top",
         horizontal: "right",
       }}
-      open={isMenuOpen}
+      open={anchorEl}
       onClose={handleMenuClose}
     >
       <MenuItem

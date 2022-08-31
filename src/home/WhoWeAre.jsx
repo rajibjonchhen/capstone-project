@@ -12,7 +12,7 @@ function WhoWeAre() {
       <Container >
              <p className="h1 my-5">Who we are?</p>         
           <Row  className="about-us" >
-            <Col item  xs={12} md={6}>
+            <Col   xs={12} md={6}>
             <p>
                An idea can change the the world and
               together we can make a big difference in the society       

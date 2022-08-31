@@ -36,7 +36,7 @@ function PostPage() {
     
     useEffect(() =>{
         window.scrollTo(0,0)
-        console.log("allPosts", allPosts)
+        // console.log("allPosts", allPosts)
         fetchPosts()
     },[])
 

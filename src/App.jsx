@@ -25,7 +25,7 @@ import DirectToRegister from './DirectToLogin/DirectToRegister';
 
 function App() {
   useEffect(() => {
-    console.log(window.location.pathname)
+    // console.log(window.location.pathname)
   },[])
   return (
 <Provider store={configureStore}>
