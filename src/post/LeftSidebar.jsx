@@ -15,7 +15,7 @@ function LeftSidebar({fetchPosts}) {
          {/* <Button className="theme-btn mx-auto border-bottom mt-n1 p-3 mb-4 w-100" style={{display:chatUser? "block":"none"}} onClick={() => dispatchEvent(setChatUserAction({}))} >Show all Posts</Button> */}
             <div className="mt-3">
                 <div>
-                    <img src={myInfo?.avatar} alt="avatar" />
+                    <img src={myInfo?.avatar || `https://ui-avatars.com/api/?name=${myInfo.name}+${myInfo.surname}`} alt="avatar" />
                 </div>
             </div>
 

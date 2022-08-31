@@ -13,6 +13,7 @@ import SingleCard from "./SingleCard";
 import {FcMenu} from "react-icons/fc"
 import CategoriesBtns from "./CategoriesBtns";
 
+
 function Products() {
   const [showCategories, setShowCategories] = useState(false);
   const [error, setError] = useState("");
@@ -93,7 +94,7 @@ function Products() {
           );
           console.log(products, selectedCategory);
           dispatch(setAllProductsAction(products));
-          setIsLoading(false);
+          setTimeout(() => setIsLoading(false), 200)
         } else {
           dispatch(setAllProductsAction(data.products));
           setTimeout(() => setIsLoading(false),200 )
@@ -174,7 +175,7 @@ function Products() {
                 onChange={(e) => setSearch(e.target.value)}
 
               />
-              <span className="search-icon pointer" onClick={() => fetchProducts()}>
+              <span className="search-icon pointer" onClick={() => {if(search.length>0)fetchProducts()}}>
                 <SearchRounded />
               </span>
             </div>

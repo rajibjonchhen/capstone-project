@@ -105,7 +105,7 @@ const handleChange = (e) =>  {
       {(filteredUsers.length > 0? filteredUsers : allUsers).map((user, i) => 
           <ListItem key={i} className="pointer" onClick={() => dispatch(setChatUserAction(user))}>
             
-              <img alt={user.name} src={user.avatar} style={{width:"50px", height:"50px", marginRight:"10px"}}/>
+              <img alt={`${user.name} ${user.surname}`} src={user.avatar || `https://ui-avatars.com/api/?name=${user.name}+${user.surname}`} style={{width:"50px", height:"50px", marginRight:"10px"}}/>
            
             <div className='chat-username'>
             <Typography 
