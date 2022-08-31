@@ -24,4 +24,5 @@ margin: auto 3px !important
 .white-bottom-border{
    font-weight:900 !important;
    border-bottom:1px solid white !important;
+   transition: all ease 0.5s;
 }

@@ -60,7 +60,7 @@ function MyNavbar() {
         console.log("error on fetching unread messages")
       } else {
         const data = await response.json()
-        console.log("unread messages", data)
+        // console.log("unread messages", data)
         dispatch(setUnreadMessageAction(data.messages))
       }
     } catch (error) {

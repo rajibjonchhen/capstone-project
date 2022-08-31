@@ -57,7 +57,7 @@ function Products() {
 
  
   useEffect(() => {
-    console.log(search.length, "search" , search)
+    // console.log(search.length, "search" , search)
     if(search.length !== 0){
       setSearchProducts(allProducts.filter(product => product.title.toUpperCase().includes(search.toUpperCase()) || product.category.toUpperCase().includes(search.toUpperCase() || product.creator.name.toUpperCase().includes(search.toUpperCase()))))
       // dispatch(setAllProductsAction(allProducts.filter(product => product.title.toUpperCase().includes(search.toUpperCase()) || product.category.toUpperCase().includes(search.toUpperCase() || product.creator.name.toUpperCase().includes(search.toUpperCase())))))
@@ -87,7 +87,7 @@ function Products() {
         setIsLoading(false);
       } else {
         const data = await response.json();
-        console.log("category.length", selectedCategory.length);
+        // console.log("category.length", selectedCategory.length);
         if (selectedCategory?.length > 0 && selectedCategory !== "all") {
           const products = data.products.filter(
             (product) => product.category === selectedCategory

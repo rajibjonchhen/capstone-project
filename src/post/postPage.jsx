@@ -57,7 +57,7 @@ function PostPage() {
                 setIsLoading(false)
             } else{
                 const data = await response.json()
-                console.log(data.posts.reverse())
+                // console.log(data.posts.reverse())
                 dispatch(setAllPostsAction(data.posts))
                 setIsLoading(false)
             }

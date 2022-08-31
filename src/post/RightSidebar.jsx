@@ -49,7 +49,7 @@ export default function RightSidebar() {
   },[])
 
   useEffect(() => {
-    console.log(query.length, "query" , query)
+    // console.log(query.length, "query" , query)
     if(query.length !== 0){
       setFilteredUsers(allUsers.filter(user => user.name.toUpperCase().includes(query.toUpperCase()) || user.surname.toUpperCase().includes(query.toUpperCase() || user.email.toUpperCase().includes(query.toUpperCase()))))
     }
@@ -66,7 +66,7 @@ export default function RightSidebar() {
           })
           if(response.status !== 200){
               const data = await response.json()
-              console.log(data)
+              // console.log(data)
               setError(data.error)
               
           } else{

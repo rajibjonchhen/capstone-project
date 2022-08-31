@@ -66,7 +66,7 @@ function MyMessages() {
     <Row  className=" mt-3 py-3">
       <Col  xs={12} md={12} lg={12} className="msg-sender-list-box p-1" style={{height:"70vh", overflow:"scroll"}}>
         {unreadMessages?.map((message, i ) => (
-            <div key={i} >
+            <div key={i} className="p-1">
                 <div className='unread-message' onClick={() => {dispatch(setChatUserAction(message?.sender)); navigate("/posts")}}>
                     <div className="message-element">
                     {" "}
@@ -83,7 +83,7 @@ function MyMessages() {
                   <p>
                     {message?.text}
                   </p>
-                  <p>
+                  <p style={{fontSize:"10px"}}>
                     <span className="m-1">
                       {new Date(message?.createdAt).toLocaleTimeString()}   
                     </span>

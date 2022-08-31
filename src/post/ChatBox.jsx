@@ -46,7 +46,7 @@ function ChatBox() {
                 setSendMsgLoading(false)
             } else {
                 const data =  await response.json()
-                console.log("chat initiated message", data.chat)
+                // console.log("chat initiated message", data.chat)
                 dispatch(setCurrentChatAction(data.chat))
                 dispatch(setCurrentChatMessagesAction(data.chat.messages))
                 setSendMsgLoading(false)
@@ -58,7 +58,7 @@ function ChatBox() {
     }
 
     const handleTextChange = (e) => {
-        console.log(message)
+        // console.log(message)
         setMessage({...message,text:e.target.value})
     }
 
