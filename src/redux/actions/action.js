@@ -6,6 +6,8 @@ export const ACTIONS = {
     SET_MY_MESSAGES : "SET_MY_MESSAGES",
     SET_PROFILE_PAGINATION : "SET_PROFILE_PAGINATION",
     SET_UNREAD_MESSAGES : "SET_UNREAD_MESSAGES",
+    SEND_MESSAGE : "SEND_MESSAGE",
+    INIT_SOCKET:"INIT_SOCKET",
     
     SET_CHAT_USER : "SET_CHAT_USER",
     SET_ALL_CHATS : "SET_ALL_CHATS",
@@ -117,3 +119,13 @@ export const setCurrentChatMessagesAction = (messages) => ({
     type : ACTIONS.SET_CURRENT_CHAT_MESSAGES,
     payload : messages
 })
+
+export const setInitSocketAction = (accessToken) => ({
+    type: ACTIONS.INIT_SOCKET,
+    payload: accessToken,
+  });
+  
+  export const sendMessageAction = (sendMessage) => ({
+    type: ACTIONS.SEND_MESSAGE,
+    payload: sendMessage,
+  });

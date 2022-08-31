@@ -33,6 +33,32 @@ const chatReducer = (state = initialState.chat, action) => {
                 unreadMessages : action.payload
             }
 
+
+            case ACTIONS.INIT_SOCKET:
+      const ADDRESS = "http://localhost:3001";
+      const socket = io(ADDRESS, {
+        transports: ["websocket"],
+        auth: { token: action.payload },
+      });
+
+      //     // initialize your socket listeners.....
+      socketSetup(socket);
+      return { ...state, socket };
+    case "EMIT_TEST":
+      state.socket?.emit("testEvent", { message: "Hello world" });
+      return state;
+
+    case ACTIONS.SEND_MESSAGE:
+      // update the correct chat with the new message
+      // look for the chat which has chatId as _id
+      state.socket?.emit("outgoing-msg", action.payload);
+      return {
+        ...state,
+        chats: state.chats
+          .filter((chat) => chat._id === action.payload.chatId)
+          .message.concat(action.payload.message),
+      };
+
        default:
            return state
     }
