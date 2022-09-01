@@ -115,11 +115,11 @@ function ChatBox() {
         </div>
         
        
-            <div style={{overflow:"scroll", alignSelf:"stretch", height:"65vh"}}>
+            <div style={{overflow:"scroll", alignSelf:"stretch", height:"75vh"}}>
                 {error? <div>{error}</div> : currentChatMessages?.map((message) => 
                 
-                <div key={message._id} className={`p-2 w-100  ${message?.sender?._id === myInfo?._id?  "mr-auto":"ml-auto"}`}>
-                    <div   className="d-flex p-2   align-items-baseline" style={{justifyContent : message?.sender?._id === myInfo?._id?"right":"left"}}>
+                <div key={message._id} className={`p-1 w-100  ${message?.sender?._id === myInfo?._id?  "mr-auto":"ml-auto"}`}>
+                    <div   className="d-flex p-1   align-items-baseline" style={{justifyContent : message?.sender?._id === myInfo?._id?"right":"left"}}>
                         <div style={{order:message?.sender?._id === myInfo?._id? "2":"1"}}>
                             <img src={message?.sender?.avatar} alt={message?.sender?.name} style={{width:"40px",height:"40px", borderRadius:"50%"}}/>
                         </div>
