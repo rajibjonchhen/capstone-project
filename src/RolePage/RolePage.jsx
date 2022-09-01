@@ -1,16 +1,15 @@
 import { Button } from '@material-ui/core'
 import { Lightbulb, MonetizationOn } from '@mui/icons-material'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { setMyInfoAction } from '../redux/actions/action'
 import "./rolePage.css"
 
 function RolePage() {
 
-    const [role, setRole] = useState("")
+    // const [role, setRole] = useState("")
     const [error, setError] = useState("")
 
     const myInfo = useSelector(state => state.user.myInfo)
@@ -52,7 +51,7 @@ function RolePage() {
 
   return (
     <div className="role-container">
-        <Container>
+        {error? <div>{error}</div>:<Container>
         <p className="h1">How would you like to contribute</p>
             <Row>
                 <Col >
@@ -80,7 +79,7 @@ function RolePage() {
                 </Button>
                 </Col>
             </Row>
-        </Container>
+        </Container>}
     </div>
   )
 }

@@ -1,5 +1,7 @@
 import {ACTIONS} from "../actions/action.js"
 import { initialState } from "../store/store.js"
+import socketSetup from "./socketSetup.js"
+import io from "socket.io-client";
 
 const chatReducer = (state = initialState.chat, action) => {
     switch(action.type){
@@ -35,13 +37,13 @@ const chatReducer = (state = initialState.chat, action) => {
 
 
             case ACTIONS.INIT_SOCKET:
-      const ADDRESS = "http://localhost:3001";
-      const socket = io(ADDRESS, {
-        transports: ["websocket"],
-        auth: { token: action.payload },
-      });
+        const ADDRESS = "http://localhost:3001";
+        const socket = io(ADDRESS, {
+            transports: ["websocket"],
+            auth: { token: action.payload },
+        });
 
-      //     // initialize your socket listeners.....
+          // initialize your socket listeners.....
       socketSetup(socket);
       return { ...state, socket };
     case "EMIT_TEST":

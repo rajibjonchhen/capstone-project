@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import ForCreatorInvestor from '../home/ForCreatorInvestor'
+import { useEffect } from 'react'
 import OurValue from '../home/OurValue'
 
 function AboutUs() {

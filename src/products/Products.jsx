@@ -1,17 +1,16 @@
-import { Button } from "@material-ui/core";
 import { SearchRounded } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { FcMenu } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   setAllProductsAction,
   setSelectedCategoryAction
 } from "../redux/actions/action";
+import CategoriesBtns from "./CategoriesBtns";
 import "./products.css";
 import SingleCard from "./SingleCard";
-import {FcMenu} from "react-icons/fc"
-import CategoriesBtns from "./CategoriesBtns";
 
 
 function Products() {

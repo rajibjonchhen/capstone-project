@@ -1,9 +1,9 @@
 import { Avatar } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setChatUserAction, setUnreadMessageAction } from "../redux/actions/action";
+import { setChatUserAction } from "../redux/actions/action";
 import "./myMessage.css";
 
 function MyMessages() {

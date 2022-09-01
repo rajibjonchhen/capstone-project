@@ -1,6 +1,5 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useSelector } from 'react-redux';
-import { setChatUserAction } from "../redux/actions/action";
 import "./leftSide.css";
 import RightSidebar from "./RightSidebar";
 

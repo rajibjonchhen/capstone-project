@@ -1,4 +1,3 @@
-import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ForCreatorInvestor from "./ForCreatorInvestor";
 import "./homePage.css";

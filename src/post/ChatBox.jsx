@@ -23,11 +23,11 @@ function ChatBox() {
 
     useEffect(() => {
         fetchChat()
+        dispatch(setInitSocketAction(localStorage.getItem("MyToken")))
         console.log("currentChatMessages myInfo and chatUser",currentChatMessages, myInfo, chatUser)
     },[chatUser])
 
     const fetchChat = async() => {
-        // dispatch(setInitSocketAction(localStorage.getItem("MyToken")))
 
         try {
             console.log("fetching chat")

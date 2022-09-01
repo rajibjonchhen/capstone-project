@@ -1,5 +1,5 @@
 
-import { ArrowBackIosNew, ArrowForward, ArrowForwardIosOutlined, KeyboardArrowLeftOutlined } from "@mui/icons-material";
+import { ArrowForwardIosOutlined } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";

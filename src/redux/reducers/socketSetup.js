@@ -1,4 +1,4 @@
-import { INewChat } from "../../types/IMsg"
+
 
 
 export default function socketSetup(socket) {

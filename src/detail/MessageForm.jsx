@@ -1,11 +1,10 @@
 import { Box, TextField, Typography } from "@material-ui/core";
-import { Button } from "@mui/material";
-import { useState, useEffect } from "react";
-import {Alert} from "@mui/material"
-import { useSelector } from "react-redux";
-import "./messageForm.css"
 import { Close } from "@mui/icons-material";
+import { Alert, Button } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Meeting from "./Meeting";
+import "./messageForm.css";
 
 
 function MessageForm({setOpen, singleProduct}) {

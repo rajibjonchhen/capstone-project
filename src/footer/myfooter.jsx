@@ -1,9 +1,5 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import "./myfooter.css"
-import { Typography } from "@material-ui/core";
 import { Col, Container, Row } from "react-bootstrap";
+import "./myfooter.css";
 
 function MyFooter() {
   const footerParts = [

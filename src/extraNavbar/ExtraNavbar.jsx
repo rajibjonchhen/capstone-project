@@ -1,6 +1,6 @@
 import { Container, Grid } from "@material-ui/core";
 import { Button } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfilePaginationAction } from "../redux/actions/action";
 import "./extraNavbar.css";

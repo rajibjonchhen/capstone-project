@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { useEffect, useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { setProfilePaginationAction } from '../redux/actions/action';
 
 export default function DeleteConfirmation(props) {

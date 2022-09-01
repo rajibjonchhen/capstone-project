@@ -1,12 +1,10 @@
-import { Button } from 'react-bootstrap'
-import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import "./directToRegister.css"
+import { Lightbulb, MonetizationOn } from '@mui/icons-material'
+import { Button, Col, Container, Row } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import AGirlThinking from "../assets/think.png"
-import { useDispatch } from 'react-redux'
 import { setRoleAction } from '../redux/actions/action'
-import { Lightbulb, MonetizationOn } from '@mui/icons-material'
+import "./directToRegister.css"
 function DirectToRegister() {
 
   const navigate = useNavigate()
